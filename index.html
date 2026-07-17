@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linux 高校专场 - 学什么专业，Linux 都专业</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐧</text></svg>">
+<style>
+:root{
+  --bg:#f5f5f7;
+  --text:#1d1d1f;
+  --text-2:#6e6e73;
+  --blue:#0071e3;
+  --radius:18px;
+  --maxw:1024px;
+  --grad:linear-gradient(90deg,#0090ff 0%,#a259ff 45%,#ff6482 100%);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro SC","PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+a{color:var(--blue);text-decoration:none;}
+a:hover{text-decoration:underline;}
+img{max-width:100%;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+.eyebrow{font-size:19px;font-weight:600;color:var(--text-2);margin-bottom:14px;}
+h1{font-size:clamp(40px,6.4vw,72px);font-weight:700;line-height:1.1;letter-spacing:-.01em;}
+h2{font-size:clamp(30px,4.6vw,52px);font-weight:700;line-height:1.14;letter-spacing:-.01em;}
+.sub{font-size:clamp(17px,2.2vw,21px);color:var(--text-2);max-width:720px;margin:20px auto 0;line-height:1.6;font-weight:500;}
+.center{text-align:center;}
+.btn{display:inline-block;background:var(--blue);color:#fff;border-radius:980px;padding:12px 24px;font-size:17px;font-weight:600;transition:background .2s,transform .15s;}
+.btn:hover{background:#0077ed;text-decoration:none;transform:scale(1.02);}
+.btn-ghost{display:inline-block;color:var(--blue);font-size:17px;font-weight:600;padding:12px 8px;}
+.btn-ghost:hover{text-decoration:underline;}
+.cta-row{margin-top:28px;display:flex;gap:16px;justify-content:center;align-items:center;flex-wrap:wrap;}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;}
+.rv.in{opacity:1;transform:none;}
+/* promo bar */
+.promo{background:#f5f5f7;border-bottom:1px solid #d2d2d7;font-size:14px;padding:11px 16px;text-align:center;}
+.promo a{font-weight:600;}
+/* nav */
+nav{position:sticky;top:0;z-index:100;background:rgba(245,245,247,.78);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.06);}
+.nav-in{max-width:var(--maxw);margin:0 auto;padding:0 22px;height:52px;display:flex;align-items:center;gap:26px;}
+.nav-logo{font-weight:700;font-size:17px;letter-spacing:-.01em;display:flex;align-items:center;gap:8px;}
+.nav-logo img{height:22px;width:auto;}
+.nav-links{display:flex;gap:24px;font-size:13px;margin-left:6px;}
+.nav-links a{color:var(--text);}
+.nav-links a:hover{color:#000;text-decoration:none;}
+.nav-cta{margin-left:auto;background:var(--blue);color:#fff;font-size:13px;font-weight:600;border-radius:980px;padding:7px 16px;}
+.nav-cta:hover{background:#0077ed;text-decoration:none;}
+@media(max-width:760px){.nav-links{display:none;}}
+/* hero */
+.hero{padding:80px 0 30px;text-align:center;}
+.hero .price{margin-top:18px;font-size:17px;font-weight:600;}
+.hero .price s{color:var(--text-2);font-weight:400;margin-right:8px;}
+.hero-img{margin:48px auto 0;display:block;height:min(400px,58vw);width:auto;filter:drop-shadow(0 30px 44px rgba(0,0,0,.22));animation:float 5s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
+/* majors chips */
+.majors{padding:70px 0 30px;text-align:center;}
+.chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:36px;}
+.chip{background:#fff;border:1px solid #d2d2d7;border-radius:980px;padding:9px 20px;font-size:15px;font-weight:500;transition:all .2s;cursor:default;}
+.chip:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px);}
+/* horizontal carousel (apple style) */
+.stu-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;}
+.car-nav{display:flex;gap:10px;}
+.car-btn{width:40px;height:40px;border-radius:50%;border:none;background:#dedee3;color:#1d1d1f;font-size:20px;line-height:1;cursor:pointer;transition:background .2s;}
+.car-btn:hover{background:#cfcfd6;}
+@media(max-width:760px){.car-nav{display:none;}}
+.hscroll{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin:30px -22px 0;padding:6px 22px 26px;scroll-padding-left:22px;}
+.hscroll::-webkit-scrollbar{display:none;}
+.hscroll>*{flex:0 0 auto;scroll-snap-align:start;}
+/* students */
+.students{padding:80px 0 40px;}
+.hscroll>.stu{flex:0 0 min(430px,87vw);}
+.stu{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.06);display:flex;flex-direction:column;}
+.stu-photo{height:400px;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;position:relative;}
+.stu-photo img{height:92%;width:auto;object-fit:contain;filter:drop-shadow(0 16px 28px rgba(0,0,0,.22));}
+.stu-photo .distro-badge{position:absolute;right:18px;top:18px;background:rgba(255,255,255,.86);backdrop-filter:blur(8px);border-radius:980px;padding:8px 16px;font-size:13.5px;font-weight:700;display:flex;align-items:center;gap:8px;box-shadow:0 4px 14px rgba(0,0,0,.12);}
+.stu-photo .distro-badge img{height:20px;width:auto;filter:none;}
+.stu-body{flex:1;padding:26px 26px 32px;}
+.stu-name{font-size:24px;font-weight:700;}
+.stu-meta{font-size:14.5px;color:var(--text-2);margin-top:6px;line-height:1.7;}
+.stu-use{margin-top:10px;font-size:14.5px;color:var(--text-2);display:flex;align-items:center;gap:8px;}
+.stu-use img{height:20px;width:auto;}
+.stu-use b{color:var(--text);}
+.stu-desc{font-size:15.5px;margin-top:16px;line-height:1.75;}
+.stu-apps{margin-top:26px;}
+.stu-apps .lbl{font-size:15px;color:var(--text);margin-bottom:16px;font-weight:600;}
+.app-row{display:flex;gap:22px;flex-wrap:wrap;}
+.app{display:flex;flex-direction:column;align-items:center;gap:8px;width:64px;}
+.app .tile{width:56px;height:56px;border-radius:14px;background:#fff;box-shadow:0 3px 12px rgba(0,0,0,.10),inset 0 0 0 1px rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;padding:9px;}
+.app .tile img{width:100%;height:100%;object-fit:contain;}
+.app span{font-size:11px;color:var(--text-2);text-align:center;line-height:1.25;}
+@media(max-width:760px){.stu-photo{height:330px;}}
+/* features */
+.features{background:#fff;padding:90px 0;}
+.hscroll>.feat{flex:0 0 min(430px,86vw);}
+.feat{background:var(--bg);border-radius:var(--radius);overflow:hidden;}
+.feat .pic{height:210px;display:flex;align-items:center;justify-content:center;font-size:76px;}
+.feat .txt{padding:30px 34px 38px;}
+.feat h3{font-size:24px;font-weight:700;line-height:1.3;margin-bottom:12px;}
+.feat p{color:var(--text-2);font-size:15.5px;line-height:1.7;}
+/* distros */
+.distros{padding:90px 0;}
+.hscroll>.distro{flex:0 0 min(300px,78vw);}
+.distro{background:#fff;border-radius:var(--radius);padding:30px 26px;box-shadow:0 4px 24px rgba(0,0,0,.05);transition:transform .25s,box-shadow .25s;border-top:5px solid var(--dc,#888);}
+.distro:hover{transform:translateY(-5px);box-shadow:0 14px 38px rgba(0,0,0,.10);}
+.distro .logo{height:46px;display:flex;align-items:center;margin-bottom:16px;}
+.distro .logo img{max-height:46px;max-width:140px;object-fit:contain;}
+.distro .role{font-size:12.5px;font-weight:700;color:var(--dc,#888);letter-spacing:.05em;}
+.distro h4{font-size:20px;font-weight:700;margin:6px 0 10px;}
+.distro p{font-size:14px;color:var(--text-2);line-height:1.65;}
+/* compare table */
+.compare{background:#fff;padding:90px 0;}
+.tbl{width:100%;border-collapse:collapse;margin-top:56px;background:var(--bg);border-radius:var(--radius);overflow:hidden;font-size:15.5px;}
+.tbl th,.tbl td{padding:17px 22px;text-align:left;border-bottom:1px solid #e4e4e8;}
+.tbl th{font-size:14px;color:var(--text-2);font-weight:600;}
+.tbl tr:last-child td{border-bottom:none;}
+.tbl td:first-child{font-weight:600;}
+.tbl .win{color:#0a84ff;font-weight:600;}
+/* faq */
+.faq{padding:90px 0;}
+.faq-item{background:#fff;border-radius:var(--radius);margin-top:18px;box-shadow:0 4px 24px rgba(0,0,0,.05);overflow:hidden;}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;background:none;border:none;padding:24px 30px;font-size:18px;font-weight:700;text-align:left;cursor:pointer;color:var(--text);font-family:inherit;}
+.faq-q .ic{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:#e8e8ed;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:400;transition:transform .32s ease;user-select:none;}
+.faq-item.open .faq-q .ic{transform:rotate(45deg);}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease;}
+.faq-item.open .faq-a{grid-template-rows:1fr;}
+.faq-a>div{overflow:hidden;}
+.faq-a p{padding:0 30px 26px;font-size:15.5px;color:var(--text-2);line-height:1.7;}
+/* final cta */
+.final{padding:80px 0;text-align:center;}
+/* footer */
+footer{background:#fff;}
+.legal{padding:56px 0 40px;font-size:12.5px;color:var(--text-2);line-height:1.8;}
+.legal p{margin-bottom:8px;}
+.footer-bar{border-top:1px solid #d2d2d7;padding:24px 0 36px;font-size:13px;color:var(--text-2);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+</style>
+</head>
+<body>
+
+<div class="promo">限时特惠期间，以 ¥0 入手 Linux，还能免费领养企鹅一只*。 <a href="#distros">立即领养</a></div>
+
+<nav>
+  <div class="nav-in">
+    <div class="nav-logo"><img src="img/tux.png" alt="Tux">Linux <span style="font-weight:400;color:#6e6e73">高校专场</span></div>
+    <div class="nav-links">
+      <a href="#majors">专业</a>
+      <a href="#students">同学们</a>
+      <a href="#features">为什么选 Linux</a>
+      <a href="#distros">发行版</a>
+      <a href="#faq">常见问题</a>
+    </div>
+    <a class="nav-cta" href="#distros">免费领取</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <h1 class="rv">有 Linux，尽管去折腾。</h1>
+    <p class="sub rv">无论学什么，Linux 都是你无往不利的王牌。飞快的速度、持久的续航，以及与服务器一脉相承的默契配合，助你的专业课程一路开挂。</p>
+    <p class="price rv"><s>¥9999</s> 教育优惠价 ¥0。不用验证学籍，人人有份。</p>
+    <div class="cta-row rv">
+      <a class="btn" href="#students">看看同学们</a>
+      <a class="btn-ghost" href="#distros">探索零元优惠 &gt;</a>
+    </div>
+    <img class="hero-img rv" src="img/tux.png" alt="Linux 吉祥物 Tux">
+  </div>
+</header>
+
+<section class="majors" id="majors">
+  <div class="wrap center">
+    <h2 class="rv">学什么专业，<br><span class="grad-text">Linux 都专业。</span></h2>
+    <div class="chips rv">
+      <span class="chip">计算机</span><span class="chip">人工智能</span><span class="chip">微电子</span><span class="chip">新闻传播</span><span class="chip">法学</span><span class="chip">天文学</span><span class="chip">音乐表演</span><span class="chip">经济学</span><span class="chip">音响工程</span><span class="chip">播音主持</span><span class="chip">园艺</span><span class="chip">游戏开发</span><span class="chip">化学</span><span class="chip">医学</span><span class="chip">建筑</span><span class="chip">外语文学</span><span class="chip">社会学</span><span class="chip">以及没列出来的所有</span>
+    </div>
+  </div>
+</section>
+<section class="students" id="students">
+  <div class="wrap">
+    <div class="stu-head rv">
+      <h2>看看同学们怎么说。</h2>
+      <div class="car-nav"><button class="car-btn" data-target="stu-scroll" data-dir="-1" aria-label="向左">‹</button><button class="car-btn" data-target="stu-scroll" data-dir="1" aria-label="向右">›</button></div>
+    </div>
+    <div class="hscroll" id="stu-scroll">
+
+    <div class="stu rv">
+      <div class="stu-photo" style="background:linear-gradient(160deg,#ff8fb8,#ffd9e6);">
+        <span class="distro-badge"><img src="img/icons/popos.svg" alt="">Pop!_OS</span>
+        <img src="img/char/kasumi.png" alt="户山香澄">
+      </div>
+      <div class="stu-body">
+        <div class="stu-name">户山香澄</div>
+        <div class="stu-meta">天文学专业<br>四叶女子大学 2023 级本科生</div>
+        <div class="stu-use">使用 <img src="img/icons/popos.svg" alt=""><b>Pop!_OS</b></div>
+        <p class="stu-desc">Pop!_OS 开箱就带 NVIDIA 驱动，跑 KStars 和 Stellarium 观测星空嗖嗖快。她说连开机动画都像在闪烁——每次开机，都是闪闪发光、心跳不已的感觉！</p>
+        <div class="stu-apps"><div class="lbl">她校园生活中常用的 app：</div>
+          <div class="app-row">
+            <div class="app"><div class="tile"><img src="img/icons/org.kde.kstars.png" alt="KStars"></div><span>KStars</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/jupyter.svg" alt="Jupyter"></div><span>Jupyter</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/org.stellarium.Stellarium.png" alt="Stellarium"></div><span>Stellarium</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/libreoffice.svg" alt="LibreOffice"></div><span>LibreOffice</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stu rv">
+      <div class="stu-photo" style="background:linear-gradient(160deg,#9d7bff,#ddd2ff);">
+        <span class="distro-badge"><img src="img/icons/archlinux.svg" alt="">Arch Linux</span>
+        <img src="img/char/arisa.png" alt="市谷有咲">
+      </div>
+      <div class="stu-body">
+        <div class="stu-name">市谷有咲</div>
+        <div class="stu-meta">计算机科学与技术专业<br>四叶女子大学 2023 级本科生</div>
+        <div class="stu-use">使用 <img src="img/icons/archlinux.svg" alt=""><b>Arch Linux</b></div>
+        <p class="stu-desc">滚动更新让开发环境永远最新，AUR 十万个软件包随她挑。被问为什么用 Arch，她别过脸去：「才、才不是喜欢折腾呢……只是 pacman 比较快而已。你要用的话，我可以勉为其难教你。」</p>
+        <div class="stu-apps"><div class="lbl">她校园生活中常用的 app：</div>
+          <div class="app-row">
+            <div class="app"><div class="tile"><img src="img/icons/com.visualstudio.code.png" alt="VS Code"></div><span>VS Code</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/neovim.svg" alt="Neovim"></div><span>Neovim</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/docker.svg" alt="Docker"></div><span>Docker</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/git.svg" alt="Git"></div><span>Git</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stu rv">
+      <div class="stu-photo" style="background:linear-gradient(160deg,#4a5a9e,#b9c3ea);">
+        <span class="distro-badge"><img src="img/icons/ubuntustudio.png" alt="">Ubuntu Studio</span>
+        <img src="img/char/yukina.png" alt="凑友希那">
+      </div>
+      <div class="stu-body">
+        <div class="stu-name">凑友希那</div>
+        <div class="stu-meta">音乐表演专业（声乐方向）<br>四叶女子大学 2022 级本科生</div>
+        <div class="stu-use">使用 <img src="img/icons/ubuntustudio.png" alt=""><b>Ubuntu Studio</b></div>
+        <p class="stu-desc">低延迟内核配合 PipeWire，录音监听毫无迟滞。从 Ardour 分轨混音到最终母带导出，每一步都必须完美——这套系统，配得上 Roselia 的音乐。</p>
+        <div class="stu-apps"><div class="lbl">她校园生活中常用的 app：</div>
+          <div class="app-row">
+            <div class="app"><div class="tile"><img src="img/icons/ardour.svg" alt="Ardour"></div><span>Ardour</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/audacity.svg" alt="Audacity"></div><span>Audacity</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/studio.kx.carla.png" alt="Carla"></div><span>Carla</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/musescore.png" alt="MuseScore"></div><span>MuseScore</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stu rv">
+      <div class="stu-photo" style="background:linear-gradient(160deg,#1fa3c7,#bdeaf6);">
+        <span class="distro-badge"><img src="img/icons/debian.svg" alt="">Debian</span>
+        <img src="img/char/sayo.png" alt="冰川纱夜">
+      </div>
+      <div class="stu-body">
+        <div class="stu-name">冰川纱夜</div>
+        <div class="stu-meta">法学专业<br>四叶女子大学 2022 级本科生</div>
+        <div class="stu-use">使用 <img src="img/icons/debian.svg" alt=""><b>Debian</b></div>
+        <p class="stu-desc">Stable 分支三十年如一日，一切行为都有据可查，像法条一样严谨可预期。三年不出一次意外。她说，系统和人一样——守规矩，才值得信赖。</p>
+        <div class="stu-apps"><div class="lbl">她校园生活中常用的 app：</div>
+          <div class="app-row">
+            <div class="app"><div class="tile"><img src="img/icons/libreoffice.svg" alt="LibreOffice"></div><span>LibreOffice</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/zotero.svg" alt="Zotero"></div><span>Zotero</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/anki.svg" alt="Anki"></div><span>Anki</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/org.kde.okular.png" alt="Okular"></div><span>Okular</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stu rv">
+      <div class="stu-photo" style="background:linear-gradient(160deg,#7c3aed,#e9c2ff);">
+        <span class="distro-badge"><img src="img/icons/nobara.png" alt="">Nobara</span>
+        <img src="img/char/ako.png" alt="宇田川亚子">
+      </div>
+      <div class="stu-body">
+        <div class="stu-name">宇田川亚子</div>
+        <div class="stu-meta">数字媒体技术专业（游戏方向）<br>四叶女子大学 2023 级本科生</div>
+        <div class="stu-use">使用 <img src="img/icons/nobara.png" alt=""><b>Nobara Linux</b></div>
+        <p class="stu-desc">自带 Proton-GE 与显卡驱动，3A 大作点开即玩，帧数竟比隔壁系统还高。「呼呼呼……汝可知晓，Proton 乃是连通异世界之门的禁咒！大魔姬亚子，于 Linux 之领域降临——！」</p>
+        <div class="stu-apps"><div class="lbl">她校园生活中常用的 app：</div>
+          <div class="app-row">
+            <div class="app"><div class="tile"><img src="img/icons/steam.svg" alt="Steam"></div><span>Steam</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/protondb.svg" alt="ProtonDB"></div><span>ProtonDB</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/obsstudio.svg" alt="OBS Studio"></div><span>OBS Studio</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/blender.svg" alt="Blender"></div><span>Blender</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stu rv">
+      <div class="stu-photo" style="background:linear-gradient(160deg,#f5b301,#ffedb0);">
+        <span class="distro-badge"><img src="img/icons/nixos.svg" alt="">NixOS</span>
+        <img src="img/char/kokoro.png" alt="弦卷心">
+      </div>
+      <div class="stu-body">
+        <div class="stu-name">弦卷心</div>
+        <div class="stu-meta">经济学专业<br>四叶女子大学 2022 级本科生</div>
+        <div class="stu-use">使用 <img src="img/icons/nixos.svg" alt=""><b>NixOS</b></div>
+        <p class="stu-desc">她把整套系统写进一份 configuration.nix，无论重建多少次，环境都一模一样地复现。「把幸福写进配置文件，每次开机笑容都如期而至——这就是最棒的经济学！」</p>
+        <div class="stu-apps"><div class="lbl">她校园生活中常用的 app：</div>
+          <div class="app-row">
+            <div class="app"><div class="tile"><img src="img/icons/r.svg" alt="R"></div><span>R</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/octave.svg" alt="Octave"></div><span>Octave</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/typst.svg" alt="Typst"></div><span>Typst</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/jupyter.svg" alt="Jupyter"></div><span>Jupyter</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stu rv">
+      <div class="stu-photo" style="background:linear-gradient(160deg,#0f766e,#a7f3d0);">
+        <span class="distro-badge"><img src="img/icons/gentoo.svg" alt="">Gentoo</span>
+        <img src="img/char/maya.png" alt="大和麻弥">
+      </div>
+      <div class="stu-body">
+        <div class="stu-name">大和麻弥</div>
+        <div class="stu-meta">音响工程专业<br>都立艺术大学 2023 级本科生</div>
+        <div class="stu-use">使用 <img src="img/icons/gentoo.svg" alt=""><b>Gentoo</b></div>
+        <p class="stu-desc">每一个编译选项都由亲手调校，像调试整套 PA 系统一样令人着迷。等待编译的深夜，风扇稳定运转的声音都格外悦耳……呵呵，器材的乐趣，懂的人自然懂。</p>
+        <div class="stu-apps"><div class="lbl">她校园生活中常用的 app：</div>
+          <div class="app-row">
+            <div class="app"><div class="tile"><img src="img/icons/ardour.svg" alt="Ardour"></div><span>Ardour</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/org.rncbc.qpwgraph.png" alt="qpwgraph"></div><span>qpwgraph</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/com.github.wwmm.easyeffects.png" alt="EasyEffects"></div><span>EasyEffects</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/ffmpeg.svg" alt="FFmpeg"></div><span>FFmpeg</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stu rv">
+      <div class="stu-photo" style="background:linear-gradient(160deg,#f472b6,#ffd9ea);">
+        <span class="distro-badge"><img src="img/icons/linuxmint.svg" alt="">Linux Mint</span>
+        <img src="img/char/aya.png" alt="丸山彩">
+      </div>
+      <div class="stu-body">
+        <div class="stu-name">丸山彩</div>
+        <div class="stu-meta">播音与主持艺术专业<br>四叶女子大学 2023 级本科生</div>
+        <div class="stu-use">使用 <img src="img/icons/linuxmint.svg" alt=""><b>Linux Mint</b></div>
+        <p class="stu-desc">开箱即用，亲切得像老朋友。录音练稿、剪片投稿，全流程流畅不卡。「连我都不会把它弄崩，是真的稳！」……诶？这话听起来好像哪里不对？</p>
+        <div class="stu-apps"><div class="lbl">她校园生活中常用的 app：</div>
+          <div class="app-row">
+            <div class="app"><div class="tile"><img src="img/icons/audacity.svg" alt="Audacity"></div><span>Audacity</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/kdenlive.svg" alt="Kdenlive"></div><span>Kdenlive</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/obsstudio.svg" alt="OBS Studio"></div><span>OBS Studio</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/gimp.svg" alt="GIMP"></div><span>GIMP</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stu rv">
+      <div class="stu-photo" style="background:linear-gradient(160deg,#dc2626,#ffc9c9);">
+        <span class="distro-badge"><img src="img/icons/opensuse.svg" alt="">openSUSE</span>
+        <img src="img/char/ran.png" alt="美竹兰">
+      </div>
+      <div class="stu-body">
+        <div class="stu-name">美竹兰</div>
+        <div class="stu-meta">园艺专业<br>都立农业大学 2023 级本科生</div>
+        <div class="stu-use">使用 <img src="img/icons/opensuse.svg" alt=""><b>openSUSE</b></div>
+        <p class="stu-desc">家里花道教室的官网，就是她在 Tumbleweed 上亲手搭的。YaST 一出手，配置全都有。至于为什么选它——「变色龙和绿叶，很配吧。跟平常一样就好。」</p>
+        <div class="stu-apps"><div class="lbl">她校园生活中常用的 app：</div>
+          <div class="app-row">
+            <div class="app"><div class="tile"><img src="img/icons/inkscape.svg" alt="Inkscape"></div><span>Inkscape</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/gimp.svg" alt="GIMP"></div><span>GIMP</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/firefox.svg" alt="Firefox"></div><span>Firefox</span></div>
+            <div class="app"><div class="tile"><img src="img/icons/hugo.svg" alt="Hugo"></div><span>Hugo</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="wrap">
+    <div class="center">
+      <h2 class="rv">Linux 速度拉满，<br><span class="grad-text">脑力全开。</span></h2>
+    </div>
+    <div class="car-nav rv" style="margin-top:26px;justify-content:flex-end;"><button class="car-btn" data-target="feat-scroll" data-dir="-1" aria-label="向左">‹</button><button class="car-btn" data-target="feat-scroll" data-dir="1" aria-label="向右">›</button></div>
+    <div class="feat-grid hscroll" id="feat-scroll">
+      <div class="feat rv">
+        <div class="pic" style="background:linear-gradient(135deg,#0090ff,#6ee7ff);">⚡</div>
+        <div class="txt">
+          <h3>速度独一档，紧急的 DDL 从容做。</h3>
+          <p>没有臃肿的后台服务，没有半夜偷偷重启的更新。资源占用低得离谱，五年前的老电脑照样健步如飞。隔壁同学的电脑还在转圈，你已经把作业交了。</p>
+        </div>
+      </div>
+      <div class="feat rv">
+        <div class="pic" style="background:linear-gradient(135deg,#16a34a,#bbf7d0);">🗿</div>
+        <div class="txt">
+          <h3>稳定特长生，时刻专注不焦虑。</h3>
+          <p>全球服务器的 uptime 以年为单位计，你的期末季也一样稳。更新之前先问你，蓝屏是什么没听过。稳，稳得很有主见。</p>
+        </div>
+      </div>
+      <div class="feat rv">
+        <div class="pic" style="background:linear-gradient(135deg,#a259ff,#ffd1f7);">🧪</div>
+        <div class="txt">
+          <h3>AI 尖子生，各种模型都炼得嗖嗖快。</h3>
+          <p>CUDA 原生支持，PyTorch、Ollama、ComfyUI 开箱即炼。显存有多大，模型就敢跑多大——本地大模型这片主场，Linux 从来没让过。</p>
+        </div>
+      </div>
+      <div class="feat rv">
+        <div class="pic" style="background:linear-gradient(135deg,#ff6482,#ffe29a);">🤝</div>
+        <div class="txt">
+          <h3>Linux 与服务器合力出奇迹。</h3>
+          <p>宿舍写好的代码，scp 一键上服务器跑；SSH 就是你的通用剪贴板。毕竟这世上九成多的服务器都在跑 Linux——你的笔记本和它，是同一个世界的人。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="distros" id="distros">
+  <div class="wrap center">
+    <p class="eyebrow rv">发行版大巡礼</p>
+    <h2 class="rv">一百种口味，<br>总有一款写着你的名字。</h2>
+    <p class="sub rv">就像乐队有不同风格，发行版也有不同性格。以下同学均已通过学生会认证，可放心交往。</p>
+    <div class="car-nav rv" style="margin-top:26px;justify-content:flex-end;"><button class="car-btn" data-target="distro-scroll" data-dir="-1" aria-label="向左">‹</button><button class="car-btn" data-target="distro-scroll" data-dir="1" aria-label="向右">›</button></div>
+    <div class="distro-grid hscroll" id="distro-scroll" style="text-align:left;">
+      <div class="distro rv" style="--dc:#e95420;"><div class="logo"><img src="img/icons/ubuntu.svg" alt="Ubuntu"></div><span class="role">人气王</span><h4>Ubuntu</h4><p>上手零门槛，教程满天飞。大多数人见到的第一个 Linux，就是这张橙色笑脸。</p></div>
+      <div class="distro rv" style="--dc:#a81c1c;"><div class="logo"><img src="img/icons/debian.svg" alt="Debian"></div><span class="role">老班长</span><h4>Debian</h4><p>稳字当头，三十年如一日。自由软件的精神图腾，全球服务器的心头好。</p></div>
+      <div class="distro rv" style="--dc:#1793d1;"><div class="logo"><img src="img/icons/archlinux.svg" alt="Arch Linux"></div><span class="role">折腾部长</span><h4>Arch Linux</h4><p>滚动更新，永远最新。亲手装完它的那天，你会懂计算机，也会更懂自己。</p></div>
+      <div class="distro rv" style="--dc:#3c6eb4;"><div class="logo"><img src="img/icons/fedora.svg" alt="Fedora"></div><span class="role">技术委员</span><h4>Fedora</h4><p>新技术的第一个尝鲜者，红帽家的嫡系。前沿，但不冒进。</p></div>
+      <div class="distro rv" style="--dc:#87cf3e;"><div class="logo"><img src="img/icons/linuxmint.svg" alt="Linux Mint"></div><span class="role">生活委员</span><h4>Linux Mint</h4><p>开箱即用，像老朋友一样亲切。从别的系统搬过来，几乎不用适应期。</p></div>
+      <div class="distro rv" style="--dc:#73ba25;"><div class="logo"><img src="img/icons/opensuse.svg" alt="openSUSE"></div><span class="role">风纪委员</span><h4>openSUSE</h4><p>YaST 一出，谁与争锋。德式严谨，从安装器精致到系统角落。</p></div>
+      <div class="distro rv" style="--dc:#5277c3;"><div class="logo"><img src="img/icons/nixos.svg" alt="NixOS"></div><span class="role">纪律委员</span><h4>NixOS</h4><p>一切配置皆可复现。写在文件里的系统，才是靠得住的系统。</p></div>
+      <div class="distro rv" style="--dc:#54494a;"><div class="logo"><img src="img/icons/gentoo.svg" alt="Gentoo"></div><span class="role">编译仙人</span><h4>Gentoo</h4><p>从源码开始，每个字节都刻着你的名字。等待编译的夜里，风扇声就是它的 BGM。</p></div>
+      <div class="distro rv" style="--dc:#ff6a00;"><div class="logo"><img src="img/icons/deepin.svg" alt="deepin"></div><span class="role">国产之光</span><h4>deepin</h4><p>颜值即正义，中文体验拉满。自家桌面环境，精致得不像实力派。</p></div>
+      <div class="distro rv" style="--dc:#5e4b8b;"><div class="logo"><img src="img/icons/popos.svg" alt="Pop!_OS"></div><span class="role">理工暖男</span><h4>Pop!_OS</h4><p>显卡驱动开箱就有，AI 炼丹好帮手。科研党与深度学习的老伙计。</p></div>
+      <div class="distro rv" style="--dc:#1196f5;"><div class="logo"><img src="img/icons/ubuntustudio.png" alt="Ubuntu Studio"></div><span class="role">文艺部长</span><h4>Ubuntu Studio</h4><p>音视频创作全家桶，低延迟内核加持。开机，即是一间录音棚。</p></div>
+      <div class="distro rv" style="--dc:#1d1d1f;"><div class="logo"><img src="img/icons/nobara.png" alt="Nobara"></div><span class="role">电竞社长</span><h4>Nobara</h4><p>为游戏而生的 Fedora 改良版，Proton-GE 与驱动全预装。开机即开战。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="compare" id="compare">
+  <div class="wrap">
+    <div class="center">
+      <h2 class="rv">货比三家，<br>越比越香。</h2>
+      <p class="sub rv">我们鼓励理性消费，所以把参数都摆在这儿了。</p>
+    </div>
+    <div class="rv" style="overflow-x:auto;">
+      <table class="tbl">
+        <tr><th style="width:34%;"></th><th>Linux</th><th>某果牌笔记本</th></tr>
+        <tr><td>入手价格</td><td class="win">¥0</td><td>五位数起</td></tr>
+        <tr><td>教育优惠</td><td class="win">无需证明，人人有份</td><td>需验证学籍</td></tr>
+        <tr><td>软件获取</td><td class="win">仓库一条命令，十万软件包</td><td>应用商店慢慢点</td></tr>
+        <tr><td>自定义程度</td><td class="win">内核都能重编译</td><td>不建议，也不允许</td></tr>
+        <tr><td>与服务器的关系</td><td class="win">本机即服务器，亲如一家</td><td>需要互相适应</td></tr>
+        <tr><td>企鹅</td><td class="win">有</td><td>无</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="center"><h2 class="rv">新生三连问。</h2></div>
+    <div class="faq-item rv">
+      <button class="faq-q">Linux 会不会很难？<span class="ic">+</span></button>
+      <div class="faq-a"><div><p>装 Ubuntu 比装某些国产全家桶软件还简单，全程图形界面，点下一步就行。难的从来不是 Linux，是你以为它很难。</p></div></div>
+    </div>
+    <div class="faq-item rv">
+      <button class="faq-q">能写论文、做 PPT 吗？<span class="ic">+</span></button>
+      <div class="faq-a"><div><p>LibreOffice 全套兼容 Office 文档，WPS 也有 Linux 版。若用 LaTeX 或 Typst 排版，参考文献一管，格式优雅得不像话——导师看了都说专业。</p></div></div>
+    </div>
+    <div class="faq-item rv">
+      <button class="faq-q">万一折腾坏了怎么办？<span class="ic">+</span></button>
+      <div class="faq-a"><div><p>Live U 盘一插，原地复活；重装系统也就一顿饭的功夫。况且数据都在自己手里——这在 Linux 世界，叫自由，不叫风险。</p></div></div>
+    </div>
+    <div class="faq-item rv">
+      <button class="faq-q">能打游戏吗？<span class="ic">+</span></button>
+      <div class="faq-a"><div><p>Steam 原生支持，Proton 一点即玩。你知道吗，Steam Deck 掌机跑的就是 Linux——人家躺在床上玩 3A，你的笔记本凭什么不行？</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2 class="rv">这个开学季，<br><span class="grad-text">带只企鹅去报到。</span></h2>
+    <p class="sub rv">不花钱，不设限，不看人脸色。下载一个镜像，大学四年，它就是你的了——不对，你们就是彼此的了。</p>
+    <div class="cta-row rv">
+      <a class="btn" href="#distros">免费领养一只</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="legal rv">
+      <p>* “¥0”指绝大多数发行版免费提供下载与使用，网费、电费与咖啡钱请自理。</p>
+      <p>* 企鹅不限量，随便领养，领完记得对它好一点。</p>
+      <p>* 页面中出现的学校、专业与同学言论均为虚构，但发行版、软件与价格全部属实。</p>
+      <p>* “开挂”指学习效率提升，不构成任何学术不端建议。</p>
+      <p>* Gentoo 同学的编译时长因机器配置与执念深浅而异，风扇噪音请与室友协商解决。</p>
+      <p>* 弦卷集团、米歇尔株式会社未对本页面提供任何赞助。Roselia 保留对「完美」一词的最终解释权。</p>
+      <p>* 角色形象版权归 Bushiroad 所有，本页面为非营利粉丝二创；各发行版与软件图标版权归各自项目所有；Tux 形象由 Larry Ewing 创作。Linux 是 Linus Torvalds 的注册商标。</p>
+      <p>* 本页面由一位不愿透露姓名的企鹅人倾情制作。</p>
+    </div>
+    <div class="footer-bar">
+      <span>用 ❤️ 与 ¥0 构建</span>
+      <span>Powered by Arch Linux（大概）</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+// faq accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => q.closest('.faq-item').classList.toggle('open'));
+});
+
+// carousel arrows
+document.querySelectorAll('.car-btn').forEach(b => {
+  b.addEventListener('click', () => {
+    const t = document.getElementById(b.dataset.target);
+    if (!t) return;
+    const card = t.querySelector(':scope > *');
+    const w = card ? card.getBoundingClientRect().width + 24 : 340;
+    t.scrollBy({ left: (+b.dataset.dir) * w, behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
