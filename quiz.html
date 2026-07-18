@@ -3,13 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>发行版小测试 - 30 秒找到你的本命 Linux</title>
-<meta name="description" content="六个问题，由 BanG Dream 角色为你推荐最适合的 Linux 发行版。">
-<meta property="og:title" content="发行版小测试 - 30 秒找到你的本命 Linux">
-<meta property="og:description" content="六个问题，由 BanG Dream 角色为你推荐最适合的 Linux 发行版。">
+<title>发行版小测试 - 一分钟找到你的本命 Linux</title>
+<meta name="description" content="八个问题，由 BanG Dream 角色为你推荐最适合的 Linux 发行版，并列出完整理由与优缺点。">
+<meta property="og:title" content="发行版小测试 - 一分钟找到你的本命 Linux">
+<meta property="og:description" content="八个问题，由 BanG Dream 角色为你推荐最适合的 Linux 发行版，并列出完整理由与优缺点。">
 <meta property="og:image" content="https://linuxedu-space.pages.dev/img/tux.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐧</text></svg>">
 <link rel="stylesheet" href="assets/site.css">
+<style>
+.r-head{display:flex;gap:26px;align-items:center;text-align:left;}
+.r-head .char-img{height:170px;width:auto;flex:0 0 auto;filter:drop-shadow(0 14px 24px rgba(0,0,0,.2));}
+.r-head .who{color:var(--text-2);font-size:14px;}
+.r-head .d-logo{height:40px;margin:8px 0 4px;display:block;}
+.r-head h3{font-size:26px;}
+.r-match{display:flex;align-items:center;gap:10px;margin-top:10px;font-size:13.5px;color:var(--text-2);}
+.r-match .r-bar{flex:1;max-width:200px;height:8px;border-radius:99px;background:#e8e8ed;overflow:hidden;}
+.r-match .r-bar i{display:block;height:100%;border-radius:99px;background:var(--grad);}
+.r-match b{color:var(--text);font-size:18px;}
+.r-sec{margin-top:26px;text-align:left;}
+.r-sec>h4,.r-runners>h4{font-size:16px;font-weight:700;margin-bottom:12px;}
+.r-why{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.r-why li{background:#f5f5f7;border-radius:12px;padding:12px 16px;font-size:14.5px;line-height:1.7;}
+.r-why li::before{content:"✓ ";color:var(--blue);font-weight:700;}
+.r-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px;text-align:left;}
+.r-grid>div{background:#f5f5f7;border-radius:12px;padding:12px 14px;}
+.r-grid span{display:block;font-size:12px;color:var(--text-2);margin-bottom:4px;}
+.r-grid b{font-size:13.5px;line-height:1.45;}
+.r-pc{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px;text-align:left;}
+.r-pc>div{border-radius:14px;padding:18px 20px;}
+.r-pros{background:#f0fdf4;}
+.r-cons{background:#fef2f2;}
+.r-pc h4{font-size:15px;font-weight:700;margin-bottom:10px;}
+.r-pc ul{list-style:none;display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.6;}
+.r-pros li::before{content:"✓ ";color:#16a34a;font-weight:700;}
+.r-cons li::before{content:"! ";color:#dc2626;font-weight:700;}
+.r-best{margin-top:16px;font-size:14.5px;background:#eef4ff;border-radius:12px;padding:12px 16px;text-align:left;line-height:1.6;}
+.r-runners{margin-top:30px;text-align:left;}
+.runner{display:flex;align-items:center;gap:14px;background:#f5f5f7;border-radius:12px;padding:12px 16px;margin-top:10px;}
+.runner img{height:34px;width:auto;flex:0 0 auto;}
+.runner .nm{font-weight:700;font-size:15px;white-space:nowrap;}
+.runner .pc2{color:var(--blue);font-weight:700;font-size:14px;white-space:nowrap;}
+.runner p{font-size:13px;color:var(--text-2);line-height:1.5;flex:1;}
+@media(max-width:640px){
+  .r-head{flex-direction:column;text-align:center;gap:10px;}
+  .r-head .d-logo{margin:8px auto 4px;}
+  .r-match .r-bar{max-width:140px;}
+  .r-grid{grid-template-columns:repeat(2,1fr);}
+  .r-pc{grid-template-columns:1fr;}
+  .runner{flex-wrap:wrap;}
+}
+</style>
 </head>
 <body>
 
@@ -29,14 +72,14 @@
 <header class="page-hero">
   <div class="wrap">
     <p class="kicker">Distro Quiz</p>
-    <h1>30 秒，找到你的<br><span class="grad-text">本命发行版。</span></h1>
-    <p class="lead">六个问题，没有标准答案，只有适不适合。结果由九位同学亲自颁发。</p>
+    <h1>一分钟，找到你的<br><span class="grad-text">本命发行版。</span></h1>
+    <p class="lead">八个问题，没有标准答案，只有适不适合。结果由九位同学亲自颁发，并附上完整推荐理由。</p>
   </div>
 </header>
 
 <section class="sec">
   <div class="wrap">
-    <div class="quiz-card" id="quiz">
+    <div class="quiz-card" id="quiz" style="max-width:780px;">
       <div class="q-progress"><i id="bar" style="width:0%"></i></div>
       <div id="stage"></div>
     </div>
@@ -44,7 +87,7 @@
 </section>
 
 <footer><div class="wrap">
-  <div class="legal">* 测试结果仅供娱乐，但推荐的发行版都是认真的。角色形象版权归 Bushiroad 所有，本页面为非营利粉丝二创。</div>
+  <div class="legal">* 测试结果仅供娱乐，但推荐的发行版与每条理由都是认真的。角色形象版权归 Bushiroad 所有，本页面为非营利粉丝二创。</div>
   <div class="footer-bar"><span><a href="index.html">← 返回首页</a></span><span>用 ❤️ 与 ¥0 构建</span></div>
 </div></footer>
 
@@ -53,79 +96,208 @@ const DISTROS = {
   popos:{name:"Pop!_OS", char:"户山香澄", charImg:"img/char/kasumi.png", logo:"img/icons/popos.svg",
     quote:"「星星和代码都在闪光！这台电脑以后就拜托它啦——闪闪发光、心跳不已！」",
     why:"开箱自带显卡驱动与开发工具，AI 炼丹和理科作业的省心之选。",
+    profile:{
+      level:"★★☆ 进阶偏易", base:"基于 Ubuntu LTS", pm:"apt + Flatpak", release:"跟随 Ubuntu LTS",
+      pros:["NVIDIA 驱动开箱即装，独显用户的免折腾之王","COSMIC 桌面现代顺手，窗口自动平铺效率高","CUDA 与 AI 环境的中文教程数量数一数二"],
+      cons:["由硬件厂商 System76 维护，团队规模不大","软件版本随 LTS，追新要靠 Flatpak 补"],
+      best:"理工科、AI 方向、带 NVIDIA 独显的同学"},
     dl:"https://pop.system76.com", home:"https://pop.system76.com"},
   arch:{name:"Arch Linux", char:"市谷有咲", charImg:"img/char/arisa.png", logo:"img/icons/archlinux.svg",
     quote:"「哼，既然都测出结果了……那本小姐就勉为其难，陪你把 Arch 装完吧。Wiki 先自己看一遍！」",
     why:"滚动更新 + AUR 十万软件包，折腾党与开发者的浪漫。",
+    profile:{
+      level:"★★★ 硬核", base:"独立发行版", pm:"pacman + AUR", release:"滚动更新",
+      pros:["软件永远最新，AUR 十万软件包几乎无所不有","Arch Wiki 是全 Linux 界最好的文档","完全按需拼装，系统干净透明，没有多余东西"],
+      cons:["需要自己亲手安装与维护","滚动更新偶尔要读官方公告、动手修一修"],
+      best:"想真正学懂 Linux 的折腾党与开发者"},
     dl:"https://archlinux.org/download", home:"https://archlinux.org"},
   studio:{name:"Ubuntu Studio", char:"凑友希那", charImg:"img/char/yukina.png", logo:"img/icons/ubuntustudio.png",
     quote:"「完美的音频需要完美的环境。低延迟内核，一个音符也不许迟滞。」",
     why:"预装全套音视频创作工具，音乐与美术专业的移动工作站。",
+    profile:{
+      level:"★☆☆ 新手友好", base:"基于 Ubuntu LTS", pm:"apt + Flatpak", release:"跟随 Ubuntu LTS",
+      pros:["音频、视频、图形创作全家桶全部预装","低延迟内核 + PipeWire，录音监听不迟滞","装机即开工，创作工具不用一个个找"],
+      cons:["预装软件多，镜像体积偏大","相对小众，中文教程比 Ubuntu 本家少"],
+      best:"音乐、美术、影视等创作专业的同学"},
     dl:"https://ubuntustudio.org/download/", home:"https://ubuntustudio.org"},
   debian:{name:"Debian", char:"冰川纱夜", charImg:"img/char/sayo.png", logo:"img/icons/debian.svg",
     quote:"「稳定不是无趣，是三年不出一次意外的可靠。像法条一样，值得信任。」",
     why:"三十年老牌发行版，稳字当头，服务器与学霸的共同选择。",
+    profile:{
+      level:"★★☆ 进阶偏易", base:"独立发行版（众发行版之母）", pm:"apt", release:"固定版本，约两年一更",
+      pros:["稳定性的代名词，装上三年不出一次意外","五万+ 软件包，文档与社区沉淀深厚","和服务器环境一致，学了直接用在工作中"],
+      cons:["稳定版的软件版本偏旧","默认界面朴素，需要自己稍微打扮"],
+      best:"求稳的学霸、服务器方向、老电脑续命"},
     dl:"https://www.debian.org/distrib", home:"https://www.debian.org"},
   nobara:{name:"Nobara Linux", char:"宇田川亚子", charImg:"img/char/ako.png", logo:"img/icons/nobara.png",
     quote:"「呼呼呼……被禁咒选中之人啊！与吾一同，在 Linux 的战场上登顶吧！」",
     why:"为游戏而生的 Fedora 改良版，Proton-GE 与驱动全预装，开机即战。",
+    profile:{
+      level:"★★☆ 进阶偏易", base:"基于 Fedora", pm:"dnf + Flatpak", release:"跟随 Fedora 快节奏",
+      pros:["Proton-GE、显卡驱动、OBS 全部预装","为游戏打了大量补丁，帧数表现出色","Steam 游戏开箱即玩，不用翻教程"],
+      cons:["主要由 GloriousEggroll 个人维护，体量小","Fedora 系的中文资料比 Ubuntu 系少"],
+      best:"把打游戏当正事的电竞选手"},
     dl:"https://nobaraproject.org/download-nobara/", home:"https://nobaraproject.org"},
   nixos:{name:"NixOS", char:"弦卷心", charImg:"img/char/kokoro.png", logo:"img/icons/nixos.svg",
     quote:"「把快乐写进配置文件，无论到哪台电脑，笑容都能一模一样地复现！」",
     why:"声明式配置，系统状态完全可复现，理科生的秩序之美。",
+    profile:{
+      level:"★★★ 硬核", base:"独立发行版", pm:"nix（声明式）", release:"滚动 / 半年大版本任选",
+      pros:["整个系统就是一份配置文件，可复现、可版本管理","每次升级自带回滚保险，怎么折腾都玩不坏","devShell 项目级环境隔离，开发神器"],
+      cons:["学习曲线陡，范式与传统 Linux 不同","部分闭源软件需要额外封装"],
+      best:"追求秩序与可复现性的理科生"},
     dl:"https://nixos.org/download", home:"https://nixos.org"},
   gentoo:{name:"Gentoo", char:"大和麻弥", charImg:"img/char/maya.png", logo:"img/icons/gentoo.svg",
     quote:"「哦哦……你也是器材控吗？每个编译选项都亲手调校的快感，懂的人自然懂，呵呵。」",
     why:"从源码编译一切，极致定制，还附带免费的风扇白噪音。",
+    profile:{
+      level:"★★★ 硬核中的硬核", base:"独立发行版", pm:"Portage（源码编译）", release:"滚动更新",
+      pros:["一切从源码编译，定制程度的天花板","USE 标志精确控制每个软件的功能取舍","完整装过一遍，对 Linux 的理解脱胎换骨"],
+      cons:["编译耗时，大软件以小时计","赶 due 的时候它在编译，你会想砸键盘"],
+      best:"器材控、源码控、时间充裕的硬核玩家"},
     dl:"https://www.gentoo.org/downloads", home:"https://www.gentoo.org"},
   mint:{name:"Linux Mint", char:"丸山彩", charImg:"img/char/aya.png", logo:"img/icons/linuxmint.svg",
     quote:"「简单得连我都不会死机！……诶？这话听起来好像哪里不对？」",
     why:"最友好的入门之选，开箱即用，像老朋友一样亲切。",
+    profile:{
+      level:"★☆☆ 新手友好", base:"基于 Ubuntu LTS", pm:"apt + Flatpak", release:"跟随 Ubuntu LTS",
+      pros:["开箱即用，对 Windows 用户最亲切","Cinnamon 桌面稳重顺手，几乎零学习成本","自带 Timeshift 系统快照，后悔药免费管够"],
+      cons:["界面审美偏传统","软件版本随 LTS 偏旧"],
+      best:"第一次用 Linux、只想安心用电脑的同学"},
     dl:"https://linuxmint.com/download.php", home:"https://linuxmint.com"},
   suse:{name:"openSUSE", char:"美竹兰", charImg:"img/char/ran.png", logo:"img/icons/opensuse.svg",
     quote:"「跟平常一样就好。……YaST 很好用，就这样。」",
     why:"德式严谨，YaST 配置中心一把梭，稳定与新鲜兼得的变色龙。",
+    profile:{
+      level:"★★☆ 进阶偏易", base:"独立发行版（德国出品）", pm:"Zypper + YaST", release:"Leap 求稳 / Tumbleweed 追新",
+      pros:["YaST 配置中心，系统设置一站式图形化","Snapper 快照自动回滚，系统自带保险","Leap 稳、Tumbleweed 新，两种性格任选"],
+      cons:["中文社区相对小","部分多媒体软件需要 Packman 源补充"],
+      best:"想要稳中带新、喜欢图形化管理的同学"},
     dl:"https://get.opensuse.org", home:"https://www.opensuse.org"}
 };
 
+// 每题选项：[文案, 得分, 理由表]
 const QUESTIONS = [
   {q:"你用电脑主要干什么？", opts:[
-    ["上课写作业、刷网页看视频", {mint:3, debian:1}],
-    ["写代码、搞开发", {arch:3, nixos:2, debian:1}],
-    ["剪片、录音、搞创作", {studio:3, arch:1}],
-    ["打游戏！", {nobara:3, popos:1}],
-    ["跑 AI、炼大模型", {popos:3, arch:1}]
+    ["上课写作业、刷网页看视频", {mint:3, debian:1}, {
+      mint:"你的需求是日常课业和网页视频：Mint 开箱即用，浏览器、办公套件、播放器全部预装妥当，装完就能用",
+      debian:"你的需求是日常课业：Debian 稳定安静，装上一次，用到毕业都不带出幺蛾子的"}],
+    ["写代码、搞开发", {arch:3, nixos:2, debian:1}, {
+      arch:"你要写代码搞开发：Arch 滚动更新让编译器和工具链永远最新，AUR 里几乎能找到一切开发工具",
+      nixos:"你要写代码搞开发：NixOS 能给每个项目声明一套完全隔离、可复现的开发环境，换电脑也能一键还原",
+      debian:"你要写代码搞开发：Debian 的环境和线上服务器高度一致，本地写的代码部署上去零惊喜"}],
+    ["剪片、录音、搞创作", {studio:3, arch:1}, {
+      studio:"你要剪片录音搞创作：Ubuntu Studio 预装 Ardour、Kdenlive、GIMP、Blender 全套工具和低延迟内核，开机就是工作站",
+      arch:"你要搞创作：Arch 仓库里创作软件版本最新，新功能第一时间用上"}],
+    ["打游戏！", {nobara:3, popos:1}, {
+      nobara:"你直奔游戏而来：Nobara 专为游戏调校，Proton-GE、显卡驱动、OBS 全部预装，开机即开战",
+      popos:"你要打游戏：Pop!_OS 的 NVIDIA 驱动开箱就位，Steam 装好就能玩"}],
+    ["跑 AI、炼大模型", {popos:3, arch:1}, {
+      popos:"你要跑 AI 炼模型：Pop!_OS 开箱自带 NVIDIA 驱动与 CUDA 支持，是深度学习圈公认的省心之选",
+      arch:"你要跑 AI：Arch 上 CUDA、PyTorch 永远最新，新框架新特性第一时间尝鲜"}]
   ]},
   {q:"你对「折腾电脑」的态度是？", opts:[
-    ["别让我碰命令行，谢谢", {mint:3, debian:1}],
-    ["出问题能百度、能问群友就行", {popos:2, suse:2, mint:1}],
-    ["折腾本身就是乐趣", {arch:2, gentoo:3, nixos:2}]
+    ["别让我碰命令行，谢谢", {mint:3, debian:1}, {
+      mint:"你不想碰命令行：Mint 的软件管理器、更新器、驱动管理全都有图形界面，日常几乎用不到终端",
+      debian:"你不想碰命令行：Debian 装好一次就很少需要维护，GNOME 软件中心点点鼠标就能装应用"}],
+    ["出问题能百度、能问群友就行", {popos:2, suse:2, mint:1}, {
+      popos:"你能接受搜教程解决问题：Pop!_OS 用户社区活跃，中文教程一搜一大把",
+      suse:"你能接受搜教程解决问题：openSUSE 的 YaST 图形化配置中心能搞定绝大多数设置，很少需要徒手改配置",
+      mint:"你能接受偶尔搜搜教程：Mint 基于 Ubuntu，网上的解决方案海量，基本遇不到搜不到答案的问题"}],
+    ["折腾本身就是乐趣", {arch:2, gentoo:3, nixos:2}, {
+      arch:"你觉得折腾本身就是乐趣：Arch 从分区、引导到桌面全由你亲手拼装，装完一台机器，Linux 功力大涨",
+      gentoo:"你觉得折腾本身就是乐趣：Gentoo 让你从源码编译整个系统，每个编译选项都亲手调校——折腾的天花板",
+      nixos:"你觉得折腾本身就是乐趣：NixOS 的声明式配置是一门新范式，整个系统就是一份可以版本管理的代码"}]
   ]},
   {q:"你的电脑配置大概什么水平？", opts:[
-    ["五年前的老伙计", {mint:2, debian:2}],
-    ["主流笔记本，核显", {suse:2, studio:1, debian:1}],
-    ["高配，带 NVIDIA 独显", {popos:2, nobara:2}]
+    ["五年前的老伙计", {mint:2, debian:2}, {
+      mint:"你的电脑是五年前的老伙计：Mint（尤其 Xfce 版）对老硬件非常友好，能让它流畅再战三年",
+      debian:"你的电脑是五年前的老伙计：Debian 资源占用低、老硬件驱动齐全，老机器跑起来毫不吃力"}],
+    ["主流笔记本，核显", {suse:2, studio:1, debian:1}, {
+      suse:"你是主流核显笔记本：openSUSE 硬件兼容性好，核显驱动免折腾，开箱就稳",
+      studio:"你是主流核显本：Ubuntu Studio 在核显上跑音视频创作完全够用，不依赖独显",
+      debian:"你是主流核显本：Debian 对 Intel / AMD 核显的支持开箱即用，稳定省心"}],
+    ["高配，带 NVIDIA 独显", {popos:2, nobara:2}, {
+      popos:"你有 NVIDIA 独显：Pop!_OS 提供专门的 NVIDIA 镜像，驱动开箱即装——这是它最出名的一张王牌",
+      nobara:"你有 NVIDIA 独显：Nobara 预装并调好了 NVIDIA 驱动与游戏组件，高配性能全部释放"}]
+  ]},
+  {q:"你的专业方向最接近？", opts:[
+    ["计算机 / 软件工程", {arch:2, nixos:2, debian:1}, {
+      arch:"你是计算机专业：Arch 配 Arch Wiki 就是计科生的练功房，从包管理到系统启动都能学到真东西",
+      nixos:"你是计算机专业：NixOS 的函数式包管理和可复现环境，会让你对「系统」二字有全新的理解",
+      debian:"你是计算机专业：Debian 是无数服务器和发行版的根基，理解它就理解了半个 Linux 世界"}],
+    ["电子 / 微电子 / 人工智能", {popos:2, debian:1}, {
+      popos:"你是电子 / AI 方向：Cadence、Synopsys 等 EDA 工业软件的官方环境就是 Linux，Pop!_OS 稳定的 Ubuntu 底座加开箱显卡驱动，进可炼丹退可仿真",
+      debian:"你是电子 / AI 方向：工业软件多运行在稳定的企业级 Linux 环境上，Debian 的脾气和实验室服务器最接近"}],
+    ["音乐 / 美术 / 影视设计", {studio:3}, {
+      studio:"你是艺术创作专业：Ubuntu Studio 就是为你们准备的——低延迟内核、PipeWire 音频、创作全家桶预装，一个音符都不许迟滞"}],
+    ["经管 / 法学 / 人文社科", {debian:1, mint:1, suse:1}, {
+      debian:"你是文科 / 社科方向：写论文、查文献、跑统计，Debian 稳定可靠，Zotero、R、LibreOffice 一应俱全",
+      mint:"你是文科 / 社科方向：Mint 开箱即用不添乱，让你把精力全部留给论文，而不是系统",
+      suse:"你是文科 / 社科方向：openSUSE 稳定周全，YaST 把复杂设置图形化，安静陪你写完四年论文"}],
+    ["还没想好 / 其他", {}, {}]
   ]},
   {q:"系统出 bug 时，你通常？", opts:[
-    ["重启试试，不行就重装", {mint:2, nobara:1}],
-    ["搜错误信息，照着教程修", {suse:2, popos:1, debian:1}],
-    ["读文档翻源码，修完顺手提个 issue", {arch:2, gentoo:2, nixos:1}]
+    ["重启试试，不行就重装", {mint:2, nobara:1}, {
+      mint:"你的修 bug 哲学是重启重装：Mint 自带 Timeshift 系统快照，出事一键回滚，比重装快得多",
+      nobara:"你习惯重启解决一切：Nobara 基于 Fedora 调校得当，需要修的情况本来就不多"}],
+    ["搜错误信息，照着教程修", {suse:2, popos:1, debian:1}, {
+      suse:"你会搜错误信息照教程修：openSUSE 的 Snapper 快照还能在更新翻车时一键回滚，给你兜底",
+      popos:"你会搜教程修问题：Pop!_OS 基于 Ubuntu，绝大多数报错都能搜到现成解法",
+      debian:"你会搜教程修问题：Debian 文档完备、社区沉稳，你遇到的问题多半十年前就有人写好答案了"}],
+    ["读文档翻源码，修完顺手提个 issue", {arch:2, gentoo:2, nixos:1}, {
+      arch:"你会读文档翻源码修问题：Arch Wiki 是全 Linux 界最好的文档，你这种用户正是它的主人",
+      gentoo:"你会读文档翻源码：Gentoo 的 ebuild 和 USE 标志完全透明，就适合刨根问底的人",
+      nixos:"你会读文档翻源码：NixOS 配置即代码，出问题直接翻 configuration.nix 和 nixpkgs 源码"}]
   ]},
   {q:"你更想要哪种系统？", opts:[
-    ["稳，几年不变最好", {debian:3, suse:1, mint:1}],
-    ["新，软件永远最新", {arch:2, nixos:1, nobara:1, suse:1}],
-    ["我的系统我做主，一切皆可定制", {nixos:2, gentoo:2, arch:1}]
+    ["稳，几年不变最好", {debian:3, suse:1, mint:1}, {
+      debian:"你要稳、几年不变：Debian Stable 两年一个大版本，安全更新持续五年，稳得像教科书",
+      suse:"你要稳：openSUSE Leap 与企业版 SLES 同源，稳字当头",
+      mint:"你要稳：Mint 基于 Ubuntu LTS，五年支持周期，界面几年不变正是它的追求"}],
+    ["新，软件永远最新", {arch:2, nixos:1, nobara:1, suse:1}, {
+      arch:"你要软件永远最新：Arch 滚动更新，上游发布即所得，没有「等大版本」这回事",
+      nixos:"你要新：NixOS 的 unstable 通道滚动跟进，nixpkgs 是全世界最大的软件仓库之一",
+      nobara:"你要新：Nobara 跟进最新内核与 Mesa，游戏相关组件更新飞快",
+      suse:"你要新：openSUSE Tumbleweed 是经过 openQA 自动化测试的滚动发行版，新而不易翻车"}],
+    ["我的系统我做主，一切皆可定制", {nixos:2, gentoo:2, arch:1}, {
+      nixos:"你要一切皆可定制：NixOS 整份系统配置写在一个文件里，可复现、可回滚、可版本管理——定制的终极形态",
+      gentoo:"你要一切皆可定制：Gentoo 从编译选项开始定制，系统里每个字节都刻着你的名字",
+      arch:"你要一切皆可定制：Arch 只给你一个干净的底座，往上盖什么全由你决定"}]
+  ]},
+  {q:"你装操作系统的经验是？", opts:[
+    ["从没装过任何系统", {mint:2, popos:1, studio:1}, {
+      mint:"你没装过系统：Mint 的安装器全程图形化、一路下一步，配合我们的上路指南，第一次装机也不会慌",
+      popos:"你没装过系统：Pop!_OS 安装器简单直观，硬件驱动还自动配好，新手友好度拉满",
+      studio:"你没装过系统：Ubuntu Studio 走 Ubuntu 系安装流程，图形化向导一路下一步即可"}],
+    ["装过 Windows，U 盘启动没问题", {suse:1, debian:1, nobara:1, popos:1}, {
+      suse:"你会 U 盘启动装系统：openSUSE 的安装器专业且清晰，分区、引导每一步都有稳妥的默认选项",
+      debian:"你会 U 盘启动装系统：Debian 安装器久经考验，照着我们的指南走一遍就能拿下",
+      nobara:"你会 U 盘启动装系统：Nobara 的安装流程和 Fedora 一致，十来分钟就能进桌面开玩",
+      popos:"你会 U 盘启动装系统：Pop!_OS 装起来比 Windows 还快，驱动全包"}],
+    ["装过 Linux，还想更硬核", {arch:1, gentoo:2, nixos:1}, {
+      arch:"你装过 Linux 还想更硬核：Arch 的手动安装（现在也有 archinstall 可选）是硬核玩家的成人礼",
+      gentoo:"你装过 Linux 还想更硬核：Gentoo 的 Handbook 安装是一次完整的系统编译之旅，硬核天花板在此",
+      nixos:"你装过 Linux 还想更硬核：NixOS 用配置文件声明整个系统，是另一条硬核但优雅的路"}]
   ]},
   {q:"看到满屏命令行，你的第一反应？", opts:[
-    ["头皮发麻", {mint:2, studio:1}],
-    ["挺酷的，想学", {popos:1, suse:1, debian:1}],
-    ["家", {arch:2, gentoo:2, nixos:2}]
+    ["头皮发麻", {mint:2, studio:1}, {
+      mint:"你看到命令行头皮发麻：Mint 的日常操作可以完全脱离终端，装软件、更新、驱动、备份全有图形工具",
+      studio:"你看到命令行头皮发麻：Ubuntu Studio 的创作工具全是图形界面，安心创作，终端可以只在角落吃灰"}],
+    ["挺酷的，想学", {popos:1, suse:1, debian:1}, {
+      popos:"你觉得命令行挺酷想学：Pop!_OS 让你循序渐进——日常图形化，想深入时终端随时恭候",
+      suse:"你觉得命令行挺酷想学：openSUSE 图形工具与命令行并存，想学的时候有 YaST 兜底，不怕玩坏",
+      debian:"你觉得命令行挺酷想学：Debian 是学命令行的好土壤，apt 一把梭，教程遍地都是"}],
+    ["家", {arch:2, gentoo:2, nixos:2}, {
+      arch:"你说命令行是家：那 Arch 就是家中的客厅，pacman 的简洁快感动手就懂",
+      gentoo:"你说命令行是家：Gentoo 的 emerge 会陪你度过无数个编译的深夜，家的温暖（和风扇声）",
+      nixos:"你说命令行是家：NixOS 的 nix 命令族和声明式配置，会给你一种把家装修成代码的快感"}]
   ]}
 ];
 
 const stage = document.getElementById('stage');
 const bar = document.getElementById('bar');
-let scores = {}, qi = 0;
+let scores = {}, picks = [], qi = 0;
 
 function renderStart(){
   bar.style.width = '0%';
@@ -133,7 +305,7 @@ function renderStart(){
     <div class="q-result">
       <img class="char-img" src="img/char/arisa.png" alt="">
       <h3>准备好了吗？</h3>
-      <div class="quote">「放心，只是几个简单的问题而已。才、才不会因为你答得慢就嫌弃你呢。」<br><span style="color:#6e6e73;font-size:13.5px;">—— 市谷有咲（计算机科学与技术专业）</span></div>
+      <div class="quote">「放心，只是几个简单的问题而已。答完我会把推荐理由一条一条写清楚……才、才不会因为你答得慢就嫌弃你呢。」<br><span style="color:#6e6e73;font-size:13.5px;">—— 市谷有咲（计算机科学与技术专业）</span></div>
       <div class="row"><button class="btn" onclick="next()">开始测试</button></div>
     </div>`;
 }
@@ -150,32 +322,95 @@ function renderQ(){
 function pick(i){
   const s = QUESTIONS[qi].opts[i][1];
   for (const k in s) scores[k] = (scores[k]||0) + s[k];
+  picks.push(i);
   qi++;
   if (qi < QUESTIONS.length) renderQ(); else renderResult();
 }
 
+// 整套测试中单个发行版能拿到的理论最高分（每题取所有选项里的最高单值）
+const QUIZ_MAX = QUESTIONS.reduce((sum, q) =>
+  sum + Math.max(0, ...q.opts.flatMap(o => Object.values(o[1]))), 0);
+
+function matchPct(k){
+  return Math.round((scores[k]||0) / QUIZ_MAX * 100);
+}
+
 function renderResult(){
   bar.style.width = '100%';
-  let best = 'mint', max = -1;
-  for (const k in scores) if (scores[k] > max){ max = scores[k]; best = k; }
-  const d = DISTROS[best];
+  const ranked = Object.keys(DISTROS).map(k => [k, scores[k]||0]).sort((a,b) => b[1]-a[1]);
+  const bk = ranked[0][0];
+  const d = DISTROS[bk];
+  const p = d.profile;
+  const pct = matchPct(bk);
+
+  // 根据用户的实际选择，收集针对冠军发行版的理由
+  let reasons = [];
+  picks.forEach((optIdx, qIdx) => {
+    const rmap = QUESTIONS[qIdx].opts[optIdx][2];
+    if (rmap && rmap[bk]) reasons.push(rmap[bk]);
+  });
+  if (!reasons.length) reasons.push(d.why);
+  if (reasons.length > 5) reasons = reasons.slice(0, 5);
+
+  const runners = ranked.slice(1, 3).map(([k]) => {
+    const r = DISTROS[k];
+    return `<div class="runner">
+      <img src="${r.logo}" alt="">
+      <span class="nm">${r.name}</span>
+      <span class="pc2">${matchPct(k)}%</span>
+      <p>${r.why}</p>
+    </div>`;
+  }).join('');
+
   stage.innerHTML = `
     <div class="q-result">
-      <img class="char-img" src="${d.charImg}" alt="${d.char}">
-      <div class="who">${d.char} 向你推荐了</div>
-      <img class="d-logo" src="${d.logo}" alt="${d.name}">
-      <h3>${d.name}</h3>
-      <div class="quote">${d.quote}<br><br>${d.why}</div>
-      <div class="row">
-        <a class="btn" href="${d.dl}" target="_blank" rel="noopener">去下载</a>
-        <a class="btn-ghost" href="guide.html">看看怎么装 &gt;</a>
+      <div class="r-head">
+        <img class="char-img" src="${d.charImg}" alt="${d.char}">
+        <div style="flex:1;">
+          <div class="who">${d.char} 向你推荐了</div>
+          <img class="d-logo" src="${d.logo}" alt="${d.name}">
+          <h3>${d.name}</h3>
+          <div class="r-match"><div class="r-bar"><i style="width:${pct}%"></i></div><b>${pct}%</b> 匹配</div>
+        </div>
       </div>
-      <div class="row" style="margin-top:14px;"><a href="javascript:void(0)" onclick="restart()" style="font-size:14px;">再测一次</a></div>
+      <div class="quote">${d.quote}</div>
+
+      <div class="r-sec">
+        <h4>为什么是它（根据你的回答）</h4>
+        <ul class="r-why">${reasons.map(r => `<li>${r}</li>`).join('')}</ul>
+      </div>
+
+      <div class="r-grid">
+        <div><span>上手难度</span><b>${p.level}</b></div>
+        <div><span>血统</span><b>${p.base}</b></div>
+        <div><span>包管理</span><b>${p.pm}</b></div>
+        <div><span>更新模式</span><b>${p.release}</b></div>
+      </div>
+
+      <div class="r-pc">
+        <div class="r-pros"><h4>闪光点</h4><ul>${p.pros.map(x => `<li>${x}</li>`).join('')}</ul></div>
+        <div class="r-cons"><h4>丑话在前</h4><ul>${p.cons.map(x => `<li>${x}</li>`).join('')}</ul></div>
+      </div>
+
+      <div class="r-best"><b>最适合：</b>${p.best}</div>
+
+      <div class="row" style="margin-top:26px;">
+        <a class="btn" href="${d.dl}" target="_blank" rel="noopener">去下载 ${d.name}</a>
+        <a class="btn-ghost" href="guide.html">看看怎么装 &gt;</a>
+        <a class="btn-ghost" href="apps.html">查查专业软件 &gt;</a>
+      </div>
+
+      <div class="r-runners">
+        <h4>如果它没戳中你，第二、三名是</h4>
+        ${runners}
+      </div>
+
+      <div class="row" style="margin-top:18px;"><a href="javascript:void(0)" onclick="restart()" style="font-size:14px;">再测一次</a></div>
     </div>`;
 }
 
 function next(){ renderQ(); }
-function restart(){ scores = {}; qi = 0; renderStart(); }
+function restart(){ scores = {}; picks = []; qi = 0; renderStart(); }
 renderStart();
 </script>
 </body>
