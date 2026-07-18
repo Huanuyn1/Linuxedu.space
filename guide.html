@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>上路指南 - 从心动到开机，只要一个下午</title>
+<meta name="description" content="高校生 Linux 新手上路指南：虚拟机、双系统、启动盘制作、装后配置、校园网与微信 QQ 现状。">
+<meta property="og:title" content="上路指南 - 从心动到开机，只要一个下午">
+<meta property="og:description" content="高校生 Linux 新手上路指南：虚拟机、双系统、启动盘制作、装后配置、校园网与微信 QQ 现状。">
+<meta property="og:image" content="https://linuxedu-space.pages.dev/img/tux.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐧</text></svg>">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<nav class="topnav"><div class="topnav-in">
+  <div class="logo"><a href="index.html"><img src="img/tux.png" alt="">Linux 高校专场</a></div>
+  <div class="links">
+    <a href="index.html">首页</a>
+    <a href="quiz.html">小测试</a>
+    <a href="guide.html" class="on">上路指南</a>
+    <a href="apps.html">软件对照</a>
+    <a href="honest.html">避坑指南</a>
+    <a href="cheatsheet.html">小抄卡</a>
+    <a href="resources.html">资源</a>
+  </div>
+</div></nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <p class="kicker">Getting Started</p>
+    <h1>从心动到开机，<br><span class="grad-text">只要一个下午。</span></h1>
+    <p class="lead">装 Linux 没有传说中那么玄乎。选对路线，一个下午、一个 U 盘、一杯奶茶，搞定。</p>
+  </div>
+</header>
+
+<section class="sec"><div class="wrap">
+  <div class="host rv">
+    <img src="img/char/aya.png" alt="丸山彩">
+    <div>
+      <div class="q">「别怕！连我都一次装好了，你一定也可以！」</div>
+      <div class="who">丸山彩 · Linux Mint 用户 · 本页向导</div>
+      <p>先想清楚一件事：你想怎么用它？下面三条路线，按胆量从小到大排列。</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2 class="rv">第一步：选一条适合你的路线</h2>
+  <div class="grid3" style="margin-top:30px;">
+    <div class="card rv">
+      <span class="pill green">零风险 · 尝鲜首选</span>
+      <h3>虚拟机</h3>
+      <ul>
+        <li><b>适合：</b>只想先看看 Linux 长什么样</li>
+        <li><b>工具：</b>VMware Workstation（个人免费）、VirtualBox（开源）</li>
+        <li><b>优点：</b>玩坏了直接删，Windows 毫发无损</li>
+        <li><b>注意：</b>分 4GB 以上内存体验才不卡；跑不动 AI 和大型游戏</li>
+      </ul>
+    </div>
+    <div class="card rv">
+      <span class="pill">只要命令行 · 开发向</span>
+      <h3>WSL2</h3>
+      <ul>
+        <li><b>适合：</b>只需要 Linux 命令行环境的计科同学</li>
+        <li><b>安装：</b>管理员 PowerShell 一行 <code>wsl --install</code>，重启即得 Ubuntu</li>
+        <li><b>优点：</b>和 VS Code 无缝联动，编译、跑服务、学命令行都够用</li>
+        <li><b>注意：</b>默认没有完整桌面；systemd 服务支持有限</li>
+      </ul>
+    </div>
+    <div class="card rv">
+      <span class="pill orange">真·主力 · 推荐</span>
+      <h3>双系统</h3>
+      <ul>
+        <li><b>适合：</b>想把 Linux 当日常主力的人</li>
+        <li><b>做法：</b>Windows 里压缩出 60GB+ 空闲分区，安装器选「与 Windows 共存」</li>
+        <li><b>优点：</b>性能满血，保留 Windows 兜底</li>
+        <li><b>注意：</b>装前先备份重要文件；Windows 大更新偶尔要吃掉引导，一根 U 盘就能救</li>
+      </ul>
+    </div>
+  </div>
+  <p class="lead rv" style="margin-top:26px;">老电脑想直接单系统？那更好——少一个系统，少一堆事。旧机器装个 Mint 或 Debian，直接焕发第二春。</p>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2 class="rv">第二步：制作启动盘（10 分钟）</h2>
+  <div class="grid2" style="margin-top:30px;">
+    <div class="card rv">
+      <h3>1. 下载镜像</h3>
+      <p>去发行版官网下 <code>.iso</code>。没想好装哪个？先去<a href="quiz.html">做个小测试</a>，或者无脑 Ubuntu / Mint。</p>
+      <h3 style="margin-top:22px;">2. 写入 U 盘</h3>
+      <p>Windows 上推荐 <b>Ventoy</b>（开源神器）：装一次，以后把 iso 直接拖进 U 盘就能启动，还能多系统共存。balenaEtcher 也行，图形界面傻瓜式。</p>
+      <h3 style="margin-top:22px;">3. 开机进 U 盘</h3>
+      <p>重启按 F12 / F9 / ESC（因品牌而异）选 U 盘启动，进入 Live 模式——<b>不安装也能先试用</b>，确认 Wi-Fi、触板都正常再点安装。</p>
+    </div>
+    <div class="card rv">
+      <h3>安装时的三个关键点</h3>
+      <ul>
+        <li><b>Secure Boot：</b>Ubuntu / Fedora 系直接支持，不用关；少数发行版需要进 BIOS 关掉它</li>
+        <li><b>分区：</b>双系统选「与 Windows 共存」让安装器自动分；手动分的话 <code>/</code> 给 50GB+，再留个 1GB 的 EFI 分区</li>
+        <li><b>用户名：</b>全小写、无空格无中文，未来的你会感谢现在的你</li>
+      </ul>
+      <p style="margin-top:14px;">⚠️ 老手们爱说的 <code>dd</code> 命令写盘，写错盘符就是当场火化，新手请用图形工具。</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2 class="rv">第三步：装完后的第一件事</h2>
+  <div class="grid2" style="margin-top:30px;">
+    <div class="card rv">
+      <span class="pill">网络优化</span>
+      <h3>换国内镜像源</h3>
+      <p>默认软件源在国外，下载慢到怀疑人生。换成校园网内多半还免流量的国内镜像：</p>
+      <ul>
+        <li>清华 TUNA：<code>mirrors.tuna.tsinghua.edu.cn</code></li>
+        <li>中科大 USTC：<code>mirrors.ustc.edu.cn</code></li>
+        <li>阿里云：<code>mirrors.aliyun.com</code></li>
+      </ul>
+      <p style="margin-top:10px;">各镜像站首页都有「使用帮助」，搜你的发行版，复制粘贴即可。</p>
+    </div>
+    <div class="card rv">
+      <span class="pill">日常体验</span>
+      <h3>中文输入法与驱动</h3>
+      <ul>
+        <li>输入法：<code>fcitx5</code> + 中州韵（Rime）或自带拼音，开箱体验不输 Windows</li>
+        <li>NVIDIA 显卡：Ubuntu 系跑一句 <code>sudo ubuntu-drivers autoinstall</code> 完事；Arch 装 <code>nvidia-open</code></li>
+        <li>装 <b>Timeshift</b> 做个系统快照，折腾坏了十秒回滚——成年人的安全感</li>
+        <li>注册 <b>Flathub</b> 仓库：图形软件一键装，省心</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2 class="rv">国内高校特供问题</h2>
+  <div class="grid2" style="margin-top:30px;">
+    <div class="card rv">
+      <h3>校园网认证</h3>
+      <p><b>网页认证（Portal）：</b>恭喜，浏览器打开就完事，Linux 毫无障碍。</p>
+      <p style="margin-top:10px;"><b>锐捷 / 深澜等客户端认证：</b>有点麻烦但有解法——</p>
+      <ul>
+        <li>先加学校的 Linux 用户群 / 开源社团群，大概率有现成教程和打包好的客户端</li>
+        <li>第三方开源客户端（如各类 minieap、drcom 实现）可解大部分学校</li>
+        <li>终极方案：一台几十块的路由器刷 OpenWrt，让它替你认证，全宿舍设备跟着沾光</li>
+      </ul>
+    </div>
+    <div class="card rv">
+      <h3>微信、QQ 能用吗？</h3>
+      <p><b>能，而且这两年进步很大：</b></p>
+      <ul>
+        <li><b>微信：</b>已有原生 Linux 版（NT 架构，官网提供 deb/rpm），日常聊天、文件传输都没问题，小程序等功能在逐步补齐</li>
+        <li><b>QQ：</b>NT 架构新 QQ 官方支持 Linux，x86 和 ARM 都有，体验相当现代</li>
+        <li><b>会议/办公：</b>腾讯会议、飞书、钉钉均有官方 Linux 客户端；WPS 也有功能完整的 Linux 版</li>
+      </ul>
+      <p style="margin-top:10px;">简单说：2026 年的今天，通讯办公已经不再是 Linux 的拦路虎了。</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec center"><div class="wrap">
+  <h2 class="rv">装好了？<br><span class="grad-text">来武装你的专业。</span></h2>
+  <p class="lead rv">系统只是开始，软件才是生产力。</p>
+  <div style="margin-top:24px;" class="rv">
+    <a class="btn" href="apps.html">看看专业软件对照表</a>
+    <a class="btn-ghost" href="honest.html">先看看避坑指南 &gt;</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="legal">* 角色形象版权归 Bushiroad 所有，本页面为非营利粉丝二创。指南内容以各发行版官方文档为准。</div>
+  <div class="footer-bar"><span><a href="index.html">← 返回首页</a></span><span>用 ❤️ 与 ¥0 构建</span></div>
+</div></footer>
+
+<script>
+const io = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

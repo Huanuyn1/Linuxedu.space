@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>发行版小测试 - 30 秒找到你的本命 Linux</title>
+<meta name="description" content="六个问题，由 BanG Dream 角色为你推荐最适合的 Linux 发行版。">
+<meta property="og:title" content="发行版小测试 - 30 秒找到你的本命 Linux">
+<meta property="og:description" content="六个问题，由 BanG Dream 角色为你推荐最适合的 Linux 发行版。">
+<meta property="og:image" content="https://linuxedu-space.pages.dev/img/tux.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐧</text></svg>">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<nav class="topnav"><div class="topnav-in">
+  <div class="logo"><a href="index.html"><img src="img/tux.png" alt="">Linux 高校专场</a></div>
+  <div class="links">
+    <a href="index.html">首页</a>
+    <a href="quiz.html" class="on">小测试</a>
+    <a href="guide.html">上路指南</a>
+    <a href="apps.html">软件对照</a>
+    <a href="honest.html">避坑指南</a>
+    <a href="cheatsheet.html">小抄卡</a>
+    <a href="resources.html">资源</a>
+  </div>
+</div></nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <p class="kicker">Distro Quiz</p>
+    <h1>30 秒，找到你的<br><span class="grad-text">本命发行版。</span></h1>
+    <p class="lead">六个问题，没有标准答案，只有适不适合。结果由九位同学亲自颁发。</p>
+  </div>
+</header>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="quiz-card" id="quiz">
+      <div class="q-progress"><i id="bar" style="width:0%"></i></div>
+      <div id="stage"></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <div class="legal">* 测试结果仅供娱乐，但推荐的发行版都是认真的。角色形象版权归 Bushiroad 所有，本页面为非营利粉丝二创。</div>
+  <div class="footer-bar"><span><a href="index.html">← 返回首页</a></span><span>用 ❤️ 与 ¥0 构建</span></div>
+</div></footer>
+
+<script>
+const DISTROS = {
+  popos:{name:"Pop!_OS", char:"户山香澄", charImg:"img/char/kasumi.png", logo:"img/icons/popos.svg",
+    quote:"「星星和代码都在闪光！这台电脑以后就拜托它啦——闪闪发光、心跳不已！」",
+    why:"开箱自带显卡驱动与开发工具，AI 炼丹和理科作业的省心之选。",
+    dl:"https://pop.system76.com", home:"https://pop.system76.com"},
+  arch:{name:"Arch Linux", char:"市谷有咲", charImg:"img/char/arisa.png", logo:"img/icons/archlinux.svg",
+    quote:"「哼，既然都测出结果了……那本小姐就勉为其难，陪你把 Arch 装完吧。Wiki 先自己看一遍！」",
+    why:"滚动更新 + AUR 十万软件包，折腾党与开发者的浪漫。",
+    dl:"https://archlinux.org/download", home:"https://archlinux.org"},
+  studio:{name:"Ubuntu Studio", char:"凑友希那", charImg:"img/char/yukina.png", logo:"img/icons/ubuntustudio.png",
+    quote:"「完美的音频需要完美的环境。低延迟内核，一个音符也不许迟滞。」",
+    why:"预装全套音视频创作工具，音乐与美术专业的移动工作站。",
+    dl:"https://ubuntustudio.org/download/", home:"https://ubuntustudio.org"},
+  debian:{name:"Debian", char:"冰川纱夜", charImg:"img/char/sayo.png", logo:"img/icons/debian.svg",
+    quote:"「稳定不是无趣，是三年不出一次意外的可靠。像法条一样，值得信任。」",
+    why:"三十年老牌发行版，稳字当头，服务器与学霸的共同选择。",
+    dl:"https://www.debian.org/distrib", home:"https://www.debian.org"},
+  nobara:{name:"Nobara Linux", char:"宇田川亚子", charImg:"img/char/ako.png", logo:"img/icons/nobara.png",
+    quote:"「呼呼呼……被禁咒选中之人啊！与吾一同，在 Linux 的战场上登顶吧！」",
+    why:"为游戏而生的 Fedora 改良版，Proton-GE 与驱动全预装，开机即战。",
+    dl:"https://nobaraproject.org/download-nobara/", home:"https://nobaraproject.org"},
+  nixos:{name:"NixOS", char:"弦卷心", charImg:"img/char/kokoro.png", logo:"img/icons/nixos.svg",
+    quote:"「把快乐写进配置文件，无论到哪台电脑，笑容都能一模一样地复现！」",
+    why:"声明式配置，系统状态完全可复现，理科生的秩序之美。",
+    dl:"https://nixos.org/download", home:"https://nixos.org"},
+  gentoo:{name:"Gentoo", char:"大和麻弥", charImg:"img/char/maya.png", logo:"img/icons/gentoo.svg",
+    quote:"「哦哦……你也是器材控吗？每个编译选项都亲手调校的快感，懂的人自然懂，呵呵。」",
+    why:"从源码编译一切，极致定制，还附带免费的风扇白噪音。",
+    dl:"https://www.gentoo.org/downloads", home:"https://www.gentoo.org"},
+  mint:{name:"Linux Mint", char:"丸山彩", charImg:"img/char/aya.png", logo:"img/icons/linuxmint.svg",
+    quote:"「简单得连我都不会死机！……诶？这话听起来好像哪里不对？」",
+    why:"最友好的入门之选，开箱即用，像老朋友一样亲切。",
+    dl:"https://linuxmint.com/download.php", home:"https://linuxmint.com"},
+  suse:{name:"openSUSE", char:"美竹兰", charImg:"img/char/ran.png", logo:"img/icons/opensuse.svg",
+    quote:"「跟平常一样就好。……YaST 很好用，就这样。」",
+    why:"德式严谨，YaST 配置中心一把梭，稳定与新鲜兼得的变色龙。",
+    dl:"https://get.opensuse.org", home:"https://www.opensuse.org"}
+};
+
+const QUESTIONS = [
+  {q:"你用电脑主要干什么？", opts:[
+    ["上课写作业、刷网页看视频", {mint:3, debian:1}],
+    ["写代码、搞开发", {arch:3, nixos:2, debian:1}],
+    ["剪片、录音、搞创作", {studio:3, arch:1}],
+    ["打游戏！", {nobara:3, popos:1}],
+    ["跑 AI、炼大模型", {popos:3, arch:1}]
+  ]},
+  {q:"你对「折腾电脑」的态度是？", opts:[
+    ["别让我碰命令行，谢谢", {mint:3, debian:1}],
+    ["出问题能百度、能问群友就行", {popos:2, suse:2, mint:1}],
+    ["折腾本身就是乐趣", {arch:2, gentoo:3, nixos:2}]
+  ]},
+  {q:"你的电脑配置大概什么水平？", opts:[
+    ["五年前的老伙计", {mint:2, debian:2}],
+    ["主流笔记本，核显", {suse:2, studio:1, debian:1}],
+    ["高配，带 NVIDIA 独显", {popos:2, nobara:2}]
+  ]},
+  {q:"系统出 bug 时，你通常？", opts:[
+    ["重启试试，不行就重装", {mint:2, nobara:1}],
+    ["搜错误信息，照着教程修", {suse:2, popos:1, debian:1}],
+    ["读文档翻源码，修完顺手提个 issue", {arch:2, gentoo:2, nixos:1}]
+  ]},
+  {q:"你更想要哪种系统？", opts:[
+    ["稳，几年不变最好", {debian:3, suse:1, mint:1}],
+    ["新，软件永远最新", {arch:2, nixos:1, nobara:1, suse:1}],
+    ["我的系统我做主，一切皆可定制", {nixos:2, gentoo:2, arch:1}]
+  ]},
+  {q:"看到满屏命令行，你的第一反应？", opts:[
+    ["头皮发麻", {mint:2, studio:1}],
+    ["挺酷的，想学", {popos:1, suse:1, debian:1}],
+    ["家", {arch:2, gentoo:2, nixos:2}]
+  ]}
+];
+
+const stage = document.getElementById('stage');
+const bar = document.getElementById('bar');
+let scores = {}, qi = 0;
+
+function renderStart(){
+  bar.style.width = '0%';
+  stage.innerHTML = `
+    <div class="q-result">
+      <img class="char-img" src="img/char/arisa.png" alt="">
+      <h3>准备好了吗？</h3>
+      <div class="quote">「放心，只是几个简单的问题而已。才、才不会因为你答得慢就嫌弃你呢。」<br><span style="color:#6e6e73;font-size:13.5px;">—— 市谷有咲（计算机科学与技术专业）</span></div>
+      <div class="row"><button class="btn" onclick="next()">开始测试</button></div>
+    </div>`;
+}
+
+function renderQ(){
+  bar.style.width = (qi / QUESTIONS.length * 100) + '%';
+  const q = QUESTIONS[qi];
+  stage.innerHTML = `
+    <div class="q-num">第 ${qi+1} / ${QUESTIONS.length} 题</div>
+    <div class="q-title">${q.q}</div>
+    ${q.opts.map((o,i)=>`<button class="q-opt" onclick="pick(${i})">${o[0]}</button>`).join('')}`;
+}
+
+function pick(i){
+  const s = QUESTIONS[qi].opts[i][1];
+  for (const k in s) scores[k] = (scores[k]||0) + s[k];
+  qi++;
+  if (qi < QUESTIONS.length) renderQ(); else renderResult();
+}
+
+function renderResult(){
+  bar.style.width = '100%';
+  let best = 'mint', max = -1;
+  for (const k in scores) if (scores[k] > max){ max = scores[k]; best = k; }
+  const d = DISTROS[best];
+  stage.innerHTML = `
+    <div class="q-result">
+      <img class="char-img" src="${d.charImg}" alt="${d.char}">
+      <div class="who">${d.char} 向你推荐了</div>
+      <img class="d-logo" src="${d.logo}" alt="${d.name}">
+      <h3>${d.name}</h3>
+      <div class="quote">${d.quote}<br><br>${d.why}</div>
+      <div class="row">
+        <a class="btn" href="${d.dl}" target="_blank" rel="noopener">去下载</a>
+        <a class="btn-ghost" href="guide.html">看看怎么装 &gt;</a>
+      </div>
+      <div class="row" style="margin-top:14px;"><a href="javascript:void(0)" onclick="restart()" style="font-size:14px;">再测一次</a></div>
+    </div>`;
+}
+
+function next(){ renderQ(); }
+function restart(){ scores = {}; qi = 0; renderStart(); }
+renderStart();
+</script>
+</body>
+</html>
