@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>软件对照表 - 你的专业软件，Linux 都有方案</title>
+<meta name="description" content="按专业分类的 Windows → Linux 软件替代对照表：办公、开发、设计、音乐、微电子、数学科研、游戏。">
+<meta property="og:title" content="软件对照表 - 你的专业软件，Linux 都有方案">
+<meta property="og:description" content="按专业分类的 Windows → Linux 软件替代对照表：办公、开发、设计、音乐、微电子、数学科研、游戏。">
+<meta property="og:image" content="https://linuxedu-space.pages.dev/img/tux.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐧</text></svg>">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<nav class="topnav"><div class="topnav-in">
+  <div class="logo"><a href="index.html"><img src="img/tux.png" alt="">Linux 高校专场</a></div>
+  <div class="links">
+    <a href="index.html">首页</a>
+    <a href="quiz.html">小测试</a>
+    <a href="guide.html">上路指南</a>
+    <a href="apps.html" class="on">软件对照</a>
+    <a href="honest.html">避坑指南</a>
+    <a href="cheatsheet.html">小抄卡</a>
+    <a href="resources.html">资源</a>
+  </div>
+</div></nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <p class="kicker">Software</p>
+    <h1>你的专业软件，<br><span class="grad-text">Linux 都有方案。</span></h1>
+    <p class="lead">左边是你在 Windows 上习惯的，右边是 Linux 给出的答案。少数没有完美替代的，我们也如实标注。</p>
+  </div>
+</header>
+
+<section class="sec" style="padding-top:12px;"><div class="wrap">
+  <div class="host rv">
+    <img src="img/char/arisa.png" alt="市谷有咲">
+    <div>
+      <div class="q">「软件仓库里什么都有。找不着的话……就、就让本小姐帮你找啦。」</div>
+      <div class="who">市谷有咲 · Arch Linux 用户 · 本页向导</div>
+      <p>点下面的分类标签切换。微电子的同学请直接奔向「电子」一栏，那里有个大新闻等着你。</p>
+    </div>
+  </div>
+
+  <div class="tabbar rv" style="margin-top:34px;">
+    <button class="tab on" data-t="office">通用办公</button>
+    <button class="tab" data-t="dev">计算机 / 开发</button>
+    <button class="tab" data-t="design">设计 / 绘画</button>
+    <button class="tab" data-t="music">音乐 / 音频</button>
+    <button class="tab" data-t="ee">电子 / 微电子</button>
+    <button class="tab" data-t="sci">数学 / 科研</button>
+    <button class="tab" data-t="game">游戏</button>
+  </div>
+
+  <div class="tabpane on" id="t-office">
+    <div class="tbl-wrap rv"><table class="tbl">
+      <tr><th>你习惯的</th><th>Linux 方案</th><th>备注</th></tr>
+      <tr><td>Microsoft Office</td><td><a href="https://www.wps.cn" target="_blank" rel="noopener">WPS Office</a> / <a href="https://www.libreoffice.org" target="_blank" rel="noopener">LibreOffice</a></td><td>WPS 有原生 Linux 版，格式兼容最稳</td></tr>
+      <tr><td>Word 排论文</td><td>LaTeX（TeX Live）/ <a href="https://typst.app" target="_blank" rel="noopener">Typst</a></td><td>模板一套，格式自动对齐，导师看了都说好</td></tr>
+      <tr><td>微信 / QQ</td><td>微信 Linux 版 / QQ NT Linux 版</td><td>均为官方原生，日常聊天传文件无压力</td></tr>
+      <tr><td>腾讯会议 / 钉钉 / 飞书</td><td>官方 Linux 客户端</td><td>网课、组会、答辩全覆盖</td></tr>
+      <tr><td>百度网盘</td><td>官方 Linux 客户端</td><td>有原生版，下载速度嘛……你懂的，和 Windows 一视同仁</td></tr>
+      <tr><td>输入法</td><td>fcitx5 + Rime / 自带拼音</td><td>搜狗也有 Linux 版可选</td></tr>
+      <tr><td>浏览器</td><td>Firefox / Chrome / Edge</td><td>全都有原生版</td></tr>
+      <tr><td>PDF 阅读</td><td><a href="https://okular.kde.org" target="_blank" rel="noopener">Okular</a> / 浏览器</td><td>Okular 的批注功能是隐藏神器</td></tr>
+      <tr><td>笔记软件</td><td><a href="https://obsidian.md" target="_blank" rel="noopener">Obsidian</a> / Joplin</td><td>双链笔记，原生运行</td></tr>
+    </table></div>
+  </div>
+
+  <div class="tabpane" id="t-dev">
+    <div class="tbl-wrap rv"><table class="tbl">
+      <tr><th>你习惯的</th><th>Linux 方案</th><th>备注</th></tr>
+      <tr><td>VS Code</td><td><a href="https://code.visualstudio.com" target="_blank" rel="noopener">VS Code</a></td><td>原生版，体验一模一样</td></tr>
+      <tr><td>JetBrains 全家桶</td><td>全家桶原生</td><td>IDEA、PyCharm、CLion 一个不少</td></tr>
+      <tr><td>Git</td><td>原生亲儿子</td><td>它就是为了管理 Linux 源码而生的</td></tr>
+      <tr><td>Docker / K8s</td><td>原生老家</td><td>容器本来就是 Linux 的技术</td></tr>
+      <tr><td>Xshell / Xftp</td><td>终端自带 <code>ssh</code>/<code>scp</code> / Tabby</td><td>系统终端就是最强 SSH 客户端</td></tr>
+      <tr><td>Postman</td><td>Postman 原生 / Apifox / Bruno</td><td>三家都有 Linux 版</td></tr>
+      <tr><td>数据库</td><td>MySQL / PostgreSQL / Redis / SQLite</td><td>全是原生，服务器同款环境</td></tr>
+      <tr><td>虚拟机</td><td>virt-manager (KVM) / VMware / VirtualBox</td><td>KVM 性能接近物理机</td></tr>
+      <tr><td>Visual Studio</td><td>VS Code / Qt Creator</td><td>无原生 VS；.NET 开发可用 Rider</td></tr>
+      <tr><td>微信开发者工具</td><td class="half">无官方版</td><td>小程序开发请用 Windows 虚拟机兜底</td></tr>
+    </table></div>
+  </div>
+
+  <div class="tabpane" id="t-design">
+    <div class="tbl-wrap rv"><table class="tbl">
+      <tr><th>你习惯的</th><th>Linux 方案</th><th>备注</th></tr>
+      <tr><td>Photoshop</td><td><a href="https://www.gimp.org" target="_blank" rel="noopener">GIMP</a> / <a href="https://krita.org" target="_blank" rel="noopener">Krita</a></td><td>画插画选 Krita，体验甚至更好</td></tr>
+      <tr><td>Illustrator</td><td><a href="https://inkscape.org" target="_blank" rel="noopener">Inkscape</a></td><td>矢量绘图老牌劲旅</td></tr>
+      <tr><td>Premiere</td><td><a href="https://kdenlive.org" target="_blank" rel="noopener">Kdenlive</a> / DaVinci Resolve</td><td>达芬奇有原生 Linux 版，调色天花板</td></tr>
+      <tr><td>After Effects</td><td class="half">Blender 合成 / Natron</td><td>无完美替代，重度 AE 用户建议双系统</td></tr>
+      <tr><td>Blender / C4D</td><td><a href="https://www.blender.org" target="_blank" rel="noopener">Blender</a> 原生</td><td>Blender 在 Linux 上渲染更快</td></tr>
+      <tr><td>Figma</td><td>网页版直接用</td><td>浏览器即客户端，跨平台无忧</td></tr>
+      <tr><td>剪映</td><td class="half">无原生</td><td>Kdenlive / 达芬奇替代；手机剪映也不是不行</td></tr>
+    </table></div>
+  </div>
+
+  <div class="tabpane" id="t-music">
+    <div class="tbl-wrap rv"><table class="tbl">
+      <tr><th>你习惯的</th><th>Linux 方案</th><th>备注</th></tr>
+      <tr><td>FL Studio / Cubase</td><td><a href="https://ardour.org" target="_blank" rel="noopener">Ardour</a> / Bitwig Studio</td><td>Bitwig 有原生版；FL 可 Wine 运行但不算完美</td></tr>
+      <tr><td>REAPER</td><td><a href="https://www.reaper.fm" target="_blank" rel="noopener">REAPER</a> 原生</td><td>官方提供 Linux 版，良心</td></tr>
+      <tr><td>Audacity</td><td><a href="https://www.audacityteam.org" target="_blank" rel="noopener">Audacity</a> 原生</td><td>老家就在这</td></tr>
+      <tr><td>Sibelius / Finale</td><td><a href="https://musescore.org" target="_blank" rel="noopener">MuseScore</a></td><td>免费打谱之王，完全够用</td></tr>
+      <tr><td>效果器 / 机架</td><td>EasyEffects / Carla / PipeWire</td><td>系统级低延迟音频，耳机党狂喜</td></tr>
+      <tr><td>声卡驱动</td><td>class-compliant 声卡即插即用</td><td>主流录音声卡（Focusrite 等）免驱</td></tr>
+    </table></div>
+    <div class="card rv" style="margin-top:22px;">
+      <span class="pill">冷知识</span>
+      <p>Linux 的 PipeWire 音频栈可以做到毫秒级低延迟，而且系统内任意两个应用的音频都能像接线一样自由路由——这在别的系统上要花大价钱买虚拟声卡。</p>
+    </div>
+  </div>
+
+  <div class="tabpane" id="t-ee">
+    <div class="card rv" style="border-left:5px solid #0071e3;">
+      <span class="pill">微电子必读 · 大新闻</span>
+      <h3>芯片行业的 EDA，本来就活在 Linux 上</h3>
+      <p>Cadence Virtuoso、Synopsys 全家桶（VCS、DC、ICC）、Siemens EDA——这些造芯片的工业软件，<b>官方运行环境就是 Linux</b>（通常是 RHEL 系）。晶圆厂和设计公司的服务器跑的全是 Linux。所以微电子专业的同学：你用 Linux 不是折腾，是提前三年适应工作环境。</p>
+    </div>
+    <div class="tbl-wrap rv" style="margin-top:22px;"><table class="tbl">
+      <tr><th>你习惯的</th><th>Linux 方案</th><th>备注</th></tr>
+      <tr><td>Altium Designer</td><td><a href="https://www.kicad.org" target="_blank" rel="noopener">KiCad</a></td><td>开源 PCB 顶流，社区库丰富，越来越主流</td></tr>
+      <tr><td>Multisim</td><td>LTspice（Wine）/ Qucs-S / Ngspice</td><td>仿真课作业完全够用</td></tr>
+      <tr><td>Keil MDK</td><td>STM32CubeIDE / PlatformIO</td><td>都有原生 Linux 版，配 OpenOCD 调试</td></tr>
+      <tr><td>Vivado / Quartus</td><td>官方 Linux 版</td><td>FPGA 大厂双双原生支持</td></tr>
+      <tr><td>ModelSim / Questa</td><td>官方 Linux 版 / Verilator / Icarus</td><td>开源仿真器 Verilator 是业界明星</td></tr>
+      <tr><td>Cadence / Synopsys</td><td class="yes">本身就是 Linux 原生</td><td>实验室服务器直通，SSH 就是工位</td></tr>
+      <tr><td>串口工具</td><td>minicom / cutecom / <code>screen</code></td><td>系统自带，无需安装</td></tr>
+    </table></div>
+  </div>
+
+  <div class="tabpane" id="t-sci">
+    <div class="tbl-wrap rv"><table class="tbl">
+      <tr><th>你习惯的</th><th>Linux 方案</th><th>备注</th></tr>
+      <tr><td>MATLAB</td><td>GNU Octave / Python（NumPy、SciPy）</td><td>Octave 语法高度兼容；科研主力是 Python</td></tr>
+      <tr><td>Mathematica</td><td>SageMath / SymPy</td><td>符号计算免费方案</td></tr>
+      <tr><td>SPSS</td><td>JASP / jamovi / R</td><td>社科统计友好界面，免费</td></tr>
+      <tr><td>Origin</td><td>LabPlot / matplotlib</td><td>论文级绘图</td></tr>
+      <tr><td>R</td><td>R + RStudio 原生</td><td>统计之王，原生运行</td></tr>
+      <tr><td>文献管理</td><td><a href="https://www.zotero.org" target="_blank" rel="noopener">Zotero</a> 原生</td><td>配 LaTeX 是论文绝配</td></tr>
+      <tr><td>超算 / 集群</td><td class="yes">环境天然一致</td><td>超算 TOP500 全部跑 Linux，本地学的命令直接用</td></tr>
+    </table></div>
+  </div>
+
+  <div class="tabpane" id="t-game">
+    <div class="tbl-wrap rv"><table class="tbl">
+      <tr><th>你习惯的</th><th>Linux 方案</th><th>备注</th></tr>
+      <tr><td>Steam</td><td>原生 + Proton 一键兼容</td><td>上万款 Windows 游戏直接玩，去 <a href="https://www.protondb.com" target="_blank" rel="noopener">ProtonDB</a> 查评级</td></tr>
+      <tr><td>Epic / GOG</td><td>Heroic Launcher / Lutris</td><td>第三方启动器，体验顺滑</td></tr>
+      <tr><td>Minecraft</td><td>Prism Launcher</td><td>Java 版原生跑，帧数还更高</td></tr>
+      <tr><td>模拟器</td><td>RetroArch / Dolphin / RPCS3</td><td>模拟器大户，全部原生</td></tr>
+      <tr><td>原神 / 瓦 / 三角洲等</td><td class="no">反作弊限制</td><td>这类游戏目前玩不了或很麻烦，<a href="honest.html">避坑指南</a>里有完整名单</td></tr>
+    </table></div>
+    <div class="card rv" style="margin-top:22px;">
+      <span class="pill green">好消息</span>
+      <p>Steam Deck 的热卖把 Linux 游戏生态直接带飞了：2025 年底 Steam 上 Linux 玩家份额已突破 3%，美国桌面份额突破 5%。V 社的 Proton 让每个游戏厂商都间接支持了 Linux。</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec center"><div class="wrap">
+  <h2 class="rv">心动的和担心的，<br><span class="grad-text">都摊开说。</span></h2>
+  <div style="margin-top:24px;" class="rv">
+    <a class="btn" href="honest.html">读读避坑指南</a>
+    <a class="btn-ghost" href="quiz.html">先测个本命发行版 &gt;</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="legal">* 软件支持情况以各官网为准，生态变化很快，发现过时内容欢迎到 <a href="https://github.com/Huanuyn1/Linuxedu.space" target="_blank" rel="noopener">GitHub 仓库</a>提 PR 修正。角色形象版权归 Bushiroad 所有，本页面为非营利粉丝二创。</div>
+  <div class="footer-bar"><span><a href="index.html">← 返回首页</a></span><span>用 ❤️ 与 ¥0 构建</span></div>
+</div></footer>
+
+<script>
+const io = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+document.querySelectorAll('.tab').forEach(t => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.classList.remove('on'));
+    document.querySelectorAll('.tabpane').forEach(x => x.classList.remove('on'));
+    t.classList.add('on');
+    document.getElementById('t-' + t.dataset.t).classList.add('on');
+  });
+});
+</script>
+</body>
+</html>

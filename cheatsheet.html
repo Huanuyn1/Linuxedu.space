@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>命令行小抄卡 - 新生收藏的口袋手册</title>
+<meta name="description" content="可搜索的 Linux 命令行小抄：文件、权限、三大包管理器对照、进程、网络、压缩、Git。">
+<meta property="og:title" content="命令行小抄卡 - 新生收藏的口袋手册">
+<meta property="og:description" content="可搜索的 Linux 命令行小抄：文件、权限、三大包管理器对照、进程、网络、压缩、Git。">
+<meta property="og:image" content="https://linuxedu-space.pages.dev/img/tux.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐧</text></svg>">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<nav class="topnav"><div class="topnav-in">
+  <div class="logo"><a href="index.html"><img src="img/tux.png" alt="">Linux 高校专场</a></div>
+  <div class="links">
+    <a href="index.html">首页</a>
+    <a href="quiz.html">小测试</a>
+    <a href="guide.html">上路指南</a>
+    <a href="apps.html">软件对照</a>
+    <a href="honest.html">避坑指南</a>
+    <a href="cheatsheet.html" class="on">小抄卡</a>
+    <a href="resources.html">资源</a>
+  </div>
+</div></nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <p class="kicker">Cheatsheet</p>
+    <h1>命令行小抄卡。</h1>
+    <p class="lead">不用背，收藏这页就行。用的时候搜一下。</p>
+    <div style="margin-top:28px;"><input class="cmd-search" id="search" type="search" placeholder="搜索命令或用途，比如：解压 / 安装 / 查看端口…"></div>
+  </div>
+</header>
+
+<section class="sec" style="padding-top:8px;"><div class="wrap">
+  <div class="cmd-grid" id="grid">
+
+    <div class="cmd-card" data-k="文件 目录 ls cd pwd cp mv rm mkdir find tree du df 复制 移动 删除 查找">
+      <h4>📁 文件与目录</h4>
+      <div class="cmd-line"><code>ls -lah</code><span>列出文件（含详情）</span></div>
+      <div class="cmd-line"><code>cd /路径</code><span>进入目录</span></div>
+      <div class="cmd-line"><code>pwd</code><span>我在哪儿</span></div>
+      <div class="cmd-line"><code>cp -r 源 目标</code><span>复制</span></div>
+      <div class="cmd-line"><code>mv 源 目标</code><span>移动 / 重命名</span></div>
+      <div class="cmd-line"><code>rm -ri 目录</code><span>删除（带确认）</span></div>
+      <div class="cmd-line"><code>mkdir -p a/b/c</code><span>递归建目录</span></div>
+      <div class="cmd-line"><code>find . -name "*.pdf"</code><span>按名找文件</span></div>
+      <div class="cmd-line"><code>du -sh *</code><span>各文件占多大</span></div>
+      <div class="cmd-line"><code>df -h</code><span>磁盘还剩多少</span></div>
+    </div>
+
+    <div class="cmd-card" data-k="查看 编辑 cat less head tail grep wc nano vim 日志">
+      <h4>📄 查看与编辑</h4>
+      <div class="cmd-line"><code>cat 文件</code><span>一口气看完</span></div>
+      <div class="cmd-line"><code>less 文件</code><span>翻页看（q 退出）</span></div>
+      <div class="cmd-line"><code>head -n 20 文件</code><span>看前 20 行</span></div>
+      <div class="cmd-line"><code>tail -f 日志</code><span>盯着日志实时看</span></div>
+      <div class="cmd-line"><code>grep -rn "关键词" .</code><span>全文搜索</span></div>
+      <div class="cmd-line"><code>wc -l 文件</code><span>数行数</span></div>
+      <div class="cmd-line"><code>nano 文件</code><span>新手友好编辑器</span></div>
+    </div>
+
+    <div class="cmd-card" data-k="包管理 apt dnf pacman 安装 卸载 搜索 更新 ubuntu debian fedora arch 软件">
+      <h4>📦 装软件（三家对照）</h4>
+      <div class="cmd-line"><code>sudo apt install 包</code><span>Ubuntu/Debian 安装</span></div>
+      <div class="cmd-line"><code>sudo dnf install 包</code><span>Fedora 安装</span></div>
+      <div class="cmd-line"><code>sudo pacman -S 包</code><span>Arch 安装</span></div>
+      <div class="cmd-line"><code>apt search / dnf search</code><span>搜索</span></div>
+      <div class="cmd-line"><code>pacman -Ss 关键词</code><span>Arch 搜索</span></div>
+      <div class="cmd-line"><code>sudo apt update && sudo apt upgrade</code><span>Ubuntu 更新</span></div>
+      <div class="cmd-line"><code>sudo pacman -Syu</code><span>Arch 更新</span></div>
+      <div class="cmd-line"><code>sudo apt remove 包</code><span>卸载</span></div>
+      <div class="cmd-line"><code>flatpak install flathub 应用</code><span>万能备胎方案</span></div>
+    </div>
+
+    <div class="cmd-card" data-k="权限 chmod chown sudo root 管理员">
+      <h4>🔐 权限</h4>
+      <div class="cmd-line"><code>sudo 命令</code><span>以管理员执行</span></div>
+      <div class="cmd-line"><code>chmod +x 脚本.sh</code><span>给执行权限</span></div>
+      <div class="cmd-line"><code>chmod 644 文件</code><span>标准文件权限</span></div>
+      <div class="cmd-line"><code>sudo chown 用户:组 文件</code><span>改所有者</span></div>
+    </div>
+
+    <div class="cmd-card" data-k="进程 系统 top htop ps kill systemctl free uname 重启 关机 服务">
+      <h4>⚙️ 进程与系统</h4>
+      <div class="cmd-line"><code>htop</code><span>任务管理器（好看版）</span></div>
+      <div class="cmd-line"><code>ps aux | grep 名</code><span>找进程</span></div>
+      <div class="cmd-line"><code>kill PID</code><span>结束进程</span></div>
+      <div class="cmd-line"><code>systemctl status 服务</code><span>查服务状态</span></div>
+      <div class="cmd-line"><code>sudo systemctl enable --now 服务</code><span>开机自启并启动</span></div>
+      <div class="cmd-line"><code>free -h</code><span>内存用量</span></div>
+      <div class="cmd-line"><code>uname -a</code><span>内核信息</span></div>
+      <div class="cmd-line"><code>fastfetch</code><span>展示你的系统（仪式感）</span></div>
+    </div>
+
+    <div class="cmd-card" data-k="网络 ping curl wget ip ss ssh scp rsync 端口 下载 远程">
+      <h4>🌐 网络</h4>
+      <div class="cmd-line"><code>ping baidu.com</code><span>通不通</span></div>
+      <div class="cmd-line"><code>ip a</code><span>看 IP</span></div>
+      <div class="cmd-line"><code>curl -O 网址</code><span>下载文件</span></div>
+      <div class="cmd-line"><code>wget 网址</code><span>下载文件</span></div>
+      <div class="cmd-line"><code>ss -tlnp</code><span>谁在监听端口</span></div>
+      <div class="cmd-line"><code>ssh 用户@服务器</code><span>远程登录</span></div>
+      <div class="cmd-line"><code>scp 文件 用户@服务器:/路径</code><span>传文件上服务器</span></div>
+      <div class="cmd-line"><code>rsync -avP 源 目标</code><span>同步目录（可断点续传）</span></div>
+    </div>
+
+    <div class="cmd-card" data-k="压缩 解压 tar zip unzip gz 打包">
+      <h4>🗜️ 压缩与解压</h4>
+      <div class="cmd-line"><code>tar -czvf 包.tar.gz 目录</code><span>打包压缩</span></div>
+      <div class="cmd-line"><code>tar -xzvf 包.tar.gz</code><span>解压</span></div>
+      <div class="cmd-line"><code>unzip 文件.zip</code><span>解压 zip</span></div>
+      <div class="cmd-line"><code>zip -r 包.zip 目录</code><span>打成 zip</span></div>
+    </div>
+
+    <div class="cmd-card" data-k="git 版本 clone add commit push pull status log 提交">
+      <h4>🌿 Git 基础</h4>
+      <div class="cmd-line"><code>git clone 地址</code><span>克隆仓库</span></div>
+      <div class="cmd-line"><code>git status</code><span>现在什么状态</span></div>
+      <div class="cmd-line"><code>git add .</code><span>暂存全部改动</span></div>
+      <div class="cmd-line"><code>git commit -m "说明"</code><span>提交</span></div>
+      <div class="cmd-line"><code>git push</code><span>推送到远程</span></div>
+      <div class="cmd-line"><code>git pull</code><span>拉取最新</span></div>
+      <div class="cmd-line"><code>git log --oneline</code><span>看提交历史</span></div>
+    </div>
+
+    <div class="cmd-card" data-k="帮助 man tldr help 教程 学习">
+      <h4>❓ 忘了就问</h4>
+      <div class="cmd-line"><code>man 命令</code><span>官方说明书</span></div>
+      <div class="cmd-line"><code>命令 --help</code><span>快速提示</span></div>
+      <div class="cmd-line"><code>tldr 命令</code><span>人话版例子（需安装）</span></div>
+    </div>
+
+  </div>
+  <p class="center rv" id="noresult" style="display:none;margin-top:40px;color:#6e6e73;">没搜到？去 <a href="resources.html">资源页</a> 翻翻，或者到社区里问问。</p>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="legal">* 命令千千万，能救命的永远是这一条：重要操作之前，先备份。角色形象版权归 Bushiroad 所有，本页面为非营利粉丝二创。</div>
+  <div class="footer-bar"><span><a href="index.html">← 返回首页</a></span><span>用 ❤️ 与 ¥0 构建</span></div>
+</div></footer>
+
+<script>
+const io = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+const search = document.getElementById('search');
+const cards = document.querySelectorAll('.cmd-card');
+const noresult = document.getElementById('noresult');
+search.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  let shown = 0;
+  cards.forEach(c => {
+    const hit = !q || (c.dataset.k + ' ' + c.textContent).toLowerCase().includes(q);
+    c.classList.toggle('cmd-hide', !hit);
+    if (hit) shown++;
+  });
+  noresult.style.display = shown ? 'none' : 'block';
+});
+</script>
+</body>
+</html>

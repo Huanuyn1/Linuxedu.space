@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>避坑指南 - 先把丑话说在前面</title>
+<meta name="description" content="诚实的 Linux 避坑指南：反作弊游戏名单、专业课软件兜底、校园网认证、显卡与打印机。">
+<meta property="og:title" content="避坑指南 - 先把丑话说在前面">
+<meta property="og:description" content="诚实的 Linux 避坑指南：反作弊游戏名单、专业课软件兜底、校园网认证、显卡与打印机。">
+<meta property="og:image" content="https://linuxedu-space.pages.dev/img/tux.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐧</text></svg>">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<nav class="topnav"><div class="topnav-in">
+  <div class="logo"><a href="index.html"><img src="img/tux.png" alt="">Linux 高校专场</a></div>
+  <div class="links">
+    <a href="index.html">首页</a>
+    <a href="quiz.html">小测试</a>
+    <a href="guide.html">上路指南</a>
+    <a href="apps.html">软件对照</a>
+    <a href="honest.html" class="on">避坑指南</a>
+    <a href="cheatsheet.html">小抄卡</a>
+    <a href="resources.html">资源</a>
+  </div>
+</div></nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <p class="kicker">Honest Talk</p>
+    <h1>先把丑话<br><span class="grad-text">说在前面。</span></h1>
+    <p class="lead">Linux 不是万能的。把搞不定的事讲清楚，剩下的 95% 才值得你放心去爱。</p>
+  </div>
+</header>
+
+<section class="sec" style="padding-top:12px;"><div class="wrap">
+  <div class="host rv">
+    <img src="img/char/sayo.png" alt="冰川纱夜">
+    <div>
+      <div class="q">「规则就是规则。了解限制之后，再谈自由。」</div>
+      <div class="who">冰川纱夜 · Debian 用户 · 本页向导</div>
+      <p>以下每一条都有出处或兜底方案。读完仍然想上车的人，才是真正的同路人。</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2 class="rv">一、这些游戏，目前真的玩不了</h2>
+  <p class="lead rv" style="text-align:left;margin-left:0;">原因几乎都指向同一个词：<b>反作弊</b>。厂商不开绿灯，Linux 用户再折腾也没辙。</p>
+  <div class="grid2" style="margin-top:26px;">
+    <div class="card rv">
+      <span class="pill red">玩不了 / 很麻烦</span>
+      <ul>
+        <li><b>无畏契约（Valorant）</b>：拳头 Vanguard 反作弊，没门</li>
+        <li><b>Apex 英雄</b>：2024 年 11 月起 EA 正式切断 Linux / Steam Deck 支持</li>
+        <li><b>GTA Online</b>：BattlEye 拒绝 Linux（单机剧情模式不受影响）</li>
+        <li><b>三角洲行动 / 英雄联盟 / 永劫无间</b>：腾讯 ACE 反作弊</li>
+        <li><b>PUBG / 堡垒之夜 / 命运2</b>：反作弊均不支持</li>
+        <li><b>原神</b>：无官方支持，社区方案存在账号风险，不推荐主力号尝试</li>
+      </ul>
+    </div>
+    <div class="card rv">
+      <span class="pill green">放心畅玩（举例）</span>
+      <ul>
+        <li><b>CS2 / DOTA2</b>：V 社自家，原生支持</li>
+        <li><b>艾尔登法环 / 只狼 / 黑魂</b>：Proton 白金级</li>
+        <li><b>赛博朋克 2077 / 巫师 3 / 博德之门 3</b>：好评如潮，帧数可观</li>
+        <li><b>星露谷 / 泰拉瑞亚 / 空洞骑士</b>：独立游戏基本全绿</li>
+        <li><b>GTA5 单机 / 大表哥 2 单机</b>：剧情模式照玩</li>
+      </ul>
+      <p style="margin-top:12px;">买游戏前花十秒查 <a href="https://www.protondb.com" target="_blank" rel="noopener">ProtonDB</a> 评级，比许愿有用。</p>
+    </div>
+  </div>
+  <div class="card rv" style="margin-top:22px;">
+    <span class="pill">实在放不下怎么办</span>
+    <p>双系统留一个 Windows 分区当「游戏厅」，日常学习工作在 Linux，开机选系统只要三秒。成年人不做选择，两个都要。</p>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2 class="rv">二、这些专业课，可能需要兜底</h2>
+  <div class="grid2" style="margin-top:26px;">
+    <div class="card rv">
+      <h3>教学指定 Windows 软件</h3>
+      <ul>
+        <li><b>部分单片机/嵌入式课程</b>：教学环境锁定 Keil + 特定破解版 → 建议双系统或虚拟机跟课，课外用 PlatformIO 才是真本事</li>
+        <li><b>微信小程序开发课</b>：开发者工具无 Linux 版 → Windows 虚拟机</li>
+        <li><b>重度 AE / 剪映工作流</b>：替代方案有差距 → 双系统</li>
+      </ul>
+    </div>
+    <div class="card rv">
+      <h3>兜底三板斧</h3>
+      <ol>
+        <li><b>双系统</b>：最省心，性能满血</li>
+        <li><b>Windows 虚拟机</b>：virt-manager (KVM) 免费高性能，VMware 图形化更友好</li>
+        <li><b>问学长</b>：你的专业有没有人趟过这条路，校内 Linux 群一句话的事</li>
+      </ol>
+      <p style="margin-top:12px;">记住：用 Linux 不是签卖身契，它是给你多一个选择，不是没收你的退路。</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2 class="rv">三、硬件与环境的两个小疙瘩</h2>
+  <div class="grid2" style="margin-top:26px;">
+    <div class="card rv">
+      <h3>校园网认证</h3>
+      <p>网页认证（打开浏览器登录）的学校：<b>完全没问题</b>。锐捷 / 深澜客户端认证的学校：需要第三方客户端或路由器方案——具体解法我们在<a href="guide.html">上路指南</a>里写了，先去加校内 Linux 群。</p>
+    </div>
+    <div class="card rv">
+      <h3>显卡与打印机</h3>
+      <p><b>NVIDIA</b>：当年 Linus 那句名言已经作古，现在官方驱动越来越好装（Ubuntu 一键、Arch 一个包），但买新电脑前查一下型号口碑仍是好习惯。<b>打印机</b>：主流型号走 CUPS 基本免驱，冷门型号买前搜一下「型号 + Linux」。</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2 class="rv">四、最后，关于「万一搞砸」</h2>
+  <div class="card rv">
+    <ul>
+      <li><b>装个 Timeshift</b>：系统级快照，折腾坏了十秒回滚，比后悔药便宜</li>
+      <li><b>重要文件多处备份</b>：U 盘、网盘、Git，总有一款救过你</li>
+      <li><b>Live U 盘别扔</b>：系统崩了它能开机救数据，还能当临时系统交作业</li>
+      <li><b>发行版太多挑花眼</b>：这不怪你，所以我们做了<a href="quiz.html">本命发行版小测试</a></li>
+    </ul>
+  </div>
+</div></section>
+
+<section class="sec center"><div class="wrap">
+  <h2 class="rv">丑话说完了。<br><span class="grad-text">剩下的都是美好。</span></h2>
+  <p class="lead rv">免费的系统、自由的软件、飞快的速度，和一只永远站在你这边的企鹅。</p>
+  <div style="margin-top:24px;" class="rv">
+    <a class="btn" href="guide.html">开始上路</a>
+    <a class="btn-ghost" href="quiz.html">先做小测试 &gt;</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="legal">* 游戏兼容性随厂商政策变化，本页信息截至 2026 年 7 月，最新情况以 ProtonDB 及各厂商公告为准。角色形象版权归 Bushiroad 所有，本页面为非营利粉丝二创。</div>
+  <div class="footer-bar"><span><a href="index.html">← 返回首页</a></span><span>用 ❤️ 与 ¥0 构建</span></div>
+</div></footer>
+
+<script>
+const io = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
