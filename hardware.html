@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>硬件选购器 - 买对电脑，Linux 就成功了一半</title>
-<meta name="description" content="为 Linux 新生精选的笔记本机型库：按预算与用途筛选，每台都标注 Linux 兼容性评级与避坑备注，一键跳转电商看实时价。">
+<meta name="description" content="为 Linux 新生精选的笔记本机型库与装机配置单：价格取自什么值得买与京东淘宝实时行情，每台都标注 Linux 兼容性评级与避坑备注。">
 <meta property="og:title" content="硬件选购器 - 买对电脑，Linux 就成功了一半">
-<meta property="og:description" content="为 Linux 新生精选的笔记本机型库：按预算与用途筛选，每台都标注 Linux 兼容性评级与避坑备注。">
+<meta property="og:description" content="为 Linux 新生精选的笔记本机型库与装机配置单：真实行情价、兼容性评级、避坑备注。">
 <meta property="og:image" content="https://linuxedu-space.pages.dev/img/tux.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐧</text></svg>">
 <link rel="stylesheet" href="assets/site.css">
@@ -38,6 +38,27 @@
 .hw-hide{display:none !important;}
 .legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--text-2);margin-top:18px;}
 .legend b{border-radius:8px;padding:2px 8px;font-size:12px;}
+/* 行情提醒条 */
+.market{background:linear-gradient(135deg,#fff7ed,#ffedd5);border:1px solid #fdba74;border-radius:var(--radius);padding:22px 26px;margin-top:24px;font-size:14.5px;line-height:1.75;}
+.market b{color:#c2410c;}
+/* 装机区 */
+.build{background:#fff;border-radius:var(--radius);box-shadow:0 4px 24px rgba(0,0,0,.05);padding:26px 26px 22px;display:flex;flex-direction:column;}
+.build h4{font-size:19px;font-weight:700;}
+.build .bprice{font-size:15px;font-weight:800;color:var(--blue);margin-top:4px;}
+.build .bfor{font-size:13px;color:var(--text-2);margin-top:6px;}
+.build ul{list-style:none;margin:14px 0 0;padding:0;flex:1;}
+.build li{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;padding:7px 0;border-bottom:1px dashed #e5e5ea;line-height:1.5;}
+.build li:last-child{border-bottom:none;}
+.build li span:first-child{color:var(--text);}
+.build li span:last-child{color:var(--text-2);white-space:nowrap;font-weight:600;}
+.build .btip{font-size:13.5px;line-height:1.65;color:var(--text);background:#f5f5f7;border-radius:12px;padding:12px 14px;margin-top:14px;}
+/* 配件行情表 */
+.ptable{width:100%;border-collapse:collapse;margin-top:20px;font-size:14px;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.05);}
+.ptable th{background:#1d1d1f;color:#fff;text-align:left;padding:13px 16px;font-size:13.5px;font-weight:600;}
+.ptable td{padding:12px 16px;border-top:1px solid #f0f0f2;line-height:1.55;vertical-align:top;}
+.ptable tr td:first-child{font-weight:700;white-space:nowrap;}
+.ptable .p{color:var(--blue);font-weight:700;white-space:nowrap;}
+@media(max-width:640px){.ptable{font-size:13px;}.ptable th,.ptable td{padding:10px 10px;}}
 </style>
 </head>
 <body>
@@ -62,7 +83,7 @@
   <div class="wrap">
     <p class="kicker">Hardware Picker</p>
     <h1>买对电脑，<br><span class="grad-text">Linux 就成功了一半。</span></h1>
-    <p class="lead">每一台都标好了 Linux 兼容性评级和避坑备注。挑好型号，点链接去电商平台看实时价。</p>
+    <p class="lead">价格全部来自什么值得买爆料与京东 / 淘宝实时行情（2026 年 7 月核价），每台都标好 Linux 兼容性评级和避坑备注。</p>
   </div>
 </header>
 
@@ -72,22 +93,26 @@
     <div>
       <div class="q">「哦……要买器材了吗。呵呵，交给我吧。兼容性这种东西，买之前查清楚，比买之后哭有用得多。」</div>
       <div class="who">大和麻弥 · Gentoo 用户 · 器材导购</div>
-      <p>筛选你的预算和用途，榜单会自动收窄。评级 S/A 的闭着眼买，B 级买前多看一眼备注。</p>
+      <p>筛选你的预算和用途，榜单会自动收窄。评级 S/A 的闭着眼买，B 级买前多看一眼备注。想自己装台式机的，往下翻有配置单。</p>
     </div>
   </div>
 
-  <div class="card rv" style="margin-top:34px;">
+  <div class="market rv">
+    <b>⚠️ 2026 年 7 月行情必读：</b>今年存储颗粒被 AI 产能挤占，<b>内存和 SSD 价格暴涨</b>（16G DDR4 从 200 元涨到约 700 元，1TB PCIe 4.0 固态比 2025 年低点翻倍），显卡和整机也水涨船高。两个直接影响：<b>① 自己攒机未必比买整机划算</b>——厂商拿的是采购价；<b>② 下单前记得领「国家补贴」</b>，笔记本普遍能再减 15%，本页价格均为核价时的到手参考区间，点卡片链接看实时价。
+  </div>
+
+  <div class="card rv" style="margin-top:24px;">
     <h3>选购三原则（比型号更重要）</h3>
     <div class="grid3" style="margin-top:16px;">
       <div><p><b style="color:var(--text);">① 网卡认准 Intel</b><br>无线网卡选 Intel AX200/AX210/BE200 系最稳，免驱即用。博通（Broadcom）网卡是经典坑，瑞昱（Realtek）部分型号也闹心。</p></div>
       <div><p><b style="color:var(--text);">② 核显最省心，N 卡也能用</b><br>Intel / AMD 核显驱动开源、开箱即用。NVIDIA 独显现在一键装驱动也不麻烦，但要接受它是闭源驱动。</p></div>
-      <div><p><b style="color:var(--text);">③ 内存 16G 起步，可升级加分</b><br>2026 年了，8G 内存开几个网页就喘。能自己加内存、换硬盘的机型，寿命直接多三年。</p></div>
+      <div><p><b style="color:var(--text);">③ 内存 16G 起步，可升级加分</b><br>2026 年了，8G 内存开几个网页就喘。能自己加内存、换硬盘的机型，寿命直接多三年——而且现在内存贵，买时一步到位更省钱。</p></div>
     </div>
   </div>
 </div></section>
 
 <section class="sec" style="padding-top:0;"><div class="wrap">
-  <h2 class="rv">机型精选</h2>
+  <h2 class="rv">笔记本精选</h2>
   <div class="fbar rv">
     <span class="lab">预算</span>
     <button class="fchip on" data-b="all">全部</button>
@@ -108,99 +133,99 @@
   <div class="hw-grid" id="grid">
 
     <div class="hw rv" data-b="b1" data-u="used study">
-      <div class="hw-top"><div><h4>ThinkPad T14（一/二代，二手）</h4><div class="price">¥1300–2300</div></div><span class="rate s">S</span></div>
-      <div class="spec">10/11 代酷睿或锐龙 5000 系 · 16G · 1080P</div>
-      <div class="note">Linux 圈公认的「神机」：驱动全开源、键盘手感天花板、结实耐造。二手市场量大价稳，新生捡漏首选。</div>
+      <div class="hw-top"><div><h4>ThinkPad T14（一/二代，二手）</h4><div class="price">¥900–2000 · 淘宝/闲鱼行情</div></div><span class="rate s">S</span></div>
+      <div class="spec">10/11 代酷睿或锐龙 4000/5000 系 · 16G · 1080P</div>
+      <div class="note">Linux 圈公认的「神机」：驱动全开源、键盘手感天花板、结实耐造。二手市场量大价稳，一千出头就能收到成色不错的，新生捡漏首选。</div>
       <div class="tags"><i>免驱即用</i><i>键盘封神</i><i>可升级</i></div>
       <div class="hw-links"><a href="https://search.jd.com/Search?keyword=ThinkPad%20T14%20%E4%BA%8C%E6%89%8B" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=ThinkPad%20T14%20%E4%BA%8C%E6%89%8B" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=ThinkPad%20T14" target="_blank" rel="noopener">看测评</a></div>
     </div>
 
     <div class="hw rv" data-b="b1" data-u="used study">
-      <div><div class="hw-top"><div><h4>ThinkPad X1 Carbon 2019–2021（二手）</h4><div class="price">¥1800–3300</div></div><span class="rate s">S</span></div></div>
+      <div class="hw-top"><div><h4>ThinkPad X1 Carbon 2019–2021（二手）</h4><div class="price">¥1500–3100 · 淘宝行情</div></div><span class="rate s">S</span></div>
       <div class="spec">8/10/11 代酷睿 · 16G · 1.1kg 超轻薄</div>
-      <div class="note">旗舰商务本二手价打骨折，轻到可以天天背去图书馆。Linux 兼容性和 T 系一样优秀，预算够到 3000 就选它。</div>
+      <div class="note">旗舰商务本二手价打骨折：2019 款约 ¥1550–1900，2021 款（Gen9）约 ¥2500–3100。轻到可以天天背去图书馆，Linux 兼容性和 T 系一样优秀。</div>
       <div class="tags"><i>超轻薄</i><i>免驱即用</i><i>旗舰做工</i></div>
-      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=ThinkPad%20X1%20Carbon%20%E4%BA%8C%E6%89%8B" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=ThinkPad%20X1%20Carbon%20%E4%BA%8C%E6%89%8B" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=ThinkPad%20X1%20Carbon" target="_blank" rel="noopener">看测评</a></div>
+      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=ThinkPad%20X1%20Carbon%20%E4%BA%8C%E6%89%8B" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=ThinkPad%20X1%20Carbon%20%E4%BA%8C%E6%89%8B" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=ThinkPad%20X1%20Carbon%20%E4%BA%8C%E6%89%8B" target="_blank" rel="noopener">看测评</a></div>
     </div>
 
     <div class="hw rv" data-b="b2" data-u="study dev">
-      <div class="hw-top"><div><h4>机械革命 无界14 Pro（R7-8845H）</h4><div class="price">¥3400–3900</div></div><span class="rate a">A</span></div>
-      <div class="spec">锐龙 7 8845H · 16G/24G · 2.8K 120Hz</div>
-      <div class="note">3500 档的性能怪兽，AMD 核显 Linux 免驱。代价是品控抽奖——<b>务必走京东自营</b>，出问题直接换新。</div>
+      <div class="hw-top"><div><h4>机械革命 无界14X Pro（锐龙 R7 H255）</h4><div class="price">¥3200–4000 · 国补后</div></div><span class="rate a">A</span></div>
+      <div class="spec">锐龙 7 H255 · 16G · 2.8K 高刷屏</div>
+      <div class="note">3500 档的性能怪兽，什么值得买爆料低价到过 ¥3202。AMD 核显 Linux 免驱。代价是品控抽奖——<b>务必走京东自营</b>，出问题直接换新。</div>
       <div class="tags"><i>性价比之王</i><i>核显免驱</i><i>买自营</i></div>
-      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=%E6%9C%BA%E6%A2%B0%E9%9D%A9%E5%91%BD%20%E6%97%A0%E7%95%8C14%20Pro" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=%E6%9C%BA%E6%A2%B0%E9%9D%A9%E5%91%BD%20%E6%97%A0%E7%95%8C14%20Pro" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=%E6%97%A0%E7%95%8C14%20Pro" target="_blank" rel="noopener">看测评</a></div>
+      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=%E6%9C%BA%E6%A2%B0%E9%9D%A9%E5%91%BD%20%E6%97%A0%E7%95%8C14X%20Pro" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=%E6%9C%BA%E6%A2%B0%E9%9D%A9%E5%91%BD%20%E6%97%A0%E7%95%8C14X%20Pro" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=%E6%97%A0%E7%95%8C14X%20Pro" target="_blank" rel="noopener">看测评</a></div>
     </div>
 
     <div class="hw rv" data-b="b2" data-u="study">
-      <div class="hw-top"><div><h4>Redmi Book Pro 14（锐龙版）</h4><div class="price">¥4000–4600</div></div><span class="rate a">A</span></div>
-      <div class="spec">锐龙 7 8845H · 16G · 2.8K 120Hz</div>
-      <div class="note">屏幕素质越级，做工在同价位拔尖，AMD 平台 Linux 兼容性稳。小米手机用户还有生态互联加成。</div>
-      <div class="tags"><i>好屏幕</i><i>核显免驱</i><i>做工好</i></div>
-      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=Redmi%20Book%20Pro%2014%20%E9%94%90%E9%BE%99" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=Redmi%20Book%20Pro%2014%20%E9%94%90%E9%BE%99" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=Redmi%20Book%20Pro%2014" target="_blank" rel="noopener">看测评</a></div>
+      <div class="hw-top"><div><h4>联想 小新14 / 小新 Pro 14（2026 款）</h4><div class="price">¥3300–4400 · 国补+券后</div></div><span class="rate a">A</span></div>
+      <div class="spec">标压酷睿 i5 · 16G · 512G · IPS 全面屏</div>
+      <div class="note">2026 年国补最大受益者：京东标价 5088–5287，叠国补 15% 和券后到手 ¥3300–4400（7 月爆料低至 ¥3305）。Intel 核显 + Intel 网卡，Linux 全程免驱。</div>
+      <div class="tags"><i>国补真香</i><i>核显免驱</i><i>大厂售后</i></div>
+      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=%E5%B0%8F%E6%96%B0%20Pro%2014%202026" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=%E5%B0%8F%E6%96%B0%20Pro%2014%202026" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=%E5%B0%8F%E6%96%B0%20Pro%2014%202026" target="_blank" rel="noopener">看测评</a></div>
+    </div>
+
+    <div class="hw rv" data-b="b2" data-u="study">
+      <div class="hw-top"><div><h4>惠普 战66（七代，酷睿/锐龙）</h4><div class="price">¥3400–4700 · 淘宝京东行情</div></div><span class="rate a">A+</span></div>
+      <div class="spec">锐龙 R7 或酷睿 Ultra5 · 16G/32G · 军标测试</div>
+      <div class="note">商务本的稳：过军标跌落测试、上门服务、故障率低。锐龙版淘宝常见 ¥3400–4000，酷睿 2.5K 屏版约 ¥3800–4700。性能不炸但绝不掉链子，想安稳用四年就选它。</div>
+      <div class="tags"><i>稳定耐用</i><i>上门售后</i><i>核显免驱</i></div>
+      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=%E6%83%A0%E6%99%AE%20%E6%88%9866%20%E4%B8%83%E4%BB%A3" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=%E6%83%A0%E6%99%AE%20%E6%88%9866%20%E4%B8%83%E4%BB%A3" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=%E6%88%9866%20%E4%B8%83%E4%BB%A3" target="_blank" rel="noopener">看测评</a></div>
+    </div>
+
+    <div class="hw rv" data-b="b2" data-u="study dev">
+      <div class="hw-top"><div><h4>宏碁 非凡Go（锐龙 R7-8745H）</h4><div class="price">¥3800–4300 · 京东行情</div></div><span class="rate a">A</span></div>
+      <div class="spec">锐龙 7 8745H · 16G · 1TB · 2.2K 屏 · 1.4kg</div>
+      <div class="note">京东参考价 ¥4199，Zen4 八核 + 1TB 固态 + 1.4kg，纸面性价比非常能打。AMD 核显免驱。注意它家售后网点比联想惠普少，看重售后选上面两家。</div>
+      <div class="tags"><i>1TB 大容量</i><i>核显免驱</i><i>轻便</i></div>
+      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=%E5%AE%8F%E7%A2%81%20%E9%9D%9E%E5%87%A1Go%20%E9%94%90%E9%BE%99" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=%E5%AE%8F%E7%A2%81%20%E9%9D%9E%E5%87%A1Go%20%E9%94%90%E9%BE%99" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=%E5%AE%8F%E7%A2%81%20%E9%9D%9E%E5%87%A1Go" target="_blank" rel="noopener">看测评</a></div>
     </div>
 
     <div class="hw rv" data-b="b3" data-u="study dev">
-      <div class="hw-top"><div><h4>联想 ThinkBook 14+（R7-8845H）</h4><div class="price">¥4500–5300</div></div><span class="rate a">A+</span></div>
-      <div class="spec">锐龙 7 8845H · 32G 可选 · 接口全家桶</div>
-      <div class="note">这个价位最均衡的水桶机：接口全到不用拓展坞，部分配置内存可升级。ThinkPad 同门，Linux 兼容性让人放心。</div>
-      <div class="tags"><i>接口全</i><i>可升级</i><i>水桶机</i></div>
-      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=ThinkBook%2014%2B%208845H" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=ThinkBook%2014%2B%208845H" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=ThinkBook%2014%2B" target="_blank" rel="noopener">看测评</a></div>
+      <div class="hw-top"><div><h4>联想 小新 Pro 14（2026，Ultra5）</h4><div class="price">¥4400–6000 · 国补后</div></div><span class="rate a">A+</span></div>
+      <div class="spec">酷睿 Ultra 5 · 24G/32G · 1TB · 2.8K OLED 高刷</div>
+      <div class="note">5000–7000 档标杆全能本：屏幕、性能释放、做工都在线，第三代酷睿 Ultra 的核显和 NPU 在 Linux 下都能直接用。5 月爆料 ¥4388（需券），常规活动价 5000 上下。</div>
+      <div class="tags"><i>全能标杆</i><i>核显免驱</i><i>OLED 好屏</i></div>
+      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=%E5%B0%8F%E6%96%B0%20Pro%2014%202026%20Ultra5" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=%E5%B0%8F%E6%96%B0%20Pro%2014%202026%20Ultra5" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=%E5%B0%8F%E6%96%B0%20Pro%2014%202026" target="_blank" rel="noopener">看测评</a></div>
     </div>
 
     <div class="hw rv" data-b="b3" data-u="study">
-      <div class="hw-top"><div><h4>联想 小新 Pro 14（R7-8845H）</h4><div class="price">¥4800–5600</div></div><span class="rate a">A+</span></div>
-      <div class="spec">锐龙 7 8845H · 32G · 2.8K 120Hz OLED 可选</div>
-      <div class="note">性能释放激进、屏幕出色，文科理科通吃的课业主力。AMD 核显驱动开源，装完系统不用管显卡的事。</div>
-      <div class="tags"><i>性能强</i><i>核显免驱</i><i>屏幕好</i></div>
-      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=%E5%B0%8F%E6%96%B0%20Pro%2014%208845H" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=%E5%B0%8F%E6%96%B0%20Pro%2014%208845H" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=%E5%B0%8F%E6%96%B0%20Pro%2014" target="_blank" rel="noopener">看测评</a></div>
-    </div>
-
-    <div class="hw rv" data-b="b3" data-u="study dev">
-      <div class="hw-top"><div><h4>惠普 战66（七代锐龙版）</h4><div class="price">¥4300–5200</div></div><span class="rate a">A+</span></div>
-      <div class="spec">锐龙 7 7735U/8845H · 16G/32G · 军标测试</div>
-      <div class="note">商务本的稳：过军标跌落测试、上门服务、故障率低。性能不炸但绝不掉链子，想安安稳稳用四年就选它。</div>
-      <div class="tags"><i>稳定耐用</i><i>上门售后</i><i>核显免驱</i></div>
-      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=%E6%83%A0%E6%99%AE%20%E6%88%9866%20%E9%94%90%E9%BE%99" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=%E6%83%A0%E6%99%AE%20%E6%88%9866%20%E9%94%90%E9%BE%99" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=%E6%88%9866" target="_blank" rel="noopener">看测评</a></div>
+      <div class="hw-top"><div><h4>Redmi Book Pro 14（2025，Ultra5）</h4><div class="price">¥5300–6300 · 国补后</div></div><span class="rate a">A</span></div>
+      <div class="spec">酷睿 Ultra 5 225H · 32G · 1TB · 2.8K 120Hz</div>
+      <div class="note">屏幕素质越级，32G 大内存一步到位（2026 年内存涨价，出厂大内存反而划算）。京东 ¥6299 再叠国补约 ¥5350。Intel 平台 Linux 兼容稳，小米用户还有生态互联加成。</div>
+      <div class="tags"><i>32G 大内存</i><i>好屏幕</i><i>核显免驱</i></div>
+      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=Redmi%20Book%20Pro%2014%202025" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=Redmi%20Book%20Pro%2014%202025" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=Redmi%20Book%20Pro%2014%202025" target="_blank" rel="noopener">看测评</a></div>
     </div>
 
     <div class="hw rv" data-b="b4" data-u="game dev">
-      <div class="hw-top"><div><h4>联想 拯救者 Y7000P（i7 + RTX4060）</h4><div class="price">¥7500–8600</div></div><span class="rate a">A-</span></div>
-      <div class="spec">i7-14650HX · RTX 4060 · 16G · 2.5K 165Hz</div>
-      <div class="note">游戏、CUDA 炼丹一把抓。NVIDIA 驱动在 Ubuntu/Pop!_OS 上一键安装，装完 Steam 直接开战。记得装系统时选「安装第三方驱动」。</div>
-      <div class="tags"><i>游戏本</i><i>CUDA 炼丹</i><i>N 卡需装驱动</i></div>
-      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=%E6%8B%AF%E6%95%91%E8%80%85%20Y7000P%202024" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=%E6%8B%AF%E6%95%91%E8%80%85%20Y7000P" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=%E6%8B%AF%E6%95%91%E8%80%85%20Y7000P" target="_blank" rel="noopener">看测评</a></div>
+      <div class="hw-top"><div><h4>惠普 暗影精灵11（i7 + RTX5060）</h4><div class="price">¥6500–8200 · 行情区间</div></div><span class="rate a">A-</span></div>
+      <div class="spec">i7-14650HX · RTX 5060 8G · 16G · 1TB</div>
+      <div class="note">什么值得买 618 游戏本推荐款：170W 性能释放同价位第一梯队，6500–7000 能拿下性价比配置。CUDA 炼丹、游戏双修，Ubuntu/Pop!_OS 一键装 N 卡驱动。</div>
+      <div class="tags"><i>性能释放强</i><i>CUDA 炼丹</i><i>N 卡需装驱动</i></div>
+      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=%E6%9A%97%E5%BD%B1%E7%B2%BE%E7%81%B511%205060" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=%E6%9A%97%E5%BD%B1%E7%B2%BE%E7%81%B511%205060" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=%E6%9A%97%E5%BD%B1%E7%B2%BE%E7%81%B511" target="_blank" rel="noopener">看测评</a></div>
     </div>
 
     <div class="hw rv" data-b="b4" data-u="game dev">
-      <div class="hw-top"><div><h4>联想 拯救者 R9000P（R9 + RTX4060）</h4><div class="price">¥8300–9500</div></div><span class="rate a">A-</span></div>
-      <div class="spec">R9-7945HX · RTX 4060 · 16G · 2.5K 240Hz</div>
-      <div class="note">16 核锐龙编译代码飞快，显卡游戏炼丹双修，散热是同级别标杆。Linux 下表现与 Y 系一致，记得装 NVIDIA 官方驱动。</div>
-      <div class="tags"><i>16 核编译快</i><i>游戏本</i><i>N 卡需装驱动</i></div>
-      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=%E6%8B%AF%E6%95%91%E8%80%85%20R9000P" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=%E6%8B%AF%E6%95%91%E8%80%85%20R9000P" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=%E6%8B%AF%E6%95%91%E8%80%85%20R9000P" target="_blank" rel="noopener">看测评</a></div>
+      <div class="hw-top"><div><h4>机械革命 极光X 2026（i7 + RTX5060）</h4><div class="price">¥6500–6800 · 国补后</div></div><span class="rate a">A-</span></div>
+      <div class="spec">i7-13645HX · RTX 5060 · 2.5K 180Hz</div>
+      <div class="note">二线品牌卷王：5060 + 2.5K 高刷屏国补后 ¥6468–6799，比一线便宜近两千。Linux 表现取决于具体网卡批次，买前问客服网卡型号，照旧<b>只走京东自营</b>。</div>
+      <div class="tags"><i>卷王价格</i><i>2.5K 高刷</i><i>买自营</i></div>
+      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=%E6%9C%BA%E6%A2%B0%E9%9D%A9%E5%91%BD%20%E6%9E%81%E5%85%89X%202026" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=%E6%9C%BA%E6%A2%B0%E9%9D%A9%E5%91%BD%20%E6%9E%81%E5%85%89X%202026" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=%E6%9E%81%E5%85%89X%202026" target="_blank" rel="noopener">看测评</a></div>
     </div>
 
-    <div class="hw rv" data-b="b4" data-u="game study">
-      <div class="hw-top"><div><h4>ROG 幻14（R9 + RTX4060）</h4><div class="price">¥11000–13000</div></div><span class="rate b">B+</span></div>
-      <div class="spec">R9-8945HS · RTX 4060 · 1.5kg · 2.8K 120Hz</div>
-      <div class="note">把游戏本性能塞进轻薄本身材，带去教室不违和。扣分项：ROG 的灯控和性能调度软件是 Windows 专属，Linux 下要靠社区工具（asusctl）替代。</div>
-      <div class="tags"><i>轻薄游戏本</i><i>灯控需折腾</i><i>asusctl</i></div>
-      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=ROG%20%E5%B9%BB14" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=ROG%20%E5%B9%BB14" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=ROG%20%E5%B9%BB14" target="_blank" rel="noopener">看测评</a></div>
+    <div class="hw rv" data-b="b4" data-u="game dev">
+      <div class="hw-top"><div><h4>联想 拯救者 Y7000P 2025（i7 + RTX5060）</h4><div class="price">¥9500–11300 · 涨价中</div></div><span class="rate b">B+</span></div>
+      <div class="spec">i7-14650HX · RTX 5060 · 16G · 2.5K 240Hz</div>
+      <div class="note">机器本身是好机器，散热和屏幕都是标杆，Linux 下表现也稳。但 2026 年涨价潮里它涨得最欢——同级暗影精灵便宜近三千。<b>除非降到 9000 内，否则看隔壁。</b></div>
+      <div class="tags"><i>散热标杆</i><i>涨价重灾区</i><i>N 卡需装驱动</i></div>
+      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=%E6%8B%AF%E6%95%91%E8%80%85%20Y7000P%202025" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=%E6%8B%AF%E6%95%91%E8%80%85%20Y7000P%202025" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=%E6%8B%AF%E6%95%91%E8%80%85%20Y7000P%202025" target="_blank" rel="noopener">看测评</a></div>
     </div>
 
     <div class="hw rv" data-b="b4" data-u="dev study">
-      <div class="hw-top"><div><h4>Framework 13（AMD 版）</h4><div class="price">¥6500+（需代购）</div></div><span class="rate s">S</span></div>
-      <div class="spec">锐龙 7040/AI 300 系 · 模块化接口 · 全机可拆修</div>
-      <div class="note">官方把 Linux 当一等公民：每个零件可更换、接口是磁吸模块、维修手册全公开。极客的浪漫，缺点是大陆没有官方渠道，得代购。</div>
+      <div class="hw-top"><div><h4>Framework 13（AMD 版）</h4><div class="price">¥6500+ · 需代购</div></div><span class="rate s">S</span></div>
+      <div class="spec">锐龙 AI 300 系 · 模块化接口 · 全机可拆修</div>
+      <div class="note">官方把 Linux 当一等公民：每个零件可更换、接口是磁吸模块、维修手册全公开。极客的浪漫，缺点是大陆没有官方渠道，得代购，价格随汇率浮动。</div>
       <div class="tags"><i>官方支持 Linux</i><i>模块化</i><i>可维修</i></div>
       <div class="hw-links"><a href="https://frame.work" target="_blank" rel="noopener">官网</a><a href="https://s.taobao.com/search?q=Framework%20%E7%AC%94%E8%AE%B0%E6%9C%AC" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=Framework%20%E7%AC%94%E8%AE%B0%E6%9C%AC" target="_blank" rel="noopener">看测评</a></div>
-    </div>
-
-    <div class="hw rv" data-b="b2" data-u="used study">
-      <div class="hw-top"><div><h4>联想 小新 Air 14（上代锐龙清仓）</h4><div class="price">¥3000–3600</div></div><span class="rate a">A</span></div>
-      <div class="spec">锐龙 5/7 7735HS 等 · 16G · 1080P/2.2K</div>
-      <div class="note">新款发布后老款清仓，价格腰斩但性能够用。捡漏逻辑：买「上代锐龙核显本」，永远比买「本代低配本」划算。</div>
-      <div class="tags"><i>清仓捡漏</i><i>核显免驱</i><i>轻薄</i></div>
-      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=%E5%B0%8F%E6%96%B0%20Air%2014%20%E9%94%90%E9%BE%99" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=%E5%B0%8F%E6%96%B0%20Air%2014%20%E9%94%90%E9%BE%99" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=%E5%B0%8F%E6%96%B0%20Air%2014" target="_blank" rel="noopener">看测评</a></div>
     </div>
 
   </div>
@@ -209,7 +234,84 @@
     <span>评级说明：</span>
     <span><b class="rate s">S</b> 驱动全开源，闭眼买</span>
     <span><b class="rate a">A / A+</b> 开箱即用或一键装驱动</span>
-    <span><b class="rate b">B</b> 能用，但个别功能要折腾</span>
+    <span><b class="rate b">B</b> 能用，但价格或个别功能有槽点</span>
+  </div>
+</div></section>
+
+<section class="sec" style="padding-top:0;"><div class="wrap">
+  <p class="eyebrow rv">Desktop Zone</p>
+  <h2 class="rv">装机区：台式机怎么配</h2>
+  <p class="sec-sub rv">宿舍放得下、假期扛得动的话，台式机同价位性能比笔记本高一大截， Linux 兼容性也最好拿捏。但 2026 年内存 SSD 涨价离谱，先把行情看清楚再决定是自己攒还是买整机。</p>
+
+  <div class="grid3" style="margin-top:30px;">
+
+    <div class="build rv">
+      <h4>🐣 入门捡漏机</h4>
+      <div class="bprice">合计约 ¥2700–3200</div>
+      <div class="bfor">适合：编程课、文档办公、Linux 入门折腾</div>
+      <ul>
+        <li><span>AMD R5 5600（散片）</span><span>¥550–620</span></li>
+        <li><span>二手 B450M 主板</span><span>¥190–270</span></li>
+        <li><span>DDR4 16G（8G×2）3200</span><span>¥650–700</span></li>
+        <li><span>1TB PCIe 3.0 固态</span><span>¥500–650</span></li>
+        <li><span>二手 RX 580 8G</span><span>¥300–400</span></li>
+        <li><span>450–550W 铜牌电源</span><span>¥200–280</span></li>
+        <li><span>百元风冷 + 百元机箱</span><span>¥200</span></li>
+      </ul>
+      <div class="btip">RX 580 是开源驱动免驱老将，亮机打 LOL 都行。整套全是 Linux 免检硬件，装完系统零驱动烦恼。</div>
+    </div>
+
+    <div class="build rv">
+      <h4>🎮 主流 2K 游戏机</h4>
+      <div class="bprice">合计约 ¥4900–5100</div>
+      <div class="bfor">适合：2K 游戏、CUDA 入门、日常主力机（什么值得买 2026.5 作业单）</div>
+      <ul>
+        <li><span>AMD R5 5600（散片）</span><span>¥550–620</span></li>
+        <li><span>微星 A520M / 华硕 B550M</span><span>¥400–700</span></li>
+        <li><span>DDR4 32G（16G×2）3200</span><span>¥1290–1330</span></li>
+        <li><span>1TB PCIe 4.0 固态（国产 TLC）</span><span>¥600–700</span></li>
+        <li><span>RTX 5060 8G</span><span>¥2170–2900</span></li>
+        <li><span>650W 铜牌电源</span><span>¥300–350</span></li>
+        <li><span>百元风冷 + 百元机箱</span><span>¥200</span></li>
+      </ul>
+      <div class="btip">思路是「重显卡轻 CPU」：5600 带 5060 不拖后腿，省下的钱全砸显卡。N 卡装 Ubuntu/Pop!_OS 时勾选第三方驱动即可。显卡波动大，618/双11 窗口 2169 元能拿下，平时 2800+。</div>
+    </div>
+
+    <div class="build rv">
+      <h4>🧪 AI 炼丹机</h4>
+      <div class="bprice">合计约 ¥5500–6500</div>
+      <div class="bfor">适合：跑本地大模型、CUDA/ROCm 开发、毕设炼丹</div>
+      <ul>
+        <li><span>AMD R5 5600 / R7 5700X（散片）</span><span>¥550–900</span></li>
+        <li><span>微星 B550M 迫击炮 WiFi</span><span>¥700–850</span></li>
+        <li><span>DDR4 32G（16G×2）3200</span><span>¥1290–1330</span></li>
+        <li><span>1TB PCIe 4.0 固态</span><span>¥600–700</span></li>
+        <li><span>RX 9070 GRE 16G 或 RTX 5060</span><span>¥3199 / ¥2170+</span></li>
+        <li><span>650–750W 铜牌电源</span><span>¥300–450</span></li>
+        <li><span>百元风冷 + 机箱</span><span>¥200–300</span></li>
+      </ul>
+      <div class="btip">炼丹看显存：RX 9070 GRE 16G（¥3199，GDDR6 供应稳没怎么涨）配 ROCm 能跑但折腾；图省心选 N 卡走 CUDA，8G 显存只能跑小模型和量化版。内存后面还能再加两条。</div>
+    </div>
+
+  </div>
+
+  <div class="card rv" style="margin-top:26px;">
+    <h3>配件行情速查（2026 年 7 月，什么值得买 / 京东 / 淘宝）</h3>
+    <table class="ptable">
+      <tr><th>配件</th><th>参考型号</th><th>行情价</th><th>备注</th></tr>
+      <tr><td>CPU</td><td>R5 5600 散片 / i5-12400F 散片</td><td class="p">¥550–620 / ¥750–800</td><td>5000 档闭眼选 5600，平台成本再省 300</td></tr>
+      <tr><td>主板</td><td>二手 B450M / 全新 A520M / B550M</td><td class="p">¥190–270 / ¥400–550 / ¥700–850</td><td>AM4 平台成熟便宜，微星迫击炮全新 ¥449 起</td></tr>
+      <tr><td>内存</td><td>DDR4 16G×2 3200（玖合/金百达）</td><td class="p">¥1290–1330 ⚠️</td><td>涨价重灾区：2025 年只要 400 元，现在翻三倍</td></tr>
+      <tr><td>固态</td><td>1TB PCIe 3.0 / 4.0（国产 TLC）</td><td class="p">¥500–650 / ¥600–700</td><td>已从 3 月高点回落；认准 TLC 颗粒，低价 QLC 别碰</td></tr>
+      <tr><td>显卡</td><td>RTX 5060 / RX 9070 GRE 16G</td><td class="p">¥2170–2900 / ¥3199</td><td>5060 大促窗口价好，9070 GRE 显存大适合 AI</td></tr>
+      <tr><td>电源</td><td>550–650W 铜牌（TT 钢影等）</td><td class="p">¥250–350</td><td>别买杂牌，炸了带走一机</td></tr>
+      <tr><td>散热</td><td>利民 AX120R SE 等四热管风冷</td><td class="p">¥80–120</td><td>压 5600 绰绰有余</td></tr>
+      <tr><td>显示器</td><td>HKC G27H2Max 等 2K 高刷</td><td class="p">¥900–1100</td><td>2K 220Hz FastIPS，5060 的标配搭档</td></tr>
+    </table>
+  </div>
+
+  <div class="market rv" style="margin-top:26px;">
+    <b>麻弥的结论：</b>2026 年这场涨价里，<b>内存和固态自己买是最亏的</b>——整机厂商拿货价比零售低一大截。所以：预算 6000 以下、不想折腾 → 直接买品牌整机/笔记本；想体验装机乐趣、或者愿意淘二手内存显卡 → 上面的配置单照抄。<b>别在涨价年硬上高频 DDR5 和旗舰固态</b>，DDR4 + 国产 TLC 才是版本答案。
   </div>
 </div></section>
 
@@ -218,19 +320,19 @@
   <div class="grid2" style="margin-top:26px;">
     <div class="card warn rv">
       <span class="pill red">MacBook（M 系列芯片）</span>
-      <p>Asahi Linux 项目让 Apple Silicon 跑 Linux 成为可能，但至今是「能跑的实验品」：扬声器、麦克风、外接显示等都有坑。<b>想正经用 Linux，别买 MacBook 当主力机。</b>预算够到 7000，上面那台 Framework 或拯救者都更香。</p>
+      <p>Asahi Linux 项目让 Apple Silicon 跑 Linux 成为可能，但至今是「能跑的实验品」：扬声器、麦克风、外接显示等都有坑。<b>想正经用 Linux，别买 MacBook 当主力机。</b>预算够到 7000，Framework 或暗影精灵都更香。</p>
     </div>
     <div class="card warn rv">
       <span class="pill red">骁龙 X Elite 轻薄本</span>
       <p>Surface Laptop 7 等 Windows on ARM 机型续航诱人，但 ARM 版 Linux 的支持还在早期，装不上或装上一堆外设不工作是常态。看到「骁龙本」三个字，绕着走。</p>
     </div>
     <div class="card warn rv">
-      <span class="pill red">博通网卡的老机型</span>
-      <p>部分老款 MacBook 和旧笔记本用博通（Broadcom）网卡，Linux 下 Wi-Fi 折腾到怀疑人生。救法也有：30 块买张 Intel AX210 网卡自己换上，或者先查清楚网卡型号再下单。</p>
+      <span class="pill red">涨价过狠的机型，先观望</span>
+      <p>2026 年涨价潮里有些机型已经涨出智商税：ROG 幻14 Air 2025 从首发 13999 涨到 ¥18000，2026 新款直接 ¥20999 起；拯救者 Y7000P 也普涨两千。<b>同配置看看暗影精灵、极光X，或者干脆等双 11。</b></p>
     </div>
     <div class="card warn rv">
-      <span class="pill red">线下电脑城 & 杂牌「高配低价」</span>
-      <p>这个坑和 Linux 无关，和人性有关。杂牌机的屏幕、内存、固态全是缩水重灾区，驱动也没人管。认准京东自营 / 品牌官方店，贵一百块买的是售后。</p>
+      <span class="pill red">博通网卡 & 杂牌「高配低价」</span>
+      <p>老款 MacBook 和部分旧机型用博通网卡，Linux 下 Wi-Fi 折腾到怀疑人生（30 块换张 AX210 可救）。线下电脑城和杂牌机则是屏幕、内存、固态全缩水，认准京东自营 / 品牌官方店，贵一百块买的是售后。</p>
     </div>
   </div>
 </div></section>
@@ -244,7 +346,7 @@
 </div></section>
 
 <footer><div class="wrap">
-  <div class="legal">* 机型与价格为人工整理的参考信息（截至 2026 年 7 月），电子产品价格波动快，请以电商平台实时页面为准；兼容性评级基于社区普遍反馈，个案差异欢迎到 <a href="https://github.com/Huanuyn1/Linuxedu.space" target="_blank" rel="noopener">GitHub 仓库</a>补充。角色形象版权归 Bushiroad 所有，本页面为非营利粉丝二创。</div>
+  <div class="legal">* 本页价格人工核价于 2026 年 7 月，来源为什么值得买好价爆料、京东与淘宝实时页面；电子产品价格波动快，国补与优惠券以你下单时为准，点卡片链接看实时价。兼容性评级基于社区普遍反馈，个案差异欢迎到 <a href="https://github.com/Huanuyn1/Linuxedu.space" target="_blank" rel="noopener">GitHub 仓库</a>补充。角色形象版权归 Bushiroad 所有，本页面为非营利粉丝二创。</div>
   <div class="footer-bar"><span><a href="index.html">← 返回首页</a></span><span>用 ❤️ 与 ¥0 构建</span></div>
 </div></footer>
 
