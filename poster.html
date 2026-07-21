@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>安利海报生成器 - 为你的学校定制一张</title>
+<meta name="description" content="输入校名和专业，一键生成「学什么专业，Linux 都专业」定制安利海报，可下载分享。">
+<meta property="og:title" content="安利海报生成器 - 为你的学校定制一张">
+<meta property="og:description" content="输入校名和专业，一键生成「学什么专业，Linux 都专业」定制安利海报，可下载分享。">
+<meta property="og:image" content="https://linuxedu-space.pages.dev/img/tux.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐧</text></svg>">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.pgen{display:grid;grid-template-columns:380px 1fr;gap:26px;align-items:start;}
+@media(max-width:960px){.pgen{grid-template-columns:1fr;}}
+.pfield{margin-bottom:22px;}
+.pfield label{display:block;font-size:13.5px;font-weight:700;margin-bottom:8px;}
+.pfield input[type=text]{width:100%;background:#f5f5f7;border:2px solid transparent;border-radius:12px;padding:12px 14px;font-size:15px;font-family:inherit;color:var(--text);outline:none;transition:border .18s;}
+.pfield input[type=text]:focus{border-color:var(--blue);background:#fff;}
+.swatches{display:flex;gap:10px;flex-wrap:wrap;}
+.sw{width:44px;height:44px;border-radius:12px;cursor:pointer;border:3px solid transparent;transition:transform .15s,border .15s;}
+.sw:hover{transform:scale(1.08);}
+.sw.on{border-color:var(--text);}
+.chars{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+.chr{border:3px solid transparent;border-radius:12px;background:#f5f5f7;cursor:pointer;padding:6px 4px 4px;text-align:center;transition:all .15s;}
+.chr img{height:52px;width:auto;}
+.chr span{display:block;font-size:11px;color:var(--text-2);margin-top:2px;}
+.chr:hover{background:#fff;}
+.chr.on{border-color:var(--blue);background:#fff;}
+.preview{text-align:center;}
+.preview canvas{max-width:100%;height:auto;border-radius:var(--radius);box-shadow:0 12px 40px rgba(0,0,0,.16);}
+.dlrow{margin-top:20px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<nav class="topnav"><div class="topnav-in">
+  <div class="logo"><a href="index.html"><img src="img/tux.png" alt="">Linux 高校专场</a></div>
+  <div class="links">
+    <a href="index.html">首页</a>
+    <a href="quiz.html">小测试</a>
+    <a href="guide.html">上路指南</a>
+    <a href="apps.html">软件对照</a>
+    <a href="honest.html">避坑指南</a>
+    <a href="cheatsheet.html">小抄卡</a>
+    <a href="resources.html">资源</a>
+    <a href="hardware.html">硬件</a>
+    <a href="poster.html" class="on">海报</a>
+    <a href="jargon.html">黑话</a>
+  </div>
+</div></nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <p class="kicker">Poster Studio</p>
+    <h1>安利海报，<br><span class="grad-text">为你的学校定制一张。</span></h1>
+    <p class="lead">填上校名和专业，选个配色和形象，下载去贴在宿舍楼道、社团招新摊位和朋友圈。</p>
+  </div>
+</header>
+
+<section class="sec" style="padding-top:12px;"><div class="wrap">
+  <div class="host rv">
+    <img src="img/char/aya.png" alt="丸山彩">
+    <div>
+      <div class="q">「宣传工作就交给我吧！让每一位同学都知道——Linux 也可以闪闪发光！」</div>
+      <div class="who">丸山彩 · Linux Mint 用户 · 宣传部长</div>
+      <p>右边实时预览。所有图片在你浏览器本地生成，不会上传任何东西。</p>
+    </div>
+  </div>
+
+  <div class="pgen rv" style="margin-top:34px;">
+    <div class="card">
+      <div class="pfield">
+        <label>学校名称</label>
+        <input type="text" id="school" maxlength="14" placeholder="比如：青岛大学">
+      </div>
+      <div class="pfield">
+        <label>专业（可选）</label>
+        <input type="text" id="major" maxlength="12" placeholder="比如：微电子科学与工程" list="majors">
+        <datalist id="majors">
+          <option value="计算机科学与技术"></option>
+          <option value="微电子科学与工程"></option>
+          <option value="人工智能"></option>
+          <option value="软件工程"></option>
+          <option value="电子信息工程"></option>
+          <option value="数学与应用数学"></option>
+          <option value="全体专业"></option>
+        </datalist>
+      </div>
+      <div class="pfield">
+        <label>配色主题</label>
+        <div class="swatches" id="swatches">
+          <div class="sw on" data-t="0" style="background:linear-gradient(135deg,#0090ff,#a259ff,#ff6482);"></div>
+          <div class="sw" data-t="1" style="background:linear-gradient(135deg,#17171a,#3d3d44);"></div>
+          <div class="sw" data-t="2" style="background:linear-gradient(135deg,#0f4c81,#1793d1);"></div>
+          <div class="sw" data-t="3" style="background:linear-gradient(135deg,#0f766e,#34d399);"></div>
+          <div class="sw" data-t="4" style="background:linear-gradient(135deg,#be123c,#fb7185);"></div>
+          <div class="sw" data-t="5" style="background:linear-gradient(135deg,#d97706,#fbbf24);"></div>
+        </div>
+      </div>
+      <div class="pfield">
+        <label>形象大使</label>
+        <div class="chars" id="chars">
+          <div class="chr on" data-c="tux"><img src="img/tux.png" alt=""><span>Tux</span></div>
+          <div class="chr" data-c="kasumi"><img src="img/char/kasumi.png" alt=""><span>香澄</span></div>
+          <div class="chr" data-c="arisa"><img src="img/char/arisa.png" alt=""><span>有咲</span></div>
+          <div class="chr" data-c="yukina"><img src="img/char/yukina.png" alt=""><span>友希那</span></div>
+          <div class="chr" data-c="sayo"><img src="img/char/sayo.png" alt=""><span>纱夜</span></div>
+          <div class="chr" data-c="ako"><img src="img/char/ako.png" alt=""><span>亚子</span></div>
+          <div class="chr" data-c="kokoro"><img src="img/char/kokoro.png" alt=""><span>心</span></div>
+          <div class="chr" data-c="maya"><img src="img/char/maya.png" alt=""><span>麻弥</span></div>
+          <div class="chr" data-c="aya"><img src="img/char/aya.png" alt=""><span>彩</span></div>
+          <div class="chr" data-c="ran"><img src="img/char/ran.png" alt=""><span>兰</span></div>
+        </div>
+      </div>
+      <div class="dlrow" style="justify-content:flex-start;">
+        <button class="btn" id="download">下载海报 PNG</button>
+      </div>
+    </div>
+    <div class="preview">
+      <canvas id="cv" width="900" height="1200"></canvas>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="legal">* 海报生成与下载全部在你的浏览器本地完成。角色形象版权归 Bushiroad 所有，生成的海报仅限非营利安利用途，张贴请遵守校规。Tux 形象由 Larry Ewing 创作。</div>
+  <div class="footer-bar"><span><a href="index.html">← 返回首页</a></span><span>用 ❤️ 与 ¥0 构建</span></div>
+</div></footer>
+
+<script>
+const io = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+const cv = document.getElementById('cv');
+const ctx = cv.getContext('2d');
+const W = 900, H = 1200;
+
+const THEMES = [
+  {bg:["#0090ff","#a259ff","#ff6482"], sub:"rgba(255,255,255,.92)"},
+  {bg:["#17171a","#3d3d44","#17171a"], sub:"#ffd60a"},
+  {bg:["#0f4c81","#1793d1","#0f4c81"], sub:"rgba(255,255,255,.92)"},
+  {bg:["#0f766e","#34d399","#0f766e"], sub:"rgba(255,255,255,.92)"},
+  {bg:["#be123c","#fb7185","#be123c"], sub:"rgba(255,255,255,.92)"},
+  {bg:["#d97706","#fbbf24","#d97706"], sub:"rgba(255,255,255,.95)"}
+];
+
+const IMG_SRC = {
+  tux:"img/tux.png", kasumi:"img/char/kasumi.png", arisa:"img/char/arisa.png",
+  yukina:"img/char/yukina.png", sayo:"img/char/sayo.png", ako:"img/char/ako.png",
+  kokoro:"img/char/kokoro.png", maya:"img/char/maya.png", aya:"img/char/aya.png", ran:"img/char/ran.png"
+};
+const IMGS = {};
+for (const k in IMG_SRC){
+  IMGS[k] = new Image();
+  IMGS[k].src = IMG_SRC[k];
+  IMGS[k].onload = draw;
+}
+
+let theme = 0, charKey = 'tux';
+const schoolEl = document.getElementById('school');
+const majorEl = document.getElementById('major');
+const FONT = '"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif';
+
+function fitFont(text, maxWidth, startPx, weight){
+  let px = startPx;
+  ctx.font = `${weight} ${px}px ${FONT}`;
+  while (ctx.measureText(text).width > maxWidth && px > 20){
+    px -= 4;
+    ctx.font = `${weight} ${px}px ${FONT}`;
+  }
+  return px;
+}
+
+function draw(){
+  const t = THEMES[theme];
+  // 背景
+  const g = ctx.createLinearGradient(0, 0, W, H);
+  g.addColorStop(0, t.bg[0]); g.addColorStop(.5, t.bg[1]); g.addColorStop(1, t.bg[2]);
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, W, H);
+  // 装饰圆
+  ctx.fillStyle = "rgba(255,255,255,.07)";
+  ctx.beginPath(); ctx.arc(W*0.88, H*0.10, 210, 0, 7); ctx.fill();
+  ctx.beginPath(); ctx.arc(W*0.06, H*0.62, 260, 0, 7); ctx.fill();
+  ctx.fillStyle = "rgba(255,255,255,.05)";
+  ctx.beginPath(); ctx.arc(W*0.75, H*0.85, 300, 0, 7); ctx.fill();
+
+  // 顶栏
+  ctx.fillStyle = "rgba(255,255,255,.95)";
+  ctx.font = `700 30px ${FONT}`;
+  ctx.textAlign = "left"; ctx.textBaseline = "middle";
+  if (IMGS.tux.complete && IMGS.tux.naturalWidth){
+    ctx.drawImage(IMGS.tux, 60, 48, 46, 46);
+  }
+  ctx.fillText("Linux 高校专场", 122, 74);
+  ctx.textAlign = "right";
+  ctx.font = `600 24px ${FONT}`;
+  ctx.fillStyle = "rgba(255,255,255,.75)";
+  ctx.fillText("¥0（教育优惠价）", W-60, 74);
+
+  // 主标语
+  ctx.textAlign = "center";
+  ctx.fillStyle = "#fff";
+  ctx.font = `800 96px ${FONT}`;
+  ctx.fillText("学什么专业，", W/2, 300);
+  ctx.fillStyle = t.sub;
+  ctx.font = `800 108px ${FONT}`;
+  ctx.fillText("Linux 都专业。", W/2, 424);
+
+  // 副标语
+  const school = schoolEl.value.trim() || "你的大学";
+  const major = majorEl.value.trim();
+  const sub = major ? `${school} · ${major} 特供` : `${school} 特供`;
+  ctx.fillStyle = "rgba(255,255,255,.95)";
+  const spx = fitFont("「 " + sub + " 」", W-140, 44, 700);
+  ctx.font = `700 ${spx}px ${FONT}`;
+  ctx.fillText("「 " + sub + " 」", W/2, 516);
+
+  // 形象
+  const img = IMGS[charKey];
+  if (img && img.complete && img.naturalWidth){
+    const ih = 400;
+    const iw = ih * img.naturalWidth / img.naturalHeight;
+    ctx.save();
+    ctx.shadowColor = "rgba(0,0,0,.3)";
+    ctx.shadowBlur = 34; ctx.shadowOffsetY = 16;
+    ctx.drawImage(img, (W-iw)/2, 940-ih, iw, ih);
+    ctx.restore();
+  }
+
+  // 底栏
+  ctx.fillStyle = "rgba(255,255,255,.92)";
+  ctx.font = `700 30px ${FONT}`;
+  ctx.fillText("高校生活有 Linux，愿望成真。", W/2, 1060);
+  ctx.fillStyle = "rgba(255,255,255,.65)";
+  ctx.font = `500 24px ${FONT}`;
+  ctx.fillText("linuxedu-space.pages.dev", W/2, 1116);
+}
+
+schoolEl.addEventListener('input', draw);
+majorEl.addEventListener('input', draw);
+document.querySelectorAll('.sw').forEach(s => s.addEventListener('click', () => {
+  document.querySelectorAll('.sw').forEach(x => x.classList.remove('on'));
+  s.classList.add('on'); theme = +s.dataset.t; draw();
+}));
+document.querySelectorAll('.chr').forEach(c => c.addEventListener('click', () => {
+  document.querySelectorAll('.chr').forEach(x => x.classList.remove('on'));
+  c.classList.add('on'); charKey = c.dataset.c; draw();
+}));
+document.getElementById('download').addEventListener('click', () => {
+  draw();
+  const a = document.createElement('a');
+  const s = schoolEl.value.trim();
+  a.download = s ? `Linux安利海报-${s}.png` : 'Linux安利海报.png';
+  a.href = cv.toDataURL('image/png');
+  a.click();
+});
+
+// 页面字体就绪后再画一次，避免字体未加载
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+draw();
+</script>
+</body>
+</html>

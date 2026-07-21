@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>硬件选购器 - 买对电脑，Linux 就成功了一半</title>
+<meta name="description" content="为 Linux 新生精选的笔记本机型库：按预算与用途筛选，每台都标注 Linux 兼容性评级与避坑备注，一键跳转电商看实时价。">
+<meta property="og:title" content="硬件选购器 - 买对电脑，Linux 就成功了一半">
+<meta property="og:description" content="为 Linux 新生精选的笔记本机型库：按预算与用途筛选，每台都标注 Linux 兼容性评级与避坑备注。">
+<meta property="og:image" content="https://linuxedu-space.pages.dev/img/tux.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐧</text></svg>">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.fbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px;}
+.fbar .lab{font-size:13.5px;color:var(--text-2);font-weight:600;margin-right:2px;}
+.fchip{background:#fff;border:1px solid #d2d2d7;border-radius:980px;padding:7px 16px;font-size:13.5px;cursor:pointer;font-family:inherit;color:var(--text);transition:all .18s;}
+.fchip:hover{border-color:var(--blue);}
+.fchip.on{background:var(--blue);border-color:var(--blue);color:#fff;font-weight:600;}
+.hw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px;}
+@media(max-width:960px){.hw-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:640px){.hw-grid{grid-template-columns:1fr;}}
+.hw{background:#fff;border-radius:var(--radius);padding:24px 22px;box-shadow:0 4px 24px rgba(0,0,0,.05);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s;}
+.hw:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.09);}
+.hw-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;}
+.hw h4{font-size:17.5px;font-weight:700;line-height:1.4;}
+.hw .price{font-size:14px;color:var(--blue);font-weight:700;margin-top:4px;}
+.rate{flex:0 0 auto;font-size:12px;font-weight:800;border-radius:8px;padding:4px 9px;}
+.rate.s{background:rgba(22,163,74,.13);color:#16a34a;}
+.rate.a{background:rgba(0,113,227,.10);color:var(--blue);}
+.rate.b{background:rgba(234,88,12,.12);color:#ea580c;}
+.hw .spec{font-size:13px;color:var(--text-2);margin-top:10px;line-height:1.6;}
+.hw .note{font-size:14px;color:var(--text);line-height:1.65;margin-top:10px;flex:1;}
+.hw .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.hw .tags i{font-style:normal;font-size:11.5px;background:#f5f5f7;border-radius:6px;padding:3px 8px;color:var(--text-2);}
+.hw-links{display:flex;gap:14px;margin-top:14px;font-size:13.5px;font-weight:600;}
+.warn{border-left:5px solid #dc2626;}
+.warn h3{color:#dc2626;}
+.hw-hide{display:none !important;}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--text-2);margin-top:18px;}
+.legend b{border-radius:8px;padding:2px 8px;font-size:12px;}
+</style>
+</head>
+<body>
+
+<nav class="topnav"><div class="topnav-in">
+  <div class="logo"><a href="index.html"><img src="img/tux.png" alt="">Linux 高校专场</a></div>
+  <div class="links">
+    <a href="index.html">首页</a>
+    <a href="quiz.html">小测试</a>
+    <a href="guide.html">上路指南</a>
+    <a href="apps.html">软件对照</a>
+    <a href="honest.html">避坑指南</a>
+    <a href="cheatsheet.html">小抄卡</a>
+    <a href="resources.html">资源</a>
+    <a href="hardware.html" class="on">硬件</a>
+    <a href="poster.html">海报</a>
+    <a href="jargon.html">黑话</a>
+  </div>
+</div></nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <p class="kicker">Hardware Picker</p>
+    <h1>买对电脑，<br><span class="grad-text">Linux 就成功了一半。</span></h1>
+    <p class="lead">每一台都标好了 Linux 兼容性评级和避坑备注。挑好型号，点链接去电商平台看实时价。</p>
+  </div>
+</header>
+
+<section class="sec" style="padding-top:12px;"><div class="wrap">
+  <div class="host rv">
+    <img src="img/char/maya.png" alt="大和麻弥">
+    <div>
+      <div class="q">「哦……要买器材了吗。呵呵，交给我吧。兼容性这种东西，买之前查清楚，比买之后哭有用得多。」</div>
+      <div class="who">大和麻弥 · Gentoo 用户 · 器材导购</div>
+      <p>筛选你的预算和用途，榜单会自动收窄。评级 S/A 的闭着眼买，B 级买前多看一眼备注。</p>
+    </div>
+  </div>
+
+  <div class="card rv" style="margin-top:34px;">
+    <h3>选购三原则（比型号更重要）</h3>
+    <div class="grid3" style="margin-top:16px;">
+      <div><p><b style="color:var(--text);">① 网卡认准 Intel</b><br>无线网卡选 Intel AX200/AX210/BE200 系最稳，免驱即用。博通（Broadcom）网卡是经典坑，瑞昱（Realtek）部分型号也闹心。</p></div>
+      <div><p><b style="color:var(--text);">② 核显最省心，N 卡也能用</b><br>Intel / AMD 核显驱动开源、开箱即用。NVIDIA 独显现在一键装驱动也不麻烦，但要接受它是闭源驱动。</p></div>
+      <div><p><b style="color:var(--text);">③ 内存 16G 起步，可升级加分</b><br>2026 年了，8G 内存开几个网页就喘。能自己加内存、换硬盘的机型，寿命直接多三年。</p></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" style="padding-top:0;"><div class="wrap">
+  <h2 class="rv">机型精选</h2>
+  <div class="fbar rv">
+    <span class="lab">预算</span>
+    <button class="fchip on" data-b="all">全部</button>
+    <button class="fchip" data-b="b1">二手 2500 内</button>
+    <button class="fchip" data-b="b2">3000–4500</button>
+    <button class="fchip" data-b="b3">4500–6000</button>
+    <button class="fchip" data-b="b4">6000+</button>
+  </div>
+  <div class="fbar rv">
+    <span class="lab">用途</span>
+    <button class="fchip on" data-u="all">全部</button>
+    <button class="fchip" data-u="study">课业办公</button>
+    <button class="fchip" data-u="dev">开发 / 炼丹</button>
+    <button class="fchip" data-u="game">游戏电竞</button>
+    <button class="fchip" data-u="used">二手捡漏</button>
+  </div>
+
+  <div class="hw-grid" id="grid">
+
+    <div class="hw rv" data-b="b1" data-u="used study">
+      <div class="hw-top"><div><h4>ThinkPad T14（一/二代，二手）</h4><div class="price">¥1300–2300</div></div><span class="rate s">S</span></div>
+      <div class="spec">10/11 代酷睿或锐龙 5000 系 · 16G · 1080P</div>
+      <div class="note">Linux 圈公认的「神机」：驱动全开源、键盘手感天花板、结实耐造。二手市场量大价稳，新生捡漏首选。</div>
+      <div class="tags"><i>免驱即用</i><i>键盘封神</i><i>可升级</i></div>
+      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=ThinkPad%20T14%20%E4%BA%8C%E6%89%8B" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=ThinkPad%20T14%20%E4%BA%8C%E6%89%8B" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=ThinkPad%20T14" target="_blank" rel="noopener">看测评</a></div>
+    </div>
+
+    <div class="hw rv" data-b="b1" data-u="used study">
+      <div><div class="hw-top"><div><h4>ThinkPad X1 Carbon 2019–2021（二手）</h4><div class="price">¥1800–3300</div></div><span class="rate s">S</span></div></div>
+      <div class="spec">8/10/11 代酷睿 · 16G · 1.1kg 超轻薄</div>
+      <div class="note">旗舰商务本二手价打骨折，轻到可以天天背去图书馆。Linux 兼容性和 T 系一样优秀，预算够到 3000 就选它。</div>
+      <div class="tags"><i>超轻薄</i><i>免驱即用</i><i>旗舰做工</i></div>
+      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=ThinkPad%20X1%20Carbon%20%E4%BA%8C%E6%89%8B" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=ThinkPad%20X1%20Carbon%20%E4%BA%8C%E6%89%8B" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=ThinkPad%20X1%20Carbon" target="_blank" rel="noopener">看测评</a></div>
+    </div>
+
+    <div class="hw rv" data-b="b2" data-u="study dev">
+      <div class="hw-top"><div><h4>机械革命 无界14 Pro（R7-8845H）</h4><div class="price">¥3400–3900</div></div><span class="rate a">A</span></div>
+      <div class="spec">锐龙 7 8845H · 16G/24G · 2.8K 120Hz</div>
+      <div class="note">3500 档的性能怪兽，AMD 核显 Linux 免驱。代价是品控抽奖——<b>务必走京东自营</b>，出问题直接换新。</div>
+      <div class="tags"><i>性价比之王</i><i>核显免驱</i><i>买自营</i></div>
+      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=%E6%9C%BA%E6%A2%B0%E9%9D%A9%E5%91%BD%20%E6%97%A0%E7%95%8C14%20Pro" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=%E6%9C%BA%E6%A2%B0%E9%9D%A9%E5%91%BD%20%E6%97%A0%E7%95%8C14%20Pro" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=%E6%97%A0%E7%95%8C14%20Pro" target="_blank" rel="noopener">看测评</a></div>
+    </div>
+
+    <div class="hw rv" data-b="b2" data-u="study">
+      <div class="hw-top"><div><h4>Redmi Book Pro 14（锐龙版）</h4><div class="price">¥4000–4600</div></div><span class="rate a">A</span></div>
+      <div class="spec">锐龙 7 8845H · 16G · 2.8K 120Hz</div>
+      <div class="note">屏幕素质越级，做工在同价位拔尖，AMD 平台 Linux 兼容性稳。小米手机用户还有生态互联加成。</div>
+      <div class="tags"><i>好屏幕</i><i>核显免驱</i><i>做工好</i></div>
+      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=Redmi%20Book%20Pro%2014%20%E9%94%90%E9%BE%99" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=Redmi%20Book%20Pro%2014%20%E9%94%90%E9%BE%99" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=Redmi%20Book%20Pro%2014" target="_blank" rel="noopener">看测评</a></div>
+    </div>
+
+    <div class="hw rv" data-b="b3" data-u="study dev">
+      <div class="hw-top"><div><h4>联想 ThinkBook 14+（R7-8845H）</h4><div class="price">¥4500–5300</div></div><span class="rate a">A+</span></div>
+      <div class="spec">锐龙 7 8845H · 32G 可选 · 接口全家桶</div>
+      <div class="note">这个价位最均衡的水桶机：接口全到不用拓展坞，部分配置内存可升级。ThinkPad 同门，Linux 兼容性让人放心。</div>
+      <div class="tags"><i>接口全</i><i>可升级</i><i>水桶机</i></div>
+      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=ThinkBook%2014%2B%208845H" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=ThinkBook%2014%2B%208845H" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=ThinkBook%2014%2B" target="_blank" rel="noopener">看测评</a></div>
+    </div>
+
+    <div class="hw rv" data-b="b3" data-u="study">
+      <div class="hw-top"><div><h4>联想 小新 Pro 14（R7-8845H）</h4><div class="price">¥4800–5600</div></div><span class="rate a">A+</span></div>
+      <div class="spec">锐龙 7 8845H · 32G · 2.8K 120Hz OLED 可选</div>
+      <div class="note">性能释放激进、屏幕出色，文科理科通吃的课业主力。AMD 核显驱动开源，装完系统不用管显卡的事。</div>
+      <div class="tags"><i>性能强</i><i>核显免驱</i><i>屏幕好</i></div>
+      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=%E5%B0%8F%E6%96%B0%20Pro%2014%208845H" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=%E5%B0%8F%E6%96%B0%20Pro%2014%208845H" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=%E5%B0%8F%E6%96%B0%20Pro%2014" target="_blank" rel="noopener">看测评</a></div>
+    </div>
+
+    <div class="hw rv" data-b="b3" data-u="study dev">
+      <div class="hw-top"><div><h4>惠普 战66（七代锐龙版）</h4><div class="price">¥4300–5200</div></div><span class="rate a">A+</span></div>
+      <div class="spec">锐龙 7 7735U/8845H · 16G/32G · 军标测试</div>
+      <div class="note">商务本的稳：过军标跌落测试、上门服务、故障率低。性能不炸但绝不掉链子，想安安稳稳用四年就选它。</div>
+      <div class="tags"><i>稳定耐用</i><i>上门售后</i><i>核显免驱</i></div>
+      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=%E6%83%A0%E6%99%AE%20%E6%88%9866%20%E9%94%90%E9%BE%99" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=%E6%83%A0%E6%99%AE%20%E6%88%9866%20%E9%94%90%E9%BE%99" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=%E6%88%9866" target="_blank" rel="noopener">看测评</a></div>
+    </div>
+
+    <div class="hw rv" data-b="b4" data-u="game dev">
+      <div class="hw-top"><div><h4>联想 拯救者 Y7000P（i7 + RTX4060）</h4><div class="price">¥7500–8600</div></div><span class="rate a">A-</span></div>
+      <div class="spec">i7-14650HX · RTX 4060 · 16G · 2.5K 165Hz</div>
+      <div class="note">游戏、CUDA 炼丹一把抓。NVIDIA 驱动在 Ubuntu/Pop!_OS 上一键安装，装完 Steam 直接开战。记得装系统时选「安装第三方驱动」。</div>
+      <div class="tags"><i>游戏本</i><i>CUDA 炼丹</i><i>N 卡需装驱动</i></div>
+      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=%E6%8B%AF%E6%95%91%E8%80%85%20Y7000P%202024" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=%E6%8B%AF%E6%95%91%E8%80%85%20Y7000P" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=%E6%8B%AF%E6%95%91%E8%80%85%20Y7000P" target="_blank" rel="noopener">看测评</a></div>
+    </div>
+
+    <div class="hw rv" data-b="b4" data-u="game dev">
+      <div class="hw-top"><div><h4>联想 拯救者 R9000P（R9 + RTX4060）</h4><div class="price">¥8300–9500</div></div><span class="rate a">A-</span></div>
+      <div class="spec">R9-7945HX · RTX 4060 · 16G · 2.5K 240Hz</div>
+      <div class="note">16 核锐龙编译代码飞快，显卡游戏炼丹双修，散热是同级别标杆。Linux 下表现与 Y 系一致，记得装 NVIDIA 官方驱动。</div>
+      <div class="tags"><i>16 核编译快</i><i>游戏本</i><i>N 卡需装驱动</i></div>
+      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=%E6%8B%AF%E6%95%91%E8%80%85%20R9000P" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=%E6%8B%AF%E6%95%91%E8%80%85%20R9000P" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=%E6%8B%AF%E6%95%91%E8%80%85%20R9000P" target="_blank" rel="noopener">看测评</a></div>
+    </div>
+
+    <div class="hw rv" data-b="b4" data-u="game study">
+      <div class="hw-top"><div><h4>ROG 幻14（R9 + RTX4060）</h4><div class="price">¥11000–13000</div></div><span class="rate b">B+</span></div>
+      <div class="spec">R9-8945HS · RTX 4060 · 1.5kg · 2.8K 120Hz</div>
+      <div class="note">把游戏本性能塞进轻薄本身材，带去教室不违和。扣分项：ROG 的灯控和性能调度软件是 Windows 专属，Linux 下要靠社区工具（asusctl）替代。</div>
+      <div class="tags"><i>轻薄游戏本</i><i>灯控需折腾</i><i>asusctl</i></div>
+      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=ROG%20%E5%B9%BB14" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=ROG%20%E5%B9%BB14" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=ROG%20%E5%B9%BB14" target="_blank" rel="noopener">看测评</a></div>
+    </div>
+
+    <div class="hw rv" data-b="b4" data-u="dev study">
+      <div class="hw-top"><div><h4>Framework 13（AMD 版）</h4><div class="price">¥6500+（需代购）</div></div><span class="rate s">S</span></div>
+      <div class="spec">锐龙 7040/AI 300 系 · 模块化接口 · 全机可拆修</div>
+      <div class="note">官方把 Linux 当一等公民：每个零件可更换、接口是磁吸模块、维修手册全公开。极客的浪漫，缺点是大陆没有官方渠道，得代购。</div>
+      <div class="tags"><i>官方支持 Linux</i><i>模块化</i><i>可维修</i></div>
+      <div class="hw-links"><a href="https://frame.work" target="_blank" rel="noopener">官网</a><a href="https://s.taobao.com/search?q=Framework%20%E7%AC%94%E8%AE%B0%E6%9C%AC" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=Framework%20%E7%AC%94%E8%AE%B0%E6%9C%AC" target="_blank" rel="noopener">看测评</a></div>
+    </div>
+
+    <div class="hw rv" data-b="b2" data-u="used study">
+      <div class="hw-top"><div><h4>联想 小新 Air 14（上代锐龙清仓）</h4><div class="price">¥3000–3600</div></div><span class="rate a">A</span></div>
+      <div class="spec">锐龙 5/7 7735HS 等 · 16G · 1080P/2.2K</div>
+      <div class="note">新款发布后老款清仓，价格腰斩但性能够用。捡漏逻辑：买「上代锐龙核显本」，永远比买「本代低配本」划算。</div>
+      <div class="tags"><i>清仓捡漏</i><i>核显免驱</i><i>轻薄</i></div>
+      <div class="hw-links"><a href="https://search.jd.com/Search?keyword=%E5%B0%8F%E6%96%B0%20Air%2014%20%E9%94%90%E9%BE%99" target="_blank" rel="noopener">京东搜</a><a href="https://s.taobao.com/search?q=%E5%B0%8F%E6%96%B0%20Air%2014%20%E9%94%90%E9%BE%99" target="_blank" rel="noopener">淘宝搜</a><a href="https://search.smzdm.com/?c=home&s=%E5%B0%8F%E6%96%B0%20Air%2014" target="_blank" rel="noopener">看测评</a></div>
+    </div>
+
+  </div>
+  <p class="center rv" id="noresult" style="display:none;margin-top:36px;color:#6e6e73;">这个组合暂时没有推荐——放宽一档预算，或者换个用途试试。</p>
+  <div class="legend rv">
+    <span>评级说明：</span>
+    <span><b class="rate s">S</b> 驱动全开源，闭眼买</span>
+    <span><b class="rate a">A / A+</b> 开箱即用或一键装驱动</span>
+    <span><b class="rate b">B</b> 能用，但个别功能要折腾</span>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2 class="rv">避雷区：这些别碰</h2>
+  <div class="grid2" style="margin-top:26px;">
+    <div class="card warn rv">
+      <span class="pill red">MacBook（M 系列芯片）</span>
+      <p>Asahi Linux 项目让 Apple Silicon 跑 Linux 成为可能，但至今是「能跑的实验品」：扬声器、麦克风、外接显示等都有坑。<b>想正经用 Linux，别买 MacBook 当主力机。</b>预算够到 7000，上面那台 Framework 或拯救者都更香。</p>
+    </div>
+    <div class="card warn rv">
+      <span class="pill red">骁龙 X Elite 轻薄本</span>
+      <p>Surface Laptop 7 等 Windows on ARM 机型续航诱人，但 ARM 版 Linux 的支持还在早期，装不上或装上一堆外设不工作是常态。看到「骁龙本」三个字，绕着走。</p>
+    </div>
+    <div class="card warn rv">
+      <span class="pill red">博通网卡的老机型</span>
+      <p>部分老款 MacBook 和旧笔记本用博通（Broadcom）网卡，Linux 下 Wi-Fi 折腾到怀疑人生。救法也有：30 块买张 Intel AX210 网卡自己换上，或者先查清楚网卡型号再下单。</p>
+    </div>
+    <div class="card warn rv">
+      <span class="pill red">线下电脑城 & 杂牌「高配低价」</span>
+      <p>这个坑和 Linux 无关，和人性有关。杂牌机的屏幕、内存、固态全是缩水重灾区，驱动也没人管。认准京东自营 / 品牌官方店，贵一百块买的是售后。</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec center"><div class="wrap">
+  <h2 class="rv">电脑到手了？<br><span class="grad-text">下一步在这里。</span></h2>
+  <div style="margin-top:24px;" class="rv">
+    <a class="btn" href="guide.html">开始装系统</a>
+    <a class="btn-ghost" href="quiz.html">先测本命发行版 &gt;</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="legal">* 机型与价格为人工整理的参考信息（截至 2026 年 7 月），电子产品价格波动快，请以电商平台实时页面为准；兼容性评级基于社区普遍反馈，个案差异欢迎到 <a href="https://github.com/Huanuyn1/Linuxedu.space" target="_blank" rel="noopener">GitHub 仓库</a>补充。角色形象版权归 Bushiroad 所有，本页面为非营利粉丝二创。</div>
+  <div class="footer-bar"><span><a href="index.html">← 返回首页</a></span><span>用 ❤️ 与 ¥0 构建</span></div>
+</div></footer>
+
+<script>
+const io = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+const cards = document.querySelectorAll('.hw');
+const noresult = document.getElementById('noresult');
+let fb = 'all', fu = 'all';
+
+function applyFilter(){
+  let shown = 0;
+  cards.forEach(c => {
+    const okB = fb === 'all' || c.dataset.b === fb;
+    const okU = fu === 'all' || c.dataset.u.split(' ').includes(fu);
+    c.classList.toggle('hw-hide', !(okB && okU));
+    if (okB && okU) shown++;
+  });
+  noresult.style.display = shown ? 'none' : 'block';
+}
+
+document.querySelectorAll('.fchip[data-b]').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.fchip[data-b]').forEach(x => x.classList.remove('on'));
+  b.classList.add('on'); fb = b.dataset.b; applyFilter();
+}));
+document.querySelectorAll('.fchip[data-u]').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.fchip[data-u]').forEach(x => x.classList.remove('on'));
+  b.classList.add('on'); fu = b.dataset.u; applyFilter();
+}));
+</script>
+</body>
+</html>

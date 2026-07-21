@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linux 黑话翻译器 - 人话版社区词典</title>
+<meta name="description" content="可搜索的 Linux 黑话词典：发行版、滚动更新、AUR、sudo、炼丹、Ricing……社区帖子从此看得懂。">
+<meta property="og:title" content="Linux 黑话翻译器 - 人话版社区词典">
+<meta property="og:description" content="可搜索的 Linux 黑话词典：发行版、滚动更新、AUR、sudo、炼丹、Ricing……社区帖子从此看得懂。">
+<meta property="og:image" content="https://linuxedu-space.pages.dev/img/tux.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐧</text></svg>">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.jgroup{margin-top:40px;}
+.jgroup>h3{font-size:20px;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.jgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+@media(max-width:760px){.jgrid{grid-template-columns:1fr;}}
+.term{background:#fff;border-radius:14px;padding:18px 20px;box-shadow:0 3px 16px rgba(0,0,0,.04);}
+.term b{font-size:16px;display:block;margin-bottom:6px;}
+.term b i{font-style:normal;font-size:12px;color:var(--text-2);font-weight:500;margin-left:8px;}
+.term p{font-size:14px;color:var(--text-2);line-height:1.7;}
+.j-hide{display:none !important;}
+</style>
+</head>
+<body>
+
+<nav class="topnav"><div class="topnav-in">
+  <div class="logo"><a href="index.html"><img src="img/tux.png" alt="">Linux 高校专场</a></div>
+  <div class="links">
+    <a href="index.html">首页</a>
+    <a href="quiz.html">小测试</a>
+    <a href="guide.html">上路指南</a>
+    <a href="apps.html">软件对照</a>
+    <a href="honest.html">避坑指南</a>
+    <a href="cheatsheet.html">小抄卡</a>
+    <a href="resources.html">资源</a>
+    <a href="hardware.html">硬件</a>
+    <a href="poster.html">海报</a>
+    <a href="jargon.html" class="on">黑话</a>
+  </div>
+</div></nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <p class="kicker">Jargon Buster</p>
+    <h1>黑话翻译器。</h1>
+    <p class="lead">社区帖子里的每个词，这里都有人话版。搜一下，秒懂。</p>
+    <div style="margin-top:28px;"><input class="cmd-search" id="search" type="search" placeholder="搜索黑话，比如：AUR / 炼丹 / sudo / 滚动更新…"></div>
+  </div>
+</header>
+
+<section class="sec" style="padding-top:8px;"><div class="wrap">
+  <div class="host rv">
+    <img src="img/char/arisa.png" alt="市谷有咲">
+    <div>
+      <div class="q">「连这些词都不懂还敢逛论坛？……真拿你没办法，本小姐亲自给你翻译。」</div>
+      <div class="who">市谷有咲 · Arch Linux 用户 · 本页翻译官</div>
+      <p>遇到不懂的词先搜这里。搜不到的话，大概率是它在耍你，别理它。</p>
+    </div>
+  </div>
+
+  <div class="jgroup rv" data-g>
+    <h3>🐣 入门概念</h3>
+    <div class="jgrid">
+      <div class="term" data-k="发行版 distro 系统 ubuntu arch debian fedora"><b>发行版<i>Distro</i></b><p>Linux 的「品牌套餐」：同一个内核，配上不同的软件、桌面和理念打包出售。Ubuntu、Arch、Debian 都是发行版——就像同样的发动机，装进了不同品牌的车。</p></div>
+      <div class="term" data-k="内核 kernel linux 核心"><b>内核<i>Kernel</i></b><p>系统真正的核心，负责跟硬件对话。你平时说的「Linux」严格来说只是它，平时用的完整系统其实是「内核 + 一堆软件」的组合。</p></div>
+      <div class="term" data-k="桌面环境 de gnome kde xfce 界面"><b>桌面环境<i>DE</i></b><p>你看到的桌面、任务栏、设置中心的总和。GNOME 像 macOS，KDE 功能多到像瑞士军刀，Xfce 轻快适合老电脑。同一个发行版可以换着用。</p></div>
+      <div class="term" data-k="包管理器 apt pacman dnf 安装软件"><b>包管理器<i>Package Manager</i></b><p>Linux 的应用商店 + 自动更新二合一，不过是命令行版的。一行命令装软件，还自动处理依赖。各家的叫法：Ubuntu 用 apt，Arch 用 pacman，Fedora 用 dnf。</p></div>
+      <div class="term" data-k="软件仓库 仓库 repo 源"><b>软件仓库 / 源<i>Repo</i></b><p>发行版官方维护的软件大超市，包管理器从这里进货。说它「官方」是因为里面的软件都经过审核，比在网页上乱下安装包安全得多。</p></div>
+      <div class="term" data-k="镜像站 mirror 换源 清华 tuna 中科大"><b>镜像站<i>Mirror</i></b><p>软件仓库在国内的「分店」。默认源在国外下载慢，换成清华、中科大等镜像站，装软件速度起飞。换源是装完系统的第一课。</p></div>
+      <div class="term" data-k="滚动更新 rolling 滚挂 更新"><b>滚动更新<i>Rolling Release</i></b><p>没有「大版本」，系统天天小步快跑，软件永远最新。优点是新鲜，代价是偶尔会「滚挂」——更新完出毛病。Arch 就是滚动派掌门。</p></div>
+      <div class="term" data-k="lts 长期支持 稳定版"><b>LTS<i>长期支持版</i></b><p>追求稳定的版本策略：一个版本官方维护 3～5 年，只修 bug 不追新。求稳的同学认准 LTS 三个字母，比如 Ubuntu 24.04 LTS。</p></div>
+      <div class="term" data-k="live usb u盘 试用 启动盘"><b>Live USB<i>试用 U 盘</i></b><p>把系统装到 U 盘里开机就跑，不碰硬盘。买电脑、装系统前的「试驾」神器：先在 Live 模式里试试 Wi-Fi、触板好不好使，再决定装不装。</p></div>
+      <div class="term" data-k="基于 based on 血统 下游"><b>基于 / 血统<i>Based on</i></b><p>「Mint 基于 Ubuntu，Ubuntu 基于 Debian」——发行版也有族谱。基于谁，就继承谁的软件仓库和脾气，所以查教程时血统比名字更重要。</p></div>
+    </div>
+  </div>
+
+  <div class="jgroup rv" data-g>
+    <h3>⌨️ 命令行黑话</h3>
+    <div class="jgrid">
+      <div class="term" data-k="终端 terminal shell bash zsh 命令行"><b>终端 / Shell<i>Terminal / Bash</i></b><p>终端是那个黑窗口，Shell 是里面听你指挥的「管家」（Bash、Zsh 都是 Shell 的品种）。日常混用没问题，别在考试里较真。</p></div>
+      <div class="term" data-k="sudo 管理员 权限"><b>sudo</b><p>「以管理员身份执行」。相当于 Windows 的右键管理员运行。经典梗：说不通的人，在前面加个 sudo 就通了——sudo 帮我带饭。</p></div>
+      <div class="term" data-k="root 超级用户 管理员"><b>root</b><p>系统里的超级管理员，权力大无边，也能一句话把系统扬了。平时用普通用户 + sudo 就好，别图省事常驻 root。</p></div>
+      <div class="term" data-k="家目录 home 波浪号 ~"><b>家目录<i>~</i></b><p>你的个人文件夹，相当于 Windows 的「用户目录」，用 ~ 表示。你的文档、配置、黑历史都在这。备份先备它。</p></div>
+      <div class="term" data-k="管道 pipe 竖线"><b>管道<i>|</i></b><p>把前一个命令的输出塞给后一个命令当输入，像流水线接力。例：ps aux | grep qq ——先列出全部进程，再筛出带 qq 的行。</p></div>
+      <div class="term" data-k="重定向 大于号 输出"><b>重定向<i>&gt; 和 &gt;&gt;</i></b><p>把命令的输出写进文件：> 是覆盖写，>> 是追加写。例：echo "我爱 Linux" > 日记.txt。</p></div>
+      <div class="term" data-k="守护进程 daemon 服务 service 后台"><b>守护进程<i>Daemon</i></b><p>在后台默默干活的程序，比如 Web 服务、打印服务。名字听着吓人，其实是因为英文 daemon 原意是「守护精灵」，不是恶魔。</p></div>
+      <div class="term" data-k="chmod 777 权限 执行"><b>chmod 777</b><p>给文件「所有人都能读写执行」的权限。社区著名反面教材：出问题就 777 是莽夫行为，正确做法是搞清楚谁需要什么权限。</p></div>
+      <div class="term" data-k="tty 终端 黑屏 快捷键"><b>TTY</b><p>纯命令行的全屏终端。图形界面卡死时按 Ctrl+Alt+F3 能进 TTY 救场，按 Ctrl+Alt+F2（或 F1）切回图形界面。记住它，关键时刻救命。</p></div>
+    </div>
+  </div>
+
+  <div class="jgroup rv" data-g>
+    <h3>🏘️ 社区黑话</h3>
+    <div class="jgrid">
+      <div class="term" data-k="aur arch 用户仓库 软件包"><b>AUR<i>Arch 用户仓库</i></b><p>Arch 用户自发上传的软件仓库，十万软件包什么都有。是 Arch 最大的魅力，也要求你留个心眼——毕竟是网友上传的，装前瞄一眼评论。</p></div>
+      <div class="term" data-k="ppa ubuntu 第三方源"><b>PPA</b><p>Ubuntu 的第三方软件源，用来装官方仓库没有（或太旧）的软件。相当于给应用商店加了个「代购渠道」。</p></div>
+      <div class="term" data-k="rtfm 读手册 wiki 提问"><b>RTFM</b><p>「Read The Fine Manual」——去读手册！社区回答伸手党的经典回复。礼貌版说法是「这个在 Arch Wiki 上有哦」。提问前先搜索，是社区第一课。</p></div>
+      <div class="term" data-k="distro hopping 换发行版 跳槽"><b>Distro Hopping</b><p>发行版跳跃症：不停地换系统尝鲜，Mint 用两周换 Fedora，再换 Arch……老玩家的必经之路。放心，大部分人会最终在某一站安家。</p></div>
+      <div class="term" data-k="滚挂 滚动更新 翻车"><b>滚挂</b><p>滚动更新翻车的简称：一更新，系统出毛病了。应对：更新前看一眼公告，装好快照工具，滚挂了也能十秒回滚。</p></div>
+      <div class="term" data-k="日用 主力机 daily driver"><b>日用</b><p>把 Linux 当主力系统天天用。「这个发行版能不能日用」=「靠不靠谱，能不能托付四年」。</p></div>
+      <div class="term" data-k="炼丹 训练 ai 模型 cuda"><b>炼丹</b><p>训练 AI 模型的戏称：参数是药材，显卡是丹炉，loss 不降就是丹炸了。Linux + NVIDIA 是炼丹界标准道观。</p></div>
+      <div class="term" data-k="ricing 美化 桌面 装修"><b>Ricing</b><p>桌面美化装修：换主题、调毛玻璃、配状态栏，把桌面打扮得比 macOS 还好看。源自汽车圈的「爆改」，是 Linux 玩家的重要快乐源泉。</p></div>
+      <div class="term" data-k="btw i use arch 梗 arch"><b>「BTW, I use Arch」</b><p>「顺便一提，我用 Arch」——调侃 Arch 用户逢人必提的梗。你在本站首页看到的有咲同学就是典型患者。</p></div>
+      <div class="term" data-k="foss 自由软件 开源 gpl copyleft"><b>FOSS / 自由软件</b><p>Free and Open Source Software。自由软件的「自由」是自由的自由，不是免费——虽然通常也免费。GPL 协议还带「传染性」：用了我的代码，你的也得开源。</p></div>
+      <div class="term" data-k="上游 upstream 下游 补丁"><b>上游 / 下游<i>Upstream</i></b><p>软件的原始作者是上游，打包改造的发行版是下游。「报 bug 要报给上游」= 找亲妈告状，别找错人。</p></div>
+      <div class="term" data-k="企鹅 tux 企鹅人 吉祥物"><b>企鹅 / Tux</b><p>Linux 吉祥物，一只憨憨的企鹅。自称「企鹅人」的，就是 Linux 用户的身份证。来源：Linus 本人被企鹅咬过（是真的）。</p></div>
+    </div>
+  </div>
+
+  <div class="jgroup rv" data-g>
+    <h3>🔧 装机与硬件</h3>
+    <div class="jgrid">
+      <div class="term" data-k="uefi bios 启动 固件"><b>UEFI / BIOS</b><p>开机最先跑的固件程序，负责把系统叫醒。UEFI 是 BIOS 的现代版。装系统、关 Secure Boot 都在它的设置界面里操作（开机猛按 F2/Del/F12）。</p></div>
+      <div class="term" data-k="secure boot 安全启动 关闭"><b>Secure Boot<i>安全启动</i></b><p>UEFI 的一项安全检查，有时会拦住 Linux 启动盘。装系统卡在这一步就去 BIOS 里把它关掉——这是新手装机最高频的坎。</p></div>
+      <div class="term" data-k="分区 partition 挂载 双系统"><b>分区 / 挂载</b><p>把硬盘切成几块用（系统、数据分开），「挂载」就是把某块分区接到目录树的某个位置。双系统就是给两个系统各分一块地盘。</p></div>
+      <div class="term" data-k="双系统 dual boot windows 共存"><b>双系统<i>Dual Boot</i></b><p>一台电脑装两个系统，开机时三秒选一个。Windows 当游戏厅，Linux 当书房，成年人不做选择。新手上路最稳妥的姿势。</p></div>
+      <div class="term" data-k="核显 独显 显卡 nvidia amd 驱动"><b>核显 / 独显</b><p>核显长在 CPU 里，省电够用，Linux 下驱动开源免折腾；独显是独立显卡，性能强适合游戏和炼丹，NVIDIA 的驱动是闭源的（但现在一键能装）。</p></div>
+      <div class="term" data-k="开源驱动 闭源驱动 nouveau nvidia"><b>开源 / 闭源驱动</b><p>Intel、AMD 显卡驱动是开源的，系统自带；NVIDIA 官方驱动闭源，要单独装。开源替代品 Nouveau 性能一般，打游戏还是用官方驱动。</p></div>
+      <div class="term" data-k="swap 交换分区 虚拟内存"><b>swap<i>交换分区</i></b><p>硬盘上划出一块当「应急内存」，内存不够时救场，也是休眠功能的存放点。内存 16G 以上给 4～8G 意思一下就行。</p></div>
+      <div class="term" data-k="刷机 变砖 重装 快照 timeshift"><b>快照 / 后悔药<i>Timeshift</i></b><p>给系统拍照片存档，折腾坏了十秒回滚到昨天。和「黑话」没关系，但每个老玩家都会拍着大腿劝你装一个。</p></div>
+    </div>
+  </div>
+
+  <p class="center rv" id="noresult" style="display:none;margin-top:40px;color:#6e6e73;">词典里还没有这个词——去 <a href="https://github.com/Huanuyn1/Linuxedu.space" target="_blank" rel="noopener">GitHub 仓库</a>提个 Issue，我们给它收录进来。</p>
+</div></section>
+
+<section class="sec center"><div class="wrap">
+  <h2 class="rv">黑话都会了，<br><span class="grad-text">命令也该会两手。</span></h2>
+  <div style="margin-top:24px;" class="rv">
+    <a class="btn" href="cheatsheet.html">去背小抄卡</a>
+    <a class="btn-ghost" href="guide.html">直接开始上路 &gt;</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="legal">* 释义力求人话而非严谨，学术定义请以各官方文档为准。角色形象版权归 Bushiroad 所有，本页面为非营利粉丝二创。</div>
+  <div class="footer-bar"><span><a href="index.html">← 返回首页</a></span><span>用 ❤️ 与 ¥0 构建</span></div>
+</div></footer>
+
+<script>
+const io = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+const search = document.getElementById('search');
+const terms = document.querySelectorAll('.term');
+const groups = document.querySelectorAll('[data-g]');
+const noresult = document.getElementById('noresult');
+search.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  let shown = 0;
+  terms.forEach(t => {
+    const hit = !q || (t.dataset.k + ' ' + t.textContent).toLowerCase().includes(q);
+    t.classList.toggle('j-hide', !hit);
+    if (hit) shown++;
+  });
+  groups.forEach(g => {
+    const any = g.querySelectorAll('.term:not(.j-hide)').length > 0;
+    g.classList.toggle('j-hide', !any);
+  });
+  noresult.style.display = shown ? 'none' : 'block';
+});
+</script>
+</body>
+</html>
