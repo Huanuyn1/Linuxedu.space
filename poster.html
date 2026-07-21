@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>安利海报生成器 - 为你的学校定制一张</title>
-<meta name="description" content="输入校名和专业，一键生成「学什么专业，Linux 都专业」定制安利海报，可下载分享。">
+<meta name="description" content="输入校名和专业，一键生成「学什么专业，Linux 都专业」定制安利海报，AI 精绘背景，可下载分享。">
 <meta property="og:title" content="安利海报生成器 - 为你的学校定制一张">
 <meta property="og:description" content="输入校名和专业，一键生成「学什么专业，Linux 都专业」定制安利海报，可下载分享。">
 <meta property="og:image" content="https://linuxedu-space.pages.dev/img/tux.png">
@@ -17,10 +17,12 @@
 .pfield label{display:block;font-size:13.5px;font-weight:700;margin-bottom:8px;}
 .pfield input[type=text]{width:100%;background:#f5f5f7;border:2px solid transparent;border-radius:12px;padding:12px 14px;font-size:15px;font-family:inherit;color:var(--text);outline:none;transition:border .18s;}
 .pfield input[type=text]:focus{border-color:var(--blue);background:#fff;}
-.swatches{display:flex;gap:10px;flex-wrap:wrap;}
-.sw{width:44px;height:44px;border-radius:12px;cursor:pointer;border:3px solid transparent;transition:transform .15s,border .15s;}
-.sw:hover{transform:scale(1.08);}
-.sw.on{border-color:var(--text);}
+.bgs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.bgth{border:3px solid transparent;border-radius:12px;overflow:hidden;cursor:pointer;padding:0;background:none;transition:all .15s;position:relative;}
+.bgth img{display:block;width:100%;height:88px;object-fit:cover;}
+.bgth span{position:absolute;left:0;right:0;bottom:0;font-size:11px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.62));padding:10px 0 5px;text-align:center;}
+.bgth:hover{transform:scale(1.04);}
+.bgth.on{border-color:var(--blue);}
 .chars{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
 .chr{border:3px solid transparent;border-radius:12px;background:#f5f5f7;cursor:pointer;padding:6px 4px 4px;text-align:center;transition:all .15s;}
 .chr img{height:52px;width:auto;}
@@ -54,7 +56,7 @@
   <div class="wrap">
     <p class="kicker">Poster Studio</p>
     <h1>安利海报，<br><span class="grad-text">为你的学校定制一张。</span></h1>
-    <p class="lead">填上校名和专业，选个配色和形象，下载去贴在宿舍楼道、社团招新摊位和朋友圈。</p>
+    <p class="lead">填上校名和专业，选一张手绘风矢量背景和形象大使，下载去贴在宿舍楼道、社团招新摊位和朋友圈。</p>
   </div>
 </header>
 
@@ -64,7 +66,7 @@
     <div>
       <div class="q">「宣传工作就交给我吧！让每一位同学都知道——Linux 也可以闪闪发光！」</div>
       <div class="who">丸山彩 · Linux Mint 用户 · 宣传部长</div>
-      <p>右边实时预览。所有图片在你浏览器本地生成，不会上传任何东西。</p>
+      <p>右边实时预览。所有图片在你浏览器本地合成，不会上传任何东西。</p>
     </div>
   </div>
 
@@ -88,14 +90,14 @@
         </datalist>
       </div>
       <div class="pfield">
-        <label>配色主题</label>
-        <div class="swatches" id="swatches">
-          <div class="sw on" data-t="0" style="background:linear-gradient(135deg,#0090ff,#a259ff,#ff6482);"></div>
-          <div class="sw" data-t="1" style="background:linear-gradient(135deg,#17171a,#3d3d44);"></div>
-          <div class="sw" data-t="2" style="background:linear-gradient(135deg,#0f4c81,#1793d1);"></div>
-          <div class="sw" data-t="3" style="background:linear-gradient(135deg,#0f766e,#34d399);"></div>
-          <div class="sw" data-t="4" style="background:linear-gradient(135deg,#be123c,#fb7185);"></div>
-          <div class="sw" data-t="5" style="background:linear-gradient(135deg,#d97706,#fbbf24);"></div>
+        <label>背景画风</label>
+        <div class="bgs" id="bgs">
+          <button class="bgth on" data-t="0"><img src="img/bg/campus.svg" alt=""><span>云端校园</span></button>
+          <button class="bgth" data-t="1"><img src="img/bg/pixel.svg" alt=""><span>像素开学季</span></button>
+          <button class="bgth" data-t="2"><img src="img/bg/terminal.svg" alt=""><span>深夜终端</span></button>
+          <button class="bgth" data-t="3"><img src="img/bg/aurora.svg" alt=""><span>极光星夜</span></button>
+          <button class="bgth" data-t="4"><img src="img/bg/watercolor.svg" alt=""><span>水彩自习室</span></button>
+          <button class="bgth" data-t="5"><img src="img/bg/memphis.svg" alt=""><span>波普撞色</span></button>
         </div>
       </div>
       <div class="pfield">
@@ -118,13 +120,13 @@
       </div>
     </div>
     <div class="preview">
-      <canvas id="cv" width="900" height="1200"></canvas>
+      <canvas id="cv" width="1024" height="1536"></canvas>
     </div>
   </div>
 </div></section>
 
 <footer><div class="wrap">
-  <div class="legal">* 海报生成与下载全部在你的浏览器本地完成。角色形象版权归 Bushiroad 所有，生成的海报仅限非营利安利用途，张贴请遵守校规。Tux 形象由 Larry Ewing 创作。</div>
+  <div class="legal">* 海报合成与下载全部在你的浏览器本地完成；背景图为本站原创矢量插画，任意放大不糊。角色形象版权归 Bushiroad 所有，生成的海报仅限非营利安利用途，张贴请遵守校规。Tux 形象由 Larry Ewing 创作。</div>
   <div class="footer-bar"><span><a href="index.html">← 返回首页</a></span><span>用 ❤️ 与 ¥0 构建</span></div>
 </div></footer>
 
@@ -136,15 +138,17 @@ document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
 const cv = document.getElementById('cv');
 const ctx = cv.getContext('2d');
-const W = 900, H = 1200;
+const W = 1024, H = 1536;
+const FONT = '"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif';
 
+/* 每个背景一套文字配色：title 主标语 / accent 强调行 / shadow 文字阴影 / pill 胶囊底色 / pillText 胶囊字色 / ticket 底栏底色 / ticketText 底栏字色 */
 const THEMES = [
-  {bg:["#0090ff","#a259ff","#ff6482"], sub:"rgba(255,255,255,.92)"},
-  {bg:["#17171a","#3d3d44","#17171a"], sub:"#ffd60a"},
-  {bg:["#0f4c81","#1793d1","#0f4c81"], sub:"rgba(255,255,255,.92)"},
-  {bg:["#0f766e","#34d399","#0f766e"], sub:"rgba(255,255,255,.92)"},
-  {bg:["#be123c","#fb7185","#be123c"], sub:"rgba(255,255,255,.92)"},
-  {bg:["#d97706","#fbbf24","#d97706"], sub:"rgba(255,255,255,.95)"}
+  {img:'img/bg/campus.svg',     title:'#ffffff', accent:'#ffe0f6', shadow:'rgba(30,20,80,.45)',  pill:'rgba(20,16,60,.38)',  pillText:'#ffffff', ticket:'rgba(255,255,255,.94)', ticketText:'#1d1d1f'},
+  {img:'img/bg/pixel.svg',      title:'#ffffff', accent:'#ffe169', shadow:'rgba(10,30,90,.55)',  pill:'rgba(8,30,90,.42)',   pillText:'#ffffff', ticket:'rgba(255,255,255,.94)', ticketText:'#1d1d1f'},
+  {img:'img/bg/terminal.svg',   title:'#f2fff4', accent:'#4ade80', shadow:'rgba(0,0,0,.6)',      pill:'rgba(0,0,0,.45)',      pillText:'#d8ffe0', ticket:'rgba(8,14,10,.86)',     ticketText:'#b8f5c8'},
+  {img:'img/bg/aurora.svg',     title:'#ffffff', accent:'#d9c8ff', shadow:'rgba(20,8,60,.55)',   pill:'rgba(20,10,60,.42)',   pillText:'#ffffff', ticket:'rgba(14,10,36,.85)',    ticketText:'#e6defc'},
+  {img:'img/bg/watercolor.svg', title:'#134e4a', accent:'#0f766e', shadow:'rgba(255,255,255,.8)',pill:'rgba(255,255,255,.68)',pillText:'#134e4a', ticket:'rgba(255,255,255,.9)',  ticketText:'#134e4a'},
+  {img:'img/bg/memphis.svg',    title:'#1d1d1f', accent:'#7c3aed', shadow:'rgba(255,255,255,.75)',pill:'rgba(255,255,255,.7)',pillText:'#1d1d1f', ticket:'rgba(29,29,31,.92)',    ticketText:'#ffffff'}
 ];
 
 const IMG_SRC = {
@@ -153,97 +157,136 @@ const IMG_SRC = {
   kokoro:"img/char/kokoro.png", maya:"img/char/maya.png", aya:"img/char/aya.png", ran:"img/char/ran.png"
 };
 const IMGS = {};
-for (const k in IMG_SRC){
-  IMGS[k] = new Image();
-  IMGS[k].src = IMG_SRC[k];
-  IMGS[k].onload = draw;
-}
+for (const k in IMG_SRC){ IMGS[k] = new Image(); IMGS[k].src = IMG_SRC[k]; IMGS[k].onload = draw; }
+const BGS = THEMES.map(t => { const i = new Image(); i.onload = draw; i.src = t.img; return i; });
 
 let theme = 0, charKey = 'tux';
 const schoolEl = document.getElementById('school');
 const majorEl = document.getElementById('major');
-const FONT = '"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif';
 
 function fitFont(text, maxWidth, startPx, weight){
   let px = startPx;
   ctx.font = `${weight} ${px}px ${FONT}`;
-  while (ctx.measureText(text).width > maxWidth && px > 20){
-    px -= 4;
-    ctx.font = `${weight} ${px}px ${FONT}`;
-  }
+  while (ctx.measureText(text).width > maxWidth && px > 18){ px -= 4; ctx.font = `${weight} ${px}px ${FONT}`; }
   return px;
+}
+function roundRect(x, y, w, h, r){
+  ctx.beginPath();
+  ctx.moveTo(x+r, y);
+  ctx.arcTo(x+w, y, x+w, y+h, r); ctx.arcTo(x+w, y+h, x, y+h, r);
+  ctx.arcTo(x, y+h, x, y, r); ctx.arcTo(x, y, x+w, y, r);
+  ctx.closePath();
+}
+function pill(text, cy, startPx, bg, fg){
+  ctx.font = `700 ${startPx}px ${FONT}`;
+  const tw = ctx.measureText(text).width;
+  const w = tw + 64, h = startPx + 34, x = (W-w)/2, y = cy - h/2;
+  ctx.fillStyle = bg;
+  roundRect(x, y, w, h, h/2); ctx.fill();
+  ctx.fillStyle = fg;
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(text, W/2, cy+2);
+}
+/* 白边贴纸：先画白色剪影描边，再画本体 */
+function drawSticker(img, cx, baseY, ih){
+  const iw = ih * img.naturalWidth / img.naturalHeight;
+  const x = cx - iw/2, y = baseY - ih;
+  const r = Math.max(9, Math.round(ih*0.028)), m = r + 6;
+  const off = document.createElement('canvas');
+  off.width = iw + m*2; off.height = ih + m*2;
+  const o = off.getContext('2d');
+  o.drawImage(img, m, m, iw, ih);
+  o.globalCompositeOperation = 'source-in';
+  o.fillStyle = '#fff';
+  o.fillRect(0, 0, off.width, off.height);
+  ctx.save();
+  ctx.shadowColor = 'rgba(0,0,0,.35)'; ctx.shadowBlur = 26; ctx.shadowOffsetY = 12;
+  for (let a = 0; a < 18; a++){
+    const dx = Math.cos(a/18*Math.PI*2)*r, dy = Math.sin(a/18*Math.PI*2)*r;
+    ctx.drawImage(off, x - m + dx, y - m + dy);
+  }
+  ctx.restore();
+  ctx.drawImage(img, x, y, iw, ih);
 }
 
 function draw(){
-  const t = THEMES[theme];
-  // 背景
-  const g = ctx.createLinearGradient(0, 0, W, H);
-  g.addColorStop(0, t.bg[0]); g.addColorStop(.5, t.bg[1]); g.addColorStop(1, t.bg[2]);
-  ctx.fillStyle = g;
-  ctx.fillRect(0, 0, W, H);
-  // 装饰圆
-  ctx.fillStyle = "rgba(255,255,255,.07)";
-  ctx.beginPath(); ctx.arc(W*0.88, H*0.10, 210, 0, 7); ctx.fill();
-  ctx.beginPath(); ctx.arc(W*0.06, H*0.62, 260, 0, 7); ctx.fill();
-  ctx.fillStyle = "rgba(255,255,255,.05)";
-  ctx.beginPath(); ctx.arc(W*0.75, H*0.85, 300, 0, 7); ctx.fill();
-
-  // 顶栏
-  ctx.fillStyle = "rgba(255,255,255,.95)";
-  ctx.font = `700 30px ${FONT}`;
-  ctx.textAlign = "left"; ctx.textBaseline = "middle";
-  if (IMGS.tux.complete && IMGS.tux.naturalWidth){
-    ctx.drawImage(IMGS.tux, 60, 48, 46, 46);
+  const t = THEMES[theme], bg = BGS[theme];
+  // 矢量背景全幅绘制
+  if (bg.complete && bg.naturalWidth){
+    ctx.drawImage(bg, 0, 0, W, H);
+  } else {
+    ctx.fillStyle = '#888'; ctx.fillRect(0, 0, W, H);
   }
-  ctx.fillText("Linux 高校专场", 122, 74);
-  ctx.textAlign = "right";
-  ctx.font = `600 24px ${FONT}`;
-  ctx.fillStyle = "rgba(255,255,255,.75)";
-  ctx.fillText("¥0（教育优惠价）", W-60, 74);
 
-  // 主标语
-  ctx.textAlign = "center";
-  ctx.fillStyle = "#fff";
-  ctx.font = `800 96px ${FONT}`;
-  ctx.fillText("学什么专业，", W/2, 300);
-  ctx.fillStyle = t.sub;
-  ctx.font = `800 108px ${FONT}`;
-  ctx.fillText("Linux 都专业。", W/2, 424);
+  // 顶部胶囊
+  if (IMGS.tux.complete && IMGS.tux.naturalWidth){
+    ctx.font = `700 30px ${FONT}`;
+    const label = 'Linux 高校专场 · 招新季';
+    const tw = ctx.measureText(label).width;
+    const w = tw + 130, h = 64, x = (W-w)/2, y = 56;
+    ctx.fillStyle = t.pill;
+    roundRect(x, y, w, h, 32); ctx.fill();
+    ctx.drawImage(IMGS.tux, x+26, y+11, 42, 42);
+    ctx.fillStyle = t.pillText;
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.fillText(label, x+84, y+34);
+  }
 
-  // 副标语
-  const school = schoolEl.value.trim() || "你的大学";
+  // 主标语（大字报排法）
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.save();
+  ctx.shadowColor = t.shadow; ctx.shadowBlur = 22; ctx.shadowOffsetY = 6;
+  ctx.fillStyle = t.title;
+  const p1 = fitFont('学什么专业，', W-90, 128, 900);
+  ctx.font = `900 ${p1}px ${FONT}`;
+  ctx.fillText('学什么专业，', W/2, 320);
+  ctx.fillStyle = t.accent;
+  const p2 = fitFont('Linux 都专业。', W-90, 138, 900);
+  ctx.font = `900 ${p2}px ${FONT}`;
+  ctx.fillText('Linux 都专业。', W/2, 320 + p1*0.72 + p2*0.62);
+  ctx.restore();
+
+  // 副标语胶囊
+  const school = schoolEl.value.trim() || '你的大学';
   const major = majorEl.value.trim();
   const sub = major ? `${school} · ${major} 特供` : `${school} 特供`;
-  ctx.fillStyle = "rgba(255,255,255,.95)";
-  const spx = fitFont("「 " + sub + " 」", W-140, 44, 700);
-  ctx.font = `700 ${spx}px ${FONT}`;
-  ctx.fillText("「 " + sub + " 」", W/2, 516);
+  const spx = fitFont('「 ' + sub + ' 」', W-200, 46, 700);
+  pill('「 ' + sub + ' 」', 640, spx, t.pill, t.pillText);
 
-  // 形象
+  // 形象大使（白边贴纸）
   const img = IMGS[charKey];
   if (img && img.complete && img.naturalWidth){
-    const ih = 400;
-    const iw = ih * img.naturalWidth / img.naturalHeight;
-    ctx.save();
-    ctx.shadowColor = "rgba(0,0,0,.3)";
-    ctx.shadowBlur = 34; ctx.shadowOffsetY = 16;
-    ctx.drawImage(img, (W-iw)/2, 940-ih, iw, ih);
-    ctx.restore();
+    drawSticker(img, W/2, 1292, 560);
   }
 
-  // 底栏
-  ctx.fillStyle = "rgba(255,255,255,.92)";
-  ctx.font = `700 30px ${FONT}`;
-  ctx.fillText("高校生活有 Linux，愿望成真。", W/2, 1060);
-  ctx.fillStyle = "rgba(255,255,255,.65)";
-  ctx.font = `500 24px ${FONT}`;
-  ctx.fillText("linuxedu-space.pages.dev", W/2, 1116);
+  // 底栏票根
+  const ty = 1344, th = 128, tx = 56, tw2 = W-112;
+  ctx.fillStyle = t.ticket;
+  roundRect(tx, ty, tw2, th, 22); ctx.fill();
+  // 票根撕线
+  const dashX = tx + tw2*0.66;
+  ctx.save();
+  ctx.strokeStyle = t.ticketText; ctx.globalAlpha = .35; ctx.lineWidth = 2; ctx.setLineDash([8, 9]);
+  ctx.beginPath(); ctx.moveTo(dashX, ty+18); ctx.lineTo(dashX, ty+th-18); ctx.stroke();
+  ctx.restore();
+  ctx.fillStyle = t.ticketText;
+  ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+  ctx.font = `800 33px ${FONT}`;
+  ctx.fillText('高校生活有 Linux，', tx+38, ty+44);
+  ctx.fillText('愿望成真。', tx+38, ty+88);
+  ctx.textAlign = 'center';
+  ctx.font = `600 25px ${FONT}`;
+  ctx.fillText('linuxedu-space.pages.dev', dashX + (tx+tw2-dashX)/2, ty+58);
+  ctx.globalAlpha = .62;
+  ctx.font = `500 20px ${FONT}`;
+  ctx.fillText('搜这个，上车', dashX + (tx+tw2-dashX)/2, ty+94);
+  ctx.globalAlpha = 1;
 }
 
 schoolEl.addEventListener('input', draw);
 majorEl.addEventListener('input', draw);
-document.querySelectorAll('.sw').forEach(s => s.addEventListener('click', () => {
-  document.querySelectorAll('.sw').forEach(x => x.classList.remove('on'));
+document.querySelectorAll('.bgth').forEach(s => s.addEventListener('click', () => {
+  document.querySelectorAll('.bgth').forEach(x => x.classList.remove('on'));
   s.classList.add('on'); theme = +s.dataset.t; draw();
 }));
 document.querySelectorAll('.chr').forEach(c => c.addEventListener('click', () => {
@@ -259,7 +302,6 @@ document.getElementById('download').addEventListener('click', () => {
   a.click();
 });
 
-// 页面字体就绪后再画一次，避免字体未加载
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
 draw();
 </script>
