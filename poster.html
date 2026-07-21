@@ -74,20 +74,11 @@
     <div class="card">
       <div class="pfield">
         <label>学校名称</label>
-        <input type="text" id="school" maxlength="14" placeholder="比如：青岛大学">
+        <input type="text" id="school" maxlength="14" placeholder="你的学校名">
       </div>
       <div class="pfield">
         <label>专业（可选）</label>
-        <input type="text" id="major" maxlength="12" placeholder="比如：微电子科学与工程" list="majors">
-        <datalist id="majors">
-          <option value="计算机科学与技术"></option>
-          <option value="微电子科学与工程"></option>
-          <option value="人工智能"></option>
-          <option value="软件工程"></option>
-          <option value="电子信息工程"></option>
-          <option value="数学与应用数学"></option>
-          <option value="全体专业"></option>
-        </datalist>
+        <input type="text" id="major" maxlength="12" placeholder="你的专业，不填也行">
       </div>
       <div class="pfield">
         <label>背景画风</label>
@@ -150,6 +141,20 @@ const THEMES = [
   {img:'img/bg/watercolor.svg', title:'#134e4a', accent:'#0f766e', shadow:'rgba(255,255,255,.8)',pill:'rgba(255,255,255,.68)',pillText:'#134e4a', ticket:'rgba(255,255,255,.9)',  ticketText:'#134e4a'},
   {img:'img/bg/memphis.svg',    title:'#1d1d1f', accent:'#7c3aed', shadow:'rgba(255,255,255,.75)',pill:'rgba(255,255,255,.7)',pillText:'#1d1d1f', ticket:'rgba(29,29,31,.92)',    ticketText:'#ffffff'}
 ];
+
+/* 形象大使的鼓励语：按角色性格定制，画在底栏票根左侧 */
+const QUOTES = {
+  tux:    {lines:['……（企鹅不会说话，','但它的眼神里全是相信）'], sign:'Tux · 精神支柱'},
+  kasumi: {lines:['一起出发吧——','去寻找闪闪发光心动的 Linux！'], sign:'户山香澄'},
+  arisa:  {lines:['哼，才、才不是特意','来为你加油的呢……笨蛋！'], sign:'市谷有咲'},
+  yukina: {lines:['目标只有一个，那就是顶点。','准备好了就跟我来。'], sign:'凑友希那'},
+  sayo:   {lines:['练习不会背叛你。','命令也一样，一条条积累。'], sign:'冰川纱夜'},
+  ako:    {lines:['觉醒吧！沉睡在终端里的','暗——之——力——量！'], sign:'宇田川亚子'},
+  kokoro: {lines:['让世界充满笑容！','用 Linux 让大家开心起来吧！'], sign:'弦卷心'},
+  maya:   {lines:['ふええ……编译内核什么的，','我、我可以陪你搞通宵！'], sign:'大和麻弥'},
+  aya:    {lines:['闪闪发光才是偶像！','Linux 也要一起发光哦☆'], sign:'丸山彩'},
+  ran:    {lines:['不用急，一如既往，','按自己的步调前进就好。'], sign:'美竹兰'}
+};
 
 const IMG_SRC = {
   tux:"img/tux.png", kasumi:"img/char/kasumi.png", arisa:"img/char/arisa.png",
@@ -270,10 +275,18 @@ function draw(){
   ctx.beginPath(); ctx.moveTo(dashX, ty+18); ctx.lineTo(dashX, ty+th-18); ctx.stroke();
   ctx.restore();
   ctx.fillStyle = t.ticketText;
+  // 形象大使的鼓励语（按角色切换）
+  const q = QUOTES[charKey] || QUOTES.tux;
+  const qMaxW = dashX - tx - 38 - 24;
   ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-  ctx.font = `800 33px ${FONT}`;
-  ctx.fillText('高校生活有 Linux，', tx+38, ty+44);
-  ctx.fillText('愿望成真。', tx+38, ty+88);
+  const qpx = Math.min(fitFont(q.lines[0], qMaxW, 33, 800), fitFont(q.lines[1], qMaxW, 33, 800));
+  ctx.font = `800 ${qpx}px ${FONT}`;
+  ctx.fillText(q.lines[0], tx+38, ty+36);
+  ctx.fillText(q.lines[1], tx+38, ty+36 + qpx*1.18);
+  ctx.globalAlpha = .62;
+  ctx.font = `600 21px ${FONT}`;
+  ctx.fillText(`—— ${q.sign} 为你加油`, tx+38, ty+th-24);
+  ctx.globalAlpha = 1;
   ctx.textAlign = 'center';
   ctx.font = `600 25px ${FONT}`;
   ctx.fillText('linuxedu-space.pages.dev', dashX + (tx+tw2-dashX)/2, ty+58);
