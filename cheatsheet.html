@@ -26,23 +26,38 @@
 .danger{border:2px solid rgba(220,38,38,.28);}
 .danger li b{color:#dc2626;}
 .dnote{font-size:13px;color:var(--text-2);margin-top:12px;}
+/* 打印样式：只留小抄正文，双栏紧凑排版 */
+@media print{
+  .topnav,.page-hero,.host,.qlinks,.cmd-search,.stats,footer,section.center,.rv{opacity:1 !important;transform:none !important;}
+  .topnav,.page-hero,.host,.qlinks,.cmd-search,.stats,footer,section.center,.sec-kicker,.sec-sub,.hero-extra{display:none !important;}
+  body{background:#fff;font-size:12px;}
+  .sec{padding:10px 0;}
+  .cmd-grid{grid-template-columns:repeat(2,1fr) !important;gap:10px;margin-top:10px;}
+  .cmd-card,.combo,.card{box-shadow:none;border:1px solid #d2d2d7;border-radius:10px;padding:12px 14px;break-inside:avoid;}
+  .cmd-card h4{font-size:13.5px;margin-bottom:8px;}
+  .cmd-line{font-size:11.5px;padding:3px 0;}
+  code{background:none;padding:0;}
+  h2{font-size:18px;margin-top:14px;}
+  pre{font-size:11px;padding:10px 12px;background:#f5f5f7;color:#1d1d1f;}
+  a{color:#1d1d1f;text-decoration:none;}
+}
 </style>
 </head>
 <body>
 
 <nav class="topnav"><div class="topnav-in">
-  <div class="logo"><a href="index.html"><img src="img/tux.png" alt="">Linux 高校专场</a></div>
+  <div class="logo"><a href="index"><img src="img/tux.png" alt="">Linux 高校专场</a></div>
   <div class="links">
-    <a href="index.html">首页</a>
-    <a href="quiz.html">小测试</a>
-    <a href="guide.html">上路指南</a>
-    <a href="apps.html">软件对照</a>
-    <a href="honest.html">避坑指南</a>
-    <a href="cheatsheet.html" class="on">小抄卡</a>
-    <a href="resources.html">资源</a>
-    <a href="hardware.html">硬件</a>
-    <a href="poster.html">海报</a>
-    <a href="jargon.html">黑话</a>
+    <a href="index">首页</a>
+    <a href="quiz">小测试</a>
+    <a href="guide">上路指南</a>
+    <a href="apps">软件对照</a>
+    <a href="honest">避坑指南</a>
+    <a href="cheatsheet" class="on">小抄卡</a>
+    <a href="resources">资源</a>
+    <a href="hardware">硬件</a>
+    <a href="poster">海报</a>
+    <a href="jargon">黑话</a>
   </div>
 </div></nav>
 
@@ -64,7 +79,7 @@
 
 <section class="sec" style="padding-top:12px;"><div class="wrap">
   <div class="host rv">
-    <img src="img/char/ako.png" alt="宇田川亚子">
+    <img loading="lazy" decoding="async" src="img/char/ako.webp" alt="宇田川亚子">
     <div>
       <div class="q">「背诵咒文是弱者所为！大魔姬的魔导书，从来都是摊开来用的！」</div>
       <div class="who">宇田川亚子 · Bazzite 用户 · 本页主持</div>
@@ -235,7 +250,7 @@
     </div>
 
   </div>
-  <p class="center rv" id="noresult" style="display:none;margin-top:40px;color:#6e6e73;">没搜到？查命令在这页，查概念去 <a href="jargon.html">黑话翻译器</a>。</p>
+  <p class="center rv" id="noresult" style="display:none;margin-top:40px;color:#6e6e73;">没搜到？查命令在这页，查概念去 <a href="jargon">黑话翻译器</a>。</p>
 </div></section>
 
 <section class="sec" id="pkg"><div class="wrap">
@@ -391,14 +406,14 @@
   <h2 class="rv">命令会敲了？<br><span class="grad-text">去把黑话也补上。</span></h2>
   <p class="lead rv">AUR、滚动更新、Ricing、炼丹——社区聊天听得一头雾水的话，下一页专治这个。</p>
   <div style="margin-top:24px;" class="rv">
-    <a class="btn" href="jargon.html">翻翻黑话翻译器</a>
-    <a class="btn-ghost" href="resources.html">逛逛资源与镜像 &gt;</a>
+    <a class="btn" href="jargon">翻翻黑话翻译器</a>
+    <a class="btn-ghost" href="resources">逛逛资源与镜像 &gt;</a>
   </div>
 </div></section>
 
 <footer><div class="wrap">
   <div class="legal">* 命令千千万，能救命的永远是这一条：重要操作之前，先备份。不同发行版的命令细节以各自官方文档为准。角色形象版权归 Bushiroad 所有，本页面为非营利粉丝二创。</div>
-  <div class="footer-bar"><span><a href="index.html">← 返回首页</a></span><span>用 ❤️ 与 ¥0 构建</span></div>
+  <div class="footer-bar"><span><a href="index">← 返回首页</a></span><span>用 ❤️ 与 ¥0 构建</span></div>
 </div></footer>
 
 <script>

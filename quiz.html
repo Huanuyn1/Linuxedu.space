@@ -65,18 +65,18 @@
 <body>
 
 <nav class="topnav"><div class="topnav-in">
-  <div class="logo"><a href="index.html"><img src="img/tux.png" alt="">Linux 高校专场</a></div>
+  <div class="logo"><a href="index"><img src="img/tux.png" alt="">Linux 高校专场</a></div>
   <div class="links">
-    <a href="index.html">首页</a>
-    <a href="quiz.html" class="on">小测试</a>
-    <a href="guide.html">上路指南</a>
-    <a href="apps.html">软件对照</a>
-    <a href="honest.html">避坑指南</a>
-    <a href="cheatsheet.html">小抄卡</a>
-    <a href="resources.html">资源</a>
-    <a href="hardware.html">硬件</a>
-    <a href="poster.html">海报</a>
-    <a href="jargon.html">黑话</a>
+    <a href="index">首页</a>
+    <a href="quiz" class="on">小测试</a>
+    <a href="guide">上路指南</a>
+    <a href="apps">软件对照</a>
+    <a href="honest">避坑指南</a>
+    <a href="cheatsheet">小抄卡</a>
+    <a href="resources">资源</a>
+    <a href="hardware">硬件</a>
+    <a href="poster">海报</a>
+    <a href="jargon">黑话</a>
   </div>
 </div></nav>
 
@@ -90,7 +90,7 @@
 
 <section class="sec"><div class="wrap">
   <div class="host rv">
-    <img src="img/char/arisa.png" alt="市谷有咲">
+    <img loading="lazy" decoding="async" src="img/char/arisa.webp" alt="市谷有咲">
     <div>
       <div class="q">「选择题而已，别紧张。你的每个答案都会变成评分依据——本小姐出的题，可没有一道是白问的。」</div>
       <div class="who">市谷有咲 · Arch Linux 用户 · 本场主考官</div>
@@ -198,12 +198,12 @@
     <div class="card rv">
       <span class="pill">第一步 · 5 分钟</span>
       <h3>下载镜像</h3>
-      <p>去结果页的官方下载链接拿 <code>.iso</code>。校园网嫌慢，就到<a href="resources.html">国内镜像站</a>下，速度起飞还可能免流量。</p>
+      <p>去结果页的官方下载链接拿 <code>.iso</code>。校园网嫌慢，就到<a href="resources">国内镜像站</a>下，速度起飞还可能免流量。</p>
     </div>
     <div class="card rv">
       <span class="pill">第二步 · 10 分钟</span>
       <h3>制作启动盘</h3>
-      <p>一个 8GB 以上的 U 盘 + Ventoy，把 iso 拖进去就完事。详细图文步骤在<a href="guide.html">上路指南</a>里。</p>
+      <p>一个 8GB 以上的 U 盘 + Ventoy，把 iso 拖进去就完事。详细图文步骤在<a href="guide">上路指南</a>里。</p>
     </div>
     <div class="card rv">
       <span class="pill green">第三步 · 零风险</span>
@@ -222,7 +222,7 @@
     </div>
     <div class="card rv">
       <h3>为什么没有 Ubuntu、Fedora、deepin？</h3>
-      <p>候选名册对应本站九位同学的代言分工。喜欢 Ubuntu 系的手感，Mint、Pop!_OS、Ubuntu Studio 三个衍生推荐能接住你；完整货架在<a href="index.html#distros">首页「热门发行版」</a>。</p>
+      <p>候选名册对应本站九位同学的代言分工。喜欢 Ubuntu 系的手感，Mint、Pop!_OS、Ubuntu Studio 三个衍生推荐能接住你；完整货架在<a href="index#distros">首页「热门发行版」</a>。</p>
     </div>
     <div class="card rv">
       <h3>我的答案会被收集吗？</h3>
@@ -240,18 +240,18 @@
   <p class="lead rv">一分钟，八道题，零元购一个本命系统。</p>
   <div style="margin-top:24px;" class="rv">
     <a class="btn" href="#quiz">开始测试</a>
-    <a class="btn-ghost" href="guide.html">直接看上路指南 &gt;</a>
+    <a class="btn-ghost" href="guide">直接看上路指南 &gt;</a>
   </div>
 </div></section>
 
 <footer><div class="wrap">
   <div class="legal">* 测试结果仅供娱乐，但推荐的发行版与每条理由都是认真的。角色形象版权归 Bushiroad 所有，本页面为非营利粉丝二创；各发行版图标版权归各自项目所有。</div>
-  <div class="footer-bar"><span><a href="index.html">← 返回首页</a></span><span>用 ❤️ 与 ¥0 构建</span></div>
+  <div class="footer-bar"><span><a href="index">← 返回首页</a></span><span>用 ❤️ 与 ¥0 构建</span></div>
 </div></footer>
 
 <script>
 const DISTROS = {
-  popos:{name:"Pop!_OS", char:"户山香澄", charImg:"img/char/kasumi.png", logo:"img/icons/popos.svg",
+  popos:{name:"Pop!_OS", char:"户山香澄", charImg:"img/char/kasumi.webp", logo:"img/icons/popos.svg",
     quote:"「星星和代码都在闪光！这台电脑以后就拜托它啦——闪闪发光、心跳不已！」",
     why:"开箱自带显卡驱动与开发工具，AI 炼丹和理科作业的省心之选。",
     profile:{
@@ -260,7 +260,7 @@ const DISTROS = {
       cons:["由硬件厂商 System76 维护，团队规模不大","软件版本随 LTS，追新要靠 Flatpak 补"],
       best:"理工科、AI 方向、带 NVIDIA 独显的同学"},
     dl:"https://pop.system76.com", home:"https://pop.system76.com"},
-  arch:{name:"Arch Linux", char:"市谷有咲", charImg:"img/char/arisa.png", logo:"img/icons/archlinux.svg",
+  arch:{name:"Arch Linux", char:"市谷有咲", charImg:"img/char/arisa.webp", logo:"img/icons/archlinux.svg",
     quote:"「哼，既然都测出结果了……那本小姐就勉为其难，陪你把 Arch 装完吧。Wiki 先自己看一遍！」",
     why:"滚动更新 + AUR 十万软件包，折腾党与开发者的浪漫。",
     profile:{
@@ -269,7 +269,7 @@ const DISTROS = {
       cons:["需要自己亲手安装与维护","滚动更新偶尔要读官方公告、动手修一修"],
       best:"想真正学懂 Linux 的折腾党与开发者"},
     dl:"https://archlinux.org/download", home:"https://archlinux.org"},
-  studio:{name:"Ubuntu Studio", char:"凑友希那", charImg:"img/char/yukina.png", logo:"img/icons/ubuntustudio.png",
+  studio:{name:"Ubuntu Studio", char:"凑友希那", charImg:"img/char/yukina.webp", logo:"img/icons/ubuntustudio.png",
     quote:"「完美的音频需要完美的环境。低延迟内核，一个音符也不许迟滞。」",
     why:"预装全套音视频创作工具，音乐与美术专业的移动工作站。",
     profile:{
@@ -278,7 +278,7 @@ const DISTROS = {
       cons:["预装软件多，镜像体积偏大","相对小众，中文教程比 Ubuntu 本家少"],
       best:"音乐、美术、影视等创作专业的同学"},
     dl:"https://ubuntustudio.org/download/", home:"https://ubuntustudio.org"},
-  debian:{name:"Debian", char:"冰川纱夜", charImg:"img/char/sayo.png", logo:"img/icons/debian.svg",
+  debian:{name:"Debian", char:"冰川纱夜", charImg:"img/char/sayo.webp", logo:"img/icons/debian.svg",
     quote:"「稳定不是无趣，是三年不出一次意外的可靠。像法条一样，值得信任。」",
     why:"三十年老牌发行版，稳字当头，服务器与学霸的共同选择。",
     profile:{
@@ -287,7 +287,7 @@ const DISTROS = {
       cons:["稳定版的软件版本偏旧","默认界面朴素，需要自己稍微打扮"],
       best:"求稳的学霸、服务器方向、老电脑续命"},
     dl:"https://www.debian.org/distrib", home:"https://www.debian.org"},
-  bazzite:{name:"Bazzite", char:"宇田川亚子", charImg:"img/char/ako.png", logo:"img/icons/bazzite.svg",
+  bazzite:{name:"Bazzite", char:"宇田川亚子", charImg:"img/char/ako.webp", logo:"img/icons/bazzite.svg",
     quote:"「呼呼呼……被禁咒选中之人啊！与吾一同，在 Linux 的战场上登顶吧！」",
     why:"为游戏而生的不可变系统，类 SteamOS 体验，开机即战。",
     profile:{
@@ -296,7 +296,7 @@ const DISTROS = {
       cons:["不可变系统装软件要换思路：Flatpak / Distrobox 优先","Fedora 系的中文资料比 Ubuntu 系少"],
       best:"把打游戏当正事的电竞选手"},
     dl:"https://bazzite.gg", home:"https://bazzite.gg"},
-  nixos:{name:"NixOS", char:"弦卷心", charImg:"img/char/kokoro.png", logo:"img/icons/nixos.svg",
+  nixos:{name:"NixOS", char:"弦卷心", charImg:"img/char/kokoro.webp", logo:"img/icons/nixos.svg",
     quote:"「把快乐写进配置文件，无论到哪台电脑，笑容都能一模一样地复现！」",
     why:"声明式配置，系统状态完全可复现，理科生的秩序之美。",
     profile:{
@@ -305,7 +305,7 @@ const DISTROS = {
       cons:["学习曲线陡，范式与传统 Linux 不同","部分闭源软件需要额外封装"],
       best:"追求秩序与可复现性的理科生"},
     dl:"https://nixos.org/download", home:"https://nixos.org"},
-  gentoo:{name:"Gentoo", char:"大和麻弥", charImg:"img/char/maya.png", logo:"img/icons/gentoo.svg",
+  gentoo:{name:"Gentoo", char:"大和麻弥", charImg:"img/char/maya.webp", logo:"img/icons/gentoo.svg",
     quote:"「哦哦……你也是器材控吗？每个编译选项都亲手调校的快感，懂的人自然懂，呵呵。」",
     why:"从源码编译一切，极致定制，还附带免费的风扇白噪音。",
     profile:{
@@ -314,7 +314,7 @@ const DISTROS = {
       cons:["编译耗时，大软件以小时计","赶 due 的时候它在编译，你会想砸键盘"],
       best:"器材控、源码控、时间充裕的硬核玩家"},
     dl:"https://www.gentoo.org/downloads", home:"https://www.gentoo.org"},
-  mint:{name:"Linux Mint", char:"丸山彩", charImg:"img/char/aya.png", logo:"img/icons/linuxmint.svg",
+  mint:{name:"Linux Mint", char:"丸山彩", charImg:"img/char/aya.webp", logo:"img/icons/linuxmint.svg",
     quote:"「简单得连我都不会死机！……诶？这话听起来好像哪里不对？」",
     why:"最友好的入门之选，开箱即用，像老朋友一样亲切。",
     profile:{
@@ -323,7 +323,7 @@ const DISTROS = {
       cons:["界面审美偏传统","软件版本随 LTS 偏旧"],
       best:"第一次用 Linux、只想安心用电脑的同学"},
     dl:"https://linuxmint.com/download.php", home:"https://linuxmint.com"},
-  suse:{name:"openSUSE", char:"美竹兰", charImg:"img/char/ran.png", logo:"img/icons/opensuse.svg",
+  suse:{name:"openSUSE", char:"美竹兰", charImg:"img/char/ran.webp", logo:"img/icons/opensuse.svg",
     quote:"「跟平常一样就好。……YaST 很好用，就这样。」",
     why:"德式严谨，YaST 配置中心一把梭，稳定与新鲜兼得的变色龙。",
     profile:{
@@ -461,7 +461,7 @@ function renderStart(){
   bar.style.width = '0%';
   stage.innerHTML = `
     <div class="q-result">
-      <img class="char-img" src="img/char/arisa.png" alt="">
+      <img loading="lazy" decoding="async" class="char-img" src="img/char/arisa.webp" alt="">
       <h3>准备好了吗？</h3>
       <div class="quote">「放心，只是几个简单的问题而已。答完我会把推荐理由一条一条写清楚……才、才不会因为你答得慢就嫌弃你呢。」<br><span style="color:#6e6e73;font-size:13.5px;">—— 市谷有咲（计算机科学与技术专业）</span></div>
       <div class="row"><button class="btn" onclick="next()">开始测试</button></div>
@@ -564,8 +564,8 @@ function renderResult(){
 
       <div class="row" style="margin-top:26px;">
         <a class="btn" href="${d.dl}" target="_blank" rel="noopener">去下载 ${d.name}</a>
-        <a class="btn-ghost" href="guide.html">看看怎么装 &gt;</a>
-        <a class="btn-ghost" href="apps.html">查查专业软件 &gt;</a>
+        <a class="btn-ghost" href="guide">看看怎么装 &gt;</a>
+        <a class="btn-ghost" href="apps">查查专业软件 &gt;</a>
       </div>
 
       <div class="r-runners">

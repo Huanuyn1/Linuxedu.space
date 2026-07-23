@@ -88,6 +88,11 @@ footer{background:#fff;margin-top:60px;}
 /* reveal */
 .rv{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease;}
 .rv.in{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .rv{opacity:1;transform:none;transition:none;}
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;}
+}
 /* buttons */
 .btn{display:inline-block;background:var(--blue);color:#fff;border-radius:980px;padding:11px 22px;font-size:16px;font-weight:600;transition:background .2s;}
 .btn:hover{background:#0077ed;text-decoration:none;}
