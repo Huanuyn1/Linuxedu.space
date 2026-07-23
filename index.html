@@ -71,6 +71,15 @@ nav{position:sticky;top:0;z-index:100;background:rgba(245,245,247,.78);backdrop-
 .chips::-webkit-scrollbar{display:none;}
 .chip{flex:0 0 auto;background:#fff;border:1px solid #d2d2d7;border-radius:980px;padding:9px 20px;font-size:15px;font-weight:500;transition:all .2s;}
 .chip:hover{border-color:var(--blue);color:var(--blue);}
+button.chip{font-family:inherit;cursor:pointer;color:var(--text);}
+.chip.on{background:var(--text);border-color:var(--text);color:#fff;font-weight:600;}
+.chip-note{text-align:center;color:var(--text-2);font-size:14px;margin-top:4px;}
+.stu-hide{display:none !important;}
+/* stats band */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;text-align:center;padding:26px 0 8px;}
+@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr);}}
+.stat b{display:block;font-size:clamp(30px,4.4vw,46px);font-weight:700;letter-spacing:-.02em;}
+.stat span{font-size:14px;color:var(--text-2);}
 /* horizontal carousel */
 .hscroll{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin:30px -22px 0;padding:6px 22px 26px;scroll-padding-left:22px;cursor:grab;}
 .hscroll::-webkit-scrollbar{display:none;}
@@ -191,11 +200,23 @@ footer{background:#fff;}
   </div>
 </header>
 
+<section class="sec-stats">
+  <div class="wrap">
+    <div class="stats rv">
+      <div class="stat"><b class="grad-text">¥0</b><span>教育优惠价，恒久远</span></div>
+      <div class="stat"><b class="grad-text">1991</b><span>出道年份，比你资历老</span></div>
+      <div class="stat"><b class="grad-text">600+</b><span>发行版任挑，总有一款本命</span></div>
+      <div class="stat"><b class="grad-text">100%</b><span>自由，源代码敞开看</span></div>
+    </div>
+  </div>
+</section>
+
 <section class="majors" id="majors">
   <div class="wrap">
-    <div class="chips rv">
-      <span class="chip">新闻传播</span><span class="chip">化学</span><span class="chip">工商管理</span><span class="chip">建筑</span><span class="chip">设计</span><span class="chip">医学</span><span class="chip">社会学</span><span class="chip">计算机</span><span class="chip">外语文学</span><span class="chip">物理</span><span class="chip">工程</span>
+    <div class="chips rv" id="major-chips">
+      <button class="chip on" data-m="all">全部</button><button class="chip" data-m="astro">天文</button><button class="chip" data-m="cs">计算机</button><button class="chip" data-m="music">音乐</button><button class="chip" data-m="law">法学</button><button class="chip" data-m="game">游戏</button><button class="chip" data-m="econ">经济</button><button class="chip" data-m="audio">音响工程</button><button class="chip" data-m="media">播音主持</button><button class="chip" data-m="horti">园艺</button>
     </div>
+    <p class="chip-note rv">点一下，看看和你同专业的同学 →</p>
   </div>
 </section>
 <section class="students" id="students">
@@ -205,7 +226,7 @@ footer{background:#fff;}
     </div>
     <div class="hscroll" id="stu-scroll">
 
-    <div class="stu rv">
+    <div class="stu rv" data-major="astro">
       <div class="stu-photo" style="background:linear-gradient(160deg,#ff8fb8,#ffd9e6);">
         <span class="distro-badge"><img src="img/icons/popos.svg" alt="">Pop!_OS</span>
         <img loading="lazy" decoding="async" src="img/char/kasumi.webp" alt="户山香澄">
@@ -226,7 +247,7 @@ footer{background:#fff;}
       </div>
     </div>
 
-    <div class="stu rv">
+    <div class="stu rv" data-major="cs">
       <div class="stu-photo" style="background:linear-gradient(160deg,#9d7bff,#ddd2ff);">
         <span class="distro-badge"><img src="img/icons/archlinux.svg" alt="">Arch Linux</span>
         <img loading="lazy" decoding="async" src="img/char/arisa.webp" alt="市谷有咲">
@@ -247,7 +268,7 @@ footer{background:#fff;}
       </div>
     </div>
 
-    <div class="stu rv">
+    <div class="stu rv" data-major="music">
       <div class="stu-photo" style="background:linear-gradient(160deg,#4a5a9e,#b9c3ea);">
         <span class="distro-badge"><img src="img/icons/ubuntustudio.png" alt="">Ubuntu Studio</span>
         <img loading="lazy" decoding="async" src="img/char/yukina.webp" alt="凑友希那">
@@ -268,7 +289,7 @@ footer{background:#fff;}
       </div>
     </div>
 
-    <div class="stu rv">
+    <div class="stu rv" data-major="law">
       <div class="stu-photo" style="background:linear-gradient(160deg,#1fa3c7,#bdeaf6);">
         <span class="distro-badge"><img src="img/icons/debian.svg" alt="">Debian</span>
         <img loading="lazy" decoding="async" src="img/char/sayo.webp" alt="冰川纱夜">
@@ -289,7 +310,7 @@ footer{background:#fff;}
       </div>
     </div>
 
-    <div class="stu rv">
+    <div class="stu rv" data-major="game">
       <div class="stu-photo" style="background:linear-gradient(160deg,#7c3aed,#e9c2ff);">
         <span class="distro-badge"><img src="img/icons/bazzite.svg" alt="">Bazzite</span>
         <img loading="lazy" decoding="async" src="img/char/ako.webp" alt="宇田川亚子">
@@ -310,7 +331,7 @@ footer{background:#fff;}
       </div>
     </div>
 
-    <div class="stu rv">
+    <div class="stu rv" data-major="econ">
       <div class="stu-photo" style="background:linear-gradient(160deg,#f5b301,#ffedb0);">
         <span class="distro-badge"><img src="img/icons/nixos.svg" alt="">NixOS</span>
         <img loading="lazy" decoding="async" src="img/char/kokoro.webp" alt="弦卷心">
@@ -331,7 +352,7 @@ footer{background:#fff;}
       </div>
     </div>
 
-    <div class="stu rv">
+    <div class="stu rv" data-major="audio">
       <div class="stu-photo" style="background:linear-gradient(160deg,#0f766e,#a7f3d0);">
         <span class="distro-badge"><img src="img/icons/gentoo.svg" alt="">Gentoo</span>
         <img loading="lazy" decoding="async" src="img/char/maya.webp" alt="大和麻弥">
@@ -352,7 +373,7 @@ footer{background:#fff;}
       </div>
     </div>
 
-    <div class="stu rv">
+    <div class="stu rv" data-major="media">
       <div class="stu-photo" style="background:linear-gradient(160deg,#f472b6,#ffd9ea);">
         <span class="distro-badge"><img src="img/icons/linuxmint.svg" alt="">Linux Mint</span>
         <img loading="lazy" decoding="async" src="img/char/aya.webp" alt="丸山彩">
@@ -373,7 +394,7 @@ footer{background:#fff;}
       </div>
     </div>
 
-    <div class="stu rv">
+    <div class="stu rv" data-major="horti">
       <div class="stu-photo" style="background:linear-gradient(160deg,#dc2626,#ffc9c9);">
         <span class="distro-badge"><img src="img/icons/opensuse.svg" alt="">openSUSE</span>
         <img loading="lazy" decoding="async" src="img/char/ran.webp" alt="美竹兰">
@@ -457,6 +478,20 @@ footer{background:#fff;}
   </div>
 </section>
 
+<section class="final" style="padding:90px 0;">
+  <div class="wrap">
+    <div class="center">
+      <h2 class="rv">钱的事，好商量。<br><span class="grad-text">自由的事，没得商量。</span></h2>
+      <p class="sub rv">Linux 免费，但「免费」只是它第二好的优点。</p>
+    </div>
+    <div class="promo3">
+      <div class="pcard rv"><h4>¥0 随便装，装几台都行。</h4><p>没有许可证、没有激活、没有「此副本未激活」的水印。宿舍台式机、上课笔记本、床底下的旧机，统统安排。</p></div>
+      <div class="pcard rv"><h4>源代码敞开，没有黑箱。</h4><p>系统在做什么，你随时能查、能改、能学。是计科同学的活教材，也是其他同学的定心丸。</p></div>
+      <div class="pcard rv"><h4>没有广告，没有订阅，没有到期日。</h4><p>系统不会给你推购物广告，不会月底催续费，更不会在你毕业那年突然「停止支持」要你掏钱。</p></div>
+    </div>
+  </div>
+</section>
+
 <section class="distros" id="distros">
   <div class="wrap">
     <div class="car-head rv">
@@ -479,6 +514,20 @@ footer{background:#fff;}
       <div class="distro rv"><a class="logo" href="https://pop.system76.com" target="_blank" rel="noopener"><img src="img/icons/popos.svg" alt="Pop!_OS"></a><h4><a href="https://pop.system76.com" target="_blank" rel="noopener">Pop!_OS</a></h4><div class="tag">理工暖男</div><p>显卡驱动开箱就有，AI 炼丹好帮手。</p><div class="buy">¥0（教育优惠价）<div class="links"><a href="https://pop.system76.com" target="_blank" rel="noopener">购买 &gt;</a><a href="https://pop.system76.com" target="_blank" rel="noopener">进一步了解 &gt;</a></div></div></div>
       <div class="distro rv"><a class="logo" href="https://ubuntustudio.org" target="_blank" rel="noopener"><img src="img/icons/ubuntustudio.png" alt="Ubuntu Studio"></a><h4><a href="https://ubuntustudio.org" target="_blank" rel="noopener">Ubuntu Studio</a></h4><div class="tag">文艺部长</div><p>开机即是一间录音棚，音视频创作全家桶。</p><div class="buy">¥0（教育优惠价）<div class="links"><a href="https://ubuntustudio.org/download/" target="_blank" rel="noopener">购买 &gt;</a><a href="https://ubuntustudio.org" target="_blank" rel="noopener">进一步了解 &gt;</a></div></div></div>
       <div class="distro rv"><a class="logo" href="https://bazzite.gg" target="_blank" rel="noopener"><img src="img/icons/bazzite.svg" alt="Bazzite"></a><h4><a href="https://bazzite.gg" target="_blank" rel="noopener">Bazzite</a></h4><div class="tag">电竞社长</div><p>为游戏而生的不可变系统，类 SteamOS 体验，掌机也能刷。</p><div class="buy">¥0（教育优惠价）<div class="links"><a href="https://bazzite.gg" target="_blank" rel="noopener">购买 &gt;</a><a href="https://bazzite.gg" target="_blank" rel="noopener">进一步了解 &gt;</a></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="final" style="padding-top:0;">
+  <div class="wrap">
+    <div class="center">
+      <h2 class="rv">Linux 以旧焕新计划。<br><span class="grad-text">老伙计别扔，第二春安排上。</span></h2>
+      <p class="sub rv">2026 年新机涨价涨得离谱？那就不买新的。老硬件跑 Linux，比跑新系统还精神。</p>
+    </div>
+    <div class="promo3">
+      <div class="pcard rv"><h4>老 ThinkPad，Linux 圈硬通货。</h4><p>驱动全开源、键盘封神、结实耐造。T480 至今是二手主力首选，X230 是五百块内的折腾神机。</p><a href="hardware">看看行情 &gt;</a></div>
+      <div class="pcard rv"><h4>老 MacBook，Intel 时代还能打。</h4><p>macOS 官方支持到期了？那正是装 Linux 的理由。Retina 屏幕和好做工，再战三年没问题。</p><a href="hardware">看看行情 &gt;</a></div>
+      <div class="pcard rv"><h4>洋垃圾主机，垃圾佬的信仰。</h4><p>E3/E5 至强配寨板，服务器拆机内存按斤称，编译炼丹开 NAS，统统不在话下。</p><a href="hardware">看看配置单 &gt;</a></div>
     </div>
   </div>
 </section>
@@ -520,6 +569,14 @@ footer{background:#fff;}
       <button class="faq-q">准大学生用 Linux，如何进行验证？<span class="ic">+</span></button>
       <div class="faq-a"><div><p>有资格使用 Linux 的人，包括全地球境内的幼儿园、小学、中学、高等教育的教职员工，和在全球高校就读或已被录取的学生及其父母，以及除上述以外的所有人。在开始使用时，我们不会请你验证任何资格。</p></div></div>
     </div>
+    <div class="faq-item rv">
+      <button class="faq-q">Linux 有 Genius Bar 那样的售后服务吗？<span class="ic">+</span></button>
+      <div class="faq-a"><div><p>有，而且不限品牌、无需预约、全球连锁。它叫社区：Arch Wiki 是镇店之宝，论坛和群聊里的天才们 24 小时轮班坐诊，响应速度看缘分，收费恒为零。就诊前建议先读《提问的智慧》——天才们吃软不吃硬，病历（报错日志）记得带全。</p></div></div>
+    </div>
+    <div class="faq-item rv">
+      <button class="faq-q">买 Linux 需要开发票吗？<span class="ic">+</span></button>
+      <div class="faq-a"><div><p>不需要，也开不出来——没有什么可供报销的。不过如果你想为喜欢的发行版捐一杯咖啡钱，大部分项目都接受赞助。这是市面上唯一一种「付费版 Linux」，赠品是好心情。</p></div></div>
+    </div>
     </div>
   </div>
 </section>
@@ -536,7 +593,7 @@ footer{background:#fff;}
       <div class="pcard rv"><h4>避坑指南</h4><p>反作弊游戏、专业课软件、校园网——丑话先说清楚。</p><a href="honest">先读这个 &gt;</a></div>
       <div class="pcard rv"><h4>专业软件对照表</h4><p>七大专业分类，你的课业软件 Linux 都有方案。</p><a href="apps">查查你的专业 &gt;</a></div>
       <div class="pcard rv"><h4>命令行小抄卡</h4><p>可搜索的口袋手册，新生收藏夹必备。</p><a href="cheatsheet">收藏小抄 &gt;</a></div>
-      <div class="pcard rv"><h4>硬件选购器</h4><p>买电脑前先查这页：机型精选带兼容性评级，避雷区帮你省钱。</p><a href="hardware">挑一台 &gt;</a></div>
+      <div class="pcard rv"><h4>垃圾佬推荐区</h4><p>老 ThinkPad、老 MacBook、E3/E5 洋垃圾——二手老硬件的规格、行情与兼容性，一页对比。</p><a href="hardware">捡一台 &gt;</a></div>
       <div class="pcard rv"><h4>安利海报生成器</h4><p>填上校名专业，一键生成定制海报，宿舍楼道招新必备。</p><a href="poster">做一张 &gt;</a></div>
       <div class="pcard rv"><h4>黑话翻译器</h4><p>发行版、AUR、炼丹、Ricing——社区黑话的人话词典。</p><a href="jargon">查黑话 &gt;</a></div>
       <div class="pcard rv"><h4>资源与镜像</h4><p>国内镜像站、官方文档，以及——找到你学校里的组织。</p><a href="resources">逛逛资源 &gt;</a></div>
@@ -551,7 +608,7 @@ footer{background:#fff;}
     </div>
     <div class="promo3">
       <div class="pcard rv"><h4>软件仓库方案任你选。</h4><p>各种方便的安装方式，为你更添轻松。</p><a href="#distros">进一步了解 &gt;</a></div>
-      <div class="pcard rv"><h4>老电脑焕新计划，帮你省一笔。</h4><p>用符合条件的老设备安装 Linux，可享第二春优惠。</p><a href="#faq">进一步了解 &gt;</a></div>
+      <div class="pcard rv"><h4>老电脑焕新计划，帮你省一笔。</h4><p>用符合条件的老设备安装 Linux，可享第二春优惠。</p><a href="hardware">进一步了解 &gt;</a></div>
       <div class="pcard rv"><h4>安装社区支持服务计划，可享特别优惠。</h4><p>以零元优惠使用 Linux 的社区支持服务计划，享受网友义务保修服务，同时省更多。</p><a href="#faq">进一步了解 &gt;</a></div>
     </div>
   </div>
@@ -615,6 +672,19 @@ document.querySelectorAll('.car-btn').forEach(b => {
     t.scrollBy({ left: (+b.dataset.dir) * w, behavior: 'smooth' });
   });
 });
+
+// major chips filter
+const mchips = document.querySelectorAll('#major-chips .chip');
+mchips.forEach(c => c.addEventListener('click', () => {
+  mchips.forEach(x => x.classList.remove('on'));
+  c.classList.add('on');
+  const m = c.dataset.m;
+  document.querySelectorAll('#stu-scroll .stu').forEach(s => {
+    s.classList.toggle('stu-hide', m !== 'all' && s.dataset.major !== m);
+  });
+  const sc = document.getElementById('stu-scroll');
+  if (sc) sc.scrollTo({ left: 0, behavior: 'smooth' });
+}));
 
 // faq accordion
 document.querySelectorAll('.faq-q').forEach(q => {
