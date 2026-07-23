@@ -166,10 +166,10 @@
       <div class="dc-foot"><a href="https://www.opensuse.org" target="_blank" rel="noopener">官网 &gt;</a></div>
     </div>
     <div class="card rv">
-      <div class="dc-head"><img src="img/icons/nobara.png" alt="Nobara Linux"><div><h3>Nobara Linux</h3><div class="dc-who">代言人 · 宇田川亚子</div></div></div>
+      <div class="dc-head"><img src="img/icons/bazzite.svg" alt="Bazzite"><div><h3>Bazzite</h3><div class="dc-who">代言人 · 宇田川亚子</div></div></div>
       <span class="pill">★★☆ 进阶偏易</span>
-      <p>为游戏而生的 Fedora 改良版，Proton-GE 与显卡驱动全预装，Steam 开机即战。</p>
-      <div class="dc-foot"><a href="https://nobaraproject.org" target="_blank" rel="noopener">官网 &gt;</a></div>
+      <p>为游戏而生的不可变系统，类 SteamOS 体验，Steam 与 Proton 预装，掌机也能刷。</p>
+      <div class="dc-foot"><a href="https://bazzite.gg" target="_blank" rel="noopener">官网 &gt;</a></div>
     </div>
     <div class="card rv">
       <div class="dc-head"><img src="img/icons/archlinux.svg" alt="Arch Linux"><div><h3>Arch Linux</h3><div class="dc-who">代言人 · 市谷有咲</div></div></div>
@@ -287,15 +287,15 @@ const DISTROS = {
       cons:["稳定版的软件版本偏旧","默认界面朴素，需要自己稍微打扮"],
       best:"求稳的学霸、服务器方向、老电脑续命"},
     dl:"https://www.debian.org/distrib", home:"https://www.debian.org"},
-  nobara:{name:"Nobara Linux", char:"宇田川亚子", charImg:"img/char/ako.png", logo:"img/icons/nobara.png",
+  bazzite:{name:"Bazzite", char:"宇田川亚子", charImg:"img/char/ako.png", logo:"img/icons/bazzite.svg",
     quote:"「呼呼呼……被禁咒选中之人啊！与吾一同，在 Linux 的战场上登顶吧！」",
-    why:"为游戏而生的 Fedora 改良版，Proton-GE 与驱动全预装，开机即战。",
+    why:"为游戏而生的不可变系统，类 SteamOS 体验，开机即战。",
     profile:{
-      level:"★★☆ 进阶偏易", base:"基于 Fedora", pm:"dnf + Flatpak", release:"跟随 Fedora 快节奏",
-      pros:["Proton-GE、显卡驱动、OBS 全部预装","为游戏打了大量补丁，帧数表现出色","Steam 游戏开箱即玩，不用翻教程"],
-      cons:["主要由 GloriousEggroll 个人维护，体量小","Fedora 系的中文资料比 Ubuntu 系少"],
+      level:"★★☆ 进阶偏易", base:"基于 Fedora Atomic（不可变系统）", pm:"Flatpak + rpm-ostree", release:"跟随 Fedora 快节奏",
+      pros:["类 SteamOS 体验，Steam、Proton 与显卡驱动全预装","不可变设计：系统本体只读，折腾坏了一键回滚","官方提供 NVIDIA 预装驱动镜像，掌机也能刷"],
+      cons:["不可变系统装软件要换思路：Flatpak / Distrobox 优先","Fedora 系的中文资料比 Ubuntu 系少"],
       best:"把打游戏当正事的电竞选手"},
-    dl:"https://nobaraproject.org/download-nobara/", home:"https://nobaraproject.org"},
+    dl:"https://bazzite.gg", home:"https://bazzite.gg"},
   nixos:{name:"NixOS", char:"弦卷心", charImg:"img/char/kokoro.png", logo:"img/icons/nixos.svg",
     quote:"「把快乐写进配置文件，无论到哪台电脑，笑容都能一模一样地复现！」",
     why:"声明式配置，系统状态完全可复现，理科生的秩序之美。",
@@ -347,8 +347,8 @@ const QUESTIONS = [
     ["剪片、录音、搞创作", {studio:3, arch:1}, {
       studio:"你要剪片录音搞创作：Ubuntu Studio 预装 Ardour、Kdenlive、GIMP、Blender 全套工具和低延迟内核，开机就是工作站",
       arch:"你要搞创作：Arch 仓库里创作软件版本最新，新功能第一时间用上"}],
-    ["打游戏！", {nobara:3, popos:1}, {
-      nobara:"你直奔游戏而来：Nobara 专为游戏调校，Proton-GE、显卡驱动、OBS 全部预装，开机即开战",
+    ["打游戏！", {bazzite:3, popos:1}, {
+      bazzite:"你直奔游戏而来：Bazzite 专为游戏打造，Steam、Proton、显卡驱动全部预装，类 SteamOS 体验开机即开战",
       popos:"你要打游戏：Pop!_OS 的 NVIDIA 驱动开箱就位，Steam 装好就能玩"}],
     ["跑 AI、炼大模型", {popos:3, arch:1}, {
       popos:"你要跑 AI 炼模型：Pop!_OS 开箱自带 NVIDIA 驱动与 CUDA 支持，是深度学习圈公认的省心之选",
@@ -375,9 +375,9 @@ const QUESTIONS = [
       suse:"你是主流核显笔记本：openSUSE 硬件兼容性好，核显驱动免折腾，开箱就稳",
       studio:"你是主流核显本：Ubuntu Studio 在核显上跑音视频创作完全够用，不依赖独显",
       debian:"你是主流核显本：Debian 对 Intel / AMD 核显的支持开箱即用，稳定省心"}],
-    ["高配，带 NVIDIA 独显", {popos:2, nobara:2}, {
+    ["高配，带 NVIDIA 独显", {popos:2, bazzite:2}, {
       popos:"你有 NVIDIA 独显：Pop!_OS 提供专门的 NVIDIA 镜像，驱动开箱即装——这是它最出名的一张王牌",
-      nobara:"你有 NVIDIA 独显：Nobara 预装并调好了 NVIDIA 驱动与游戏组件，高配性能全部释放"}]
+      bazzite:"你有 NVIDIA 独显：Bazzite 官方提供预装 NVIDIA 驱动的镜像，下对版本开箱即用"}]
   ]},
   {q:"你的专业方向最接近？", opts:[
     ["计算机 / 软件工程", {arch:2, nixos:2, debian:1}, {
@@ -396,9 +396,9 @@ const QUESTIONS = [
     ["还没想好 / 其他", {}, {}]
   ]},
   {q:"系统出 bug 时，你通常？", opts:[
-    ["重启试试，不行就重装", {mint:2, nobara:1}, {
+    ["重启试试，不行就重装", {mint:2, bazzite:1}, {
       mint:"你的修 bug 哲学是重启重装：Mint 自带 Timeshift 系统快照，出事一键回滚，比重装快得多",
-      nobara:"你习惯重启解决一切：Nobara 基于 Fedora 调校得当，需要修的情况本来就不多"}],
+      bazzite:"你习惯重启解决一切：Bazzite 系统本体只读，想折腾坏都难，真出问题 rpm-ostree 回滚一条命令满血复活"}],
     ["搜错误信息，照着教程修", {suse:2, popos:1, debian:1}, {
       suse:"你会搜错误信息照教程修：openSUSE 的 Snapper 快照还能在更新翻车时一键回滚，给你兜底",
       popos:"你会搜教程修问题：Pop!_OS 基于 Ubuntu，绝大多数报错都能搜到现成解法",
@@ -413,10 +413,10 @@ const QUESTIONS = [
       debian:"你要稳、几年不变：Debian Stable 两年一个大版本，安全更新持续五年，稳得像教科书",
       suse:"你要稳：openSUSE Leap 与企业版 SLES 同源，稳字当头",
       mint:"你要稳：Mint 基于 Ubuntu LTS，五年支持周期，界面几年不变正是它的追求"}],
-    ["新，软件永远最新", {arch:2, nixos:1, nobara:1, suse:1}, {
+    ["新，软件永远最新", {arch:2, nixos:1, bazzite:1, suse:1}, {
       arch:"你要软件永远最新：Arch 滚动更新，上游发布即所得，没有「等大版本」这回事",
       nixos:"你要新：NixOS 的 unstable 通道滚动跟进，nixpkgs 是全世界最大的软件仓库之一",
-      nobara:"你要新：Nobara 跟进最新内核与 Mesa，游戏相关组件更新飞快",
+      bazzite:"你要新：Bazzite 跟随 Fedora 快节奏，内核与 Mesa 更新飞快，游戏组件永远新鲜",
       suse:"你要新：openSUSE Tumbleweed 是经过 openQA 自动化测试的滚动发行版，新而不易翻车"}],
     ["我的系统我做主，一切皆可定制", {nixos:2, gentoo:2, arch:1}, {
       nixos:"你要一切皆可定制：NixOS 整份系统配置写在一个文件里，可复现、可回滚、可版本管理——定制的终极形态",
@@ -428,10 +428,10 @@ const QUESTIONS = [
       mint:"你没装过系统：Mint 的安装器全程图形化、一路下一步，配合我们的上路指南，第一次装机也不会慌",
       popos:"你没装过系统：Pop!_OS 安装器简单直观，硬件驱动还自动配好，新手友好度拉满",
       studio:"你没装过系统：Ubuntu Studio 走 Ubuntu 系安装流程，图形化向导一路下一步即可"}],
-    ["装过 Windows，U 盘启动没问题", {suse:1, debian:1, nobara:1, popos:1}, {
+    ["装过 Windows，U 盘启动没问题", {suse:1, debian:1, bazzite:1, popos:1}, {
       suse:"你会 U 盘启动装系统：openSUSE 的安装器专业且清晰，分区、引导每一步都有稳妥的默认选项",
       debian:"你会 U 盘启动装系统：Debian 安装器久经考验，照着我们的指南走一遍就能拿下",
-      nobara:"你会 U 盘启动装系统：Nobara 的安装流程和 Fedora 一致，十来分钟就能进桌面开玩",
+      bazzite:"你会 U 盘启动装系统：Bazzite 的安装流程和 Fedora 一致，十来分钟就能进桌面开玩",
       popos:"你会 U 盘启动装系统：Pop!_OS 装起来比 Windows 还快，驱动全包"}],
     ["装过 Linux，还想更硬核", {arch:1, gentoo:2, nixos:1}, {
       arch:"你装过 Linux 还想更硬核：Arch 的手动安装（现在也有 archinstall 可选）是硬核玩家的成人礼",
