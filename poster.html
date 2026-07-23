@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>安利海报生成器 - 为你的学校定制一张</title>
-<meta name="description" content="输入校名和专业，一键生成「学什么专业，Linux 都专业」定制安利海报，AI 精绘背景，可下载分享。">
+<meta name="description" content="输入校名和专业，一键生成「学什么专业，Linux 都专业」定制安利海报：6 款手绘背景、10 位形象大使、浏览器本地合成可下载，附打印与张贴指南。">
 <meta property="og:title" content="安利海报生成器 - 为你的学校定制一张">
 <meta property="og:description" content="输入校名和专业，一键生成「学什么专业，Linux 都专业」定制安利海报，可下载分享。">
 <meta property="og:image" content="https://linuxedu.space/img/tux.png">
@@ -13,8 +13,10 @@
 <style>
 .pgen{display:grid;grid-template-columns:380px 1fr;gap:26px;align-items:start;}
 @media(max-width:960px){.pgen{grid-template-columns:1fr;}}
+@media(min-width:961px){.preview{position:sticky;top:76px;}}
 .pfield{margin-bottom:22px;}
 .pfield label{display:block;font-size:13.5px;font-weight:700;margin-bottom:8px;}
+.pfield label .hint{font-weight:400;color:var(--text-2);}
 .pfield input[type=text]{width:100%;background:#f5f5f7;border:2px solid transparent;border-radius:12px;padding:12px 14px;font-size:15px;font-family:inherit;color:var(--text);outline:none;transition:border .18s;}
 .pfield input[type=text]:focus{border-color:var(--blue);background:#fff;}
 .bgs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
@@ -31,7 +33,16 @@
 .chr.on{border-color:var(--blue);background:#fff;}
 .preview{text-align:center;}
 .preview canvas{max-width:100%;height:auto;border-radius:var(--radius);box-shadow:0 12px 40px rgba(0,0,0,.16);}
+.preview .cap{margin-top:12px;font-size:13px;color:var(--text-2);}
 .dlrow{margin-top:20px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+/* 大使图鉴 */
+.amb{display:flex;gap:18px;align-items:center;}
+.amb img{height:84px;width:auto;flex:0 0 auto;filter:drop-shadow(0 6px 10px rgba(0,0,0,.16));}
+.amb h3{font-size:19px;margin-bottom:6px;}
+.amb h3 .amb-tag{font-size:12.5px;font-weight:600;color:var(--blue);background:rgba(0,113,227,.09);border-radius:980px;padding:2px 10px;margin-left:6px;vertical-align:2px;}
+.amb .amb-q{font-size:14.5px;color:var(--text);font-weight:600;line-height:1.6;}
+.amb .amb-note{font-size:13.5px;margin-top:6px;}
+@media(max-width:640px){.amb img{height:64px;}}
 </style>
 </head>
 <body>
@@ -56,7 +67,7 @@
   <div class="wrap">
     <p class="kicker">Poster Studio</p>
     <h1>安利海报，<br><span class="grad-text">为你的学校定制一张。</span></h1>
-    <p class="lead">填上校名和专业，选一张手绘风矢量背景和形象大使，下载去贴在宿舍楼道、社团招新摊位和朋友圈。</p>
+    <p class="lead">填上校名和专业，选一张手绘风矢量背景和形象大使，下载去贴在宿舍楼道、社团招新摊位和朋友圈。零设计基础，三十秒出图。</p>
   </div>
 </header>
 
@@ -64,24 +75,24 @@
   <div class="host rv">
     <img src="img/char/aya.png" alt="丸山彩">
     <div>
-      <div class="q">「宣传工作就交给我吧！让每一位同学都知道——Linux 也可以闪闪发光！」</div>
+      <div class="q">「宣传工作就交给我吧！让整张海报闪闪发光，让全校都看见 Linux 吧☆」</div>
       <div class="who">丸山彩 · Linux Mint 用户 · 宣传部长</div>
-      <p>右边实时预览。所有图片在你浏览器本地合成，不会上传任何东西。</p>
+      <p>左边填内容，右边实时预览。所有图片都在你的浏览器本地合成，什么都不上传——企鹅对天发誓。</p>
     </div>
   </div>
 
   <div class="pgen rv" style="margin-top:34px;">
     <div class="card">
       <div class="pfield">
-        <label>学校名称</label>
+        <label>学校名称 <span class="hint">最多 14 字，不填显示「你的大学」</span></label>
         <input type="text" id="school" maxlength="14" placeholder="你的学校名">
       </div>
       <div class="pfield">
-        <label>专业（可选）</label>
+        <label>专业（可选）<span class="hint">最多 12 字，不填也行</span></label>
         <input type="text" id="major" maxlength="12" placeholder="你的专业，不填也行">
       </div>
       <div class="pfield">
-        <label>背景画风</label>
+        <label>背景画风 <span class="hint">文字配色会自动适配，不用操心</span></label>
         <div class="bgs" id="bgs">
           <button class="bgth on" data-t="0"><img src="img/bg/campus.svg" alt=""><span>云端校园</span></button>
           <button class="bgth" data-t="1"><img src="img/bg/pixel.svg" alt=""><span>像素开学季</span></button>
@@ -92,7 +103,7 @@
         </div>
       </div>
       <div class="pfield">
-        <label>形象大使</label>
+        <label>形象大使 <span class="hint">每位大使在票根上有专属台词</span></label>
         <div class="chars" id="chars">
           <div class="chr on" data-c="tux"><img src="img/tux.png" alt=""><span>Tux</span></div>
           <div class="chr" data-c="kasumi"><img src="img/char/kasumi.png" alt=""><span>香澄</span></div>
@@ -112,7 +123,194 @@
     </div>
     <div class="preview">
       <canvas id="cv" width="1024" height="1536"></canvas>
+      <p class="cap">成品 1024 × 1536 PNG（2:3 竖版），所见即所得，文件名自动带上校名。</p>
     </div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="stats rv">
+    <div class="stat"><b>6</b><span>款原创矢量背景</span></div>
+    <div class="stat"><b>10</b><span>位形象大使站台</span></div>
+    <div class="stat"><b>1024×1536</b><span>高清 PNG 直出</span></div>
+    <div class="stat"><b>¥0</b><span>设计成本，还不限量</span></div>
+  </div>
+</div></section>
+
+<section class="sec" style="padding-top:0;"><div class="wrap">
+  <h2 class="rv">三十秒，从打开到出图</h2>
+  <div class="grid3" style="margin-top:30px;">
+    <div class="card rv">
+      <span class="pill">STEP 1 · 填字</span>
+      <h3>写上你的学校</h3>
+      <p>校名是海报的灵魂——「你的大学 特供」和「某某大学 特供」的杀伤力完全不是一个量级。专业可填可不填，填上更戳人：「计算机 特供」让同系同学无法视而不见。</p>
+    </div>
+    <div class="card rv">
+      <span class="pill">STEP 2 · 搭配</span>
+      <h3>挑画风和大使</h3>
+      <p>6 款背景 × 10 位大使 = 60 种配方。文字配色按背景自动适配，永远不会出现「白字压白底」的翻车现场。拿不准就看下面的挑选指南。</p>
+    </div>
+    <div class="card rv">
+      <span class="pill">STEP 3 · 分发</span>
+      <h3>下载，贴出去</h3>
+      <p>点「下载海报 PNG」，文件直接存到本地，全程不经过任何服务器。打印店彩印、群聊原图、朋友圈九宫格，怎么发随你——张贴礼仪见下文。</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2 class="rv">六款画风，各管一段</h2>
+  <p class="lead rv">选背景不是选美，是选战场。贴哪儿，就选哪款。</p>
+  <div class="tbl-wrap rv" style="margin-top:30px;">
+    <table class="tbl">
+      <tr><th>画风</th><th>气质</th><th>推荐张贴场景</th><th>配套安利话术</th></tr>
+      <tr><td>云端校园</td><td>清爽百搭</td><td>社团招新摊位、教学区公告栏</td><td>「新学期，给电脑也换身新衣服。」</td></tr>
+      <tr><td>像素开学季</td><td>复古游戏感</td><td>电竞社、计科系楼层、宿舍楼道</td><td>「新学期开个新档，这次的初始装备是 Linux。」</td></tr>
+      <tr><td>深夜终端</td><td>极客硬核</td><td>机房、实验室门口、黑客松现场</td><td>「凌晨两点的灯光，有一半来自终端。」</td></tr>
+      <tr><td>极光星夜</td><td>浪漫梦幻</td><td>朋友圈、天文社、文艺类社团</td><td>「极光和 Linux，都值得你熬一次夜。」</td></tr>
+      <tr><td>水彩自习室</td><td>温柔文艺</td><td>图书馆、文科专业楼层</td><td>「不吵不闹，安安静静把系统换了。」</td></tr>
+      <tr><td>波普撞色</td><td>张扬吸睛</td><td>路演横幅、摊位主视觉、招新海报墙</td><td>「整条街最靓的那张，就是我们的。」</td></tr>
+    </table>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2 class="rv">形象大使图鉴</h2>
+  <p class="lead rv">每位大使都会把专属台词签在海报票根上。选谁站台，决定了海报的气质。</p>
+  <div class="grid2" style="margin-top:30px;">
+    <div class="card rv amb">
+      <img src="img/tux.png" alt="Tux">
+      <div>
+        <h3>Tux<span class="amb-tag">精神支柱</span></h3>
+        <p class="amb-q">「……（企鹅不会说话，但它的眼神里全是相信）」</p>
+        <p class="amb-note">万能百搭款，不知道选谁就选它。企鹅从不出错。</p>
+      </div>
+    </div>
+    <div class="card rv amb">
+      <img src="img/char/kasumi.png" alt="户山香澄">
+      <div>
+        <h3>户山香澄<span class="amb-tag">Pop!_OS</span></h3>
+        <p class="amb-q">「一起出发吧——去寻找闪闪发光心动的 Linux！」</p>
+        <p class="amb-note">招新首选，感染力拉满，路人看了都想跟着走。</p>
+      </div>
+    </div>
+    <div class="card rv amb">
+      <img src="img/char/arisa.png" alt="市谷有咲">
+      <div>
+        <h3>市谷有咲<span class="amb-tag">Arch Linux</span></h3>
+        <p class="amb-q">「哼，才、才不是特意来为你加油的呢……笨蛋！」</p>
+        <p class="amb-note">计科楼层特供，懂的人会心一笑，不懂的人会好奇。</p>
+      </div>
+    </div>
+    <div class="card rv amb">
+      <img src="img/char/yukina.png" alt="凑友希那">
+      <div>
+        <h3>凑友希那<span class="amb-tag">Ubuntu Studio</span></h3>
+        <p class="amb-q">「目标只有一个，那就是顶点。准备好了就跟我来。」</p>
+        <p class="amb-note">气场型海报，适合比赛宣讲和技术社团的正式场合。</p>
+      </div>
+    </div>
+    <div class="card rv amb">
+      <img src="img/char/sayo.png" alt="冰川纱夜">
+      <div>
+        <h3>冰川纱夜<span class="amb-tag">Debian</span></h3>
+        <p class="amb-q">「练习不会背叛你。命令也一样，一条条积累。」</p>
+        <p class="amb-note">学习向、打卡向海报专用，贴在自习室毫无违和感。</p>
+      </div>
+    </div>
+    <div class="card rv amb">
+      <img src="img/char/ako.png" alt="宇田川亚子">
+      <div>
+        <h3>宇田川亚子<span class="amb-tag">Nobara</span></h3>
+        <p class="amb-q">「觉醒吧！沉睡在终端里的暗——之——力——量！」</p>
+        <p class="amb-note">电竞社和游戏群指定代言，中二浓度与号召力成正比。</p>
+      </div>
+    </div>
+    <div class="card rv amb">
+      <img src="img/char/kokoro.png" alt="弦卷心">
+      <div>
+        <h3>弦卷心<span class="amb-tag">NixOS</span></h3>
+        <p class="amb-q">「让世界充满笑容！用 Linux 让大家开心起来吧！」</p>
+        <p class="amb-note">阳光系万能款，贴在任何地方都能中和技术的严肃感。</p>
+      </div>
+    </div>
+    <div class="card rv amb">
+      <img src="img/char/maya.png" alt="大和麻弥">
+      <div>
+        <h3>大和麻弥<span class="amb-tag">Gentoo</span></h3>
+        <p class="amb-q">「ふええ……编译内核什么的，我、我可以陪你搞通宵！」</p>
+        <p class="amb-note">硬核向彩蛋，贴机房门口，筛选出真正想折腾的人。</p>
+      </div>
+    </div>
+    <div class="card rv amb">
+      <img src="img/char/aya.png" alt="丸山彩">
+      <div>
+        <h3>丸山彩<span class="amb-tag">Linux Mint</span></h3>
+        <p class="amb-q">「闪闪发光才是偶像！Linux 也要一起发光哦☆」</p>
+        <p class="amb-note">宣传部长亲自站台，新手友好度最高的安利路线。</p>
+      </div>
+    </div>
+    <div class="card rv amb">
+      <img src="img/char/ran.png" alt="美竹兰">
+      <div>
+        <h3>美竹兰<span class="amb-tag">openSUSE</span></h3>
+        <p class="amb-q">「不用急，一如既往，按自己的步调前进就好。」</p>
+        <p class="amb-note">佛系安利专用，适合写给「想换但怕麻烦」的同学。</p>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2 class="rv">印出来，贴出去，发上去</h2>
+  <div class="grid2" style="margin-top:30px;">
+    <div class="card rv">
+      <span class="pill">打印指南</span>
+      <h3>一张纸的仪式感</h3>
+      <ul>
+        <li><b>规格：</b>1024×1536（2:3 竖版），直接发给打印店说「A4 彩印、铺满」，约一块钱一张</li>
+        <li><b>清晰度：</b>A4 打印约 124 dpi，楼道观看距离完全够；想贴 A3 也撑得住，矢量底图不糊</li>
+        <li><b>数量：</b>第一次先印 5 张试水，效果好再加印，别把生活费搭进去</li>
+        <li><b>电子版：</b>发群和朋友圈记得勾选「原图」，压缩糊掉的安利没有灵魂</li>
+      </ul>
+    </div>
+    <div class="card rv">
+      <span class="pill red">张贴礼仪</span>
+      <h3>别让企鹅背锅</h3>
+      <ul>
+        <li><b>先问再贴：</b>公告栏归谁管问清楚——宿管、辅导员或社团负责人，一句话的事</li>
+        <li><b>不覆盖：</b>别人的海报别压，到期自己主动撕，保持 Linux 用户的体面</li>
+        <li><b>只贴该贴的地方：</b>教学楼玻璃、消防栓、电梯内壁都不是公告栏</li>
+        <li><b>非营利底线：</b>角色形象版权归 Bushiroad 所有，海报仅限非营利安利，印来卖钱是绝对不行的</li>
+      </ul>
+    </div>
+    <div class="card rv">
+      <span class="pill green">线上分发</span>
+      <h3>朋友圈也是公告栏</h3>
+      <ul>
+        <li>配文案时把「linuxedu.space」带上，海报票根上也印着，双保险</li>
+        <li>有本校 Linux 群 / 开源社团的，把群二维码用任意修图软件贴到海报空白处再打印（生成器不加二维码，是怕替别人引流）</li>
+        <li>没有本校组织？去<a href="resources.html">资源页</a>看看怎么找到同校的同好，或者——你就是第一个</li>
+      </ul>
+    </div>
+    <div class="card rv">
+      <span class="pill orange">安利闭环</span>
+      <h3>海报只是钩子</h3>
+      <ul>
+        <li>路人扫码/搜站之后，第一站通常是<a href="quiz.html">小测试</a>——八道题测出本命发行版，比你口述一百句管用</li>
+        <li>真有人心动了，把人领到<a href="guide.html">上路指南</a>，一个下午装好</li>
+        <li>终极形态：准备一个写好 Ventoy 的 U 盘随身带，安利的尽头是帮人装系统</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec center"><div class="wrap">
+  <h2 class="rv">海报贴出去了？<br><span class="grad-text">把人接进来。</span></h2>
+  <p class="lead rv">海报负责让人停下脚步，接下来的每一步，这个网站都替你铺好了。</p>
+  <div style="margin-top:24px;" class="rv">
+    <a class="btn" href="quiz.html">让路人先测本命发行版</a>
+    <a class="btn-ghost" href="resources.html">找到你学校的组织 &gt;</a>
   </div>
 </div></section>
 

@@ -4,12 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>命令行小抄卡 - 新生收藏的口袋手册</title>
-<meta name="description" content="可搜索的 Linux 命令行小抄：文件、权限、三大包管理器对照、进程、网络、压缩、Git。">
+<meta name="description" content="可搜索的 Linux 命令行小抄：常用命令卡片、apt/dnf/pacman 与 Flatpak 对照表、目录与权限速查、组合技范例与危险操作红牌区。">
 <meta property="og:title" content="命令行小抄卡 - 新生收藏的口袋手册">
-<meta property="og:description" content="可搜索的 Linux 命令行小抄：文件、权限、三大包管理器对照、进程、网络、压缩、Git。">
+<meta property="og:description" content="可搜索的 Linux 命令行小抄：常用命令卡片、三大包管理器对照、目录与权限速查、组合技与避坑红牌区。">
 <meta property="og:image" content="https://linuxedu.space/img/tux.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐧</text></svg>">
 <link rel="stylesheet" href="assets/site.css">
+<style>
+/* 本页专属样式 */
+.qlinks{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:22px;}
+.qlinks a{background:#fff;border:1px solid #d2d2d7;border-radius:980px;padding:7px 18px;font-size:13.5px;font-weight:600;color:var(--text);transition:all .18s;}
+.qlinks a:hover{border-color:var(--blue);color:var(--blue);text-decoration:none;}
+.cmd-card h4 .cnt{margin-left:auto;font-size:12px;font-weight:600;color:var(--text-2);background:#f5f5f7;border-radius:980px;padding:2px 10px;}
+.pkg-logo{height:20px;width:auto;vertical-align:-4px;margin-right:7px;}
+.tbl code{white-space:nowrap;}
+.combo{background:#fff;border-radius:var(--radius);padding:26px 26px 20px;box-shadow:0 4px 24px rgba(0,0,0,.05);display:flex;flex-direction:column;}
+.combo h3{font-size:17px;margin-bottom:4px;}
+.combo .tip{font-size:14px;color:var(--text-2);line-height:1.7;margin-top:2px;}
+.combo pre{margin:14px 0 0;}
+.combo .grow{flex:1;}
+.danger{border:2px solid rgba(220,38,38,.28);}
+.danger li b{color:#dc2626;}
+.dnote{font-size:13px;color:var(--text-2);margin-top:12px;}
+</style>
 </head>
 <body>
 
@@ -33,116 +50,354 @@
   <div class="wrap">
     <p class="kicker">Cheatsheet</p>
     <h1>命令行小抄卡。</h1>
-    <p class="lead">不用背，收藏这页就行。用的时候搜一下。</p>
+    <p class="lead">不用背，收藏这页就行。近百条命令、四张速查表，用的时候搜一下——搜命令、搜中文、搜场景都行。</p>
     <div style="margin-top:28px;"><input class="cmd-search" id="search" type="search" placeholder="搜索命令或用途，比如：解压 / 安装 / 查看端口…"></div>
+    <div class="qlinks">
+      <a href="#pkg">包管理器对照</a>
+      <a href="#paths">目录速查</a>
+      <a href="#perms">权限速查</a>
+      <a href="#combos">组合技</a>
+      <a href="#danger">红牌区</a>
+    </div>
   </div>
 </header>
 
-<section class="sec" style="padding-top:8px;"><div class="wrap">
+<section class="sec" style="padding-top:12px;"><div class="wrap">
+  <div class="host rv">
+    <img src="img/char/ako.png" alt="宇田川亚子">
+    <div>
+      <div class="q">「背诵咒文是弱者所为！大魔姬的魔导书，从来都是摊开来用的！」</div>
+      <div class="who">宇田川亚子 · Nobara Linux 用户 · 本页主持</div>
+      <p>命令行不是考试，是开卷作业。这页就是你该贴在浏览器收藏夹里的魔导书：遇到事，搜一下，复制，回车。呼呼呼……用着用着，你自然就背下来了——这就是禁咒的奥秘。</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" style="padding-top:0;"><div class="wrap">
+  <div class="stats rv">
+    <div class="stat"><b class="grad-text">90+</b><span>条常用命令</span></div>
+    <div class="stat"><b class="grad-text">12</b><span>张分类卡片</span></div>
+    <div class="stat"><b class="grad-text">4</b><span>张速查表</span></div>
+    <div class="stat"><b class="grad-text">¥0</b><span>学费，永久有效</span></div>
+  </div>
+</div></section>
+
+<section class="sec" style="padding-top:8px;" id="cards"><div class="wrap">
   <div class="cmd-grid" id="grid">
 
-    <div class="cmd-card" data-k="文件 目录 ls cd pwd cp mv rm mkdir find tree du df 复制 移动 删除 查找">
-      <h4>📁 文件与目录</h4>
+    <div class="cmd-card rv" data-k="文件 目录 ls cd pwd cp mv rm mkdir find tree ln du df 复制 移动 删除 查找 软链接 快捷方式">
+      <h4>📁 文件与目录 <span class="cnt">13</span></h4>
       <div class="cmd-line"><code>ls -lah</code><span>列出文件（含详情）</span></div>
       <div class="cmd-line"><code>cd /路径</code><span>进入目录</span></div>
+      <div class="cmd-line"><code>cd -</code><span>回上一个目录</span></div>
       <div class="cmd-line"><code>pwd</code><span>我在哪儿</span></div>
-      <div class="cmd-line"><code>cp -r 源 目标</code><span>复制</span></div>
+      <div class="cmd-line"><code>cp -r 源 目标</code><span>复制（目录加 -r）</span></div>
       <div class="cmd-line"><code>mv 源 目标</code><span>移动 / 重命名</span></div>
       <div class="cmd-line"><code>rm -ri 目录</code><span>删除（带确认）</span></div>
       <div class="cmd-line"><code>mkdir -p a/b/c</code><span>递归建目录</span></div>
       <div class="cmd-line"><code>find . -name "*.pdf"</code><span>按名找文件</span></div>
+      <div class="cmd-line"><code>tree -L 2</code><span>树状看目录（需安装）</span></div>
+      <div class="cmd-line"><code>ln -s 源 链接名</code><span>建软链接（快捷方式）</span></div>
       <div class="cmd-line"><code>du -sh *</code><span>各文件占多大</span></div>
       <div class="cmd-line"><code>df -h</code><span>磁盘还剩多少</span></div>
     </div>
 
-    <div class="cmd-card" data-k="查看 编辑 cat less head tail grep wc nano vim 日志">
-      <h4>📄 查看与编辑</h4>
+    <div class="cmd-card rv" data-k="查看 编辑 cat less head tail grep wc diff nano vim sort uniq 日志 对比">
+      <h4>📄 查看与编辑 <span class="cnt">9</span></h4>
       <div class="cmd-line"><code>cat 文件</code><span>一口气看完</span></div>
       <div class="cmd-line"><code>less 文件</code><span>翻页看（q 退出）</span></div>
       <div class="cmd-line"><code>head -n 20 文件</code><span>看前 20 行</span></div>
       <div class="cmd-line"><code>tail -f 日志</code><span>盯着日志实时看</span></div>
       <div class="cmd-line"><code>grep -rn "关键词" .</code><span>全文搜索</span></div>
       <div class="cmd-line"><code>wc -l 文件</code><span>数行数</span></div>
+      <div class="cmd-line"><code>diff -u 旧 新</code><span>对比两个文件</span></div>
+      <div class="cmd-line"><code>sort 文件 | uniq -c</code><span>统计每行出现次数</span></div>
       <div class="cmd-line"><code>nano 文件</code><span>新手友好编辑器</span></div>
     </div>
 
-    <div class="cmd-card" data-k="包管理 apt dnf pacman 安装 卸载 搜索 更新 ubuntu debian fedora arch 软件">
-      <h4>📦 装软件（三家对照）</h4>
+    <div class="cmd-card rv" data-k="包管理 apt dnf pacman flatpak 安装 卸载 搜索 更新 ubuntu debian fedora arch 软件">
+      <h4>📦 装软件（三家对照） <span class="cnt">10</span></h4>
       <div class="cmd-line"><code>sudo apt install 包</code><span>Ubuntu/Debian 安装</span></div>
       <div class="cmd-line"><code>sudo dnf install 包</code><span>Fedora 安装</span></div>
       <div class="cmd-line"><code>sudo pacman -S 包</code><span>Arch 安装</span></div>
       <div class="cmd-line"><code>apt search / dnf search</code><span>搜索</span></div>
       <div class="cmd-line"><code>pacman -Ss 关键词</code><span>Arch 搜索</span></div>
       <div class="cmd-line"><code>sudo apt update && sudo apt upgrade</code><span>Ubuntu 更新</span></div>
+      <div class="cmd-line"><code>sudo dnf upgrade</code><span>Fedora 更新</span></div>
       <div class="cmd-line"><code>sudo pacman -Syu</code><span>Arch 更新</span></div>
       <div class="cmd-line"><code>sudo apt remove 包</code><span>卸载</span></div>
       <div class="cmd-line"><code>flatpak install flathub 应用</code><span>万能备胎方案</span></div>
     </div>
 
-    <div class="cmd-card" data-k="权限 chmod chown sudo root 管理员">
-      <h4>🔐 权限</h4>
+    <div class="cmd-card rv" data-k="权限 chmod chown sudo root 管理员 执行 所有者">
+      <h4>🔐 权限 <span class="cnt">6</span></h4>
       <div class="cmd-line"><code>sudo 命令</code><span>以管理员执行</span></div>
+      <div class="cmd-line"><code>sudo !!</code><span>上一条命令加 sudo 重跑</span></div>
       <div class="cmd-line"><code>chmod +x 脚本.sh</code><span>给执行权限</span></div>
       <div class="cmd-line"><code>chmod 644 文件</code><span>标准文件权限</span></div>
+      <div class="cmd-line"><code>chmod 755 脚本</code><span>可执行脚本权限</span></div>
       <div class="cmd-line"><code>sudo chown 用户:组 文件</code><span>改所有者</span></div>
     </div>
 
-    <div class="cmd-card" data-k="进程 系统 top htop ps kill systemctl free uname 重启 关机 服务">
-      <h4>⚙️ 进程与系统</h4>
+    <div class="cmd-card rv" data-k="进程 系统 top htop ps kill systemctl journalctl free uname uptime lsblk 重启 关机 服务 日志">
+      <h4>⚙️ 进程与系统 <span class="cnt">12</span></h4>
       <div class="cmd-line"><code>htop</code><span>任务管理器（好看版）</span></div>
       <div class="cmd-line"><code>ps aux | grep 名</code><span>找进程</span></div>
       <div class="cmd-line"><code>kill PID</code><span>结束进程</span></div>
+      <div class="cmd-line"><code>kill -9 PID</code><span>强制结束（最后手段）</span></div>
       <div class="cmd-line"><code>systemctl status 服务</code><span>查服务状态</span></div>
       <div class="cmd-line"><code>sudo systemctl enable --now 服务</code><span>开机自启并启动</span></div>
+      <div class="cmd-line"><code>sudo systemctl restart 服务</code><span>重启服务</span></div>
+      <div class="cmd-line"><code>journalctl -u 服务 -f</code><span>追服务日志</span></div>
       <div class="cmd-line"><code>free -h</code><span>内存用量</span></div>
+      <div class="cmd-line"><code>lsblk</code><span>看磁盘和分区</span></div>
       <div class="cmd-line"><code>uname -a</code><span>内核信息</span></div>
       <div class="cmd-line"><code>fastfetch</code><span>展示你的系统（仪式感）</span></div>
     </div>
 
-    <div class="cmd-card" data-k="网络 ping curl wget ip ss ssh scp rsync 端口 下载 远程">
-      <h4>🌐 网络</h4>
+    <div class="cmd-card rv" data-k="网络 ping curl wget ip ss ssh scp rsync 端口 下载 远程 传输">
+      <h4>🌐 网络 <span class="cnt">9</span></h4>
       <div class="cmd-line"><code>ping baidu.com</code><span>通不通</span></div>
       <div class="cmd-line"><code>ip a</code><span>看 IP</span></div>
       <div class="cmd-line"><code>curl -O 网址</code><span>下载文件</span></div>
       <div class="cmd-line"><code>wget 网址</code><span>下载文件</span></div>
+      <div class="cmd-line"><code>curl -I 网址</code><span>只看响应头（调试用）</span></div>
       <div class="cmd-line"><code>ss -tlnp</code><span>谁在监听端口</span></div>
       <div class="cmd-line"><code>ssh 用户@服务器</code><span>远程登录</span></div>
       <div class="cmd-line"><code>scp 文件 用户@服务器:/路径</code><span>传文件上服务器</span></div>
       <div class="cmd-line"><code>rsync -avP 源 目标</code><span>同步目录（可断点续传）</span></div>
     </div>
 
-    <div class="cmd-card" data-k="压缩 解压 tar zip unzip gz 打包">
-      <h4>🗜️ 压缩与解压</h4>
+    <div class="cmd-card rv" data-k="压缩 解压 tar zip unzip 7z gz 打包 查看">
+      <h4>🗜️ 压缩与解压 <span class="cnt">6</span></h4>
       <div class="cmd-line"><code>tar -czvf 包.tar.gz 目录</code><span>打包压缩</span></div>
       <div class="cmd-line"><code>tar -xzvf 包.tar.gz</code><span>解压</span></div>
+      <div class="cmd-line"><code>tar -tf 包.tar.gz</code><span>不解压先偷看内容</span></div>
       <div class="cmd-line"><code>unzip 文件.zip</code><span>解压 zip</span></div>
       <div class="cmd-line"><code>zip -r 包.zip 目录</code><span>打成 zip</span></div>
+      <div class="cmd-line"><code>7z x 文件.7z</code><span>解压 7z（需 p7zip）</span></div>
     </div>
 
-    <div class="cmd-card" data-k="git 版本 clone add commit push pull status log 提交">
-      <h4>🌿 Git 基础</h4>
+    <div class="cmd-card rv" data-k="git 版本 clone add commit push pull status log branch switch diff stash restore 提交 分支 回退">
+      <h4>🌿 Git 基础 <span class="cnt">11</span></h4>
       <div class="cmd-line"><code>git clone 地址</code><span>克隆仓库</span></div>
       <div class="cmd-line"><code>git status</code><span>现在什么状态</span></div>
       <div class="cmd-line"><code>git add .</code><span>暂存全部改动</span></div>
       <div class="cmd-line"><code>git commit -m "说明"</code><span>提交</span></div>
       <div class="cmd-line"><code>git push</code><span>推送到远程</span></div>
       <div class="cmd-line"><code>git pull</code><span>拉取最新</span></div>
-      <div class="cmd-line"><code>git log --oneline</code><span>看提交历史</span></div>
+      <div class="cmd-line"><code>git log --oneline --graph</code><span>看提交历史（带分叉图）</span></div>
+      <div class="cmd-line"><code>git switch -c 分支名</code><span>新建并切换分支</span></div>
+      <div class="cmd-line"><code>git diff</code><span>看改了什么</span></div>
+      <div class="cmd-line"><code>git stash</code><span>暂存现场（事后再 pop）</span></div>
+      <div class="cmd-line"><code>git restore 文件</code><span>丢弃未暂存的修改</span></div>
     </div>
 
-    <div class="cmd-card" data-k="帮助 man tldr help 教程 学习">
-      <h4>❓ 忘了就问</h4>
+    <div class="cmd-card rv" data-k="管道 重定向 输出 保存 组合 tee xargs 追加 覆盖 错误">
+      <h4>🔀 管道与重定向 <span class="cnt">7</span></h4>
+      <div class="cmd-line"><code>命令 > 文件</code><span>输出写入文件（覆盖）</span></div>
+      <div class="cmd-line"><code>命令 >> 文件</code><span>输出追加到文件</span></div>
+      <div class="cmd-line"><code>命令A | 命令B</code><span>A 的输出交给 B</span></div>
+      <div class="cmd-line"><code>命令 2>&1</code><span>错误也并入输出</span></div>
+      <div class="cmd-line"><code>命令 | tee 文件</code><span>既显示又保存</span></div>
+      <div class="cmd-line"><code>命令A && 命令B</code><span>A 成功才执行 B</span></div>
+      <div class="cmd-line"><code>... | xargs 命令</code><span>把上一条结果当参数</span></div>
+    </div>
+
+    <div class="cmd-card rv" data-k="快捷键 终端 补全 中断 清屏 历史 光标 tab ctrl 键盘">
+      <h4>⌨️ 终端快捷键 <span class="cnt">8</span></h4>
+      <div class="cmd-line"><code>Tab</code><span>补全命令和路径（神器）</span></div>
+      <div class="cmd-line"><code>↑ / ↓</code><span>翻历史命令</span></div>
+      <div class="cmd-line"><code>Ctrl + C</code><span>中断当前命令</span></div>
+      <div class="cmd-line"><code>Ctrl + L</code><span>清屏</span></div>
+      <div class="cmd-line"><code>Ctrl + R</code><span>搜索历史命令</span></div>
+      <div class="cmd-line"><code>Ctrl + A / E</code><span>跳到行首 / 行尾</span></div>
+      <div class="cmd-line"><code>Ctrl + Z</code><span>挂起当前程序（fg 唤回）</span></div>
+      <div class="cmd-line"><code>!!</code><span>重复上一条命令</span></div>
+    </div>
+
+    <div class="cmd-card rv" data-k="环境变量 配置 path export alias bashrc zshrc source history 历史 别名 个性化">
+      <h4>🔧 环境与配置 <span class="cnt">6</span></h4>
+      <div class="cmd-line"><code>echo $PATH</code><span>看命令都从哪找</span></div>
+      <div class="cmd-line"><code>export 变量=值</code><span>设环境变量（本次会话）</span></div>
+      <div class="cmd-line"><code>~/.bashrc</code><span>每次开终端都加载的配置</span></div>
+      <div class="cmd-line"><code>source ~/.bashrc</code><span>改完立即生效</span></div>
+      <div class="cmd-line"><code>alias ll='ls -lah'</code><span>起别名（写进 bashrc 常驻）</span></div>
+      <div class="cmd-line"><code>history</code><span>看敲过的命令</span></div>
+    </div>
+
+    <div class="cmd-card rv" data-k="帮助 man tldr apropos help 教程 学习 手册">
+      <h4>❓ 忘了就问 <span class="cnt">4</span></h4>
       <div class="cmd-line"><code>man 命令</code><span>官方说明书</span></div>
       <div class="cmd-line"><code>命令 --help</code><span>快速提示</span></div>
       <div class="cmd-line"><code>tldr 命令</code><span>人话版例子（需安装）</span></div>
+      <div class="cmd-line"><code>apropos 关键词</code><span>不记得命令名时反查</span></div>
     </div>
 
   </div>
   <p class="center rv" id="noresult" style="display:none;margin-top:40px;color:#6e6e73;">没搜到？查命令在这页，查概念去 <a href="jargon.html">黑话翻译器</a>。</p>
 </div></section>
 
+<section class="sec" id="pkg"><div class="wrap">
+  <h2 class="rv">三大包管理器，<br><span class="grad-text">一张表对齐。</span></h2>
+  <p class="lead rv" style="margin-left:0;">换发行版不用重新学。本质上都是「安装、卸载、搜索、更新」四件事，只是单词不同。</p>
+  <div class="tbl-wrap rv" style="margin-top:26px;">
+    <table class="tbl">
+      <tr>
+        <th>我想…</th>
+        <th><img class="pkg-logo" src="img/icons/ubuntu.svg" alt="">apt（Ubuntu / Debian / Mint）</th>
+        <th><img class="pkg-logo" src="img/icons/fedora.svg" alt="">dnf（Fedora / Nobara）</th>
+        <th><img class="pkg-logo" src="img/icons/archlinux.svg" alt="">pacman（Arch）</th>
+        <th>Flatpak（全家通吃）</th>
+      </tr>
+      <tr>
+        <td>安装</td>
+        <td><code>sudo apt install 包</code></td>
+        <td><code>sudo dnf install 包</code></td>
+        <td><code>sudo pacman -S 包</code></td>
+        <td><code>flatpak install flathub 应用</code></td>
+      </tr>
+      <tr>
+        <td>卸载</td>
+        <td><code>sudo apt remove 包</code></td>
+        <td><code>sudo dnf remove 包</code></td>
+        <td><code>sudo pacman -Rns 包</code></td>
+        <td><code>flatpak uninstall 应用</code></td>
+      </tr>
+      <tr>
+        <td>搜索</td>
+        <td><code>apt search 关键词</code></td>
+        <td><code>dnf search 关键词</code></td>
+        <td><code>pacman -Ss 关键词</code></td>
+        <td><code>flatpak search 关键词</code></td>
+      </tr>
+      <tr>
+        <td>更新全部</td>
+        <td><code>sudo apt update && sudo apt upgrade</code></td>
+        <td><code>sudo dnf upgrade</code></td>
+        <td><code>sudo pacman -Syu</code></td>
+        <td><code>flatpak update</code></td>
+      </tr>
+      <tr>
+        <td>查看已安装</td>
+        <td><code>apt list --installed</code></td>
+        <td><code>dnf list installed</code></td>
+        <td><code>pacman -Q</code></td>
+        <td><code>flatpak list</code></td>
+      </tr>
+      <tr>
+        <td>清理缓存</td>
+        <td><code>sudo apt autoremove</code></td>
+        <td><code>sudo dnf autoremove</code></td>
+        <td><code>sudo pacman -Sc</code></td>
+        <td><code>flatpak uninstall --unused</code></td>
+      </tr>
+    </table>
+  </div>
+  <p class="rv" style="margin-top:16px;font-size:14px;color:var(--text-2);">小抄里的小抄：软件仓库里没有的新版应用，优先试试 Flatpak；Arch 用户另有 AUR 这个十万个包的宝库，装个 <code>yay</code> 或 <code>paru</code> 就能像官方仓库一样用。</p>
+</div></section>
+
+<section class="sec" id="paths"><div class="wrap">
+  <h2 class="rv">Linux 的家，<br><span class="grad-text">每个房间都有名字。</span></h2>
+  <p class="lead rv" style="margin-left:0;">第一次面对 <code>/</code> 一脸懵很正常。记住这几个房间，找东西不再靠缘分。</p>
+  <div class="tbl-wrap rv" style="margin-top:26px;">
+    <table class="tbl">
+      <tr><th>路径</th><th>是什么</th><th>什么时候会去</th></tr>
+      <tr><td><code>~</code>（即 <code>/home/你</code>）</td><td>你的主目录，桌面、文档、下载都在这</td><td>99% 的日常操作</td></tr>
+      <tr><td><code>~/.config</code></td><td>各软件的配置文件</td><td>调设置、折腾美化（Ricing）</td></tr>
+      <tr><td><code>/etc</code></td><td>系统级配置</td><td>改源、改系统设置（先备份再动手）</td></tr>
+      <tr><td><code>/var/log</code></td><td>系统和应用日志</td><td>出问题时来这里破案</td></tr>
+      <tr><td><code>/usr/bin</code></td><td>安装好的命令本体</td><td>好奇某个命令住在哪的时候</td></tr>
+      <tr><td><code>/opt</code></td><td>第三方大软件的常规住处</td><td>手动装某个闭源软件时</td></tr>
+      <tr><td><code>/tmp</code></td><td>临时文件，重启即清空</td><td>随手扔中间产物</td></tr>
+    </table>
+  </div>
+</div></section>
+
+<section class="sec" id="perms"><div class="wrap">
+  <div class="grid2">
+    <div class="card rv">
+      <span class="pill">一分钟看懂</span>
+      <h3>权限数字是什么黑话？</h3>
+      <p>每个文件有三组权限：<b>所有者 / 所属组 / 其他人</b>，每组由三种动作组成：</p>
+      <ul>
+        <li><code>r</code>（读）= 4，<code>w</code>（写）= 2，<code>x</code>（执行）= 1</li>
+        <li>每组数字 = 三种动作相加，如 <code>rwx</code> = 4+2+1 = 7</li>
+        <li>所以 <code>chmod 755</code> 的意思：我能读写执行，你们只能读和执行</li>
+      </ul>
+    </div>
+    <div class="card rv">
+      <span class="pill green">照抄即可</span>
+      <h3>三个背下来就够的数字</h3>
+      <ul>
+        <li><code>644</code> —— 普通文件：我能改，别人能看。作业、文档、代码都用它</li>
+        <li><code>755</code> —— 脚本和目录：所有人都能进、能执行</li>
+        <li><code>600</code> —— 私密文件：只有我能读写。SSH 私钥必须是它，不然 ssh 拒绝工作</li>
+      </ul>
+      <p style="margin-top:10px;">拿不准就先 <code>ls -l</code> 看看别人怎么设的，比瞎猜靠谱。</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" id="combos"><div class="wrap">
+  <h2 class="rv">单招会了，<br><span class="grad-text">该学连招了。</span></h2>
+  <p class="lead rv" style="margin-left:0;">命令行的威力在组合。下面四套连招覆盖日常 80% 的「救救我」场景，建议直接收藏。</p>
+  <div class="grid2" style="margin-top:30px;">
+    <div class="combo rv">
+      <h3>磁盘满了？揪出元凶</h3>
+      <p class="tip grow">从大到小列出当前目录的占用，第一名往往就是罪魁祸首（通常是某个没删的虚拟机镜像）。</p>
+      <pre><code><span class="hl">du -sh * | sort -rh | head</span>
+<span class="cm"># du 算大小 → sort 按人类可读数字倒序 → 只看前 10</span></code></pre>
+    </div>
+    <div class="combo rv">
+      <h3>程序卡死？找到并送它走</h3>
+      <p class="tip grow">先礼后兵：kill 默认发的是「请你退出」；只有它装死时才用 kill -9「就地正法」。</p>
+      <pre><code><span class="hl">ps aux | grep 程序名</span>
+<span class="hl">kill 进程号</span>
+<span class="cm"># 还不行才放大招：kill -9 进程号</span></code></pre>
+    </div>
+    <div class="combo rv">
+      <h3>服务起不来？边重启边看日志</h3>
+      <p class="tip grow">journalctl 的 -f 和 tail -f 一样实时滚动，改配置、重启服务时盯着它，报错第一时间现形。</p>
+      <pre><code><span class="hl">sudo systemctl restart 服务名</span>
+<span class="hl">journalctl -u 服务名 -f</span>
+<span class="cm"># 想退出实时日志：Ctrl + C</span></code></pre>
+    </div>
+    <div class="combo rv">
+      <h3>忘了上次怎么敲的？搜历史</h3>
+      <p class="tip grow">上个月那条完美的 ffmpeg 命令不用重新研究，历史记录里都躺着呢。</p>
+      <pre><code><span class="hl">history | grep ffmpeg</span>
+<span class="cm"># 更快的手法：Ctrl + R，输入关键词即时搜</span></code></pre>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" id="danger"><div class="wrap">
+  <div class="card danger rv">
+    <span class="pill red">红牌区 · 敲回车前默读三遍</span>
+    <h3>这几条命令，专治手滑和冲动</h3>
+    <ul>
+      <li><b><code>rm -rf</code></b> —— 不询问、不进回收站、不可恢复。路径里出现 <code>/</code> 或 <code>*</code> 时，停下来再看一眼。删之前先 <code>ls</code> 确认站在哪个目录。</li>
+      <li><b><code>sudo</code></b> —— 管理员权限意味着系统不拦你。网上抄的命令加 sudo 之前，先搞懂它干什么。</li>
+      <li><b><code>&gt;</code> 重定向</b> —— 覆盖是静默的。<code>> 重要文件</code> 手一滑，文件当场清零。想追加内容请用 <code>>></code>。</li>
+      <li><b><code>dd</code></b> —— 磁盘级操作，源和目标写反 = 把系统盘抹掉。人送外号 disk destroyer，烧录启动盘时务必用 <code>lsblk</code> 再三确认设备名。</li>
+      <li><b><code>curl ... | bash</code></b> —— 一键脚本很方便，但等于把键盘交给陌生人。先下载下来读一遍再跑，至少确认网址是官方的。</li>
+    </ul>
+    <p class="dnote">真正的护身符只有一条：重要数据有备份。备份到位，上面这些全是纸老虎。</p>
+  </div>
+</div></section>
+
+<section class="sec center"><div class="wrap">
+  <h2 class="rv">命令会敲了？<br><span class="grad-text">去把黑话也补上。</span></h2>
+  <p class="lead rv">AUR、滚动更新、Ricing、炼丹——社区聊天听得一头雾水的话，下一页专治这个。</p>
+  <div style="margin-top:24px;" class="rv">
+    <a class="btn" href="jargon.html">翻翻黑话翻译器</a>
+    <a class="btn-ghost" href="resources.html">逛逛资源与镜像 &gt;</a>
+  </div>
+</div></section>
+
 <footer><div class="wrap">
-  <div class="legal">* 命令千千万，能救命的永远是这一条：重要操作之前，先备份。角色形象版权归 Bushiroad 所有，本页面为非营利粉丝二创。</div>
+  <div class="legal">* 命令千千万，能救命的永远是这一条：重要操作之前，先备份。不同发行版的命令细节以各自官方文档为准。角色形象版权归 Bushiroad 所有，本页面为非营利粉丝二创。</div>
   <div class="footer-bar"><span><a href="index.html">← 返回首页</a></span><span>用 ❤️ 与 ¥0 构建</span></div>
 </div></footer>
 
@@ -164,6 +419,11 @@ search.addEventListener('input', () => {
     if (hit) shown++;
   });
   noresult.style.display = shown ? 'none' : 'block';
+});
+// 按 / 聚焦搜索框，Esc 清空
+document.addEventListener('keydown', e => {
+  if (e.key === '/' && document.activeElement !== search) { e.preventDefault(); search.focus(); }
+  else if (e.key === 'Escape' && document.activeElement === search) { search.value = ''; search.dispatchEvent(new Event('input')); search.blur(); }
 });
 </script>
 </body>

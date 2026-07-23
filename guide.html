@@ -4,12 +4,51 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>上路指南 - 从心动到开机，只要一个下午</title>
-<meta name="description" content="高校生 Linux 新手上路指南：虚拟机、双系统、启动盘制作、装后配置、校园网与微信 QQ 现状。">
+<meta name="description" content="高校生 Linux 新手上路指南：装前准备、虚拟机 / WSL2 / 双系统三条路线、发行版怎么选、启动盘制作、装后配置、校园网与微信 QQ 现状、新手 FAQ。">
 <meta property="og:title" content="上路指南 - 从心动到开机，只要一个下午">
-<meta property="og:description" content="高校生 Linux 新手上路指南：虚拟机、双系统、启动盘制作、装后配置、校园网与微信 QQ 现状。">
+<meta property="og:description" content="高校生 Linux 新手上路指南：装前准备、三条路线、发行版选择、启动盘、装后配置与校园网生存手册。">
 <meta property="og:image" content="https://linuxedu.space/img/tux.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐧</text></svg>">
 <link rel="stylesheet" href="assets/site.css">
+<style>
+/* 本页专属样式 */
+/* 目录跳转 */
+.toc{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:28px;}
+.toc a{background:#fff;border:1px solid #d2d2d7;border-radius:980px;padding:8px 18px;font-size:14px;font-weight:600;color:var(--text);transition:all .18s;}
+.toc a:hover{color:var(--blue);border-color:var(--blue);text-decoration:none;}
+/* 步骤标题 */
+.step{display:flex;align-items:center;gap:16px;}
+.step .num{flex:0 0 auto;width:46px;height:46px;border-radius:50%;background:var(--grad);color:#fff;font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(90,120,255,.28);}
+.step .sub{font-size:14.5px;color:var(--text-2);margin-top:6px;}
+/* 发行版图标行 */
+.d-row{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-top:24px;}
+.d-item{display:flex;flex-direction:column;align-items:center;gap:9px;width:110px;text-align:center;}
+.d-item .ic-tile{width:62px;height:62px;border-radius:16px;background:#fff;box-shadow:0 3px 12px rgba(0,0,0,.10),inset 0 0 0 1px rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;padding:11px;transition:transform .2s,box-shadow .2s;}
+.d-item:hover .ic-tile{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.14);}
+.d-item .ic-tile img{width:100%;height:100%;object-fit:contain;pointer-events:none;}
+.d-item b{font-size:14.5px;color:var(--text);}
+.d-item span{font-size:12.5px;color:var(--text-2);line-height:1.4;}
+/* 深色终端带 */
+.term-band{background:#071410 url("img/bg/terminal.svg") center/cover no-repeat;border-radius:calc(var(--radius) + 6px);padding:56px 22px;color:#e5e7eb;overflow:hidden;}
+.term-band h2{color:#fff;}
+.term-band .lead{color:#a7b3ad;}
+.term-inner{max-width:820px;margin:0 auto;}
+.term-band .tip{font-size:14px;color:#8fa39a;margin-top:6px;}
+.term-band .tip a{color:#7ee787;}
+.term-band pre{background:rgba(10,14,12,.82);border:1px solid rgba(126,231,135,.14);margin:26px 0 14px;}
+/* FAQ 手风琴（与首页同款） */
+.faq-controls{display:flex;gap:20px;justify-content:center;margin-top:20px;}
+.faq-controls button{background:none;border:none;color:var(--blue);font-size:15px;cursor:pointer;font-family:inherit;padding:4px;}
+.faq-controls button:hover{text-decoration:underline;}
+.faq-item{background:#fff;border-radius:var(--radius);margin-top:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.05);}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;background:none;border:none;padding:22px 28px;font-size:17.5px;font-weight:700;text-align:left;cursor:pointer;color:var(--text);font-family:inherit;}
+.faq-q .ic{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:#e0e0e5;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:400;transition:transform .32s ease;user-select:none;}
+.faq-item.open .faq-q .ic{transform:rotate(45deg);}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease;}
+.faq-item.open .faq-a{grid-template-rows:1fr;}
+.faq-a>div{overflow:hidden;}
+.faq-a p{padding:0 28px 24px;font-size:15.5px;color:var(--text-2);line-height:1.75;}
+</style>
 </head>
 <body>
 
@@ -33,32 +72,89 @@
   <div class="wrap">
     <p class="kicker">Getting Started</p>
     <h1>从心动到开机，<br><span class="grad-text">只要一个下午。</span></h1>
-    <p class="lead">装 Linux 没有传说中那么玄乎。选对路线，一个下午、一个 U 盘、一杯奶茶，搞定。</p>
+    <p class="lead">装 Linux 没有传说中那么玄乎。选对路线，一个下午、一个 U 盘、一杯奶茶，搞定。这页把每一步都拆到了「照着点就行」的颗粒度。</p>
+    <div class="toc rv">
+      <a href="#prep">第零步 · 装前准备</a>
+      <a href="#route">第一步 · 选路线</a>
+      <a href="#distro">第二步 · 选发行版</a>
+      <a href="#usb">第三步 · 启动盘与安装</a>
+      <a href="#post">第四步 · 装后配置</a>
+      <a href="#campus">校园特供</a>
+      <a href="#faq">新手 FAQ</a>
+    </div>
   </div>
 </header>
 
-<section class="sec"><div class="wrap">
+<section class="sec" style="padding-top:20px;"><div class="wrap">
+  <div class="stats rv">
+    <div class="stat"><b>1 个</b><span>下午，从零到开机</span></div>
+    <div class="stat"><b>¥0</b><span>全部软件开销</span></div>
+    <div class="stat"><b>1 个</b><span>U 盘，8GB 起步</span></div>
+    <div class="stat"><b>3 条</b><span>路线，按胆量自选</span></div>
+  </div>
+</div></section>
+
+<section class="sec" style="padding-top:8px;"><div class="wrap">
   <div class="host rv">
     <img src="img/char/aya.png" alt="丸山彩">
     <div>
-      <div class="q">「别怕！连我都一次装好了，你一定也可以！」</div>
+      <div class="q">「深呼吸，跟我念：备份、写盘、安装、换源。四步念完，系统就装完啦！」</div>
       <div class="who">丸山彩 · Linux Mint 用户 · 本页向导</div>
-      <p>先想清楚一件事：你想怎么用它？下面三条路线，按胆量从小到大排列。</p>
+      <p>先想清楚一件事：你想怎么用它？只想看看、只要命令行、还是直接当主力？想清楚了，下面的路照着走就行。全程有任何一步卡住，先翻页尾的 FAQ。</p>
     </div>
   </div>
 </div></section>
 
-<section class="sec"><div class="wrap">
-  <h2 class="rv">第一步：选一条适合你的路线</h2>
+<section class="sec" id="prep"><div class="wrap">
+  <div class="step rv">
+    <span class="num">0</span>
+    <div>
+      <h2>装前 30 分钟：备份与退路</h2>
+      <div class="sub">翻车概率很低，但退路铺好，手才不抖。</div>
+    </div>
+  </div>
+  <div class="grid2" style="margin-top:30px;">
+    <div class="card rv">
+      <span class="pill red">最重要的一步</span>
+      <h3>备份，备份，还是备份</h3>
+      <ul>
+        <li><b>论文、照片、代码：</b>传网盘或拷移动硬盘，双份更安心</li>
+        <li><b>BitLocker / 设备加密：</b>Windows 设置里搜「设备加密」，先关掉；或确认恢复密钥已存进微软账号——否则装完 Windows 可能问你要 48 位密钥</li>
+        <li><b>浏览器书签与各类账号密码：</b>顺手导出一份</li>
+      </ul>
+      <p style="margin-top:10px;">记住：新手装系统出的事故，九成不致命；但没备份的资料，是十成找不回。</p>
+    </div>
+    <div class="card rv">
+      <span class="pill">小动作，省大麻烦</span>
+      <h3>三个装前小动作</h3>
+      <ul>
+        <li><b>关掉 Windows「快速启动」：</b>控制面板 → 电源选项 → 选择电源按钮的功能 → 取消勾选。不关的话，Linux 读 Windows 分区会报「磁盘不干净」，双系统时间还会互相漂移</li>
+        <li><b>准备一个 8GB+ 的 U 盘：</b>里面数据会被清空，先转移</li>
+        <li><b>记下 Wi-Fi 密码：</b>安装和 Live 试用时都要联网</li>
+      </ul>
+      <p style="margin-top:10px;">万一装完发现无线网卡不识别（少数 Realtek / 博通型号会这样），别慌：手机数据线插上，开「USB 网络共享」就能先上网装驱动。</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" id="route"><div class="wrap">
+  <div class="step rv">
+    <span class="num">1</span>
+    <div>
+      <h2>选一条适合你的路线</h2>
+      <div class="sub">按胆量从小到大排列，没有谁更高贵。</div>
+    </div>
+  </div>
   <div class="grid3" style="margin-top:30px;">
     <div class="card rv">
       <span class="pill green">零风险 · 尝鲜首选</span>
       <h3>虚拟机</h3>
       <ul>
         <li><b>适合：</b>只想先看看 Linux 长什么样</li>
-        <li><b>工具：</b>VMware Workstation（个人免费）、VirtualBox（开源）</li>
-        <li><b>优点：</b>玩坏了直接删，Windows 毫发无损</li>
-        <li><b>注意：</b>分 4GB 以上内存体验才不卡；跑不动 AI 和大型游戏</li>
+        <li><b>工具：</b>VMware Workstation（个人使用免费）、VirtualBox（开源免费）</li>
+        <li><b>分配建议：</b>内存 4GB+、CPU 2 核+、磁盘 25GB+，体验才不卡</li>
+        <li><b>优点：</b>玩坏了直接删掉重来，Windows 毫发无损</li>
+        <li><b>注意：</b>需要 CPU 虚拟化（BIOS 里的 VT-x / AMD-V）已开启；跑不动 AI 和大型游戏</li>
       </ul>
     </div>
     <div class="card rv">
@@ -67,8 +163,8 @@
       <ul>
         <li><b>适合：</b>只需要 Linux 命令行环境的计科同学</li>
         <li><b>安装：</b>管理员 PowerShell 一行 <code>wsl --install</code>，重启即得 Ubuntu</li>
-        <li><b>优点：</b>和 VS Code 无缝联动，编译、跑服务、学命令行都够用</li>
-        <li><b>注意：</b>默认没有完整桌面；systemd 服务支持有限</li>
+        <li><b>优点：</b>和 VS Code 无缝联动（WSL 扩展），编译、跑服务、学命令行都够用；文件还能和 Windows 互访</li>
+        <li><b>注意：</b>它本质上是住在 Windows 里的 Linux——写作业满分，体验完整桌面生态请走另外两条路</li>
       </ul>
     </div>
     <div class="card rv">
@@ -76,66 +172,160 @@
       <h3>双系统</h3>
       <ul>
         <li><b>适合：</b>想把 Linux 当日常主力的人</li>
-        <li><b>做法：</b>Windows 里压缩出 60GB+ 空闲分区，安装器选「与 Windows 共存」</li>
-        <li><b>优点：</b>性能满血，保留 Windows 兜底</li>
-        <li><b>注意：</b>装前先备份重要文件；Windows 大更新偶尔要吃掉引导，一根 U 盘就能救</li>
+        <li><b>做法：</b>Windows 磁盘管理里「压缩卷」腾出 60GB+ 空闲空间，安装器选「与 Windows 共存」</li>
+        <li><b>优点：</b>性能满血，开机菜单自选系统，Windows 留着兜底</li>
+        <li><b>注意：</b>装前完成第零步的备份；Windows 大更新偶尔要吃掉引导菜单，一根启动盘跑个 Boot Repair 就能救回</li>
       </ul>
     </div>
   </div>
+  <div class="tbl-wrap rv" style="margin-top:26px;"><table class="tbl">
+    <tr><th>路线</th><th>上手难度</th><th>性能</th><th>风险</th><th>一句话建议</th></tr>
+    <tr><td>虚拟机</td><td>★☆☆</td><td class="half">打八折</td><td class="yes">几乎为零</td><td>大一第一学期的稳妥开场</td></tr>
+    <tr><td>WSL2</td><td>★☆☆</td><td class="half">接近原生</td><td class="yes">几乎为零</td><td>计科专业课的最短路径</td></tr>
+    <tr><td>双系统</td><td>★★☆</td><td class="yes">满血</td><td class="half">低（备份后）</td><td>想当主力，就直接上</td></tr>
+    <tr><td>单系统</td><td>★★☆</td><td class="yes">满血</td><td class="half">无退路</td><td>老电脑焕新的最佳选择</td></tr>
+  </table></div>
   <p class="lead rv" style="margin-top:26px;">老电脑想直接单系统？那更好——少一个系统，少一堆事。旧机器装个 Mint 或 Debian，直接焕发第二春。</p>
 </div></section>
 
-<section class="sec"><div class="wrap">
-  <h2 class="rv">第二步：制作启动盘（10 分钟）</h2>
+<section class="sec" id="distro"><div class="wrap">
+  <div class="step rv">
+    <span class="num">2</span>
+    <div>
+      <h2>选一个发行版</h2>
+      <div class="sub">选择困难症发作的话，就闭眼选前两个之一。</div>
+    </div>
+  </div>
+  <div class="d-row rv">
+    <div class="d-item"><div class="ic-tile"><img src="img/icons/ubuntu.svg" alt="Ubuntu"></div><b>Ubuntu</b><span>教程全网最多，搜什么都有答案</span></div>
+    <div class="d-item"><div class="ic-tile"><img src="img/icons/linuxmint.svg" alt="Linux Mint"></div><b>Linux Mint</b><span>最像 Windows，零适应期</span></div>
+    <div class="d-item"><div class="ic-tile"><img src="img/icons/fedora.svg" alt="Fedora"></div><b>Fedora</b><span>新而稳，笔记本兼容好</span></div>
+    <div class="d-item"><div class="ic-tile"><img src="img/icons/popos.svg" alt="Pop!_OS"></div><b>Pop!_OS</b><span>NVIDIA 显卡开箱即用</span></div>
+    <div class="d-item"><div class="ic-tile"><img src="img/icons/deepin.svg" alt="deepin"></div><b>deepin</b><span>国产出品，中文体验拉满</span></div>
+    <div class="d-item"><div class="ic-tile"><img src="img/icons/nobara.png" alt="Nobara"></div><b>Nobara</b><span>游戏特化，预装兼容层</span></div>
+  </div>
+  <p class="lead rv" style="margin-top:26px;">拿不准？<a href="quiz.html">做个一分钟小测试</a>，让九位同学给你发本命发行版。记住一条社区铁律：<b>对新手来说，教程多的发行版，就是最好的发行版。</b></p>
+</div></section>
+
+<section class="sec" id="usb"><div class="wrap">
+  <div class="step rv">
+    <span class="num">3</span>
+    <div>
+      <h2>制作启动盘，然后安装</h2>
+      <div class="sub">写盘 10 分钟，安装 20 分钟，剩下时间喝奶茶。</div>
+    </div>
+  </div>
   <div class="grid2" style="margin-top:30px;">
     <div class="card rv">
       <h3>1. 下载镜像</h3>
-      <p>去发行版官网下 <code>.iso</code>。没想好装哪个？先去<a href="quiz.html">做个小测试</a>，或者无脑 Ubuntu / Mint。</p>
+      <p>去发行版官网下 <code>.iso</code>，教育网用户强烈建议直接去清华、中科大等镜像站下，快还免流量。没想好装哪个？回第二步，或者无脑 Ubuntu / Mint。</p>
       <h3 style="margin-top:22px;">2. 写入 U 盘</h3>
-      <p>Windows 上推荐 <b>Ventoy</b>（开源神器）：装一次，以后把 iso 直接拖进 U 盘就能启动，还能多系统共存。balenaEtcher 也行，图形界面傻瓜式。</p>
+      <p>Windows 上推荐 <b>Ventoy</b>（开源神器）：给 U 盘装一次，以后把 iso 直接拖进去就能启动，还能多个系统共存。balenaEtcher 和 Rufus 也行，图形界面傻瓜式操作。</p>
       <h3 style="margin-top:22px;">3. 开机进 U 盘</h3>
-      <p>重启按 F12 / F9 / ESC（因品牌而异）选 U 盘启动，进入 Live 模式——<b>不安装也能先试用</b>，确认 Wi-Fi、触板都正常再点安装。</p>
+      <p>重启时按启动菜单键选 U 盘，进入 Live 模式——<b>不安装也能先试用</b>。确认下面清单全部正常，再双击桌面上的「安装」。</p>
     </div>
+    <div class="card rv">
+      <h3>Live 模式检查清单</h3>
+      <ul>
+        <li>Wi-Fi 能搜到并连上</li>
+        <li>声音外放、耳机都出声</li>
+        <li>亮度调节、触控板手势正常</li>
+        <li>合盖再打开，睡眠唤醒不黑屏</li>
+        <li>屏幕分辨率没有奇怪的拉伸</li>
+      </ul>
+      <p style="margin-top:12px;">全部通过 = 这台机器和 Linux 八字相合，放心装。某一项不灵也多半有驱动可救，先记下来装完再处理。</p>
+    </div>
+  </div>
+  <div class="grid2" style="margin-top:22px;">
     <div class="card rv">
       <h3>安装时的三个关键点</h3>
       <ul>
         <li><b>Secure Boot：</b>Ubuntu / Fedora 系直接支持，不用关；少数发行版需要进 BIOS 关掉它</li>
-        <li><b>分区：</b>双系统选「与 Windows 共存」让安装器自动分；手动分的话 <code>/</code> 给 50GB+，再留个 1GB 的 EFI 分区</li>
-        <li><b>用户名：</b>全小写、无空格无中文，未来的你会感谢现在的你</li>
+        <li><b>分区：</b>双系统选「与 Windows 共存」让安装器自动分；手动分的话 <code>/</code> 给 50GB+，再留一个 512MB–1GB 的 EFI 分区</li>
+        <li><b>用户名：</b>全小写、无空格、无中文，未来的你会感谢现在的你</li>
       </ul>
       <p style="margin-top:14px;">⚠️ 老手们爱说的 <code>dd</code> 命令写盘，写错盘符就是当场火化，新手请用图形工具。</p>
     </div>
+    <div class="card rv">
+      <h3>各品牌开机启动键速查</h3>
+      <ul>
+        <li><b>联想：</b>F12（或机身侧面的 Novo 小孔）</li>
+        <li><b>戴尔：</b>F12　　<b>惠普：</b>F9（先按 ESC 也行）</li>
+        <li><b>华硕：</b>ESC　　<b>小米 / Redmi：</b>F12</li>
+        <li><b>Mac：</b>开机长按 Option</li>
+        <li><b>台式组装机：</b>常用 F12 / F11 / F8，进 BIOS 是 Del</li>
+      </ul>
+      <p style="margin-top:12px;">开机第一屏 logo 下方一般也写着按键提示，手快一点就能看到。</p>
+    </div>
   </div>
 </div></section>
 
-<section class="sec"><div class="wrap">
-  <h2 class="rv">第三步：装完后的第一件事</h2>
+<section class="sec" id="post"><div class="wrap">
+  <div class="step rv">
+    <span class="num">4</span>
+    <div>
+      <h2>装完后的第一件事</h2>
+      <div class="sub">按顺序做完这四件，体验直接从「能用」变「好用」。</div>
+    </div>
+  </div>
   <div class="grid2" style="margin-top:30px;">
     <div class="card rv">
       <span class="pill">网络优化</span>
-      <h3>换国内镜像源</h3>
-      <p>默认软件源在国外，下载慢到怀疑人生。换成校园网内多半还免流量的国内镜像：</p>
+      <h3>① 换国内镜像源</h3>
+      <p>默认软件源在国外，下载慢到怀疑人生。换成国内镜像，校园网内多半还免流量：</p>
       <ul>
         <li>清华 TUNA：<code>mirrors.tuna.tsinghua.edu.cn</code></li>
         <li>中科大 USTC：<code>mirrors.ustc.edu.cn</code></li>
-        <li>阿里云：<code>mirrors.aliyun.com</code></li>
+        <li>阿里云：<code>mirrors.aliyun.com</code>　网易：<code>mirrors.163.com</code></li>
       </ul>
-      <p style="margin-top:10px;">各镜像站首页都有「使用帮助」，搜你的发行版，复制粘贴即可。</p>
+      <p style="margin-top:10px;">各镜像站首页都有「使用帮助」，搜你的发行版，复制粘贴即可。换完顺手跑一次系统更新。</p>
     </div>
     <div class="card rv">
       <span class="pill">日常体验</span>
-      <h3>中文输入法与驱动</h3>
+      <h3>② 中文输入法与显卡驱动</h3>
       <ul>
-        <li>输入法：<code>fcitx5</code> + 中州韵（Rime）或自带拼音，开箱体验不输 Windows</li>
-        <li>NVIDIA 显卡：Ubuntu 系跑一句 <code>sudo ubuntu-drivers autoinstall</code> 完事；Arch 装 <code>nvidia-open</code></li>
+        <li>输入法：<code>fcitx5</code> + 中州韵（Rime）或自带拼音，开箱体验不输 Windows；搜狗也有 Linux 版可选</li>
+        <li>NVIDIA 显卡：Ubuntu 系跑一句 <code>sudo ubuntu-drivers autoinstall</code> 完事；也可以在「附加驱动」里点选</li>
+        <li>高分屏同学：显示设置里把缩放调到 125%–150%，字瞬间不瞎眼</li>
+      </ul>
+    </div>
+    <div class="card rv">
+      <span class="pill green">安全感</span>
+      <h3>③ 给系统上一份保险</h3>
+      <ul>
         <li>装 <b>Timeshift</b> 做个系统快照，折腾坏了十秒回滚——成年人的安全感</li>
-        <li>注册 <b>Flathub</b> 仓库：图形软件一键装，省心</li>
+        <li>开启自动安全更新，其余更新想啥时候点都行</li>
+        <li>重要资料依旧遵守第零步的备份纪律：系统有快照，数据有云盘</li>
+      </ul>
+    </div>
+    <div class="card rv">
+      <span class="pill orange">生产力</span>
+      <h3>④ 把软件装满</h3>
+      <ul>
+        <li>注册 <b>Flathub</b> 仓库：图形软件一键装，省心；多数发行版的软件中心里点一下就行</li>
+        <li>浏览器、VLC、Obsidian、Zotero、WPS……想要的几乎都有</li>
+        <li>找不到 Windows 同款软件的替代品？去<a href="apps.html">软件对照表</a>按专业查</li>
       </ul>
     </div>
   </div>
 </div></section>
 
 <section class="sec"><div class="wrap">
+  <div class="term-band rv">
+    <div class="term-inner center">
+      <h2>第一周，和终端交个朋友。</h2>
+      <p class="lead">别怕那个黑窗口，它不吃人。记住这五条，你已经超过 80% 的用户。</p>
+      <pre style="text-align:left;"><code><span class="hl">ls</span>                        <span class="cm"># 看看当前文件夹里有啥</span>
+<span class="hl">cd</span> 文件夹名               <span class="cm"># 走进某个文件夹</span>
+<span class="hl">sudo apt install</span> 软件名   <span class="cm"># 装软件（Debian/Ubuntu/Mint 系）</span>
+<span class="hl">man</span> 命令名                <span class="cm"># 不会用？问它自己</span>
+<span class="hl">sudo !!</span>                   <span class="cm"># 上条命令忘了 sudo？补票专用</span></code></pre>
+      <p class="tip">更多命令收在<a href="cheatsheet.html">命令行小抄卡</a>里，可搜索、可收藏。看到 <code>rm -rf</code> 开头的「教程」请直接关掉网页，那是社区保留整活节目。</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" id="campus"><div class="wrap">
   <h2 class="rv">国内高校特供问题</h2>
   <div class="grid2" style="margin-top:30px;">
     <div class="card rv">
@@ -159,6 +349,43 @@
       <p style="margin-top:10px;">简单说：2026 年的今天，通讯办公已经不再是 Linux 的拦路虎了。</p>
     </div>
   </div>
+  <div class="card rv" style="margin-top:22px;border-left:5px solid #0071e3;">
+    <span class="pill">丑话说前面</span>
+    <h3>教务系统与考试软件</h3>
+    <p>选课、查成绩这类教务系统绝大多数是网页版，Linux 浏览器直接用；知网、万方查文献也没问题。真正的坑是少数<b>机考练习客户端</b>（比如某些等级考试的模拟软件）只有 Windows 版——解法有三：双系统切回去、学校机房、或借室友电脑。这也是为什么我们推荐双系统：Linux 负责日常，Windows 负责兜底。</p>
+  </div>
+</div></section>
+
+<section class="sec" id="faq"><div class="wrap">
+  <div class="center">
+    <h2 class="rv">新手 FAQ</h2>
+    <div class="faq-controls rv">
+      <button id="faq-expand">全部展开</button>
+      <button id="faq-collapse">全部收起</button>
+    </div>
+  </div>
+  <div style="margin-top:26px;">
+    <div class="faq-item rv">
+      <button class="faq-q">装坏了 / 后悔了怎么办？<span class="ic">+</span></button>
+      <div class="faq-a"><div><p>虚拟机：直接删虚拟机文件，就当没发生过。双系统：从 Windows 磁盘管理删掉 Linux 分区，再用启动盘修复一下引导即可。单系统：重装回 Windows 也就是半小时的事。资料按第零步备份过，系统本身就是耗材——这正是 Linux 最适合练手的原因：折腾成本约等于零。</p></div></div>
+    </div>
+    <div class="faq-item rv">
+      <button class="faq-q">我的老电脑跑得动吗？<span class="ic">+</span></button>
+      <div class="faq-a"><div><p>大概率比你想象的能跑。4GB 内存选轻量桌面（Xubuntu、Linux Mint Xfce 版），8GB 就随便挑；十年前的机器装 Debian 还能再战三年。选购新机或想查具体机型兼容性，去<a href="hardware.html">硬件页</a>看评级。</p></div></div>
+    </div>
+    <div class="faq-item rv">
+      <button class="faq-q">Linux 桌面会不会很丑？<span class="ic">+</span></button>
+      <div class="faq-a"><div><p>GNOME 和 KDE 的默认颜值早已在线，deepin 更是精致路线。想进一步折腾主题、 dock、状态栏，社区管这叫「Ricing」，成品可以去 r/unixporn 围观（听不懂这个词？<a href="jargon.html">黑话翻译器</a>伺候）。</p></div></div>
+    </div>
+    <div class="faq-item rv">
+      <button class="faq-q">遇到问题去哪问？<span class="ic">+</span></button>
+      <div class="faq-a"><div><p>三件套：① Arch Wiki——写得太好，用别的发行版也值得查；② 你发行版的中文论坛与社群；③ 本校开源社团 / 镜像站用户群。提问礼仪：说清发行版和版本、贴上完整报错截图、说明你试过什么。做到这三点，大佬们抢着回答。</p></div></div>
+    </div>
+    <div class="faq-item rv">
+      <button class="faq-q">需要英语很好吗？<span class="ic">+</span></button>
+      <div class="faq-a"><div><p>安装界面和桌面都有完整中文，日常使用零门槛。报错信息多为英文，但复制下来丢给搜索引擎或 AI，基本一搜一个准。把报错看懂的过程，本身就是英语和计算机双修的隐藏福利。</p></div></div>
+    </div>
+  </div>
 </div></section>
 
 <section class="sec center"><div class="wrap">
@@ -166,12 +393,13 @@
   <p class="lead rv">系统只是开始，软件才是生产力。</p>
   <div style="margin-top:24px;" class="rv">
     <a class="btn" href="apps.html">看看专业软件对照表</a>
+    <a class="btn-ghost" href="cheatsheet.html">收藏命令小抄 &gt;</a>
     <a class="btn-ghost" href="honest.html">先看看避坑指南 &gt;</a>
   </div>
 </div></section>
 
 <footer><div class="wrap">
-  <div class="legal">* 角色形象版权归 Bushiroad 所有，本页面为非营利粉丝二创。指南内容以各发行版官方文档为准。</div>
+  <div class="legal">* 角色形象版权归 Bushiroad 所有，本页面为非营利粉丝二创。指南内容以各发行版官方文档为准，软件与认证方式随时间变化，发现过时内容欢迎到 <a href="https://github.com/Huanuyn1/Linuxedu.space" target="_blank" rel="noopener">GitHub 仓库</a>提 PR 修正。</div>
   <div class="footer-bar"><span><a href="index.html">← 返回首页</a></span><span>用 ❤️ 与 ¥0 构建</span></div>
 </div></footer>
 
@@ -180,6 +408,15 @@ const io = new IntersectionObserver(es => {
   es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
 }, { threshold: 0.1 });
 document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+// FAQ 手风琴
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => q.closest('.faq-item').classList.toggle('open'));
+});
+document.getElementById('faq-expand').addEventListener('click', () =>
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.add('open')));
+document.getElementById('faq-collapse').addEventListener('click', () =>
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open')));
 </script>
 </body>
 </html>

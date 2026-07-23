@@ -4,18 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Linux 黑话翻译器 - 人话版社区词典</title>
-<meta name="description" content="可搜索的 Linux 黑话词典：发行版、滚动更新、AUR、sudo、炼丹、Ricing……社区帖子从此看得懂。">
+<meta name="description" content="可搜索的 Linux 黑话词典：74 条社区高频黑话，从发行版、AUR、sudo 到 Proton、炼丹、Ricing，人话翻译，社区帖子从此看得懂。">
 <meta property="og:title" content="Linux 黑话翻译器 - 人话版社区词典">
-<meta property="og:description" content="可搜索的 Linux 黑话词典：发行版、滚动更新、AUR、sudo、炼丹、Ricing……社区帖子从此看得懂。">
+<meta property="og:description" content="可搜索的 Linux 黑话词典：74 条社区高频黑话，从发行版、AUR、sudo 到 Proton、炼丹、Ricing，人话翻译，社区帖子从此看得懂。">
 <meta property="og:image" content="https://linuxedu.space/img/tux.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐧</text></svg>">
 <link rel="stylesheet" href="assets/site.css">
 <style>
-.jgroup{margin-top:40px;}
-.jgroup>h3{font-size:20px;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.page-hero{background:radial-gradient(640px 300px at 50% -60px,rgba(0,144,255,.10),transparent 70%);}
+.jchips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px;}
+.jchips a{background:#fff;border:1px solid #d2d2d7;border-radius:980px;padding:8px 18px;font-size:14px;font-weight:600;color:var(--text);transition:all .18s;}
+.jchips a:hover{border-color:var(--blue);color:var(--blue);text-decoration:none;}
+#count{text-align:center;font-size:13.5px;color:var(--text-2);margin-top:12px;min-height:20px;}
+.jgroup{margin-top:48px;scroll-margin-top:76px;}
+.jgroup>h3{font-size:22px;margin-bottom:6px;display:flex;align-items:center;gap:10px;}
+.jgroup>.gsub{font-size:14px;color:var(--text-2);margin-bottom:18px;}
+.cnt{font-size:12px;font-weight:700;color:var(--blue);background:rgba(0,113,227,.09);border-radius:980px;padding:3px 10px;flex:0 0 auto;}
 .jgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
 @media(max-width:760px){.jgrid{grid-template-columns:1fr;}}
-.term{background:#fff;border-radius:14px;padding:18px 20px;box-shadow:0 3px 16px rgba(0,0,0,.04);}
+.term{background:#fff;border-radius:14px;padding:18px 20px;box-shadow:0 3px 16px rgba(0,0,0,.04);border:1px solid transparent;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;}
+.term:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,.08);border-color:rgba(0,113,227,.25);}
 .term b{font-size:16px;display:block;margin-bottom:6px;}
 .term b i{font-style:normal;font-size:12px;color:var(--text-2);font-weight:500;margin-left:8px;}
 .term p{font-size:14px;color:var(--text-2);line-height:1.7;}
@@ -44,8 +52,18 @@
   <div class="wrap">
     <p class="kicker">Jargon Buster</p>
     <h1>黑话翻译器。</h1>
-    <p class="lead">社区帖子里的每个词，这里都有人话版。搜一下，秒懂。</p>
+    <p class="lead">社区帖子里的每个词，这里都有人话版。74 条高频黑话，搜一下，秒懂。</p>
     <div style="margin-top:28px;"><input class="cmd-search" id="search" type="search" placeholder="搜索黑话，比如：AUR / 炼丹 / sudo / 滚动更新…"></div>
+    <p id="count"></p>
+    <div class="jchips">
+      <a href="#g-basic">🐣 入门概念</a>
+      <a href="#g-cli">⌨️ 命令行黑话</a>
+      <a href="#g-pkg">📦 装软件黑话</a>
+      <a href="#g-install">🔧 装机与硬件</a>
+      <a href="#g-sys">⚙️ 系统进阶词</a>
+      <a href="#g-community">🏘️ 社区黑话</a>
+      <a href="#g-game">🎮 游戏与炼丹</a>
+    </div>
   </div>
 </header>
 
@@ -53,14 +71,43 @@
   <div class="host rv">
     <img src="img/char/arisa.png" alt="市谷有咲">
     <div>
-      <div class="q">「连这些词都不懂还敢逛论坛？……真拿你没办法，本小姐亲自给你翻译。」</div>
+      <div class="q">「哈？连『滚动更新』都要我翻译？……行吧，看在你是新生的份上。这本词典我写了四年，给我从头到尾读完。」</div>
       <div class="who">市谷有咲 · Arch Linux 用户 · 本页翻译官</div>
-      <p>遇到不懂的词先搜这里。搜不到的话，大概率是它在耍你，别理它。</p>
+      <p>支持中英文混搜，点上面分类可以直达。搜不到的词，大概率是对方在现编，别慌，别理。</p>
     </div>
   </div>
 
-  <div class="jgroup rv" data-g>
-    <h3>🐣 入门概念</h3>
+  <div class="stats rv" style="margin-top:40px;">
+    <div class="stat"><b>74</b><span>条词条收录</span></div>
+    <div class="stat"><b>7</b><span>大黑话分类</span></div>
+    <div class="stat"><b>¥0</b><span>查词学费</span></div>
+    <div class="stat"><b>1991</b><span>社区运营至今</span></div>
+  </div>
+
+  <div class="grid2 rv" style="margin-top:40px;">
+    <div class="card">
+      <span class="pill">查词技巧</span>
+      <h3>这本词典怎么用</h3>
+      <ul>
+        <li>支持<b>中英文混搜</b>：打「aur」「tty」或「炼丹」「滚挂」都行</li>
+        <li>释义里的词也能搜：打「更新」会捞出滚动更新、LTS、滚挂一整串</li>
+        <li>记不全名字没关系，打半个词试试——模糊匹配，不含糊</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="pill orange">词典之外</span>
+      <h3>查不到，去哪问</h3>
+      <ul>
+        <li>概念深挖去 <b>Arch Wiki</b>（不用 Arch 也能看，公开的秘密）</li>
+        <li>提问前先把报错信息<b>复制下来搜一遍</b>，九成有人问过</li>
+        <li>真有漏网之词，到 <a href="https://github.com/Huanuyn1/Linuxedu.space" target="_blank" rel="noopener">GitHub 仓库</a>提 Issue，我们收录</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="jgroup rv" data-g id="g-basic">
+    <h3>🐣 入门概念 <span class="cnt">12 条</span></h3>
+    <p class="gsub">先把世界观的积木搭好，后面的一切都好懂。</p>
     <div class="jgrid">
       <div class="term" data-k="发行版 distro 系统 ubuntu arch debian fedora"><b>发行版<i>Distro</i></b><p>Linux 的「品牌套餐」：同一个内核，配上不同的软件、桌面和理念打包出售。Ubuntu、Arch、Debian 都是发行版——就像同样的发动机，装进了不同品牌的车。</p></div>
       <div class="term" data-k="内核 kernel linux 核心"><b>内核<i>Kernel</i></b><p>系统真正的核心，负责跟硬件对话。你平时说的「Linux」严格来说只是它，平时用的完整系统其实是「内核 + 一堆软件」的组合。</p></div>
@@ -72,11 +119,14 @@
       <div class="term" data-k="lts 长期支持 稳定版"><b>LTS<i>长期支持版</i></b><p>追求稳定的版本策略：一个版本官方维护 3～5 年，只修 bug 不追新。求稳的同学认准 LTS 三个字母，比如 Ubuntu 24.04 LTS。</p></div>
       <div class="term" data-k="live usb u盘 试用 启动盘"><b>Live USB<i>试用 U 盘</i></b><p>把系统装到 U 盘里开机就跑，不碰硬盘。买电脑、装系统前的「试驾」神器：先在 Live 模式里试试 Wi-Fi、触板好不好使，再决定装不装。</p></div>
       <div class="term" data-k="基于 based on 血统 下游"><b>基于 / 血统<i>Based on</i></b><p>「Mint 基于 Ubuntu，Ubuntu 基于 Debian」——发行版也有族谱。基于谁，就继承谁的软件仓库和脾气，所以查教程时血统比名字更重要。</p></div>
+      <div class="term" data-k="gnu linux 命名 理查德 rms 自由软件"><b>GNU/Linux</b><p>严格党的执念：完整系统是 GNU 工具集 + Linux 内核，所以自由软件基金会坚持要叫它 GNU/Linux。日常说 Linux 没人拦你，但在老帖子里看到这个写法别懵。</p></div>
+      <div class="term" data-k="开箱即用 out of the box 免配置"><b>开箱即用</b><p>装完不做任何配置就能直接干活。Mint、Ubuntu 走这条路；Arch 开箱只有一行命令行——它管这个叫自由。</p></div>
     </div>
   </div>
 
-  <div class="jgroup rv" data-g>
-    <h3>⌨️ 命令行黑话</h3>
+  <div class="jgroup rv" data-g id="g-cli">
+    <h3>⌨️ 命令行黑话 <span class="cnt">12 条</span></h3>
+    <p class="gsub">黑窗口里的黑话。别怕，它们大多比听起来善良。</p>
     <div class="jgrid">
       <div class="term" data-k="终端 terminal shell bash zsh 命令行"><b>终端 / Shell<i>Terminal / Bash</i></b><p>终端是那个黑窗口，Shell 是里面听你指挥的「管家」（Bash、Zsh 都是 Shell 的品种）。日常混用没问题，别在考试里较真。</p></div>
       <div class="term" data-k="sudo 管理员 权限"><b>sudo</b><p>「以管理员身份执行」。相当于 Windows 的右键管理员运行。经典梗：说不通的人，在前面加个 sudo 就通了——sudo 帮我带饭。</p></div>
@@ -87,15 +137,69 @@
       <div class="term" data-k="守护进程 daemon 服务 service 后台"><b>守护进程<i>Daemon</i></b><p>在后台默默干活的程序，比如 Web 服务、打印服务。名字听着吓人，其实是因为英文 daemon 原意是「守护精灵」，不是恶魔。</p></div>
       <div class="term" data-k="chmod 777 权限 执行"><b>chmod 777</b><p>给文件「所有人都能读写执行」的权限。社区著名反面教材：出问题就 777 是莽夫行为，正确做法是搞清楚谁需要什么权限。</p></div>
       <div class="term" data-k="tty 终端 黑屏 快捷键"><b>TTY</b><p>纯命令行的全屏终端。图形界面卡死时按 Ctrl+Alt+F3 能进 TTY 救场，按 Ctrl+Alt+F2（或 F1）切回图形界面。记住它，关键时刻救命。</p></div>
+      <div class="term" data-k="rm -rf 删除 删库跑路 危险命令"><b>rm -rf</b><p>删库跑路的凶器：递归、强制、不给确认地删除。社区头号恐怖故事主角。看到任何带 -rf 的命令先读三遍再回车，来历不明的一律不执行。</p></div>
+      <div class="term" data-k="man 手册 说明书 tldr 帮助"><b>man 手册</b><p>man 加命令名 = 查官方说明书，比如 man ls。退出按 q——新人第一次进去都以为电脑卡死了。嫌太学术就装个 tldr，直接给你人话版例子。</p></div>
+      <div class="term" data-k="环境变量 path 变量 配置 command not found"><b>环境变量 / PATH</b><p>系统级的全局小纸条。PATH 决定你敲一个命令时系统去哪儿找它——遇到 command not found，八成是程序的路径没加进 PATH。</p></div>
     </div>
   </div>
 
-  <div class="jgroup rv" data-g>
-    <h3>🏘️ 社区黑话</h3>
+  <div class="jgroup rv" data-g id="g-pkg">
+    <h3>📦 装软件黑话 <span class="cnt">8 条</span></h3>
+    <p class="gsub">装个软件而已，怎么有这么多门派。</p>
+    <div class="jgrid">
+      <div class="term" data-k="flatpak flathub 沙箱 通用包"><b>Flatpak</b><p>跨发行版的通用打包格式，自带运行环境，哪个发行版都能装，软件商店叫 Flathub。代价是体积大一点——沙箱里装了它的半个世界。</p></div>
+      <div class="term" data-k="snap ubuntu 通用包 自动更新"><b>Snap</b><p>Ubuntu 力推的通用包格式，沙箱隔离、自动更新。口碑两极：方便是真方便，启动偏慢和强制自动更新也是真有人烦。</p></div>
+      <div class="term" data-k="appimage 绿色软件 便携 免安装"><b>AppImage</b><p>下载即用的「绿色软件」：一个文件双击就跑，不安装、不污染系统，删了就干净。适合尝鲜和装进 U 盘随身带。</p></div>
+      <div class="term" data-k="deb rpm 安装包 格式 debian fedora"><b>.deb / .rpm</b><p>两种安装包格式：deb 给 Debian/Ubuntu 系，rpm 给 Fedora/openSUSE 系。相当于安装包界的两大流派，下载时别进错家门。</p></div>
+      <div class="term" data-k="依赖 dependency 依赖地狱 库"><b>依赖 / 依赖地狱</b><p>软件运行要借别人的库，这些「别人」就是依赖。如今包管理器自动搞定一切；早年要手工一个个装，装到怀疑人生，史称依赖地狱。</p></div>
+      <div class="term" data-k="编译安装 源码 make install 构建"><b>编译安装</b><p>从源码自己构建软件，经典三连：./configure、make、sudo make install。现在大多数时候用不上，但 Gentoo 用户把它过成了日常。</p></div>
+      <div class="term" data-k="aur helper yay paru 助手"><b>AUR Helper</b><p>AUR 的装机助手，yay 和 paru 最流行，一条命令自动下载、编译、安装 AUR 包。官方态度：用可以，先学会自己看一眼 PKGBUILD。</p></div>
+      <div class="term" data-k="源外安装 官网下载 github 第三方"><b>源外安装</b><p>从官网、GitHub 直接下载安装包。能装，但失去了仓库的审核和自动更新。建议顺序：官方源 → Flatpak → 官网，别一上来就当下载站战士。</p></div>
+    </div>
+  </div>
+
+  <div class="jgroup rv" data-g id="g-install">
+    <h3>🔧 装机与硬件 <span class="cnt">12 条</span></h3>
+    <p class="gsub">从按下开机键到点亮桌面，路上会撞见的词。</p>
+    <div class="jgrid">
+      <div class="term" data-k="uefi bios 启动 固件"><b>UEFI / BIOS</b><p>开机最先跑的固件程序，负责把系统叫醒。UEFI 是 BIOS 的现代版。装系统、关 Secure Boot 都在它的设置界面里操作（开机猛按 F2/Del/F12）。</p></div>
+      <div class="term" data-k="secure boot 安全启动 关闭"><b>Secure Boot<i>安全启动</i></b><p>UEFI 的一项安全检查，有时会拦住 Linux 启动盘。装系统卡在这一步就去 BIOS 里把它关掉——这是新手装机最高频的坎。</p></div>
+      <div class="term" data-k="grub 引导 启动菜单 引导修复"><b>GRUB<i>引导器</i></b><p>开机时的系统选择菜单，负责把内核叫醒。双系统靠它选边站；它罢工的表现是开机黑脸，别慌，一根启动盘就能修好。</p></div>
+      <div class="term" data-k="efi 分区 esp 引导分区"><b>EFI 分区<i>ESP</i></b><p>存放引导文件的小分区，几百 MB 就够，双系统里 Windows 和 Linux 共用同一个。手滑格式化它 = 两个系统一起进不了门。</p></div>
+      <div class="term" data-k="分区 partition 挂载 双系统"><b>分区 / 挂载</b><p>把硬盘切成几块用（系统、数据分开），「挂载」就是把某块分区接到目录树的某个位置。双系统就是给两个系统各分一块地盘。</p></div>
+      <div class="term" data-k="文件系统 ext4 btrfs 格式"><b>文件系统<i>ext4 / Btrfs</i></b><p>硬盘上组织文件的方式。ext4 稳如老狗，是默认之选；Btrfs 自带快照功能，是后悔药 Timeshift 的好搭档。装系统时默认选项就够用。</p></div>
+      <div class="term" data-k="双系统 dual boot windows 共存"><b>双系统<i>Dual Boot</i></b><p>一台电脑装两个系统，开机时三秒选一个。Windows 当游戏厅，Linux 当书房，成年人不做选择。新手上路最稳妥的姿势。</p></div>
+      <div class="term" data-k="核显 独显 显卡 nvidia amd 驱动"><b>核显 / 独显</b><p>核显长在 CPU 里，省电够用，Linux 下驱动开源免折腾；独显是独立显卡，性能强适合游戏和炼丹，NVIDIA 的驱动是闭源的（但现在一键能装）。</p></div>
+      <div class="term" data-k="开源驱动 闭源驱动 nouveau nvidia"><b>开源 / 闭源驱动</b><p>Intel、AMD 显卡驱动是开源的，系统自带；NVIDIA 官方驱动闭源，要单独装。开源替代品 Nouveau 性能一般，打游戏还是用官方驱动。</p></div>
+      <div class="term" data-k="swap 交换分区 虚拟内存"><b>swap<i>交换分区</i></b><p>硬盘上划出一块当「应急内存」，内存不够时救场，也是休眠功能的存放点。内存 16G 以上给 4～8G 意思一下就行。</p></div>
+      <div class="term" data-k="刷机 变砖 重装 快照 timeshift"><b>快照 / 后悔药<i>Timeshift</i></b><p>给系统拍照片存档，折腾坏了十秒回滚到昨天。和「黑话」没关系，但每个老玩家都会拍着大腿劝你装一个。</p></div>
+      <div class="term" data-k="变砖 brick 刷废 救砖"><b>变砖<i>Brick</i></b><p>设备被折腾到开不了机，功能退化成一块砖。手机圈黑话，刷 BIOS、乱动引导时也会用上。应对：操作前查好教程，手边常备启动盘。</p></div>
+    </div>
+  </div>
+
+  <div class="jgroup rv" data-g id="g-sys">
+    <h3>⚙️ 系统进阶词 <span class="cnt">8 条</span></h3>
+    <p class="gsub">日用不一定碰，看帖一定会遇到的进阶词汇。</p>
+    <div class="jgrid">
+      <div class="term" data-k="systemd init systemctl 服务 启动"><b>systemd</b><p>系统的总管家：开机后第一个进程，负责拉起所有服务。社区对它爱恨两极，但你天天都在用——systemctl 命令就是它的遥控器。</p></div>
+      <div class="term" data-k="wayland x11 xorg 显示服务器 桌面"><b>Wayland / X11</b><p>两代显示服务器：X11 是服役三十多年的老将，Wayland 是更现代、更丝滑的接班人。新手默认 Wayland 就好，个别老软件水土不服时再查切换方法。</p></div>
+      <div class="term" data-k="窗口管理器 wm i3 sway hyprland 平铺"><b>窗口管理器<i>WM</i></b><p>不要桌面环境，只留一个管窗口的极简班子：i3、Sway、Hyprland。平铺式自动排窗，键盘流玩家的归宿，Ricing 重灾区。</p></div>
+      <div class="term" data-k="内核恐慌 kernel panic 蓝屏 死机"><b>内核恐慌<i>Kernel Panic</i></b><p>内核遇到处理不了的错误，直接躺平罢工——相当于 Windows 蓝屏。稀有事件，真遇上了先拍照留念，再回想最近动了什么。</p></div>
+      <div class="term" data-k="输入法 fcitx ibus 中文输入 rime"><b>输入法框架<i>fcitx</i></b><p>中文输入的地基：fcitx5 配拼音或 Rime 是主流方案。输入法闹脾气别砸键盘，九成是框架的环境变量没配对。</p></div>
+      <div class="term" data-k="日志 journal journalctl 排查 log"><b>日志<i>journal</i></b><p>系统的流水账，用 journalctl 查看。排查问题的第一现场：服务起不来？journalctl -u 服务名，看日志比瞎猜快十倍。</p></div>
+      <div class="term" data-k="gcc 编译器 编译 c语言"><b>GCC<i>编译器</i></b><p>Linux 世界的默认编译器套装。学过 C 语言的都跟它打过交道：gcc hello.c -o hello，以及随之而来的四行报错——那是青春的一部分。</p></div>
+      <div class="term" data-k="容器 docker container 镜像 部署"><b>容器 / Docker</b><p>轻量级的「打包带走」：把应用连环境一起装进集装箱，在哪台机器跑都一样。课程实验、部署服务的救星，从此告别「在我电脑上明明是好的」。</p></div>
+    </div>
+  </div>
+
+  <div class="jgroup rv" data-g id="g-community">
+    <h3>🏘️ 社区黑话 <span class="cnt">14 条</span></h3>
+    <p class="gsub">论坛、群聊、帖子里流通的硬通货。</p>
     <div class="jgrid">
       <div class="term" data-k="aur arch 用户仓库 软件包"><b>AUR<i>Arch 用户仓库</i></b><p>Arch 用户自发上传的软件仓库，十万软件包什么都有。是 Arch 最大的魅力，也要求你留个心眼——毕竟是网友上传的，装前瞄一眼评论。</p></div>
       <div class="term" data-k="ppa ubuntu 第三方源"><b>PPA</b><p>Ubuntu 的第三方软件源，用来装官方仓库没有（或太旧）的软件。相当于给应用商店加了个「代购渠道」。</p></div>
       <div class="term" data-k="rtfm 读手册 wiki 提问"><b>RTFM</b><p>「Read The Fine Manual」——去读手册！社区回答伸手党的经典回复。礼貌版说法是「这个在 Arch Wiki 上有哦」。提问前先搜索，是社区第一课。</p></div>
+      <div class="term" data-k="arch wiki 文档 神书 维基"><b>Arch Wiki</b><p>社区公认的神级文档，写得比很多官方文档都好。就算你不用 Arch，查配置也常常查到它头上——用别的发行版看 Arch Wiki，是公开的秘密。</p></div>
       <div class="term" data-k="distro hopping 换发行版 跳槽"><b>Distro Hopping</b><p>发行版跳跃症：不停地换系统尝鲜，Mint 用两周换 Fedora，再换 Arch……老玩家的必经之路。放心，大部分人会最终在某一站安家。</p></div>
       <div class="term" data-k="滚挂 滚动更新 翻车"><b>滚挂</b><p>滚动更新翻车的简称：一更新，系统出毛病了。应对：更新前看一眼公告，装好快照工具，滚挂了也能十秒回滚。</p></div>
       <div class="term" data-k="日用 主力机 daily driver"><b>日用</b><p>把 Linux 当主力系统天天用。「这个发行版能不能日用」=「靠不靠谱，能不能托付四年」。</p></div>
@@ -104,21 +208,23 @@
       <div class="term" data-k="btw i use arch 梗 arch"><b>「BTW, I use Arch」</b><p>「顺便一提，我用 Arch」——调侃 Arch 用户逢人必提的梗。你在本站首页看到的有咲同学就是典型患者。</p></div>
       <div class="term" data-k="foss 自由软件 开源 gpl copyleft"><b>FOSS / 自由软件</b><p>Free and Open Source Software。自由软件的「自由」是自由的自由，不是免费——虽然通常也免费。GPL 协议还带「传染性」：用了我的代码，你的也得开源。</p></div>
       <div class="term" data-k="上游 upstream 下游 补丁"><b>上游 / 下游<i>Upstream</i></b><p>软件的原始作者是上游，打包改造的发行版是下游。「报 bug 要报给上游」= 找亲妈告状，别找错人。</p></div>
+      <div class="term" data-k="用爱发电 开源 志愿者 维护者"><b>用爱发电</b><p>开源开发者义务劳动的自嘲：不收钱，纯靠热爱维护。所以对维护者客气点——提 Issue 时把情况讲清楚，就是你交的最好电费。</p></div>
       <div class="term" data-k="企鹅 tux 企鹅人 吉祥物"><b>企鹅 / Tux</b><p>Linux 吉祥物，一只憨憨的企鹅。自称「企鹅人」的，就是 Linux 用户的身份证。来源：Linus 本人被企鹅咬过（是真的）。</p></div>
     </div>
   </div>
 
-  <div class="jgroup rv" data-g>
-    <h3>🔧 装机与硬件</h3>
+  <div class="jgroup rv" data-g id="g-game">
+    <h3>🎮 游戏与炼丹 <span class="cnt">8 条</span></h3>
+    <p class="gsub">打游戏和跑模型，大学生两大显卡消耗场景。</p>
     <div class="jgrid">
-      <div class="term" data-k="uefi bios 启动 固件"><b>UEFI / BIOS</b><p>开机最先跑的固件程序，负责把系统叫醒。UEFI 是 BIOS 的现代版。装系统、关 Secure Boot 都在它的设置界面里操作（开机猛按 F2/Del/F12）。</p></div>
-      <div class="term" data-k="secure boot 安全启动 关闭"><b>Secure Boot<i>安全启动</i></b><p>UEFI 的一项安全检查，有时会拦住 Linux 启动盘。装系统卡在这一步就去 BIOS 里把它关掉——这是新手装机最高频的坎。</p></div>
-      <div class="term" data-k="分区 partition 挂载 双系统"><b>分区 / 挂载</b><p>把硬盘切成几块用（系统、数据分开），「挂载」就是把某块分区接到目录树的某个位置。双系统就是给两个系统各分一块地盘。</p></div>
-      <div class="term" data-k="双系统 dual boot windows 共存"><b>双系统<i>Dual Boot</i></b><p>一台电脑装两个系统，开机时三秒选一个。Windows 当游戏厅，Linux 当书房，成年人不做选择。新手上路最稳妥的姿势。</p></div>
-      <div class="term" data-k="核显 独显 显卡 nvidia amd 驱动"><b>核显 / 独显</b><p>核显长在 CPU 里，省电够用，Linux 下驱动开源免折腾；独显是独立显卡，性能强适合游戏和炼丹，NVIDIA 的驱动是闭源的（但现在一键能装）。</p></div>
-      <div class="term" data-k="开源驱动 闭源驱动 nouveau nvidia"><b>开源 / 闭源驱动</b><p>Intel、AMD 显卡驱动是开源的，系统自带；NVIDIA 官方驱动闭源，要单独装。开源替代品 Nouveau 性能一般，打游戏还是用官方驱动。</p></div>
-      <div class="term" data-k="swap 交换分区 虚拟内存"><b>swap<i>交换分区</i></b><p>硬盘上划出一块当「应急内存」，内存不够时救场，也是休眠功能的存放点。内存 16G 以上给 4～8G 意思一下就行。</p></div>
-      <div class="term" data-k="刷机 变砖 重装 快照 timeshift"><b>快照 / 后悔药<i>Timeshift</i></b><p>给系统拍照片存档，折腾坏了十秒回滚到昨天。和「黑话」没关系，但每个老玩家都会拍着大腿劝你装一个。</p></div>
+      <div class="term" data-k="wine 兼容层 windows软件"><b>Wine</b><p>让 Windows 软件跑在 Linux 上的兼容层，名字是个递归梗：Wine Is Not an Emulator。能跑，但调校带点玄学，适合折腾党。</p></div>
+      <div class="term" data-k="proton steam 游戏 兼容"><b>Proton</b><p>Valve 基于 Wine 魔改的游戏兼容层，Steam 里一键开启，几万款 Windows 游戏直接玩。Linux 游戏生态的第一功臣。</p></div>
+      <div class="term" data-k="proton-ge ge 社区版 补丁"><b>Proton-GE</b><p>社区增强版 Proton，补丁更激进、新游戏支持更快。官方版跑不动时的民间偏方，用 GE-Proton 管理器一键安装。</p></div>
+      <div class="term" data-k="protondb 兼容性 数据库 评级"><b>ProtonDB</b><p>玩家共建的游戏兼容性数据库，查一款游戏在 Linux 上的表现先看它：白金 = 开箱即玩，青铜 = 自求多福。</p></div>
+      <div class="term" data-k="反作弊 anti-cheat 网游 外挂"><b>反作弊<i>Anti-Cheat</i></b><p>网游的反外挂系统，部分厂商拒绝支持 Linux，是游戏党最大的拦路虎。单机随便玩，竞技网游先去 areweanticheatyet 查名单。</p></div>
+      <div class="term" data-k="steam deck 掌机 steamos valve"><b>Steam Deck</b><p>Valve 的掌机，跑的是 Arch 底座的 SteamOS。它的存在本身，就是「Linux 能打游戏」这块广告牌本牌。</p></div>
+      <div class="term" data-k="cuda nvidia gpu 计算 深度学习"><b>CUDA</b><p>NVIDIA 的 GPU 计算平台，炼丹的入场券。深度学习框架大多以它为准——这就是大家劝你炼丹选 N 卡的原因。</p></div>
+      <div class="term" data-k="显存 vram 显卡内存 模型"><b>显存<i>VRAM</i></b><p>显卡自带的内存，炼丹时的丹炉容量：模型越大吃得越多。6GB 入门、12GB 从容、24GB 为所欲为。</p></div>
     </div>
   </div>
 
@@ -148,6 +254,7 @@ const search = document.getElementById('search');
 const terms = document.querySelectorAll('.term');
 const groups = document.querySelectorAll('[data-g]');
 const noresult = document.getElementById('noresult');
+const countEl = document.getElementById('count');
 search.addEventListener('input', () => {
   const q = search.value.trim().toLowerCase();
   let shown = 0;
@@ -161,6 +268,7 @@ search.addEventListener('input', () => {
     g.classList.toggle('j-hide', !any);
   });
   noresult.style.display = shown ? 'none' : 'block';
+  countEl.textContent = q ? (shown ? '找到 ' + shown + ' 条相关词条' : '') : '';
 });
 </script>
 </body>

@@ -4,12 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>避坑指南 - 先把丑话说在前面</title>
-<meta name="description" content="诚实的 Linux 避坑指南：反作弊游戏名单、专业课软件兜底、校园网认证、显卡与打印机。">
+<meta name="description" content="诚实的 Linux 避坑指南：反作弊游戏名单、ProtonDB 评级、专业课软件兜底、校园网、显卡打印机，以及「万一搞砸」保险。">
 <meta property="og:title" content="避坑指南 - 先把丑话说在前面">
-<meta property="og:description" content="诚实的 Linux 避坑指南：反作弊游戏名单、专业课软件兜底、校园网认证、显卡与打印机。">
+<meta property="og:description" content="诚实的 Linux 避坑指南：反作弊游戏名单、ProtonDB 评级、专业课软件兜底、校园网、显卡打印机，以及「万一搞砸」保险。">
 <meta property="og:image" content="https://linuxedu.space/img/tux.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐧</text></svg>">
 <link rel="stylesheet" href="assets/site.css">
+<style>
+/* 本页专属：锚点导航与判决书式卡片描边 */
+.anchorbar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:32px;}
+.anchorbar a{display:inline-block;background:#fff;border:1px solid #d2d2d7;color:var(--text);font-size:14px;font-weight:600;border-radius:980px;padding:8px 18px;transition:all .18s;}
+.anchorbar a:hover{border-color:var(--blue);color:var(--blue);text-decoration:none;transform:translateY(-1px);}
+.card.v-red{border:1px solid rgba(220,38,38,.22);}
+.card.v-green{border:1px solid rgba(22,163,74,.22);}
+.card.v-orange{border:1px solid rgba(234,88,12,.22);}
+.fine{font-size:13px;color:var(--text-2);margin-top:14px;padding-top:12px;border-top:1px dashed #ececef;line-height:1.7;}
+.stat .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+</style>
 </head>
 <body>
 
@@ -34,6 +45,13 @@
     <p class="kicker">Honest Talk</p>
     <h1>先把丑话<br><span class="grad-text">说在前面。</span></h1>
     <p class="lead">Linux 不是万能的。把搞不定的事讲清楚，剩下的 95% 才值得你放心去爱。</p>
+    <div class="anchorbar rv">
+      <a href="#games">🎮 游戏</a>
+      <a href="#major">📚 专业课</a>
+      <a href="#hardware">🔌 硬件环境</a>
+      <a href="#software">📱 软件生态</a>
+      <a href="#rescue">🛟 搞砸保险</a>
+    </div>
   </div>
 </header>
 
@@ -41,98 +59,215 @@
   <div class="host rv">
     <img src="img/char/sayo.png" alt="冰川纱夜">
     <div>
-      <div class="q">「规则就是规则。了解限制之后，再谈自由。」</div>
+      <div class="q">「规则先于自由。把限制写清楚的人，才有资格谈热爱。」</div>
       <div class="who">冰川纱夜 · Debian 用户 · 本页向导</div>
-      <p>以下每一条都有出处或兜底方案。读完仍然想上车的人，才是真正的同路人。</p>
+      <p>学法律的人有个习惯：签任何东西之前，先把免责条款读完。以下每一条都有出处或兜底方案——读完仍然想上车的人，才是真正的同路人。</p>
     </div>
+  </div>
+
+  <div class="stats rv" style="margin-top:34px;">
+    <div class="stat"><b class="grad-text">≈95%</b><span>课业与日常场景开箱可用*</span></div>
+    <div class="stat"><b>10 秒</b><span>在 ProtonDB 查清一款游戏</span></div>
+    <div class="stat"><b>3 秒</b><span>双系统开机选系统的耗时</span></div>
+    <div class="stat"><b>¥0</b><span>本页全部兜底方案的价格</span></div>
   </div>
 </div></section>
 
-<section class="sec"><div class="wrap">
+<section class="sec" id="games"><div class="wrap">
   <h2 class="rv">一、这些游戏，目前真的玩不了</h2>
-  <p class="lead rv" style="text-align:left;margin-left:0;">原因几乎都指向同一个词：<b>反作弊</b>。厂商不开绿灯，Linux 用户再折腾也没辙。</p>
+  <p class="lead rv" style="text-align:left;margin-left:0;">原因几乎都指向同一个词：<b>反作弊</b>。厂商不开绿灯，Linux 用户再折腾也没辙——这不是技术问题，是政策问题。</p>
   <div class="grid2" style="margin-top:26px;">
-    <div class="card rv">
+    <div class="card v-red rv">
       <span class="pill red">玩不了 / 很麻烦</span>
       <ul>
-        <li><b>无畏契约（Valorant）</b>：拳头 Vanguard 反作弊，没门</li>
+        <li><b>无畏契约（Valorant）</b>：拳头 Vanguard 内核级反作弊，没门；套虚拟机绕过检测会被封号，别试</li>
         <li><b>Apex 英雄</b>：2024 年 11 月起 EA 正式切断 Linux / Steam Deck 支持</li>
-        <li><b>GTA Online</b>：BattlEye 拒绝 Linux（单机剧情模式不受影响）</li>
-        <li><b>三角洲行动 / 英雄联盟 / 永劫无间</b>：腾讯 ACE 反作弊</li>
-        <li><b>PUBG / 堡垒之夜 / 命运2</b>：反作弊均不支持</li>
-        <li><b>原神</b>：无官方支持，社区方案存在账号风险，不推荐主力号尝试</li>
+        <li><b>GTA Online</b>：BattlEye 拒绝为 Linux 放行（单机剧情模式不受影响）</li>
+        <li><b>英雄联盟 / 三角洲行动 / 永劫无间</b>：Vanguard 或腾讯 ACE 反作弊，一律不放行</li>
+        <li><b>PUBG / 堡垒之夜 / 彩虹六号</b>：反作弊均不支持</li>
+        <li><b>命运 2</b>：不光不支持， Bungie 还会封在 Linux 上登录的账号</li>
+        <li><b>原神 / 崩铁 / 绝区零</b>：无官方支持，社区方案存在账号风险，不推荐主力号尝试</li>
       </ul>
+      <p class="fine">判词：以上均为厂商反作弊政策的锅，与发行版无关。政策一天不改，换十个发行版也没用。</p>
     </div>
-    <div class="card rv">
+    <div class="card v-green rv">
       <span class="pill green">放心畅玩（举例）</span>
       <ul>
-        <li><b>CS2 / DOTA2</b>：V 社自家，原生支持</li>
-        <li><b>艾尔登法环 / 只狼 / 黑魂</b>：Proton 白金级</li>
+        <li><b>CS2 / DOTA2 / 求生之路</b>：V 社自家产业，原生支持</li>
+        <li><b>艾尔登法环 / 只狼 / 黑魂三部曲</b>：Proton 白金级，受苦体验原汁原味</li>
         <li><b>赛博朋克 2077 / 巫师 3 / 博德之门 3</b>：好评如潮，帧数可观</li>
-        <li><b>星露谷 / 泰拉瑞亚 / 空洞骑士</b>：独立游戏基本全绿</li>
+        <li><b>黑神话：悟空</b>：Proton 下表现优秀，虎先锋照旧军训</li>
+        <li><b>星露谷 / 泰拉瑞亚 / 空洞骑士</b>：独立游戏基本全绿，很多还有原生版</li>
         <li><b>GTA5 单机 / 大表哥 2 单机</b>：剧情模式照玩</li>
       </ul>
       <p style="margin-top:12px;">买游戏前花十秒查 <a href="https://www.protondb.com" target="_blank" rel="noopener">ProtonDB</a> 评级，比许愿有用。</p>
     </div>
   </div>
+
+  <div class="card v-orange rv" style="margin-top:22px;">
+    <span class="pill orange">灰色地带，三思</span>
+    <ul>
+      <li><b>守望先锋 2</b>：技术上能跑，但暴雪风控比较玄学，偶有封号报告，大号慎重</li>
+      <li><b>Xbox PC Game Pass / 微软商店独占游戏</b>：平台本身没有 Linux 版，大门都没开</li>
+      <li><b>刚发售的 3A 大作</b>：首日通常要等新版本 Proton 适配，等几天再看风评</li>
+    </ul>
+  </div>
+
+  <div class="tbl-wrap rv" style="margin-top:22px;"><table class="tbl">
+    <tr><th>ProtonDB 评级</th><th>含义</th><th>你的行动指南</th></tr>
+    <tr><td class="yes">Platinum 白金</td><td>开箱即玩，点开始就行</td><td>直接买</td></tr>
+    <tr><td class="yes">Gold 金</td><td>微调后完美运行</td><td>放心买，照评论区抄一条启动参数</td></tr>
+    <tr><td class="half">Silver 银</td><td>能玩，但有小毛病</td><td>翻翻最新评论再决定</td></tr>
+    <tr><td class="half">Bronze 铜</td><td>经常出问题</td><td>三思，打折也别冲动</td></tr>
+    <tr><td class="no">Borked 炸</td><td>根本跑不起来</td><td>死心吧</td></tr>
+    <tr><td class="yes">Native 原生</td><td>官方直接提供 Linux 版</td><td>最省心，Proton 都不用</td></tr>
+  </table></div>
+
   <div class="card rv" style="margin-top:22px;">
     <span class="pill">实在放不下怎么办</span>
-    <p>双系统留一个 Windows 分区当「游戏厅」，日常学习工作在 Linux，开机选系统只要三秒。成年人不做选择，两个都要。</p>
+    <ul>
+      <li><b>双系统</b>：留一个 Windows 分区当「游戏厅」，日常学习工作在 Linux，开机选系统只要三秒。成年人不做选择，两个都要</li>
+      <li><b>云游戏</b>：各类云游戏平台跑在浏览器里，与本地系统无关，宿舍网够快就能玩</li>
+      <li><b>换游戏</b>：说认真的——Steam 库里能跑的好游戏够你玩到博士毕业</li>
+    </ul>
   </div>
 </div></section>
 
-<section class="sec"><div class="wrap">
+<section class="sec" id="major"><div class="wrap">
   <h2 class="rv">二、这些专业课，可能需要兜底</h2>
+  <p class="lead rv" style="text-align:left;margin-left:0;">拦路虎通常不是 Linux 不行，而是<b>老师指定的软件</b>只发 Windows 版。先查清楚你的专业有没有这种情况。</p>
   <div class="grid2" style="margin-top:26px;">
-    <div class="card rv">
+    <div class="card v-red rv">
       <h3>教学指定 Windows 软件</h3>
       <ul>
-        <li><b>部分单片机/嵌入式课程</b>：教学环境锁定 Keil + 特定破解版 → 建议双系统或虚拟机跟课，课外用 PlatformIO 才是真本事</li>
+        <li><b>部分单片机 / 嵌入式课程</b>：教学环境锁定 Keil + 特定破解版 → 建议双系统或虚拟机跟课，课外用 PlatformIO 才是真本事</li>
         <li><b>微信小程序开发课</b>：开发者工具无 Linux 版 → Windows 虚拟机</li>
+        <li><b>机械 / 电子类制图仿真课</b>：SolidWorks、Proteus、Multisim 均为 Windows 独占 → 虚拟机或蹭机房</li>
         <li><b>重度 AE / 剪映工作流</b>：替代方案有差距 → 双系统</li>
+        <li><b>只发 .doc / .xls 宏模板的实验报告</b>：WPS 能打开绝大多数，极端情况借机房十分钟</li>
+      </ul>
+    </div>
+    <div class="card v-green rv">
+      <h3>顺便报告几个好消息</h3>
+      <ul>
+        <li><b>MATLAB / Mathematica</b>：都有官方原生 Linux 版，校园正版化直接装，工程师的主场</li>
+        <li><b>VS Code / JetBrains 全家桶 / GCC</b>：计科全家桶原生全勤，体验反而比 Windows 顺</li>
+        <li><b>Zotero / LaTeX / Typst</b>：论文写作三件套原生支持</li>
+        <li><b>R / Python / Jupyter / Octave</b>：数据分析与科学计算的老家就在 Linux</li>
+      </ul>
+      <p style="margin-top:12px;">更全的对照在<a href="apps.html">软件对照表</a>，按专业分好类了。</p>
+    </div>
+  </div>
+
+  <div class="tbl-wrap rv" style="margin-top:22px;"><table class="tbl">
+    <tr><th>指定软件</th><th>Linux 能跑吗</th><th>解法</th></tr>
+    <tr><td>MATLAB</td><td class="yes">官方原生</td><td>校园正版化直接装</td></tr>
+    <tr><td>Keil / Proteus / Multisim</td><td class="no">不能</td><td>虚拟机或双系统跟课，课外转 PlatformIO</td></tr>
+    <tr><td>SolidWorks / AutoCAD</td><td class="no">不能</td><td>机房或虚拟机；AutoCAD 有网页版可应急</td></tr>
+    <tr><td>微信开发者工具</td><td class="no">不能</td><td>Windows 虚拟机</td></tr>
+    <tr><td>PR / AE</td><td class="half">无原生</td><td>轻度需求可用 Kdenlive / Blender；重度工作流双系统</td></tr>
+    <tr><td>SPSS</td><td class="half">看授权</td><td>官方有 Linux 版，但校园授权常只发 Windows；免费替代 JASP / PSPP</td></tr>
+    <tr><td>Origin</td><td class="no">不能</td><td>LabPlot / QtiPlot，或 Python 画图（更专业）</td></tr>
+    <tr><td>Office 复杂宏与排版</td><td class="half">大部分行</td><td>WPS Linux 版兼容性最好；极端情况机房十分钟</td></tr>
+  </table></div>
+
+  <div class="card rv" style="margin-top:22px;">
+    <span class="pill">兜底四板斧</span>
+    <ol>
+      <li><b>双系统</b>：最省心，性能满血，跟课神器</li>
+      <li><b>Windows 虚拟机</b>：virt-manager (KVM) 免费高性能，VMware 图形化更友好，跑 Keil 这类小软件绰绰有余</li>
+      <li><b>Wine / CrossOver</b>：面向老软件的兼容层，成功率看脸，值得一试但别抱全部希望</li>
+      <li><b>问学长 + 蹭机房</b>：你的专业有没有人趟过这条路，校内 Linux 群一句话的事；真到交作业，机房电脑永远欢迎你</li>
+    </ol>
+    <p class="fine">判词：用 Linux 不是签卖身契。它是给你多一个选择，不是没收你的退路。</p>
+  </div>
+</div></section>
+
+<section class="sec" id="hardware"><div class="wrap">
+  <h2 class="rv">三、硬件与环境的几个小疙瘩</h2>
+  <div class="grid3" style="margin-top:26px;">
+    <div class="card rv">
+      <h3>校园网认证</h3>
+      <p>网页认证（打开浏览器登录）的学校：<b>完全没问题</b>。锐捷 / 深澜客户端认证的学校：需要第三方客户端或路由器方案——具体解法我们在<a href="guide.html">上路指南</a>里写了，先去加校内 Linux 群，大概率有现成教程。</p>
+    </div>
+    <div class="card rv">
+      <h3>显卡</h3>
+      <p><b>AMD / Intel 核显</b>：开箱即用，驱动在内核里，最省心。<b>NVIDIA</b>：当年 Linus 那句名言已经作古，现在官方驱动越来越好装（Ubuntu 一键、Arch 一个包），但买新电脑前查一下型号口碑仍是好习惯——<a href="hardware.html">硬件选购器</a>已经替你查过一批。</p>
+    </div>
+    <div class="card rv">
+      <h3>打印机</h3>
+      <p>主流型号走 CUPS 基本免驱，插上就用。冷门型号买前搜一下「型号 + Linux」。顺带一提：学校打印店多半是 U 盘插拔式，跟你的系统毫无关系，这可能是全校园最平等的设备。</p>
+    </div>
+  </div>
+  <div class="grid2" style="margin-top:22px;">
+    <div class="card rv">
+      <h3>无线网卡、蓝牙与指纹</h3>
+      <ul>
+        <li><b>Intel AX 系列网卡</b>：全绿，Wi-Fi 6 照样跑</li>
+        <li><b>老款博通（Broadcom）网卡</b>：经典坑位，装完系统可能要补一个私有驱动，买前查型号</li>
+        <li><b>蓝牙耳机</b>：日常可用，偶尔抽风重连，属玄学范畴</li>
+        <li><b>指纹解锁</b>：多数笔记本没驱动，老实输密码，或者当作戒掉懒惰</li>
       </ul>
     </div>
     <div class="card rv">
-      <h3>兜底三板斧</h3>
-      <ol>
-        <li><b>双系统</b>：最省心，性能满血</li>
-        <li><b>Windows 虚拟机</b>：virt-manager (KVM) 免费高性能，VMware 图形化更友好</li>
-        <li><b>问学长</b>：你的专业有没有人趟过这条路，校内 Linux 群一句话的事</li>
-      </ol>
-      <p style="margin-top:12px;">记住：用 Linux 不是签卖身契，它是给你多一个选择，不是没收你的退路。</p>
+      <h3>续航与发热</h3>
+      <p>现代发行版的电源管理已经不错，但默认调度偏保守。装个 <code>tlp</code> 或 <code>tuned</code> 一键优化，图书馆续航立竿见影。独显游戏本平时切核显模式，风扇安静下来，室友关系也会缓和。</p>
     </div>
   </div>
 </div></section>
 
-<section class="sec"><div class="wrap">
-  <h2 class="rv">三、硬件与环境的两个小疙瘩</h2>
+<section class="sec" id="software"><div class="wrap">
+  <h2 class="rv">四、软件生态的日常小疙瘩</h2>
+  <p class="lead rv" style="text-align:left;margin-left:0;">通讯办公早已不是拦路虎（<a href="guide.html">上路指南</a>有喜报），但丑话也要说全：下面这些缺口，目前真实存在。</p>
   <div class="grid2" style="margin-top:26px;">
-    <div class="card rv">
-      <h3>校园网认证</h3>
-      <p>网页认证（打开浏览器登录）的学校：<b>完全没问题</b>。锐捷 / 深澜客户端认证的学校：需要第三方客户端或路由器方案——具体解法我们在<a href="guide.html">上路指南</a>里写了，先去加校内 Linux 群。</p>
+    <div class="card v-orange rv">
+      <h3>国产软件：能用，但不满血</h3>
+      <ul>
+        <li><b>微信 Linux 版</b>：聊天、传文件没问题，但小程序、视频号等功能仍在逐步补齐</li>
+        <li><b>腾讯会议</b>：开会正常；Wayland 会话下屏幕共享偶尔要切回 X11 才老实</li>
+        <li><b>百度网盘</b>：有原生客户端，下载速度嘛……和 Windows 一视同仁地慢，这算另一种公平</li>
+        <li><b>QQ NT</b>：官方原生，体验现代，基本是国产软件里的模范生</li>
+      </ul>
     </div>
-    <div class="card rv">
-      <h3>显卡与打印机</h3>
-      <p><b>NVIDIA</b>：当年 Linus 那句名言已经作古，现在官方驱动越来越好装（Ubuntu 一键、Arch 一个包），但买新电脑前查一下型号口碑仍是好习惯。<b>打印机</b>：主流型号走 CUPS 基本免驱，冷门型号买前搜一下「型号 + Linux」。</p>
+    <div class="card v-orange rv">
+      <h3>杂项坦白局</h3>
+      <ul>
+        <li><b>iPhone 协同</b>：没有隔空投送那种待遇；安卓阵营有 KDE Connect，通知、剪贴板、传文件全打通</li>
+        <li><b>个别网银 / 政务老网站</b>：仍残留 IE 时代遗产，浏览器开兼容模式可解大半；U 盾驱动基本没戏，请用手机银行</li>
+        <li><b>专业色彩与 HDR</b>：色彩管理弱于 macOS，影视调色级别的需求请双系统</li>
+        <li><b>手机投屏演示</b>：课堂展示用 scrcpy（安卓）很香，iPhone 仍需另想办法</li>
+      </ul>
     </div>
   </div>
 </div></section>
 
-<section class="sec"><div class="wrap">
-  <h2 class="rv">四、最后，关于「万一搞砸」</h2>
-  <div class="card rv">
-    <ul>
-      <li><b>装个 Timeshift</b>：系统级快照，折腾坏了十秒回滚，比后悔药便宜</li>
-      <li><b>重要文件多处备份</b>：U 盘、网盘、Git，总有一款救过你</li>
-      <li><b>Live U 盘别扔</b>：系统崩了它能开机救数据，还能当临时系统交作业</li>
-      <li><b>发行版太多挑花眼</b>：这不怪你，所以我们做了<a href="quiz.html">本命发行版小测试</a></li>
-    </ul>
+<section class="sec" id="rescue"><div class="wrap">
+  <h2 class="rv">五、最后，关于「万一搞砸」</h2>
+  <div class="grid2" style="margin-top:26px;">
+    <div class="card v-green rv">
+      <h3>事前保险（强烈建议）</h3>
+      <ul>
+        <li><b>装个 Timeshift</b>：系统级快照，折腾坏了十秒回滚，比后悔药便宜。装系统第一天就装上</li>
+        <li><b>重要文件多处备份</b>：U 盘、网盘、Git，总有一款救过你。毕业论文至少存三份</li>
+        <li><b>Live U 盘别扔</b>：系统崩了它能开机救数据，还能当临时系统交作业</li>
+        <li><b>新命令看懂了再回车</b>：尤其带 <code>sudo</code> 和 <code>rm</code> 的。网上抄的命令先搜含义，这是Linux 世界的「陌生的二维码不要扫」</li>
+      </ul>
+    </div>
+    <div class="card rv">
+      <h3>出事之后（别慌）</h3>
+      <ul>
+        <li><b>报错原文复制去搜</b>：你踩的坑八成有人踩过，而且多半写了解法</li>
+        <li><b>查 Arch Wiki</b>：它是全体 Linux 用户的公共财产，不是 Arch 用户的私有物</li>
+        <li><b>提问带三样</b>：发行版和版本、完整报错截图、你已经试过什么——这样群里大佬才愿意捞你</li>
+        <li><b>发行版太多挑花眼</b>：这不怪你，所以我们做了<a href="quiz.html">本命发行版小测试</a></li>
+      </ul>
+    </div>
   </div>
 </div></section>
 
 <section class="sec center"><div class="wrap">
   <h2 class="rv">丑话说完了。<br><span class="grad-text">剩下的都是美好。</span></h2>
-  <p class="lead rv">免费的系统、自由的软件、飞快的速度，和一只永远站在你这边的企鹅。</p>
+  <p class="lead rv">免费的系统、自由的软件、飞快的速度，和一只永远站在你这边的企鹅。免责条款读完了，现在，签字吗？</p>
   <div style="margin-top:24px;" class="rv">
     <a class="btn" href="guide.html">开始上路</a>
     <a class="btn-ghost" href="quiz.html">先做小测试 &gt;</a>
@@ -140,7 +275,7 @@
 </div></section>
 
 <footer><div class="wrap">
-  <div class="legal">* 游戏兼容性随厂商政策变化，本页信息截至 2026 年 7 月，最新情况以 ProtonDB 及各厂商公告为准。角色形象版权归 Bushiroad 所有，本页面为非营利粉丝二创。</div>
+  <div class="legal">* 游戏兼容性随厂商政策变化，本页信息截至 2026 年 7 月，最新情况以 ProtonDB 及各厂商公告为准。校园网认证方式与专业课软件要求因校而异，请以本校实际情况为准。「≈95%」为本站编辑部的乐观估计，不构成统计学结论。角色形象版权归 Bushiroad 所有，本页面为非营利粉丝二创。</div>
   <div class="footer-bar"><span><a href="index.html">← 返回首页</a></span><span>用 ❤️ 与 ¥0 构建</span></div>
 </div></footer>
 

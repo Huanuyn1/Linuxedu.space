@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>发行版小测试 - 一分钟找到你的本命 Linux</title>
-<meta name="description" content="八个问题，由 BanG Dream 角色为你推荐最适合的 Linux 发行版，并列出完整理由与优缺点。">
+<meta name="description" content="八个问题，由 BanG Dream 角色为你推荐最适合的 Linux 发行版：匹配度评分、逐题推荐理由、优缺点丑话在前，附九大候选总览与测后上路指引。">
 <meta property="og:title" content="发行版小测试 - 一分钟找到你的本命 Linux">
-<meta property="og:description" content="八个问题，由 BanG Dream 角色为你推荐最适合的 Linux 发行版，并列出完整理由与优缺点。">
+<meta property="og:description" content="八个问题，由 BanG Dream 角色为你推荐最适合的 Linux 发行版：匹配度评分、逐题推荐理由、优缺点丑话在前。">
 <meta property="og:image" content="https://linuxedu.space/img/tux.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐧</text></svg>">
 <link rel="stylesheet" href="assets/site.css">
@@ -44,6 +44,14 @@
 .runner .nm{font-weight:700;font-size:15px;white-space:nowrap;}
 .runner .pc2{color:var(--blue);font-weight:700;font-size:14px;white-space:nowrap;}
 .runner p{font-size:13px;color:var(--text-2);line-height:1.5;flex:1;}
+.q-back{display:inline-block;background:none;border:none;color:var(--text-2);font-size:13.5px;font-family:inherit;cursor:pointer;padding:0;margin-top:4px;}
+.q-back:hover{color:var(--blue);text-decoration:underline;}
+/* 候选发行版总览卡片 */
+.dc-head{display:flex;gap:14px;align-items:center;margin-bottom:14px;}
+.dc-head img{height:44px;width:auto;flex:0 0 auto;}
+.dc-head h3{margin-bottom:2px;}
+.dc-who{font-size:13px;color:var(--text-2);}
+.dc-foot{margin-top:14px;font-size:14.5px;font-weight:600;}
 @media(max-width:640px){
   .r-head{flex-direction:column;text-align:center;gap:10px;}
   .r-head .d-logo{margin:8px auto 4px;}
@@ -76,21 +84,168 @@
   <div class="wrap">
     <p class="kicker">Distro Quiz</p>
     <h1>一分钟，找到你的<br><span class="grad-text">本命发行版。</span></h1>
-    <p class="lead">八个问题，没有标准答案，只有适不适合。结果由九位同学亲自颁发，并附上完整推荐理由。</p>
+    <p class="lead">八个问题，没有标准答案，只有适不适合。结果由九位同学亲自颁发，附匹配度评分、逐题推荐理由，以及丑话在前的优缺点。</p>
   </div>
 </header>
 
-<section class="sec">
-  <div class="wrap">
-    <div class="quiz-card" id="quiz" style="max-width:780px;">
-      <div class="q-progress"><i id="bar" style="width:0%"></i></div>
-      <div id="stage"></div>
+<section class="sec"><div class="wrap">
+  <div class="host rv">
+    <img src="img/char/arisa.png" alt="市谷有咲">
+    <div>
+      <div class="q">「选择题而已，别紧张。你的每个答案都会变成评分依据——本小姐出的题，可没有一道是白问的。」</div>
+      <div class="who">市谷有咲 · Arch Linux 用户 · 本场主考官</div>
+      <p>按第一直觉作答就好，答错不了。结果页会把「为什么是它」一条一条写清楚；考完想直接翻候选名单的话，<a href="#candidates">点这里跳过测试</a>。</p>
     </div>
   </div>
-</section>
+</div></section>
+
+<section class="sec" style="padding-top:0;"><div class="wrap">
+  <div class="quiz-card" id="quiz" style="max-width:780px;">
+    <div class="q-progress"><i id="bar" style="width:0%"></i></div>
+    <div id="stage"></div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="stats rv">
+    <div class="stat"><b>8</b><span>道问题，凭直觉答</span></div>
+    <div class="stat"><b>9</b><span>个候选发行版</span></div>
+    <div class="stat"><b>9</b><span>位同学亲自颁发</span></div>
+    <div class="stat"><b class="grad-text">¥0</b><span>测试与系统全免费</span></div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2 class="rv">这分是怎么算出来的？</h2>
+  <div class="grid2" style="margin-top:30px;">
+    <div class="card rv">
+      <span class="pill">计分方式</span>
+      <h3>每个答案都在投票</h3>
+      <p>你选的每个选项，都会给最契合的候选发行版加分。八题答完，得分最高者就是你的本命。结果页会显示它的<b>匹配度百分比</b>，以及第二、三名候补——没有黑箱，全是明牌。</p>
+    </div>
+    <div class="card rv">
+      <span class="pill green">推荐理由</span>
+      <h3>每条理由都来自你的回答</h3>
+      <p>结果页「为什么是它」里的每一条，都对应你亲手选过的某个答案：你的专业、你的配置、你的折腾态度。同时优缺点并列展示，<b>丑话一定说在前面</b>——安利可以整活，信息必须诚实。</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" id="candidates"><div class="wrap">
+  <h2 class="rv">九位候选人，<span class="grad-text">先见个面。</span></h2>
+  <p class="lead rv" style="margin-left:0;">不想做测试也行，这里是全部候选名册。每位候选人由一位同学代言，看对眼了就去官网把它领回家。</p>
+  <div class="grid3" style="margin-top:34px;">
+    <div class="card rv">
+      <div class="dc-head"><img src="img/icons/linuxmint.svg" alt="Linux Mint"><div><h3>Linux Mint</h3><div class="dc-who">代言人 · 丸山彩</div></div></div>
+      <span class="pill green">★☆☆ 新手友好</span>
+      <p>最友好的入门之选，开箱即用，界面亲切得像 Windows 老朋友。第一次用 Linux，选它基本不会后悔。</p>
+      <div class="dc-foot"><a href="https://linuxmint.com" target="_blank" rel="noopener">官网 &gt;</a></div>
+    </div>
+    <div class="card rv">
+      <div class="dc-head"><img src="img/icons/popos.svg" alt="Pop!_OS"><div><h3>Pop!_OS</h3><div class="dc-who">代言人 · 户山香澄</div></div></div>
+      <span class="pill">★★☆ 进阶偏易</span>
+      <p>开箱自带 NVIDIA 驱动与开发工具，理工科和 AI 炼丹的省心之选，COSMIC 桌面现代又高效。</p>
+      <div class="dc-foot"><a href="https://pop.system76.com" target="_blank" rel="noopener">官网 &gt;</a></div>
+    </div>
+    <div class="card rv">
+      <div class="dc-head"><img src="img/icons/ubuntustudio.png" alt="Ubuntu Studio"><div><h3>Ubuntu Studio</h3><div class="dc-who">代言人 · 凑友希那</div></div></div>
+      <span class="pill green">★☆☆ 新手友好</span>
+      <p>预装全套音视频创作工具与低延迟内核，音乐、美术、影视专业的开机即用工作站。</p>
+      <div class="dc-foot"><a href="https://ubuntustudio.org" target="_blank" rel="noopener">官网 &gt;</a></div>
+    </div>
+    <div class="card rv">
+      <div class="dc-head"><img src="img/icons/debian.svg" alt="Debian"><div><h3>Debian</h3><div class="dc-who">代言人 · 冰川纱夜</div></div></div>
+      <span class="pill">★★☆ 进阶偏易</span>
+      <p>三十年老牌发行版，稳字当头。装一次用到毕业，还能和服务器环境无缝衔接。</p>
+      <div class="dc-foot"><a href="https://www.debian.org" target="_blank" rel="noopener">官网 &gt;</a></div>
+    </div>
+    <div class="card rv">
+      <div class="dc-head"><img src="img/icons/opensuse.svg" alt="openSUSE"><div><h3>openSUSE</h3><div class="dc-who">代言人 · 美竹兰</div></div></div>
+      <span class="pill">★★☆ 进阶偏易</span>
+      <p>德式严谨，YaST 配置中心一站式图形化管理，Snapper 快照自带后悔药，稳与新任选。</p>
+      <div class="dc-foot"><a href="https://www.opensuse.org" target="_blank" rel="noopener">官网 &gt;</a></div>
+    </div>
+    <div class="card rv">
+      <div class="dc-head"><img src="img/icons/nobara.png" alt="Nobara Linux"><div><h3>Nobara Linux</h3><div class="dc-who">代言人 · 宇田川亚子</div></div></div>
+      <span class="pill">★★☆ 进阶偏易</span>
+      <p>为游戏而生的 Fedora 改良版，Proton-GE 与显卡驱动全预装，Steam 开机即战。</p>
+      <div class="dc-foot"><a href="https://nobaraproject.org" target="_blank" rel="noopener">官网 &gt;</a></div>
+    </div>
+    <div class="card rv">
+      <div class="dc-head"><img src="img/icons/archlinux.svg" alt="Arch Linux"><div><h3>Arch Linux</h3><div class="dc-who">代言人 · 市谷有咲</div></div></div>
+      <span class="pill orange">★★★ 硬核</span>
+      <p>滚动更新 + AUR 十万软件包，配全 Linux 界最好的 Wiki。折腾党与开发者的浪漫。</p>
+      <div class="dc-foot"><a href="https://archlinux.org" target="_blank" rel="noopener">官网 &gt;</a></div>
+    </div>
+    <div class="card rv">
+      <div class="dc-head"><img src="img/icons/nixos.svg" alt="NixOS"><div><h3>NixOS</h3><div class="dc-who">代言人 · 弦卷心</div></div></div>
+      <span class="pill orange">★★★ 硬核</span>
+      <p>声明式配置，整个系统就是一份可版本管理的代码，怎么折腾都能一键回滚。</p>
+      <div class="dc-foot"><a href="https://nixos.org" target="_blank" rel="noopener">官网 &gt;</a></div>
+    </div>
+    <div class="card rv">
+      <div class="dc-head"><img src="img/icons/gentoo.svg" alt="Gentoo"><div><h3>Gentoo</h3><div class="dc-who">代言人 · 大和麻弥</div></div></div>
+      <span class="pill red">★★★ 硬核中的硬核</span>
+      <p>从源码编译一切，定制程度的天花板。装完一遍，你对 Linux 的理解脱胎换骨。</p>
+      <div class="dc-foot"><a href="https://www.gentoo.org" target="_blank" rel="noopener">官网 &gt;</a></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2 class="rv">测完之后，<span class="grad-text">三步上路。</span></h2>
+  <div class="grid3" style="margin-top:30px;">
+    <div class="card rv">
+      <span class="pill">第一步 · 5 分钟</span>
+      <h3>下载镜像</h3>
+      <p>去结果页的官方下载链接拿 <code>.iso</code>。校园网嫌慢，就到<a href="resources.html">国内镜像站</a>下，速度起飞还可能免流量。</p>
+    </div>
+    <div class="card rv">
+      <span class="pill">第二步 · 10 分钟</span>
+      <h3>制作启动盘</h3>
+      <p>一个 8GB 以上的 U 盘 + Ventoy，把 iso 拖进去就完事。详细图文步骤在<a href="guide.html">上路指南</a>里。</p>
+    </div>
+    <div class="card rv">
+      <span class="pill green">第三步 · 零风险</span>
+      <h3>先试用，再安装</h3>
+      <p>U 盘启动后进 Live 模式：<b>不安装就能完整试用</b>，确认 Wi-Fi、触控板都正常，再双击安装器也不迟。</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2 class="rv">关于这个测试</h2>
+  <div class="grid2" style="margin-top:30px;">
+    <div class="card rv">
+      <h3>结果不合心意怎么办？</h3>
+      <p>结果页会同时给出第二、三名候补，都值得一试。况且主流发行版的日常体验差距没有传说中那么大——用 Live 模式都试一遍，跟着感觉走就对了。</p>
+    </div>
+    <div class="card rv">
+      <h3>为什么没有 Ubuntu、Fedora、deepin？</h3>
+      <p>候选名册对应本站九位同学的代言分工。喜欢 Ubuntu 系的手感，Mint、Pop!_OS、Ubuntu Studio 三个衍生推荐能接住你；完整货架在<a href="index.html#distros">首页「热门发行版」</a>。</p>
+    </div>
+    <div class="card rv">
+      <h3>我的答案会被收集吗？</h3>
+      <p>不会。整个测试是纯前端网页，所有计分都在你自己的浏览器里完成，没有上传、没有统计、连 Cookie 都没有——关掉页面，答案就随风而去。</p>
+    </div>
+    <div class="card rv">
+      <h3>可以全都要吗？</h3>
+      <p>可以，但建议先专情一个：双系统或虚拟机都能让你脚踩两条船，不过新手期把一套环境用熟，比集邮九个系统有用得多。一个学期后再爬墙也不迟。</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec center"><div class="wrap">
+  <h2 class="rv">准备好了？<br><span class="grad-text">主考官在等你。</span></h2>
+  <p class="lead rv">一分钟，八道题，零元购一个本命系统。</p>
+  <div style="margin-top:24px;" class="rv">
+    <a class="btn" href="#quiz">开始测试</a>
+    <a class="btn-ghost" href="guide.html">直接看上路指南 &gt;</a>
+  </div>
+</div></section>
 
 <footer><div class="wrap">
-  <div class="legal">* 测试结果仅供娱乐，但推荐的发行版与每条理由都是认真的。角色形象版权归 Bushiroad 所有，本页面为非营利粉丝二创。</div>
+  <div class="legal">* 测试结果仅供娱乐，但推荐的发行版与每条理由都是认真的。角色形象版权归 Bushiroad 所有，本页面为非营利粉丝二创；各发行版图标版权归各自项目所有。</div>
   <div class="footer-bar"><span><a href="index.html">← 返回首页</a></span><span>用 ❤️ 与 ¥0 构建</span></div>
 </div></footer>
 
@@ -319,7 +474,8 @@ function renderQ(){
   stage.innerHTML = `
     <div class="q-num">第 ${qi+1} / ${QUESTIONS.length} 题</div>
     <div class="q-title">${q.q}</div>
-    ${q.opts.map((o,i)=>`<button class="q-opt" onclick="pick(${i})">${o[0]}</button>`).join('')}`;
+    ${q.opts.map((o,i)=>`<button class="q-opt" onclick="pick(${i})">${o[0]}</button>`).join('')}
+    <button class="q-back" onclick="back()">← 上一题</button>`;
 }
 
 function pick(i){
@@ -328,6 +484,15 @@ function pick(i){
   picks.push(i);
   qi++;
   if (qi < QUESTIONS.length) renderQ(); else renderResult();
+}
+
+function back(){
+  if (qi === 0){ renderStart(); return; }
+  qi--;
+  const optIdx = picks.pop();
+  const s = QUESTIONS[qi].opts[optIdx][1];
+  for (const k in s) scores[k] = (scores[k]||0) - s[k];
+  renderQ();
 }
 
 // 整套测试中单个发行版能拿到的理论最高分（每题取所有选项里的最高单值）
@@ -415,6 +580,12 @@ function renderResult(){
 function next(){ renderQ(); }
 function restart(){ scores = {}; picks = []; qi = 0; renderStart(); }
 renderStart();
+
+// scroll reveal
+const io = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
 </script>
 </body>
 </html>

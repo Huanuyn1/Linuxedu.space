@@ -4,12 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>资源与社区 - 你早就是 Linux 用户了</title>
-<meta name="description" content="Linux 学习资源合集：国内镜像站、官方文档、中文社区、数据锚点与高校开源社团。">
+<meta name="description" content="Linux 新生资源合集：国内镜像站与三分钟换源教程、官方文档、边玩边学、提问的智慧、中文社区与高校开源社团。">
 <meta property="og:title" content="资源与社区 - 你早就是 Linux 用户了">
-<meta property="og:description" content="Linux 学习资源合集：国内镜像站、官方文档、中文社区、数据锚点与高校开源社团。">
+<meta property="og:description" content="Linux 新生资源合集：国内镜像站与三分钟换源教程、官方文档、边玩边学、提问的智慧、中文社区与高校开源社团。">
 <meta property="og:image" content="https://linuxedu.space/img/tux.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐧</text></svg>">
 <link rel="stylesheet" href="assets/site.css">
+<style>
+.sec-kicker{font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--blue);text-transform:uppercase;margin-bottom:8px;}
+.sec-sub{font-size:15.5px;color:var(--text-2);margin-top:10px;max-width:720px;line-height:1.7;}
+.dom{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;color:var(--text-2);}
+.r-hide{display:none !important;}
+#noresult{display:none;text-align:center;color:var(--text-2);font-size:15px;padding:34px 20px;background:#fff;border-radius:var(--radius);box-shadow:0 4px 24px rgba(0,0,0,.05);}
+.steps{counter-reset:st;list-style:none;padding-left:0 !important;margin-top:14px !important;}
+.steps li{counter-increment:st;position:relative;padding-left:44px;margin-bottom:14px;}
+.steps li::before{content:counter(st);position:absolute;left:0;top:2px;width:28px;height:28px;border-radius:50%;background:rgba(0,113,227,.09);color:var(--blue);font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.tipcard{margin-top:22px;background:linear-gradient(135deg,#eef5ff,#f8f2ff);border-radius:var(--radius);padding:22px 26px;font-size:14.5px;color:var(--text);line-height:1.75;}
+</style>
 </head>
 <body>
 
@@ -33,7 +44,8 @@
   <div class="wrap">
     <p class="kicker">Resources</p>
     <h1>你早就是<br><span class="grad-text">Linux 用户了。</span></h1>
-    <p class="lead">安卓手机、学校的选课系统、B 站的服务器、路边的红绿灯——它们都在跑 Linux。现在，只差你的笔记本了。</p>
+    <p class="lead">安卓手机、学校的选课系统、B 站的服务器、路边的红绿灯——它们都在跑 Linux。现在，只差你的笔记本了。这一页，把你上路要用的全部补给一次备齐。</p>
+    <div style="margin-top:28px;"><input class="cmd-search" id="search" type="search" placeholder="搜索本页资源，比如：镜像 / Arch / 提问 / 社区 / 鸟哥…"></div>
   </div>
 </header>
 
@@ -46,30 +58,132 @@
   </div>
 </div></section>
 
-<section class="sec"><div class="wrap">
-  <h2 class="rv">国内镜像站（换源用）</h2>
+<section class="sec" style="padding-top:8px;"><div class="wrap">
+  <div class="host rv">
+    <img src="img/char/kokoro.png" alt="弦卷心">
+    <div>
+      <div class="q">「收集了这么多好东西，当然要全部分享给大家！你找到想要的资源时露出的笑容，就是最棒的报酬！」</div>
+      <div class="who">弦卷心 · NixOS 用户 · 本页资源猎人</div>
+      <p>这页收录的全部资源都免费、免注册、即点即用。先用上面的搜索框缩小范围，再按顺序逛：换源 → 查文档 → 学提问 → 进社区 → 找组织。</p>
+    </div>
+  </div>
+</div></section>
+
+<div class="wrap"><div id="noresult">没有找到匹配的资源……换个关键词试试？比如「镜像」「文档」或「社区」。</div></div>
+
+<section class="sec" data-g><div class="wrap">
+  <p class="sec-kicker rv">Mirrors</p>
+  <h2 class="rv">国内镜像站，换源第一站。</h2>
+  <p class="sec-sub rv">装好系统后的第一件事：把软件源从国外服务器换到国内镜像，下载速度从「校园网背锅」变成「光纤直连」。下面这些镜像站，家家都有保姆级的「使用帮助」页面。</p>
   <div class="grid3" style="margin-top:26px;">
-    <div class="card rv linkcard"><a href="https://mirrors.tuna.tsinghua.edu.cn" target="_blank" rel="noopener">清华 TUNA</a><p>高校首选，校园网常免流量，「使用帮助」文档极全。</p></div>
-    <div class="card rv linkcard"><a href="https://mirrors.ustc.edu.cn" target="_blank" rel="noopener">中科大 USTC</a><p>速度快、覆盖全，帮助页面同样是保姆级。</p></div>
-    <div class="card rv linkcard"><a href="https://mirrors.aliyun.com" target="_blank" rel="noopener">阿里云镜像</a><p>企业级带宽，校外访问也稳定。</p></div>
-    <div class="card rv linkcard"><a href="https://mirror.sjtu.edu.cn" target="_blank" rel="noopener">上海交大</a><p>教育网骨干，南方高校延迟低。</p></div>
-    <div class="card rv linkcard"><a href="https://mirrors.zju.edu.cn" target="_blank" rel="noopener">浙江大学</a><p>教育网优质节点。</p></div>
-    <div class="card rv linkcard"><a href="https://mirrors.163.com" target="_blank" rel="noopener">网易镜像</a><p>老牌公共镜像。</p></div>
+    <div class="card rv linkcard rcard" data-k="清华 tuna 镜像 mirror 校园网 教育网"><span class="pill green">校园网·常免流量</span><a href="https://mirrors.tuna.tsinghua.edu.cn" target="_blank" rel="noopener">清华 TUNA</a><span class="dom">mirrors.tuna.tsinghua.edu.cn</span><p>高校首选。「使用帮助」文档极全，从 Ubuntu 到 Arch 手把手教你换源。</p></div>
+    <div class="card rv linkcard rcard" data-k="中科大 ustc 镜像 mirror 校园网 教育网"><span class="pill green">校园网·常免流量</span><a href="https://mirrors.ustc.edu.cn" target="_blank" rel="noopener">中科大 USTC</a><span class="dom">mirrors.ustc.edu.cn</span><p>速度快、覆盖全，帮助页面同样是保姆级，IPv6 支持完善。</p></div>
+    <div class="card rv linkcard rcard" data-k="上海交大 sjtu 镜像 mirror 校园网 教育网"><span class="pill green">校园网·常免流量</span><a href="https://mirror.sjtu.edu.cn" target="_blank" rel="noopener">上海交大</a><span class="dom">mirror.sjtu.edu.cn</span><p>教育网骨干节点，南方高校延迟低，界面清爽好找。</p></div>
+    <div class="card rv linkcard rcard" data-k="浙江大学 zju 镜像 mirror 校园网 教育网"><span class="pill green">校园网·常免流量</span><a href="https://mirrors.zju.edu.cn" target="_blank" rel="noopener">浙江大学</a><span class="dom">mirrors.zju.edu.cn</span><p>教育网优质节点，华东高校的好邻居。</p></div>
+    <div class="card rv linkcard rcard" data-k="北京外国语大学 bfsu 北外 镜像 mirror 校园网 教育网"><span class="pill green">校园网·常免流量</span><a href="https://mirrors.bfsu.edu.cn" target="_blank" rel="noopener">北外 BFSU</a><span class="dom">mirrors.bfsu.edu.cn</span><p>TUNA 的姊妹站，配置与帮助体系一脉相承，北方高校好用。</p></div>
+    <div class="card rv linkcard rcard" data-k="南京大学 nju 镜像 mirror 校园网 教育网"><span class="pill green">校园网·常免流量</span><a href="https://mirrors.nju.edu.cn" target="_blank" rel="noopener">南京大学</a><span class="dom">mirrors.nju.edu.cn</span><p>教育网新锐，页面颜值与速度俱佳，帮助文档也很贴心。</p></div>
+    <div class="card rv linkcard rcard" data-k="阿里云 aliyun 镜像 mirror 企业 cdn 校外"><span class="pill">企业 CDN·校外稳</span><a href="https://mirrors.aliyun.com" target="_blank" rel="noopener">阿里云镜像</a><span class="dom">mirrors.aliyun.com</span><p>企业级带宽，放假回家、校外实习访问也稳定。</p></div>
+    <div class="card rv linkcard rcard" data-k="腾讯云 tencent 镜像 mirror 企业 cdn 校外"><span class="pill">企业 CDN·校外稳</span><a href="https://mirrors.cloud.tencent.com" target="_blank" rel="noopener">腾讯云镜像</a><span class="dom">mirrors.cloud.tencent.com</span><p>覆盖常见发行版与语言包仓库，家里宽带跑满不是梦。</p></div>
+    <div class="card rv linkcard rcard" data-k="网易 163 镜像 mirror 老牌 校外"><span class="pill">老牌公共镜像</span><a href="https://mirrors.163.com" target="_blank" rel="noopener">网易镜像</a><span class="dom">mirrors.163.com</span><p>运营多年的老牌公共镜像，经典可靠。</p></div>
+  </div>
+
+  <div class="grid2" style="margin-top:22px;">
+    <div class="card rv">
+      <h3>三分钟换好源</h3>
+      <ol class="steps">
+        <li>打开上面任意镜像站，找到「使用帮助 / Help」入口。</li>
+        <li>在帮助列表里选中你的发行版与版本号。</li>
+        <li>按页面给出的命令或配置，替换系统里的源地址。</li>
+        <li>刷新软件缓存，享受起飞速度。</li>
+      </ol>
+    </div>
+    <div class="card rv">
+      <h3>以 Ubuntu 为例</h3>
+      <p>把默认的国外源一键替换为清华源，再刷新缓存：</p>
+      <pre><code><span class="cm"># Ubuntu 23.10 及更早</span>
+sudo sed -i 's|//.*archive.ubuntu.com|//mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list
+
+<span class="cm"># Ubuntu 24.04 起改用新格式，编辑这个文件</span>
+sudo nano /etc/apt/sources.list.d/ubuntu.sources
+
+<span class="cm"># 最后刷新缓存</span>
+sudo apt update</code></pre>
+      <p>其他发行版同理——Debian、Fedora、Arch 的换源命令，镜像站帮助页里都替你写好了，照抄就行。</p>
+    </div>
+  </div>
+  <div class="tipcard rv">小提示：很多高校的校园网对校内和教育网镜像<b>不计流量</b>。换源不仅提速，还可能帮你省下一整个月的流量包——具体政策问你们学校网络中心，或者问下面会提到的校内社团。</div>
+</div></section>
+
+<section class="sec" data-g><div class="wrap">
+  <p class="sec-kicker rv">Docs</p>
+  <h2 class="rv">文档：先查再问，效率翻倍。</h2>
+  <p class="sec-sub rv">90% 的问题，早就有人写好了答案。养成「先查文档、再搜帖子、最后提问」的顺序，你在社区里的声望会涨得飞快。</p>
+  <div class="grid3" style="margin-top:26px;">
+    <div class="card rv linkcard rcard" data-k="arch wiki 文档 百科 查询"><span class="pill">镇站之宝</span><a href="https://wiki.archlinux.org" target="_blank" rel="noopener">Arch Wiki</a><span class="dom">wiki.archlinux.org</span><p>全 Linux 界最好的文档，没有之一。哪怕你不用 Arch，查什么有什么，多数条目还有中文版。</p></div>
+    <div class="card rv linkcard rcard" data-k="tldr 命令 手册 人话 例子"><span class="pill">人话手册</span><a href="https://tldr.sh" target="_blank" rel="noopener">tldr</a><span class="dom">tldr.sh</span><p>「太长不看版」命令手册，只给最常用的例子。也可以 <code>sudo apt install tldr</code> 装到终端里离线用。</p></div>
+    <div class="card rv linkcard rcard" data-k="explainshell 命令 解释 拆解 查询"><span class="pill">命令翻译机</span><a href="https://explainshell.com" target="_blank" rel="noopener">explainshell</a><span class="dom">explainshell.com</span><p>把看不懂的命令整行贴进去，它逐段拆解每个参数的含义。抄来的命令先过它一遍再执行。</p></div>
+    <div class="card rv linkcard rcard" data-k="linux command line tlcl 电子书 命令行 入门"><span class="pill">入门圣经</span><a href="https://linuxcommand.org" target="_blank" rel="noopener">The Linux Command Line</a><span class="dom">linuxcommand.org</span><p>免费英文电子书，命令行入门圣经，从 ls 一路讲到 shell 脚本，网上也有热心人的中译版。</p></div>
+    <div class="card rv linkcard rcard" data-k="鸟哥 私房菜 中文 教程 入门 电子书"><span class="pill">中文经典</span><a href="https://linux.vbird.org" target="_blank" rel="noopener">鸟哥的 Linux 私房菜</a><span class="dom">linux.vbird.org</span><p>华文世界最有名的 Linux 教程，从基础到服务器架站，全文免费在线读，语气像学长唠嗑。</p></div>
+    <div class="card rv linkcard rcard" data-k="distrowatch 发行版 排行 风向标"><span class="pill">发行版风向标</span><a href="https://distrowatch.com" target="_blank" rel="noopener">DistroWatch</a><span class="dom">distrowatch.com</span><p>发行版热度榜与新闻站，看看这周谁又上榜了，新品发行第一时间知道。</p></div>
+  </div>
+  <div class="tipcard rv">别忘了你电脑里自带的文档：终端输入 <code>man 命令名</code> 查完整手册，断网也能用。觉得太长就配合上面的 tldr，一个管全，一个管快。</div>
+</div></section>
+
+<section class="sec" data-g><div class="wrap">
+  <p class="sec-kicker rv">Play &amp; Learn</p>
+  <h2 class="rv">边玩边学，不知不觉满级。</h2>
+  <div class="grid3" style="margin-top:26px;">
+    <div class="card rv linkcard rcard" data-k="overthewire bandit 游戏 闯关 命令行 练习 ssh"><span class="pill orange">闯关游戏</span><a href="https://overthewire.org/wargames/bandit/" target="_blank" rel="noopener">OverTheWire: Bandit</a><span class="dom">overthewire.org</span><p>用 SSH 连上去打怪升级的命令行闯关游戏，34 关打完，常用命令你全会了。全程免费。</p></div>
+    <div class="card rv linkcard rcard" data-k="linux journey 教程 学习 中文 课程"><span class="pill orange">互动课程</span><a href="https://linuxjourney.com" target="_blank" rel="noopener">Linux Journey</a><span class="dom">linuxjourney.com</span><p>把 Linux 知识拆成小章节的免费课程，从草根到网管三段进阶，支持中文阅读。</p></div>
+    <div class="card rv linkcard rcard" data-k="cmdchallenge 挑战 命令行 练习 游戏"><span class="pill orange">限时挑战</span><a href="https://cmdchallenge.com" target="_blank" rel="noopener">Command Challenge</a><span class="dom">cmdchallenge.com</span><p>浏览器里直接敲命令解题：一行命令找到文件、统计行数……摸鱼时间的完美借口。</p></div>
   </div>
 </div></section>
 
-<section class="sec"><div class="wrap">
-  <h2 class="rv">文档：有问题先查这里</h2>
+<section class="sec" data-g><div class="wrap">
+  <p class="sec-kicker rv">Asking</p>
+  <h2 class="rv">提问的智慧。</h2>
+  <p class="sec-sub rv">在社区里，问题问得好，答案来得快。大佬不是不愿意帮忙，是不愿意帮「在吗」。</p>
   <div class="grid2" style="margin-top:26px;">
-    <div class="card rv linkcard"><a href="https://wiki.archlinux.org" target="_blank" rel="noopener">Arch Wiki</a><p>全 Linux 界最好的文档，没有之一。哪怕你不用 Arch，查什么有什么。</p></div>
-    <div class="card rv linkcard"><a href="https://tldr.sh" target="_blank" rel="noopener">tldr</a><p>「人话版」命令手册，只给你最常用的例子。</p></div>
-    <div class="card rv linkcard"><a href="https://linuxcommand.org" target="_blank" rel="noopener">The Linux Command Line</a><p>免费英文电子书，命令行入门圣经。</p></div>
-    <div class="card rv linkcard"><a href="https://distrowatch.com" target="_blank" rel="noopener">DistroWatch</a><p>发行版风向标，看看这周谁又上榜了。</p></div>
+    <div class="card rv rcard" data-k="提问 智慧 搜索 礼仪 社区 求助">
+      <h3>提问前，先做这三件事</h3>
+      <ol class="steps">
+        <li>把报错信息原样复制去搜——大概率有人踩过同一个坑。</li>
+        <li>翻一遍上面的 Arch Wiki 与你的发行版文档。</li>
+        <li>读一遍神文《<a href="https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way" target="_blank" rel="noopener">提问的智慧</a>》中译版，十分钟，受益四年。</li>
+      </ol>
+      <p>做完这三步还解决不了？现在可以提问了，而且你已经比 80% 的提问者专业。</p>
+    </div>
+    <div class="card rv rcard" data-k="提问 报错 日志 环境 信息 社区 求助">
+      <h3>提问时，带上这些信息</h3>
+      <p>报错<b>复制文本</b>，别拍屏别截半个屏幕。附上你的环境，大佬一眼就能定位：</p>
+      <pre><code><span class="cm"># 你是什么系统、什么内核</span>
+cat /etc/os-release
+uname -r
+
+<span class="cm"># 本次开机以来的错误日志</span>
+journalctl -b -p err</code></pre>
+      <p>问题解决后回帖说一句「已解决，方法是……」——下一个搜到这个帖子的人会隔空感谢你。</p>
+    </div>
   </div>
 </div></section>
 
+<section class="sec" data-g><div class="wrap">
+  <p class="sec-kicker rv">Community</p>
+  <h2 class="rv">中文社区，有人等你。</h2>
+  <div class="grid3" style="margin-top:26px;">
+    <div class="card rv linkcard rcard" data-k="linux 中国 linux.cn 资讯 翻译 社区"><span class="pill">资讯·翻译</span><a href="https://linux.cn" target="_blank" rel="noopener">Linux 中国</a><span class="dom">linux.cn</span><p>老牌中文开源资讯站，技术文章翻译质量高，还有活跃的翻译组可以加入练手。</p></div>
+    <div class="card rv linkcard rcard" data-k="开源中国 oschina 资讯 社区 博客"><span class="pill">资讯·博客</span><a href="https://www.oschina.net" target="_blank" rel="noopener">开源中国</a><span class="dom">oschina.net</span><p>中文开源圈最大的门户，新闻、软件、问答一应俱全，吃瓜学习两开花。</p></div>
+    <div class="card rv linkcard rcard" data-k="ubuntu 中文论坛 forum 求助 问答"><span class="pill">问答论坛</span><a href="https://forum.ubuntu.org.cn" target="_blank" rel="noopener">Ubuntu 中文论坛</a><span class="dom">forum.ubuntu.org.cn</span><p>中文 Ubuntu 用户的老据点，新手区的陈年帖子是座问题宝库。</p></div>
+    <div class="card rv linkcard rcard" data-k="深度 deepin 论坛 社区 中文 求助"><span class="pill">厂商社区</span><a href="https://bbs.deepin.org" target="_blank" rel="noopener">深度社区</a><span class="dom">bbs.deepin.org</span><p>deepin 官方论坛，中文界面中文回复，对新手格外有耐心，国产软件动态也快。</p></div>
+    <div class="card rv linkcard rcard" data-k="v2ex 节点 讨论 程序员 社区"><span class="pill">综合讨论</span><a href="https://www.v2ex.com/go/linux" target="_blank" rel="noopener">V2EX Linux 节点</a><span class="dom">v2ex.com/go/linux</span><p>程序员闲聊圣地，装机秀桌面、问问题、看神仙打架，都合适。</p></div>
+    <div class="card rv linkcard rcard" data-k="reddit r/linux 英文 国际 社区 讨论"><span class="pill red">国际赛区</span><a href="https://www.reddit.com/r/linux/" target="_blank" rel="noopener">r/linux</a><span class="dom">reddit.com/r/linux</span><p>全球最大的 Linux 讨论区，英文环境。顺便推荐 r/linux4noobs，专为新手提问开设。</p></div>
+  </div>
+  <div class="tipcard rv">QQ / 微信群依然是中国 Linux 社区的主战场：直接搜「你的发行版名」「你的校名 + Linux」，进去先看群公告和精华消息，再按「提问的智慧」开口，体验会好得多。</div>
+</div></section>
+
 <section class="sec"><div class="wrap">
-  <h2 class="rv">进社区之前，先配好装备</h2>
+  <p class="sec-kicker rv">Loadout</p>
+  <h2 class="rv">进社区之前，先配好装备。</h2>
   <div class="grid2" style="margin-top:26px;">
     <div class="card rv linkcard"><a href="jargon.html">黑话翻译器</a><p>论坛帖子里的发行版、AUR、炼丹、Ricing……每个黑话都有人话版翻译。逛社区之前先翻翻它，帖子立刻从加密通话变成普通话。</p></div>
     <div class="card rv linkcard"><a href="cheatsheet.html">命令行小抄卡</a><p>查命令去小抄卡，查概念去翻译器，两件装备配齐，社区里 90% 的帖子你都能看懂。</p></div>
@@ -77,11 +191,16 @@
 </div></section>
 
 <section class="sec"><div class="wrap">
-  <h2 class="rv">校园里，找到组织</h2>
-  <div class="grid2" style="margin-top:26px;">
+  <p class="sec-kicker rv">On Campus</p>
+  <h2 class="rv">校园里，找到组织。</h2>
+  <div class="grid3" style="margin-top:26px;">
     <div class="card rv">
       <h3>校内开源 / Linux 社团</h3>
-      <p>越来越多高校都有开源社团、Linux 用户组或 CTF 战队——QQ 群搜索「你的校名 + Linux / 开源」，大概率有惊喜。加入他们的好处：校园网认证教程、软件课避坑、二手硬件情报，全都是现成的。</p>
+      <p>越来越多高校都有开源社团、Linux 用户组（LUG）或 CTF 战队——QQ 群搜索「你的校名 + Linux / 开源」，大概率有惊喜。加入他们的好处：校园网认证教程、软件课避坑、二手硬件情报，全都是现成的。</p>
+    </div>
+    <div class="card rv">
+      <h3>镜像站背后的他们</h3>
+      <p>你可能不知道：清华 TUNA、中科大 LUG、上交 SJTUG 这些镜像站，本身就是学生社团在运营。招新不设技术门槛，维护镜像、写文档、办活动都缺人——进去打杂一年，简历和实力一起毕业。</p>
     </div>
     <div class="card rv">
       <h3>没有社团？</h3>
@@ -99,7 +218,7 @@
 </div></section>
 
 <footer><div class="wrap">
-  <div class="legal">* 数据来源于 TOP500、W3Techs、Steam 硬件调查等公开统计，截至 2026 年 7 月。角色形象版权归 Bushiroad 所有，本页面为非营利粉丝二创。</div>
+  <div class="legal">* 数据来源于 TOP500、W3Techs、Steam 硬件调查等公开统计，截至 2026 年 7 月。本页收录的外部站点均为公益或公开的免费资源，与本站无利益关系；链接内容以各站点实时页面为准。角色形象版权归 Bushiroad 所有，本页面为非营利粉丝二创。</div>
   <div class="footer-bar"><span><a href="index.html">← 返回首页</a></span><span>用 ❤️ 与 ¥0 构建</span></div>
 </div></footer>
 
@@ -108,6 +227,26 @@ const io = new IntersectionObserver(es => {
   es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
 }, { threshold: 0.1 });
 document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+// 全页资源搜索：筛选带 data-k 的卡片，隐藏空掉的分区
+const search = document.getElementById('search');
+const cards = document.querySelectorAll('.rcard');
+const groups = document.querySelectorAll('[data-g]');
+const noresult = document.getElementById('noresult');
+search.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  let shown = 0;
+  cards.forEach(c => {
+    const hit = !q || (c.dataset.k + ' ' + c.textContent).toLowerCase().includes(q);
+    c.classList.toggle('r-hide', !hit);
+    if (hit) shown++;
+  });
+  groups.forEach(g => {
+    const any = g.querySelectorAll('.rcard:not(.r-hide)').length > 0;
+    g.classList.toggle('r-hide', !any);
+  });
+  noresult.style.display = shown ? 'none' : 'block';
+});
 </script>
 </body>
 </html>
