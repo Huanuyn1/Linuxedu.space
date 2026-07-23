@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>安利海报生成器 - 为你的学校定制一张</title>
-<meta name="description" content="输入校名和专业，一键生成「学什么专业，Linux 都专业」定制安利海报：6 款手绘背景、12 位形象大使、浏览器本地合成可下载，附打印与张贴指南。">
+<meta name="description" content="输入校名和专业，一键生成「学什么专业，Linux 都专业」定制安利海报：6 款手绘背景、15 位形象大使、浏览器本地合成可下载，附打印与张贴指南。">
 <meta property="og:title" content="安利海报生成器 - 为你的学校定制一张">
 <meta property="og:description" content="输入校名和专业，一键生成「学什么专业，Linux 都专业」定制安利海报，可下载分享。">
 <meta property="og:image" content="https://linuxedu.space/img/tux.png">
@@ -117,6 +117,9 @@
           <div class="chr" data-c="ran"><img loading="lazy" decoding="async" src="img/char/ran.webp" alt=""><span>兰</span></div>
           <div class="chr" data-c="tomori"><img loading="lazy" decoding="async" src="img/char/tomori.webp" alt=""><span>燈</span></div>
           <div class="chr" data-c="anon"><img loading="lazy" decoding="async" src="img/char/anon.webp" alt=""><span>愛音</span></div>
+          <div class="chr" data-c="sakiko"><img loading="lazy" decoding="async" src="img/char/sakiko.webp" alt=""><span>祥子</span></div>
+          <div class="chr" data-c="umiri"><img loading="lazy" decoding="async" src="img/char/umiri.webp" alt=""><span>海鈴</span></div>
+          <div class="chr" data-c="ritsu"><img loading="lazy" decoding="async" src="img/char/ritsu.webp" alt=""><span>律</span></div>
         </div>
       </div>
       <div class="dlrow" style="justify-content:flex-start;">
@@ -150,7 +153,7 @@
     <div class="card rv">
       <span class="pill">STEP 2 · 搭配</span>
       <h3>挑画风和大使</h3>
-      <p>6 款背景 × 12 位大使 = 72 种配方。文字配色按背景自动适配，永远不会出现「白字压白底」的翻车现场。拿不准就看下面的挑选指南。</p>
+      <p>6 款背景 × 15 位大使 = 90 种配方。文字配色按背景自动适配，永远不会出现「白字压白底」的翻车现场。拿不准就看下面的挑选指南。</p>
     </div>
     <div class="card rv">
       <span class="pill">STEP 3 · 分发</span>
@@ -276,6 +279,30 @@
         <p class="amb-note">社团招新、潮流种草向指定代言，出片率和她的自拍频率成正比。</p>
       </div>
     </div>
+    <div class="card rv amb">
+      <img loading="lazy" decoding="async" src="img/char/sakiko.webp" alt="豊川祥子">
+      <div>
+        <h3>豊川祥子<span class="amb-tag">Alpine</span></h3>
+        <p class="amb-q">「即使失去一切，也要亲手从头再建一次。」</p>
+        <p class="amb-note">逆境翻盘剧本指定代言，适合贴实验室和机房，极简主义者的精神图腾。</p>
+      </div>
+    </div>
+    <div class="card rv amb">
+      <img loading="lazy" decoding="async" src="img/char/umiri.webp" alt="八幡海鈴">
+      <div>
+        <h3>八幡海鈴<span class="amb-tag">Kali</span></h3>
+        <p class="amb-q">「委托受理。渗透测试，现在开始。」</p>
+        <p class="amb-note">网安社团招新和 CTF 比赛宣传专用，气场两米八，海报还没贴完人就招满了。</p>
+      </div>
+    </div>
+    <div class="card rv amb">
+      <img loading="lazy" decoding="async" src="img/char/ritsu.webp" alt="峰月律">
+      <div>
+        <h3>峰月律<span class="amb-tag">deepin</span></h3>
+        <p class="amb-q">「不抢拍，不拖拍，基础的版本才要认真打好。」</p>
+        <p class="amb-note">稳扎稳打的优等生气质，适合写给「想要好看又省心中文系统」的同学。</p>
+      </div>
+    </div>
   </div>
 </div></section>
 
@@ -371,14 +398,18 @@ const QUOTES = {
   aya:    {lines:['闪闪发光才是偶像！','Linux 也要一起发光哦☆'], sign:'丸山彩'},
   ran:    {lines:['不用急，一如既往，','按自己的步调前进就好。'], sign:'美竹兰'},
   tomori: {lines:['就算迷失方向，也要','和你一起继续前进！'], sign:'高松燈'},
-  anon:   {lines:['诶？你还没上车吗？','Linux 才是现在的潮流哦！'], sign:'千早愛音'}
+  anon:   {lines:['诶？你还没上车吗？','Linux 才是现在的潮流哦！'], sign:'千早愛音'},
+  sakiko: {lines:['即使失去一切，也要','亲手从头再建一次。'], sign:'豊川祥子'},
+  umiri:  {lines:['委托受理。','渗透测试，现在开始。'], sign:'八幡海鈴'},
+  ritsu:  {lines:['不抢拍，不拖拍，','基础的版本才要认真打好。'], sign:'峰月律'}
 };
 
 const IMG_SRC = {
   tux:"img/tux.png", kasumi:"img/char/kasumi.webp", arisa:"img/char/arisa.webp",
   yukina:"img/char/yukina.webp", sayo:"img/char/sayo.webp", ako:"img/char/ako.webp",
   kokoro:"img/char/kokoro.webp", maya:"img/char/maya.webp", aya:"img/char/aya.webp", ran:"img/char/ran.webp",
-  tomori:"img/char/tomori.webp", anon:"img/char/anon.webp"
+  tomori:"img/char/tomori.webp", anon:"img/char/anon.webp",
+  sakiko:"img/char/sakiko.webp", umiri:"img/char/umiri.webp", ritsu:"img/char/ritsu.webp"
 };
 const IMGS = {};
 for (const k in IMG_SRC){ IMGS[k] = new Image(); IMGS[k].src = IMG_SRC[k]; IMGS[k].onload = draw; }
