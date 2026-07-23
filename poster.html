@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>安利海报生成器 - 为你的学校定制一张</title>
-<meta name="description" content="输入校名和专业，一键生成「学什么专业，Linux 都专业」定制安利海报：6 款手绘背景、10 位形象大使、浏览器本地合成可下载，附打印与张贴指南。">
+<meta name="description" content="输入校名和专业，一键生成「学什么专业，Linux 都专业」定制安利海报：6 款手绘背景、12 位形象大使、浏览器本地合成可下载，附打印与张贴指南。">
 <meta property="og:title" content="安利海报生成器 - 为你的学校定制一张">
 <meta property="og:description" content="输入校名和专业，一键生成「学什么专业，Linux 都专业」定制安利海报，可下载分享。">
 <meta property="og:image" content="https://linuxedu.space/img/tux.png">
@@ -115,6 +115,8 @@
           <div class="chr" data-c="maya"><img loading="lazy" decoding="async" src="img/char/maya.webp" alt=""><span>麻弥</span></div>
           <div class="chr" data-c="aya"><img loading="lazy" decoding="async" src="img/char/aya.webp" alt=""><span>彩</span></div>
           <div class="chr" data-c="ran"><img loading="lazy" decoding="async" src="img/char/ran.webp" alt=""><span>兰</span></div>
+          <div class="chr" data-c="tomori"><img loading="lazy" decoding="async" src="img/char/tomori.webp" alt=""><span>燈</span></div>
+          <div class="chr" data-c="anon"><img loading="lazy" decoding="async" src="img/char/anon.webp" alt=""><span>愛音</span></div>
         </div>
       </div>
       <div class="dlrow" style="justify-content:flex-start;">
@@ -148,7 +150,7 @@
     <div class="card rv">
       <span class="pill">STEP 2 · 搭配</span>
       <h3>挑画风和大使</h3>
-      <p>6 款背景 × 10 位大使 = 60 种配方。文字配色按背景自动适配，永远不会出现「白字压白底」的翻车现场。拿不准就看下面的挑选指南。</p>
+      <p>6 款背景 × 12 位大使 = 72 种配方。文字配色按背景自动适配，永远不会出现「白字压白底」的翻车现场。拿不准就看下面的挑选指南。</p>
     </div>
     <div class="card rv">
       <span class="pill">STEP 3 · 分发</span>
@@ -258,6 +260,22 @@
         <p class="amb-note">佛系安利专用，适合写给「想换但怕麻烦」的同学。</p>
       </div>
     </div>
+    <div class="card rv amb">
+      <img loading="lazy" decoding="async" src="img/char/tomori.webp" alt="高松燈">
+      <div>
+        <h3>高松燈<span class="amb-tag">Ubuntu</span></h3>
+        <p class="amb-q">「就算迷失方向，也要和你一起继续前进！」</p>
+        <p class="amb-note">温柔治愈系海报专用，贴在图书馆和自习室，迷路的人看了会想试试 Linux。</p>
+      </div>
+    </div>
+    <div class="card rv amb">
+      <img loading="lazy" decoding="async" src="img/char/anon.webp" alt="千早愛音">
+      <div>
+        <h3>千早愛音<span class="amb-tag">Fedora</span></h3>
+        <p class="amb-q">「诶？你还没上车吗？Linux 才是现在的潮流哦！」</p>
+        <p class="amb-note">社团招新、潮流种草向指定代言，出片率和她的自拍频率成正比。</p>
+      </div>
+    </div>
   </div>
 </div></section>
 
@@ -351,13 +369,16 @@ const QUOTES = {
   kokoro: {lines:['让世界充满笑容！','用 Linux 让大家开心起来吧！'], sign:'弦卷心'},
   maya:   {lines:['ふええ……编译内核什么的，','我、我可以陪你搞通宵！'], sign:'大和麻弥'},
   aya:    {lines:['闪闪发光才是偶像！','Linux 也要一起发光哦☆'], sign:'丸山彩'},
-  ran:    {lines:['不用急，一如既往，','按自己的步调前进就好。'], sign:'美竹兰'}
+  ran:    {lines:['不用急，一如既往，','按自己的步调前进就好。'], sign:'美竹兰'},
+  tomori: {lines:['就算迷失方向，也要','和你一起继续前进！'], sign:'高松燈'},
+  anon:   {lines:['诶？你还没上车吗？','Linux 才是现在的潮流哦！'], sign:'千早愛音'}
 };
 
 const IMG_SRC = {
   tux:"img/tux.png", kasumi:"img/char/kasumi.webp", arisa:"img/char/arisa.webp",
   yukina:"img/char/yukina.webp", sayo:"img/char/sayo.webp", ako:"img/char/ako.webp",
-  kokoro:"img/char/kokoro.webp", maya:"img/char/maya.webp", aya:"img/char/aya.webp", ran:"img/char/ran.webp"
+  kokoro:"img/char/kokoro.webp", maya:"img/char/maya.webp", aya:"img/char/aya.webp", ran:"img/char/ran.webp",
+  tomori:"img/char/tomori.webp", anon:"img/char/anon.webp"
 };
 const IMGS = {};
 for (const k in IMG_SRC){ IMGS[k] = new Image(); IMGS[k].src = IMG_SRC[k]; IMGS[k].onload = draw; }

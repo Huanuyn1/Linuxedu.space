@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>发行版小测试 - 一分钟找到你的本命 Linux</title>
-<meta name="description" content="八个问题，由 BanG Dream 角色为你推荐最适合的 Linux 发行版：匹配度评分、逐题推荐理由、优缺点丑话在前，附九大候选总览与测后上路指引。">
+<meta name="description" content="八个问题，由 BanG Dream 角色为你推荐最适合的 Linux 发行版：匹配度评分、逐题推荐理由、优缺点丑话在前，附十一大候选总览与测后上路指引。">
 <meta property="og:title" content="发行版小测试 - 一分钟找到你的本命 Linux">
 <meta property="og:description" content="八个问题，由 BanG Dream 角色为你推荐最适合的 Linux 发行版：匹配度评分、逐题推荐理由、优缺点丑话在前。">
 <meta property="og:image" content="https://linuxedu.space/img/tux.png">
@@ -84,7 +84,7 @@
   <div class="wrap">
     <p class="kicker">Distro Quiz</p>
     <h1>一分钟，找到你的<br><span class="grad-text">本命发行版。</span></h1>
-    <p class="lead">八个问题，没有标准答案，只有适不适合。结果由九位同学亲自颁发，附匹配度评分、逐题推荐理由，以及丑话在前的优缺点。</p>
+    <p class="lead">八个问题，没有标准答案，只有适不适合。结果由十一位同学亲自颁发，附匹配度评分、逐题推荐理由，以及丑话在前的优缺点。</p>
   </div>
 </header>
 
@@ -132,7 +132,7 @@
 </div></section>
 
 <section class="sec" id="candidates"><div class="wrap">
-  <h2 class="rv">九位候选人，<span class="grad-text">先见个面。</span></h2>
+  <h2 class="rv">十一位候选人，<span class="grad-text">先见个面。</span></h2>
   <p class="lead rv" style="margin-left:0;">不想做测试也行，这里是全部候选名册。每位候选人由一位同学代言，看对眼了就去官网把它领回家。</p>
   <div class="grid3" style="margin-top:34px;">
     <div class="card rv">
@@ -170,6 +170,18 @@
       <span class="pill">★★☆ 进阶偏易</span>
       <p>为游戏而生的不可变系统，类 SteamOS 体验，Steam 与 Proton 预装，掌机也能刷。</p>
       <div class="dc-foot"><a href="https://bazzite.gg" target="_blank" rel="noopener">官网 &gt;</a></div>
+    </div>
+    <div class="card rv">
+      <div class="dc-head"><img src="img/icons/ubuntu.svg" alt="Ubuntu"><div><h3>Ubuntu</h3><div class="dc-who">代言人 · 高松燈</div></div></div>
+      <span class="pill green">★☆☆ 新手友好</span>
+      <p>全球人气王：教程最多、社区最大，迷路了永远有人接住你。</p>
+      <div class="dc-foot"><a href="https://ubuntu.com" target="_blank" rel="noopener">官网 &gt;</a></div>
+    </div>
+    <div class="card rv">
+      <div class="dc-head"><img src="img/icons/fedora.svg" alt="Fedora"><div><h3>Fedora</h3><div class="dc-who">代言人 · 千早愛音</div></div></div>
+      <span class="pill">★★☆ 进阶偏易</span>
+      <p>新技术的课代表，Wayland / PipeWire 等前沿特性第一时间尝鲜。</p>
+      <div class="dc-foot"><a href="https://fedoraproject.org" target="_blank" rel="noopener">官网 &gt;</a></div>
     </div>
     <div class="card rv">
       <div class="dc-head"><img src="img/icons/archlinux.svg" alt="Arch Linux"><div><h3>Arch Linux</h3><div class="dc-who">代言人 · 市谷有咲</div></div></div>
@@ -221,8 +233,8 @@
       <p>结果页会同时给出第二、三名候补，都值得一试。况且主流发行版的日常体验差距没有传说中那么大——用 Live 模式都试一遍，跟着感觉走就对了。</p>
     </div>
     <div class="card rv">
-      <h3>为什么没有 Ubuntu、Fedora、deepin？</h3>
-      <p>候选名册对应本站九位同学的代言分工。喜欢 Ubuntu 系的手感，Mint、Pop!_OS、Ubuntu Studio 三个衍生推荐能接住你；完整货架在<a href="index#distros">首页「热门发行版」</a>。</p>
+      <h3>为什么没有 deepin？</h3>
+      <p>候选名册对应本站同学的代言分工，deepin 暂时没有请到代言人。喜欢国产发行版的手感，可以去<a href="index#distros">首页「热门发行版」</a>货架看看它，Mint、Pop!_OS、Ubuntu Studio 这几个 Ubuntu 系衍生也能接住你。</p>
     </div>
     <div class="card rv">
       <h3>我的答案会被收集吗？</h3>
@@ -296,6 +308,24 @@ const DISTROS = {
       cons:["不可变系统装软件要换思路：Flatpak / Distrobox 优先","Fedora 系的中文资料比 Ubuntu 系少"],
       best:"把打游戏当正事的电竞选手"},
     dl:"https://bazzite.gg", home:"https://bazzite.gg"},
+  ubuntu:{name:"Ubuntu", char:"高松燈", charImg:"img/char/tomori.webp", logo:"img/icons/ubuntu.svg",
+    quote:"「就算迷失方向……也想和你一起，继续前进。」",
+    why:"全球人气王：教程最多、社区最大，迷路了永远有人接住你。",
+    profile:{
+      level:"★☆☆ 新手友好", base:"基于 Debian", pm:"apt + Snap/Flatpak", release:"半年一更，LTS 支持五年",
+      pros:["遇到问题最容易搜到中文答案","硬件兼容与驱动支持最省心","课堂、WSL、云服务器，到处都有它的身影"],
+      cons:["Snap 商店评价两极，有人嫌慢","默认 GNOME 桌面风格见仁见智"],
+      best:"第一次装 Linux 的新手、需要和老师同学环境对齐的人"},
+    dl:"https://ubuntu.com/download", home:"https://ubuntu.com"},
+  fedora:{name:"Fedora", char:"千早愛音", charImg:"img/char/anon.webp", logo:"img/icons/fedora.svg",
+    quote:"「诶嘿嘿，最新的内核，是我先跑起来的哦！」",
+    why:"新技术的课代表，前沿特性第一时间尝鲜。",
+    profile:{
+      level:"★★☆ 进阶偏易", base:"独立发行版（Red Hat 上游）", pm:"dnf + Flatpak", release:"半年一更",
+      pros:["Wayland、PipeWire 等新技术默认就绪","桌面体验精致现代，被称作「最稳的新」","学的用的就是未来 RHEL 的样子"],
+      cons:["半年一次大版本，不跟进会 EOL","中文社区比 Ubuntu 小一圈"],
+      best:"追逐新技术的潮流玩家、想要现代桌面体验的人"},
+    dl:"https://fedoraproject.org/workstation/download", home:"https://fedoraproject.org"},
   nixos:{name:"NixOS", char:"弦卷心", charImg:"img/char/kokoro.webp", logo:"img/icons/nixos.svg",
     quote:"「把快乐写进配置文件，无论到哪台电脑，笑容都能一模一样地复现！」",
     why:"声明式配置，系统状态完全可复现，理科生的秩序之美。",
@@ -337,8 +367,9 @@ const DISTROS = {
 // 每题选项：[文案, 得分, 理由表]
 const QUESTIONS = [
   {q:"你用电脑主要干什么？", opts:[
-    ["上课写作业、刷网页看视频", {mint:3, debian:1}, {
+    ["上课写作业、刷网页看视频", {mint:3, ubuntu:2, debian:1}, {
       mint:"你的需求是日常课业和网页视频：Mint 开箱即用，浏览器、办公套件、播放器全部预装妥当，装完就能用",
+      ubuntu:"你的需求是日常课业：Ubuntu 教程最多、课件环境最容易对齐，老师同学用它的也最多，跟着大部队走不迷路",
       debian:"你的需求是日常课业：Debian 稳定安静，装上一次，用到毕业都不带出幺蛾子的"}],
     ["写代码、搞开发", {arch:3, nixos:2, debian:1}, {
       arch:"你要写代码搞开发：Arch 滚动更新让编译器和工具链永远最新，AUR 里几乎能找到一切开发工具",
@@ -358,7 +389,8 @@ const QUESTIONS = [
     ["别让我碰命令行，谢谢", {mint:3, debian:1}, {
       mint:"你不想碰命令行：Mint 的软件管理器、更新器、驱动管理全都有图形界面，日常几乎用不到终端",
       debian:"你不想碰命令行：Debian 装好一次就很少需要维护，GNOME 软件中心点点鼠标就能装应用"}],
-    ["出问题能百度、能问群友就行", {popos:2, suse:2, mint:1}, {
+    ["出问题能百度、能问群友就行", {ubuntu:2, popos:2, suse:2, mint:1}, {
+      ubuntu:"你能接受搜教程解决问题：Ubuntu 的中文教程是全 Linux 界最多的，报错的每一个字都有人踩过坑",
       popos:"你能接受搜教程解决问题：Pop!_OS 用户社区活跃，中文教程一搜一大把",
       suse:"你能接受搜教程解决问题：openSUSE 的 YaST 图形化配置中心能搞定绝大多数设置，很少需要徒手改配置",
       mint:"你能接受偶尔搜搜教程：Mint 基于 Ubuntu，网上的解决方案海量，基本遇不到搜不到答案的问题"}],
@@ -413,8 +445,9 @@ const QUESTIONS = [
       debian:"你要稳、几年不变：Debian Stable 两年一个大版本，安全更新持续五年，稳得像教科书",
       suse:"你要稳：openSUSE Leap 与企业版 SLES 同源，稳字当头",
       mint:"你要稳：Mint 基于 Ubuntu LTS，五年支持周期，界面几年不变正是它的追求"}],
-    ["新，软件永远最新", {arch:2, nixos:1, bazzite:1, suse:1}, {
+    ["新，软件永远最新", {arch:2, fedora:2, nixos:1, bazzite:1, suse:1}, {
       arch:"你要软件永远最新：Arch 滚动更新，上游发布即所得，没有「等大版本」这回事",
+      fedora:"你要新：Fedora 是新技术的课代表，Wayland、PipeWire、最新内核永远第一批上车，还比滚动发行版稳",
       nixos:"你要新：NixOS 的 unstable 通道滚动跟进，nixpkgs 是全世界最大的软件仓库之一",
       bazzite:"你要新：Bazzite 跟随 Fedora 快节奏，内核与 Mesa 更新飞快，游戏组件永远新鲜",
       suse:"你要新：openSUSE Tumbleweed 是经过 openQA 自动化测试的滚动发行版，新而不易翻车"}],
@@ -424,14 +457,16 @@ const QUESTIONS = [
       arch:"你要一切皆可定制：Arch 只给你一个干净的底座，往上盖什么全由你决定"}]
   ]},
   {q:"你装操作系统的经验是？", opts:[
-    ["从没装过任何系统", {mint:2, popos:1, studio:1}, {
+    ["从没装过任何系统", {ubuntu:2, mint:2, popos:1, studio:1}, {
+      ubuntu:"你没装过系统：Ubuntu 安装器最成熟、图文视频教程遍地都是，第一次装机也不会迷路",
       mint:"你没装过系统：Mint 的安装器全程图形化、一路下一步，配合我们的上路指南，第一次装机也不会慌",
       popos:"你没装过系统：Pop!_OS 安装器简单直观，硬件驱动还自动配好，新手友好度拉满",
       studio:"你没装过系统：Ubuntu Studio 走 Ubuntu 系安装流程，图形化向导一路下一步即可"}],
-    ["装过 Windows，U 盘启动没问题", {suse:1, debian:1, bazzite:1, popos:1}, {
+    ["装过 Windows，U 盘启动没问题", {suse:1, debian:1, bazzite:1, fedora:1, popos:1}, {
       suse:"你会 U 盘启动装系统：openSUSE 的安装器专业且清晰，分区、引导每一步都有稳妥的默认选项",
       debian:"你会 U 盘启动装系统：Debian 安装器久经考验，照着我们的指南走一遍就能拿下",
       bazzite:"你会 U 盘启动装系统：Bazzite 的安装流程和 Fedora 一致，十来分钟就能进桌面开玩",
+      fedora:"你会 U 盘启动装系统：Fedora 的 Anaconda 安装器老练可靠，十来分钟进桌面，还能第一时间摸到新特性",
       popos:"你会 U 盘启动装系统：Pop!_OS 装起来比 Windows 还快，驱动全包"}],
     ["装过 Linux，还想更硬核", {arch:1, gentoo:2, nixos:1}, {
       arch:"你装过 Linux 还想更硬核：Arch 的手动安装（现在也有 archinstall 可选）是硬核玩家的成人礼",
