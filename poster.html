@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>安利海报生成器 - 为你的学校定制一张</title>
-<meta name="description" content="输入校名和专业，一键生成「学什么专业，Linux 都专业」定制安利海报：6 款手绘背景、15 位形象大使、浏览器本地合成可下载，附打印与张贴指南。">
+<meta name="description" content="输入校名和专业，一键生成「学什么专业，Linux 都专业」定制安利海报：6 款手绘背景、17 位形象大使、浏览器本地合成可下载，附打印与张贴指南。">
 <meta property="og:title" content="安利海报生成器 - 为你的学校定制一张">
 <meta property="og:description" content="输入校名和专业，一键生成「学什么专业，Linux 都专业」定制安利海报，可下载分享。">
 <meta property="og:image" content="https://linuxedu.space/img/tux.png">
@@ -119,7 +119,9 @@
           <div class="chr" data-c="anon"><img loading="lazy" decoding="async" src="img/char/anon.webp" alt=""><span>愛音</span></div>
           <div class="chr" data-c="sakiko"><img loading="lazy" decoding="async" src="img/char/sakiko.webp" alt=""><span>祥子</span></div>
           <div class="chr" data-c="umiri"><img loading="lazy" decoding="async" src="img/char/umiri.webp" alt=""><span>海鈴</span></div>
-          <div class="chr" data-c="ritsu"><img loading="lazy" decoding="async" src="img/char/ritsu.webp" alt=""><span>律</span></div>
+          <div class="chr" data-c="lisa"><img loading="lazy" decoding="async" src="img/char/lisa.webp" alt=""><span>莉莎</span></div>
+          <div class="chr" data-c="moca"><img loading="lazy" decoding="async" src="img/char/moca.webp" alt=""><span>摩卡</span></div>
+          <div class="chr" data-c="rana"><img loading="lazy" decoding="async" src="img/char/rana.webp" alt=""><span>楽奈</span></div>
         </div>
       </div>
       <div class="dlrow" style="justify-content:flex-start;">
@@ -153,7 +155,7 @@
     <div class="card rv">
       <span class="pill">STEP 2 · 搭配</span>
       <h3>挑画风和大使</h3>
-      <p>6 款背景 × 15 位大使 = 90 种配方。文字配色按背景自动适配，永远不会出现「白字压白底」的翻车现场。拿不准就看下面的挑选指南。</p>
+      <p>6 款背景 × 17 位大使 = 102 种配方。文字配色按背景自动适配，永远不会出现「白字压白底」的翻车现场。拿不准就看下面的挑选指南。</p>
     </div>
     <div class="card rv">
       <span class="pill">STEP 3 · 分发</span>
@@ -296,11 +298,27 @@
       </div>
     </div>
     <div class="card rv amb">
-      <img loading="lazy" decoding="async" src="img/char/ritsu.webp" alt="峰月律">
+      <img loading="lazy" decoding="async" src="img/char/lisa.webp" alt="今井莉莎">
       <div>
-        <h3>峰月律<span class="amb-tag">deepin</span></h3>
-        <p class="amb-q">「不抢拍，不拖拍，基础的版本才要认真打好。」</p>
-        <p class="amb-note">稳扎稳打的优等生气质，适合写给「想要好看又省心中文系统」的同学。</p>
+        <h3>今井莉莎<span class="amb-tag">deepin</span></h3>
+        <p class="amb-q">「放心交给姐姐吧，全都帮你装好哦。」</p>
+        <p class="amb-note">温柔可靠的姐姐系海报，适合写给「想要好看又省心中文系统」的同学。</p>
+      </div>
+    </div>
+    <div class="card rv amb">
+      <img loading="lazy" decoding="async" src="img/char/moca.webp" alt="青叶摩卡">
+      <div>
+        <h3>青叶摩卡<span class="amb-tag">Manjaro</span></h3>
+        <p class="amb-q">「慢慢来～省心一点，不是也很好嘛～」</p>
+        <p class="amb-note">慵懒治愈系，适合写给「想用 Arch 生态又怕折腾」的同学。</p>
+      </div>
+    </div>
+    <div class="card rv amb">
+      <img loading="lazy" decoding="async" src="img/char/rana.webp" alt="要楽奈">
+      <div>
+        <h3>要楽奈<span class="amb-tag">CachyOS</span></h3>
+        <p class="amb-q">「……有趣的系统。跑得，好快。」</p>
+        <p class="amb-note">电竞社和游戏群新晋看板娘，猫党与性能党双厨狂喜。</p>
       </div>
     </div>
   </div>
@@ -401,7 +419,9 @@ const QUOTES = {
   anon:   {lines:['诶？你还没上车吗？','Linux 才是现在的潮流哦！'], sign:'千早愛音'},
   sakiko: {lines:['即使失去一切，也要','亲手从头再建一次。'], sign:'豊川祥子'},
   umiri:  {lines:['委托受理。','渗透测试，现在开始。'], sign:'八幡海鈴'},
-  ritsu:  {lines:['不抢拍，不拖拍，','基础的版本才要认真打好。'], sign:'峰月律'}
+  lisa:   {lines:['放心交给姐姐吧，','全都帮你装好哦。'], sign:'今井莉莎'},
+  moca:   {lines:['慢慢来～','省心一点，不是也很好嘛～'], sign:'青叶摩卡'},
+  rana:   {lines:['……有趣的系统。','跑得，好快。'], sign:'要楽奈'}
 };
 
 const IMG_SRC = {
@@ -409,7 +429,8 @@ const IMG_SRC = {
   yukina:"img/char/yukina.webp", sayo:"img/char/sayo.webp", ako:"img/char/ako.webp",
   kokoro:"img/char/kokoro.webp", maya:"img/char/maya.webp", aya:"img/char/aya.webp", ran:"img/char/ran.webp",
   tomori:"img/char/tomori.webp", anon:"img/char/anon.webp",
-  sakiko:"img/char/sakiko.webp", umiri:"img/char/umiri.webp", ritsu:"img/char/ritsu.webp"
+  sakiko:"img/char/sakiko.webp", umiri:"img/char/umiri.webp", lisa:"img/char/lisa.webp",
+  moca:"img/char/moca.webp", rana:"img/char/rana.webp"
 };
 const IMGS = {};
 for (const k in IMG_SRC){ IMGS[k] = new Image(); IMGS[k].src = IMG_SRC[k]; IMGS[k].onload = draw; }
